@@ -1,0 +1,35 @@
+% !TEX root = week_1.tex
+\input{exercises/_common_header.tex}
+\Newassociation{solution}{Solution}{week_1_solution}
+\newif\ifDisplaySolutions%\DisplaySolutionstrue
+
+\begin{document}
+\title{Quantitative Macroeconomics\\~\\Winter 2023/24\\~\\Week 1}
+\author{Willi Mutschler\\willi@mutschler.eu}
+\date{Version: 1.0.0\\Latest version available on: \href{https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_1.pdf}{GitHub}}
+\maketitle\thispagestyle{empty}
+
+\newpage
+\Opensolutionfile{week_1_solution}[week_1_solution]
+\tableofcontents\thispagestyle{empty}\newpage
+
+\setcounter{page}{1}
+\input{exercises/quantitative_macroeconomics_scope.tex}\newpage
+\input{exercises/programming_languages.tex}\newpage
+\input{exercises/matlab_quick_tour.tex}\newpage
+\input{exercises/gitkraken_quick_tour.tex}\newpage
+\printbibliography
+\newpage
+\appendix
+\section{Exam template files for \LaTeX}
+\lstinputlisting[language=tex,frame=single,title=\lstname,breaklines=true,breakatwhitespace=false,basicstyle=\scriptsize\mlttfamily]{progs/latex/template_exam_solution.tex}
+\lstinputlisting[language=tex,frame=single,title=\lstname,breaklines=false,breakatwhitespace=false,basicstyle=\scriptsize\mlttfamily]{progs/latex/template_exam_biblio.bib}
+\lstinputlisting[style=Matlab-editor,basicstyle=\footnotesize\mlttfamily,title=\lstname]{progs/matlab/template_matlab_example.m}
+
+\Closesolutionfile{week_1_solution}
+\ifDisplaySolutions
+\newpage
+\section{Solutions}
+\input{week_1_solution}
+\fi
+\end{document}

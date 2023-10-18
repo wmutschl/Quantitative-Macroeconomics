@@ -1,0 +1,107 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+\documentclass[a4paper]{scrartcl}
+\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel} \usepackage[bottom=2.5cm,top=2.0cm,left=2.0cm,right=2.0cm]{geometry}
+\usepackage{amssymb,amsmath,amsfonts}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{csquotes}
+\usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{mygreen}{rgb}{0,0.4,0}
+\definecolor{mygray}{rgb}{0.2,0.2,0.2}
+\usepackage[numbered,framed]{matlab-prettifier}
+\usepackage[backend=biber,style=authoryear]{biblatex}
+\addbibresource{template_exam_biblio.bib}
+
+\begin{document}
+\title{Quantitative Macroeconomics\\Midterm Exam}
+\author{Willi Mutschler\\Student ID: 123\\willi@mutschler.eu}
+\date{Version: \today}
+\maketitle\thispagestyle{empty}
+
+\newpage
+\tableofcontents\thispagestyle{empty}\newpage \setcounter{page}{1}
+
+\section{Exercise 1}\label{sec:introduction}
+This is a \LaTeX template you might find useful to hand in your exam.
+
+\section{Tables}
+Table \ref{tbl:1} is an example of a table.
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{|l|c|r|}
+  \hline
+  \multicolumn{3}{|c|}{Country List} \\
+  \hline
+  Country Name or Area Name& ISO ALPHA 2 Code &ISO ALPHA 3 \\ \hline
+  Albania &AL & ALB \\
+  Algeria &DZ & DZA \\
+  American Samoa & AS & ASM \\
+  Angola & AO & AGO \\
+  \hline
+  \end{tabular}
+  \caption{This is the caption for the example table.} \label{tbl:1}
+\end{table}
+
+\section{Figures}
+Table \ref{fig:1} is an example of a figure, remove the draft option to actually print it.
+\begin{figure}[t!]\centering
+  \includegraphics[draft,width=0.5\textwidth]{mycoolplot.pdf}
+  \caption{This is the caption for the example figure.}
+  \label{fig:1}
+\end{figure}
+
+\section{Math}
+\begin{equation}
+e^{\pi i} + 1 = 0\label{eq:euler}
+\end{equation}
+
+The beautiful equation \eqref{eq:euler} is known as the Euler equation. We can also align equations:
+\begin{align*}
+x&=y           &  w &=z              &  a&=b+c\\
+2x&=-y & 3w&=\frac{1}{2}z & -4 + 5x&=2+y & w+2&=-1+w &
+a&=b\\
+ab&=cb
+\end{align*}
+Inline math works like this $x_t=A x_{t-1}+ \varepsilon_t$ where $\varepsilon_t \overset{iid}\sim \underbrace{N(\underset{3 \times 1}{\boldsymbol{0}},\boldsymbol{\Sigma})}_{\text{normally distributed}}$.
+We can also break long lines:
+\begin{multline}
+p(x) = 3x^6 + 14x^5y + 590x^4y^2 + 19x^3y^3
+\\
+- 12x^2y^4 - 12xy^5 + 2y^6 - a^3b^3 \label{eq:long}
+\end{multline}
+Equation \eqref{eq:long} is a long equation.
+Or group and center lines:
+\begin{gather*}
+y_t = C x_{t}\\
+x_t = A x_{t-1} + Bu_t
+\end{gather*}
+
+\section{Displaying code}
+Use \texttt{lstlisting} to display code directly:
+\begin{lstlisting}[
+style = Matlab-editor, basicstyle = \mlttfamily,
+]
+x = reshape(eye(3,3),3*3,1);
+dlyap(A,RHS);
+\end{lstlisting}
+or load it from a file with \texttt{lstinputlisting}
+\lstinputlisting[
+        style = Matlab-editor,
+        basicstyle = \mlttfamily,
+  ]{template_matlab_example.m}
+Note that the pretty formatting for MATLAB is achieved by loading the package \texttt{matlab-prettifier}.
+
+\section{Citations}\label{sec:citations}
+Examples how to do citations:
+\begin{itemize}
+  \item \textcite{Sims_1980_MacroeconomicsReality} shows that SVAR models can be used to study the transmission channel of monetary policy shocks.
+  \item The book \textcite{Herbst.Schorfheide_2016_BayesianEstimationDSGE} emphasizes that DSGE models are usually estimated by Bayesian methods.
+  \item Identification plays an important role in Quantitative Macroeconomics \parencite{Kilian_2013_StructuralVectorAutoregressions,Mutschler_2022_QuantitativeMacroeconomics}.
+\end{itemize}
+Now let's print the bibliography.
+\printbibliography
+
+\end{document}

@@ -5,6 +5,37 @@ The compiled PDF materials are available under [Releases](https://github.com/wmu
 
 Please feel free to use this for teaching or learning purposes; however, taking into account the [GPL 3.0 license](https://choosealicense.com/licenses/gpl-3.0/).
 
+## Schedule with To-Do Lists
+
+<details>
+  <summary>Week 1: Introductions</summary>
+
+### Goals
+
+* understand what Quantitative Macroeconomics is about
+* decide whether you want to take the course
+* prepare your computer for the course with MATLAB or Octave
+* do your first steps in MATLAB or Octave
+* (optionally) install GitKraken and do your first steps with git
+
+### To Do
+
+* [ ] read the general course information
+* [ ] have a look at the [exercises for week 1](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_1.pdf); we will do them together in class
+* [ ] prepare your computer
+  * [ ] install MATLAB R2023b following [this guide](https://uni-tuebingen.de/einrichtungen/zentrum-fuer-datenverarbeitung/dienstleistungen/clientdienste/software/matlab-einzelplatzlizenz/) if you are a student of the University of Tübingen
+  * [ ] create an account on [GitHub.com](https://github.com/signup)
+  * [ ] (optionally) sign up for the [GitHub Students Developer Pack](https://education.github.com/pack) to get a free Pro license for GitKraken (among other things)
+  * [ ] (optionally) install the [GitKraken Client](https://gitkraken.com/download)  
+* [ ] write down all your questions
+* [ ] [schedule an online meeting](https://schedule.mutschler.eu) with me
+  * [ ] put *"I am interested in this course"* under *"What is the meeting about?"*
+  * [ ] check your emails and cancel the meeting again using the link in the email
+  * [ ] now you know how easy it is to schedule a meeting with me :-)
+* [ ] participate in the Q&A sessions
+
+</details>
+
 ## Content
 
 We cover modern theoretical macroeconomics (the study of aggregated variables such as economic growth, unemployment and inflation by means of structural macroeconomic models) and combine it with econometric methods (the application of formal statistical methods in empirical economics). We focus on the quantitative aspects and methods for solving and estimating the most prominent model classes in macroeconomics: Structural Vector Autoregressive (SVAR) and Dynamic Stochastic General Equilibrium (DSGE) models. Using these two model strands, the theoretical and methodological foundations of quantitative macroeconomics is taught. The students are thus enabled to understand the analyses and forecasts of public (universities, central banks, economic research institutes) as well as private (business banks, political consultations) research departments, but also to derive and empirically evaluate their own structural macroeconomic models.

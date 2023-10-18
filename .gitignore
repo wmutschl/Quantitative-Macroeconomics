@@ -11,6 +11,7 @@
 class/
 exam/
 literature/
+literature/*.pdf
 stuff/
 
 common_header.log
