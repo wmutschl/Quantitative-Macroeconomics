@@ -1,3 +1,4 @@
+[![Build LaTeX](../../actions/workflows/latex.yml/badge.svg)](../../actions/workflows/latex.yml)
 # Quantitative Macroeconomics
 
 These are my course materials for the graduate course on Quantitative Macroeconomics taught at the University of Tübingen.
