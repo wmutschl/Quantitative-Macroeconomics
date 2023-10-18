@@ -21,6 +21,12 @@ common_header.log
 *_exam_*.pdf
 *_exam_*_solution.tex
 
+slides/*.log
+slides/*.nav
+slides/*.out
+slides/*.pdf
+slides/*.snm
+
 week_*.log
 week_*.out
 week_*.pdf
