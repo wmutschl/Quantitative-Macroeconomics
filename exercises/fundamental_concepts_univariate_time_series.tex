@@ -1,0 +1,28 @@
+\section[Some Fundamental Concepts Of Univariate Time Series Analysis]{Some Fundamental Concepts Of Univariate Time Series Analysis\label{ex:FundamentalConceptsUnivariateTimeSeriesAnalysis}}
+
+\begin{enumerate}
+	\item Define the \enquote{White Noise Process} labeled shortly as $\varepsilon_t \sim WN(0,\sigma_\varepsilon^2)$.
+	\item Plot 200 observations of 
+	\begin{align*} 
+		   (i)~y_t  &= \varepsilon_t
+		\\ (ii)~y_t &= \frac{1}{5}(\varepsilon_{t-2}+\varepsilon_{t-1}+\varepsilon_{t}+\varepsilon_{t+1}+\varepsilon_{t+2})
+	\end{align*} 
+	with $\varepsilon_{t} \sim N(0,1)$. What are the differences?	
+	\item Briefly explain the concepts of (i) weak stationarity and (ii) strict stationarity.
+	\item Define the autocovariance and autocorrelation function for a covariance-stationary stochastic process $\{Y_t\}$.
+	\item Consider the linear first-order difference equation $$y_t=\phi y_{t-1}+\varepsilon_t$$ with $\varepsilon_{t} \sim N(0,1)$. Simulate and plot 200 observations of $(i) |\phi|<1$, $(ii) \phi=1$, and $(iii) |\phi| >1$. What does this imply in terms of stationarity of the process?
+	\item Briefly explain the Lag-operator and Lag-polynomials. How can we check whether an AR(p) process $$y_t - \phi_1 y_{t-1} -\phi_2 y_{t-2} - ... - \phi_p y_{t-p} = (1-\phi_1 L-\phi_2 L^2 -... - \phi_p L^p)y_t = \varepsilon_t$$ is weakly stationary?
+\end{enumerate}
+
+\paragraph{Readings}
+\begin{itemize}
+	\item \textcite[Ch.2]{Bjornland.Thorsrud_2015_AppliedTimeSeries}	
+	\item \textcite{Lutkepohl_2004_UnivariateTimeSeries}	
+\end{itemize}
+
+\begin{solution}\textbf{Solution to \nameref{ex:FundamentalConceptsUnivariateTimeSeriesAnalysis}}
+\ifDisplaySolutions
+\input{exercises/fundamental_concepts_univariate_time_series_solution.tex}
+\fi
+\newpage
+\end{solution}

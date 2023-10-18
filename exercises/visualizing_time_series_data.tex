@@ -1,0 +1,49 @@
+\section[Visualizing Time Series Data]{Visualizing Time Series Data\label{ex:VisualizingTimeSeriesData}}
+
+\begin{enumerate}
+\item What sort of variables are we dealing with in macroeconomics?
+\item List sources and providers to get macroeconomic data.
+\item Establish a strategy for obtaining macroeconomic data.
+\item Analyze the quarterly growth rate of gross domestic product (GDP) for Norway.
+To this end, do the following:
+\begin{itemize}
+	\item Find a source for this data and download it to your computer (preferably as csv or xlsx).
+	\item Load the data using MATLAB's interactive import tool. Save the dates and data in two separate variables.
+	\item Create a new figure and plot the quarterly growth rate.
+	Name it \enquote{Plot of Q-on-Q growth in Norway}.
+	\item Create a new figure and plot two histograms, one with 10 bins and another one with 30 bins.
+	Call it \enquote{Histogram of Q-on-Q growth in Norway}. Compare them to a fitted normal distribution.
+	\item Create a new figure and assess the fit of your data to a normal distribution via a \enquote{Q-Q plot}.
+	Call it \enquote{Normal probability plot}.
+	\item Create a new figure and plot a boxplot of your data.
+	Call it \enquote{Boxplot}.
+	\item Give a numerical estimate for the average growth rate and its standard deviation.
+\end{itemize}
+\item Redo the previous exercise for (i) 1980Q1 to 2012Q4, (ii) 2012Q4 to 2019Q4, and (iii) 2020Q1 to 2022Q2
+\item Redo the whole exercise for another country of your choice.
+Do a Pull Request on the course's \href{https://github.com/wmutschl/Quantitative-Macroeconomics}{GitHub repository}.
+  to upload the used data file (preferably as csv) and your MATLAB script.
+\end{enumerate}
+
+\paragraph{Readings}
+\begin{itemize}
+	\item \url{https://de.mathworks.com/help/matlab/import_export/import-data-interactively.html}
+	\item \url{https://de.mathworks.com/help/matlab/import_export/select-spreadsheet-data-interactively.html}
+	\item \textcite[Ch.2]{Bjornland.Thorsrud_2015_AppliedTimeSeries}	
+\end{itemize}
+
+\paragraph{Useful resources}
+\begin{itemize}	
+	\item Economic Data Resources (\url{https://libguides.umn.edu/c.php?g=843682&p=6527336})
+	\item Gould Library - The Data Search (\url{https://gouldguides.carleton.edu/c.php?g=147179&p=965273})
+	\item DBNomics Providers (\url{https://db.nomics.world/providers})
+	\item Our World in Data (\url{https://ourworldindata.org})
+	\item FRED (\url{https://fred.stlouisfed.org})
+\end{itemize}
+
+\begin{solution}\textbf{Solution to \nameref{ex:VisualizingTimeSeriesData}}
+\ifDisplaySolutions
+\input{exercises/visualizing_time_series_data_solution.tex}
+\fi
+\newpage
+\end{solution}
