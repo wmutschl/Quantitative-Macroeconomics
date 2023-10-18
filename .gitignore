@@ -9,8 +9,8 @@
 *.toc
 
 class/
-exam/
-literature/
+exam/winter-2022
+exam/winter-2023
 literature/*.pdf
 stuff/
 

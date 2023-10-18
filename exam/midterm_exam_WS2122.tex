@@ -1,0 +1,201 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% !TEX root = midterm_exam_WS2122.tex
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[a4paper,top=2cm]{geometry}
+\usepackage{amssymb,amsmath,amsfonts}
+\usepackage[english]{babel}
+\usepackage[a4paper]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{url}
+%\parindent0mm
+%\parskip1.5ex plus0.5ex minus0.5ex
+
+\begin{document}
+	
+	\title{Quantitative Macroeconomics}
+	\author{Midterm Exam}
+	\date{Winter 2021/2022}
+	\maketitle
+	
+	\begin{itemize}
+		\item Answer \textbf{all} of the following six exercises in English.
+		
+		\item Hand in your solutions before Friday December, 17 2021 at noon (12:00).
+		
+		\item The solution files should contain your executable (and commented) Matlab functions and script files as well as all additional documentation as \texttt{pdf}, not \texttt{doc} or \texttt{docx}. Your \texttt{pdf} files may also include scans or pictures of handwritten notes.
+		
+		\item Please e-mail the solution files to \url{willi.mutschler@uni-tuebingen.de}
+		
+		\item I will confirm the receipt of your work also by email (typically within the hour). If not, please resend it to me.
+		
+		\item All students must work on their own, please also give your student ID number.
+		
+		\item It is advised to regularly check Ilias and your emails in case of urgent updates.
+		
+		\item If there are any questions, do not hesitate to contact Willi Mutschler.
+	\end{itemize}
+	\newpage
+
+	
+\section[VAR(1) With Time Trend]{VAR(1) With Time Trend\label{ex:VAR1timetrend}}
+Consider the VAR(1) model with a constant and time trend
+$$ y_t = c + d\cdot t + A_1 y_{t-1} + u_t$$
+where $y_t$, $c$, $d$ and $u_t$ are $K$-dimensional vectors. Moreover, the Eigenvalues of the $K \times K$ dimensional matrix $A_1$ are inside the unit circle and $u_t$ is white noise with covariance matrix $\Sigma_u$.
+\begin{enumerate}
+	\item Compute the unconditional first and second moments, i.e. the unconditional mean, variance, autocovariance and autocorrelation function of $y_t$.
+	\item Why is this process not covariance-stationary? How could one proceed to make it covariance-stationary?
+\end{enumerate}
+
+\newpage
+
+\section[Maximum Likelihood Estimation Of Laplace AR(1)]{Maximum Likelihood Estimation Of Laplace AR(1)\label{ex:MaximumLikelihoodEstimationLaPlaceARp}}
+Consider the AR(1) model with constant
+$$ y_t = c + \phi y_{t-1} + u_t$$
+Assume that the error terms $u_t$ are i.i.d. Laplace distributed with known density
+\begin{align*}
+f_{u_{t}}(u)=\frac{1}{2}\exp \left( -|u|\right)
+\end{align*}
+Note that the parametrization of the above density is such that $E(u_t)=0$ and $Var(u_t)=2$.
+\begin{enumerate}
+	\item Derive the log-likelihood function conditional on the first observation.
+ 	\item Write a function that calculates the conditional log-likelihood of $c$ and $\phi$.
+ 	\item Load the dataset given in the excel file \texttt{Laplace.xlsx}. Numerically find the maximum likelihood estimates of $c$ and $\phi$ by minimizing the negative conditional log-likelihood function.
+ 	\item Compare your estimates with the maximum likelihood estimate under the assumption of Gaussianity.
+ 	\item Compare your estimates with the ordinary least-squares estimate.
+\end{enumerate}
+
+\newpage
+
+\section{Properties Of Lag-Order Selection Criteria}
+Assume that the true Data-Generating-Process (DGP) follows the following VAR(4) model
+$$y_t = \begin{pmatrix}
+2.4 & 1.0\\
+0 & 1.1
+\end{pmatrix}
+y_{t-1}+
+\begin{pmatrix}
+-2.15 & -0.9\\
+0 & -0.41
+\end{pmatrix}
+y_{t-2}+
+\begin{pmatrix}
+0.852 & 0.2\\
+0& 0.06
+\end{pmatrix}
+y_{t-3}+
+\begin{pmatrix}
+-0.126 & 0\\
+0 & 0.0003
+\end{pmatrix}
+y_{t-4}
++ u_t$$
+where $u_t$ is a Gaussian white noise with contemporary covariance matrix $\Sigma_u = \begin{pmatrix}
+0.9&0.2\\0.2&0.5
+\end{pmatrix}$.
+
+Perform a Monte-Carlo analysis to study both the finite-sample as well as asymptotic properties of the Akaike Information Criterion (AIC) and the Schwarz Information Criterion (SIC):
+\begin{align*}
+AIC(m)  &= \log(det(\tilde{\Sigma}_u(m))) + \frac{2}{T}\varphi(m)\\
+SIC(m)  &= \log(det(\tilde{\Sigma}_u(m))) + \frac{\log T}{T}\varphi(m)
+\end{align*}
+where $\tilde{\Sigma}_u=T^{-1}\sum_{t=1}^T \hat{u}_t\hat{u}_t'$ is the residual covariance matrix estimator for a reduced-form VAR model of order $m$ based on OLS residuals $\hat{u}_t$. The function $\varphi(m)$ corresponds to the total number of regressors in the system of VAR equations. The VAR order is chosen such that the respective criterion is minimized over the possible orders $m = 0,...,p^{max}$. To this end, do the following.
+
+\begin{itemize}
+	\item Set the number of Monte Carlo repetitions $R=100$ and $p^{max}=8$.
+	\item Initialize output matrices $aic$ and $sic$ each of dimension $R \times 5$. 
+	\item For $r=1,...,R$ do the following:
+	\begin{itemize}
+		\item Simulate $10100$ observations for the DGP given above and discard the first 100 observations as burn-in phase. Save the remaining 10000 observations in a matrix $Y$.
+		\item Compute the lag criteria for 5 different sample sizes $T=\{80, 160, 240, 500, 10000\}$, i.e. use the last $T$ observations of your simulated data matrix $Y$ for computations.
+		\item Save the chosen lag order in the corresponding output object at position $[r,j]$ where $j=1,...,5$ indicates the corresponding sample size.
+	\end{itemize}
+	\item Look at the frequency tables of your output objects for the different subsamples. Hint: \texttt{tabulate(aic(:,1))} displays a frequency table for the AIC criterion with sample size equal to 80.
+\end{itemize}
+Given your results, do you agree with the following (general) findings?
+\begin{enumerate}
+	\item AIC is not consistent for the true lag order, whereas SIC is consistent.
+	\item AIC never (asymptotically) selects a lag order that is lower than the true lag order.
+	\item In finite samples, we usually have $\hat{p}_{SIC} \leq \hat{p}_{AIC}$.
+	\item In finite samples, AIC has a tendency to overestimate the lag order, SIC has a tendency to underestimate the lag order; hence, one should rely on AIC in finite samples.
+\end{enumerate}
+
+\newpage
+\section[Bayesian Estimation of VAR(2) and Zero-Lower-Bound]{Bayesian Estimation Of VAR(2) and Zero-Lower-Bound\label{ex:BayesianEstimationVARTwoZLB}}
+Re-consider the exercise on Bayesian Estimation of a VAR(2) model for the US economy which includes (in this ordering) the federal funds rate, government bond yield, unemployment and inflation. The sample period consists of 2007m1 to 2010m12. Data is given in the excel sheet \enquote{USZLB} in the file \texttt{data.xlsx}.
+
+As the sample period includes the financial crisis, re-estimate the model with Bayesian methods and a Minnesota prior, but now use a small prior variance to reflect the view that monetary policy is at the zero-lower-bound and hence unlikely to respond to changes in the other variables. Compare both the mean as well as the 16th and 84th percentiles of the posterior distribution of the regression coefficient matrix $A$ and the reduced-form covariance matrix $\Sigma_u$ with the estimates you get if you do not explicitly adjust the prior for the lower-zero-bound.
+
+
+\newpage
+
+\section{How Well Does the IS-LM Model Fit Postwar US Data?}
+Consider a quarterly model for $y_t = (\Delta gnp_t, \Delta i_t, i_t-\Delta p_t, \Delta m_t - \Delta p_t)'$, where $gnp_t$ denotes the log of GNP, $i_t$ the nominal yield on three-month Treasury Bills, $\Delta m_t$ the growth in M1 and $\Delta p_t$ the inflation rate in the CPI. There are four shocks in the system: an aggregate supply (AS), a money supply (MS), a money demand (MD) and an aggregate demand (IS) shock. Ignoring the lagged dependent variables for \textbf{expository} purposes ($B_1=...=B_p=0$), the unrestricted structural VAR model can be simply written as $B_0 y_t = \varepsilon_t$. That is:
+\begin{align}
+\Delta gnp_t &= -b_{12}\Delta i_t -b_{13}(i_t-\Delta p_t) -b_{14}(\Delta m_t-\Delta p_t) + \varepsilon_t^{AS} \label{eq:AS}\\
+\Delta i_t &= -b_{21}\Delta gnp_t -b_{23}(i_t-\Delta p_t) -b_{24}(\Delta m_t-\Delta p_t) + \varepsilon_t^{MS} \label{eq:MS}\\
+i_t - \Delta p_t &= -b_{31}\Delta gnp_t -b_{32}\Delta i_t -b_{34}(\Delta m_t-\Delta p_t) + \varepsilon_t^{MD} \label{eq:MD}\\
+\Delta m_t - \Delta p_t &= -b_{41}\Delta gnp_t -b_{42}\Delta i_t - b_{43} (i_t-\Delta p_t) + \varepsilon_t^{IS} \label{eq:IS}
+\end{align}
+where $b_{ij}$ denotes the $ij$th element of $B_0$. Consider the following identification restrictions:
+\begin{itemize}
+	\item Money supply shocks do not have contemporaneous effects on output growth, i.e.
+	$$\frac{\partial \Delta gnp_t}{\partial \varepsilon_t^{MS}}=0$$	
+	\item Money demand shocks do not have contemporaneous effects on output growth, i.e.
+	$$\frac{\partial \Delta gnp_t}{\partial \varepsilon_t^{MD}}=0$$	
+	\item Monetary authority does not react contemporaneously to changes in the price level.\\Hint: compute
+	$$\frac{\partial \Delta i_t}{\partial \Delta p_t}=0$$
+	from equation \eqref{eq:MS}.
+	\item Money supply shocks, money demand shocks and aggregate demand shocks do not have long-run effects on the log of real GNP:	
+	$$\frac{\partial gnp_t}{\partial \varepsilon_t^{MS}}=0,\qquad \frac{\partial gnp_t}{\partial \varepsilon_t^{MD}}=0,\qquad \frac{\partial gnp_t}{\partial \varepsilon_t^{IS}}=0$$	
+	\item The structural shocks are uncorrelated with covariance matrix $E(\varepsilon_t \varepsilon_t')=\Sigma_\varepsilon$. The variances are \textbf{not} normalized.
+\end{itemize}
+Solve the following exercises:
+\begin{enumerate}
+	\item Derive the implied exclusion restrictions on the matrices $B_0$, $B_0^{-1}$ and $\Theta(1)$.
+	\item Consider the data given in the excel file \texttt{gali1992.xlsx}. Estimate a VAR(4) model with constant term.
+	\item Estimate the structural impact matrix using a nonlinear equation solver, i.e. the objective is to find the unknown elements of $B_0^{-1}$ and the diagonal elements of $\Sigma_\varepsilon$ such that
+	$$\begin{bmatrix}
+	vech(B_0^{-1} \Sigma_\varepsilon B_0^{-1'}-\hat{\Sigma}_u)\\
+	\text{short-run restrictions on }B_0 \text{ and } B_0^{-1} \\
+	\text{long-run restrictions on }\Theta(1)\\
+	\end{bmatrix}$$
+	is minimized. Normalize the shocks such that the diagonal elements of $B_0^{-1}$ are positive.
+	\item Use the implied estimates of $B_0^{-1}$ and $\Sigma_\varepsilon$ to plot the structural impulse responses functions for (i) real GNP, (ii) the yield on Treasury Bills, (iii) the real interest rate and (iv) real money growth.
+\end{enumerate}
+
+\newpage
+
+\section{Posterior distribution of sign-identified structural IRFs}
+Consider data for $y_t = (\Delta gnp_t,\Delta p_t,i_t)'$, where $gnp_t$ denotes the log of U.S. real GNP, $p_t$ the consumer price index in logs, and $i_t$ the federal funds rate. The sample period consists of 1970Q1 to 2011Q1.  Data is given in the Excel sheet \enquote{MonPolData} in the file \texttt{data.xlsx}.
+
+\begin{enumerate}
+	\item Estimate the parameters of a VAR(4) model with constant by using Bayesian methods, i.e. a Gibbs sampling method. To this end:
+	\begin{itemize}
+		\item Assume a Minnesota prior for the VAR coefficients, where the prior mean should reflect the view that the VAR follows a random walk. Set the hyperparameters for the prior covariance matrix $V_0$ such that the tightness parameter on lags of own and of other variables are both equal to 0.5, and the tightness parameter on the constant term is equal to 100. 
+		\item Assume an inverse Wishart prior for the covariance matrix with degrees of freedoms equal to the number of variables and the identity matrix as prior scale matrix.
+		\item Initialize the first draw of the covariance matrix with OLS values.
+		\item Draw in total 30100 times from the conditional posteriors, where you discard draws of the coefficient matrix that are unstable.
+		\item Save the last $n_{G}=100$, draws $(A^{r},\Sigma_u^{r})$ $(r=1,...,n_G)$ for inference on the structural model.
+	\end{itemize}
+	\item Estimate the posterior of the structural impulse response function by considering the following sign restrictions pattern on the impact matrix
+		$$ B_0^{-1}=\begin{bmatrix}
+		+ & + & -\\
+		+ & - & -\\
+		+ & *  & +
+		\end{bmatrix}$$
+		 where $*$ denotes unrestricted values.
+		 \begin{itemize}
+			 \item For each draw of the posterior $(A^{r},\Sigma_u^{r})$ $(r=1,...,n_G)$ find $n_Q=200$ rotation matrices that provide impact matrices $B_0^{-1}$ and implied impulse response functions that are in accordance with the sign restrictions pattern given above. Note that in the end you should have $n_Q\cdot n_{G}=20000$ accepted draws from the posterior of structural impulse response functions.
+			 \item Display the vector of point-wise posterior medians and the vectors of point-wise 68\% error bands of the structural impulse responses. Interpret your results for one structural shock (of your choice) on (i) the level of real gnp, (ii) the consumer price index and (iii) on the federal funds rate.
+			 \item Name two shortcomings of using the median response function as a measure of central tendency in sign-identified SVARs.
+		 \end{itemize}
+\end{enumerate}
+\newpage
+
+
+
+\end{document}

@@ -1,0 +1,177 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% !TEX root = endterm_exam_WS2122.tex
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[a4paper,top=2cm]{geometry}
+\usepackage{amssymb,amsmath,amsfonts}
+\usepackage[english]{babel}
+\usepackage[a4paper]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{url}
+%\parindent0mm
+%\parskip1.5ex plus0.5ex minus0.5ex
+\usepackage[backend=biber,style=authoryear]{biblatex}
+\addbibresource{../literature/biblio.bib}
+\begin{document}
+	
+	\title{Quantitative Macroeconomics}
+	\author{Endterm Exam}
+	\date{Winter 2021/2022}
+	\maketitle
+	
+	\begin{itemize}
+		\item Answer \textbf{all} of the following \textbf{three} exercises in English.
+		\item All assignments will be given the same weight in the final grade.
+		\item Hand in your solutions before Saturday January, 19 2022 at noon (12:00).
+		\item The solution files should contain your executable (and commented) MATLAB functions and script files as well as all additional documentation as \texttt{pdf}, not \texttt{doc} or \texttt{docx}. Your \texttt{pdf} files may also include scans or pictures of handwritten notes. 
+		\item Note that you cannot use Dynare to answer the exam questions, but are required to use the routines we developed in class and that are available on Ilias in the Endterm exam folder.
+		\item Please e-mail ALL the solution files to \url{willi.mutschler@uni-tuebingen.de}.
+		\item I will confirm the receipt of your work also by email (typically within the hour). If not, please resend it to me.		
+		\item All students must work on their own, please also give your student ID number.		
+		\item It is advised to regularly check Ilias and your emails in case of urgent updates.
+		\item If there are any questions, do not hesitate to contact Willi Mutschler.
+	\end{itemize}
+	\newpage
+
+
+
+\section[Generalized method of moments estimation of the Basic New Keynesian model]{Generalized method of moments estimation of the Basic New Keynesian model\label{ex:BasicNewKeynesianModelGMM}}
+\paragraph{Description}
+Consider the basic New Keynesian model that we derived and used throughout the lectures.
+
+\paragraph{Data}
+For estimation, we will use simulated data for the nominal interest rate $R_t$, output $y_t$ and inflation $\pi_t$. The sample size is 500 and our goal is to match the following data moments:
+\begin{itemize}
+	\item Unconditional means: $$E[y_t], E[\pi_t], E[R_t]$$
+	\item All second-order contemporaneous product moments: $$E[y_t^2], E[y_t \pi_t], E[y_t R_t], E[\pi_t^2], E[\pi_t R_t], E[R_t^2]$$
+	\item Own first lagged second-order product moments: $$E[y_t y_{t-1}], E[\pi_t \pi_{t-1}], E[R_t R_{t-1}]$$
+\end{itemize}
+Note that the second-order product moments are not the covariance matrix, but un-centered moments (see the Hint below).
+
+\paragraph{Parameters}
+Of the 14 underlying parameters in the model, five are held fix and calibrated to the values the data was simulated with, i.e. $\sigma=1$, $\epsilon=9$, $\beta=0.99$, $\varphi=5$, and $\phi_y=0.125$. Our interest centers around the other 8 parameters ($\sigma_A$, $\sigma_A$, $\sigma_\nu$, $\rho_A$, $\rho_Z$, $\rho_\nu$, $\phi_\pi$, $\theta$, and $\Pi^*$) which we will estimate by minimizing the squared distance between the specified data moments and the corresponding model moments.
+
+\paragraph{Codes}
+The model equations are given in the file \texttt{BasicNewKeynesian\_preprocessing.m}, the steady-state is computed in the file \texttt{BasicNewKeynesian\_steadystate.m}, the information on parameters is provided in \texttt{BasicNewKeynesian\_params.m}. \texttt{BasicNewKeynesianSimdat.mat} contains the dataset and \texttt{BasicNewKeynesian\_data\_moments.m} provides code to compute the specified data moments. The Method of Moments estimation routines are given in the folder \texttt{MoMRoutines} and some additional optimizers in the folder \texttt{OptimRoutines}. A basic (incomplete) run script is provided in \texttt{XRunMoM\_BasicNewKeynesian.m}.
+
+\paragraph{Exercises}
+\begin{enumerate}	
+	\item Briefly, outline the general idea of a method of moments estimation approach in your own words. What is the difference between the Simulated Method of Moments (SMM) and the Generalized Method of Moments (GMM). Also, comment on the choice of weighting matrix.
+	\item What is the J-test?
+	\item Set \texttt{OPT.MoM.method='SMM'} in the run script to estimate the model parameters with the simulated method of moments (SMM). You will need to set some additional options.
+	\item Set \texttt{OPT.MoM.method='GMM'} in the run script to estimate the model parameters with the generalized method of moments (GMM). To this end, create a function called
+	\begin{center} \texttt{BasicNewKeynesian\_theoretical\_moments.m}\end{center}
+	which computes the unconditional product moments that correspond to our data moments. To this end, use the closed-form expressions provided in the hint below.  Note that this function is called in \texttt{mom\_objective\_function.m} if you set \texttt{OPT.MoM.method='GMM'} in the run script. The input arguments of this function are \texttt{SOL} and \texttt{MODEL}, while the output argument is the vector of model moments. You need to make sure that the rows correspond to the same moments we have in \texttt{BasicNewKeynesian\_data\_moments.m}.
+	\item Compare the estimation results of GMM and SMM in terms of function value, point estimate, standard errors and fit of data and model moments.
+\end{enumerate}
+
+
+\paragraph{Hint}
+Consider a DSGE model solved with first-order perturbation techniques such that the endogenous model variables $y_t$ are determined linearly by previous variables $y_{t-1}$ and current shocks $u_t$: 
+$$y_t = \bar{y} + g_x (y_{t-1} - \bar{y}) + g_u u_t$$
+where $u_t \sim N(0,\Sigma_u)$ and $\bar{y}$ denotes the steady-state of $y_t$. The observables are given by a subset of variables $d_t$ that are selected from $y_t$ given a linear relationship:
+$$d_t = H y_t + e_t$$
+where $e_t \sim N(0,\Sigma_e)$ denote possible measurement errors. Let $\mu_y \equiv E[y_t]$ denote the unconditional mean, $\Sigma_y \equiv E[(y_t - \mu_y)(y_t - \mu_y)']$ the unconditional contemporaneous covariance matrix and $\Sigma_{y,j} \equiv E[(y_t - \mu_y)(y_{t-j} - \mu_y)']$ the unconditional autocovariance matrix of order $j$ of $y_t$. The unconditional moments of $y_t$ are then given by:
+\begin{align}
+	\mu_y &= \bar{y} \nonumber
+	\\
+	\Sigma_y &= g_x \Sigma_y g_x' + g_u \Sigma_u g_u' \label{eq:Sigy}
+	\\
+	\Sigma_{y,1} &= g_x \Sigma_{y}
+\end{align}
+Note that \eqref{eq:Sigy} is a Lyapunov equation and can be solved by an appropriate algorithm. Given these moments, the corresponding unconditional theoretical moments of $d_t$ are given by:
+\begin{align*}
+	\mu_d & = H \bar{y}
+	\\
+	\Sigma_d &= H \Sigma_y H' + \Sigma_e
+	\\
+	\Sigma_{d,1} &=  H \Sigma_{y,1} H'
+\end{align*}
+Finally, the second-order product moments of $d_t$ are given by:
+\begin{align*}
+	E[d_t d_t'] & = \Sigma_d + \mu_d \mu_d'
+	\\
+	E[d_t d_{t-1}'] & =\Sigma_{d,1} + \mu_d \mu_d'
+\end{align*}
+Be aware that $\Sigma_d$ is a centered product moment while $E[d_t d_t']$ is an un-centered one. The moments we consider for the method of moments estimation are the un-centered ones!
+
+
+
+
+\newpage 
+
+
+\section[Maximum likelihood estimation of Ireland (2004)]{Maximum likelihood estimation of Ireland (2004)\label{ex:Ireland2004ML}}
+\paragraph{Description}
+Consider a version of the model of \textcite{Ireland_2004_TechnologyShocksNew} who assesses which shocks are the major drivers of aggregate fluctuations. To this end, he augments a basic small-scale New-Keynesian model with preference, cost-push, monetary and technology shocks.
+
+\paragraph{Data}
+For the estimation, we will use quarterly U.S. data from 1948:Q1 to 2003:Q1. Specifically:
+\begin{itemize}
+	\item Quarterly changes in seasonally adjusted real GDP figures, converted to per capita values by dividing by the civilian noninstitutional population aged 16 and over, are used to measure \textbf{output growth}.
+	\item Quarterly changes in the seasonally adjusted GDP deflator provide the measure of \textbf{inflation}.
+	\item Quarterly averages of daily values of the three-month U.S. Treasury bill rate provide the measure of the \textbf{nominal interest rate}.
+\end{itemize}
+
+\paragraph{Parameters}
+Of the 14 underlying parameters in the model, two are held fix, $\beta=0.99$ and $\psi=0.1$, and are not estimated. Hence, our interest centers around the other 12 parameters which we will estimate by maximizing the log-likelihood function.
+
+\paragraph{Codes}
+The model equations are given in the file \texttt{ireland\_2004\_preprocessing.m}, the steady-state is computed in the file \texttt{ireland\_2004\_steadystate.m}, some incomplete information on parameters is provided in \texttt{ireland\_2004\_params.m}, and \texttt{ireland\_2004\_data.mat} contains the dataset. The Maximum Likelihood estimation routines are given in the folder \texttt{MLRoutines} and some additional optimizers in the folder \texttt{OptimRoutines}. A basic (incomplete) run script is provided in \texttt{XRunML\_ireland\_2004.m}.
+
+
+\paragraph{Exercises}
+\begin{enumerate}
+	\item What is the \emph{dilemma of absurd parameters} when doing a Maximum Likelihood estimation of DSGE models?
+	\item Add feasible starting values, lower and upper bounds to the file \texttt{ireland\_2004\_params.m}.
+	\item Fix $\alpha_\pi$ to a very small number, e.g. 0.0001. Estimate the remaining 11 model parameters with maximum likelihood. Comment on the estimation results in terms of point estimates and standard errors.
+	\item Now also include $\alpha_\pi$ to the set of estimated parameters. How does this affect the estimation results in terms of point estimates and standard errors? Try to explain this and point towards possible solutions.
+	\item BONUS POINTS (optional not required): Given your estimation results in (3), what is the contribution made by the various shocks in driving fluctuations in the model's observable variables? That is, compute the variance decomposition (in percent).
+\end{enumerate}
+	
+\newpage 
+
+\section[Bayesian estimation of Smets and Wouters (2007)]{Bayesian estimation of Smets and Wouters (2007)\label{ex:SW2007RWMH}}
+\paragraph{Description}
+Consider the benchmark DSGE model of \textcite{Smets.Wouters_2007_ShocksFrictionsUS} which is fit to US macroeconomic data for the period 1966:1-2004:4. This model constitutes one of the cornerstones that drive the development of medium-scale and large-scale DSGE models. The model features monopolistic competition in the goods and labor markets and nominal frictions in the form of sticky prices and wages. However, it allows both non-optimizing firms and households to index prices and wages, respectively, to a composite of steady-state and lagged inflation. Households can also save in physical capital, with a one-period time to build before new investments turns into productive capital. Moreover, the model features several real rigidities in the form of habit formation in consumption, investment adjustment costs, variable capital utilization, and fixed costs in production. The linearized model consists of two blocks, one for the sticky price and wage economy that determines the actual allocations and another one for the hypothetical allocation under flexible prices and wages in order to determine the potential allocation. Both blocks are linked as monetary policy follows a Taylor rule with feedback not only to inflation deviations, but also to deviations from output and output-growth from its potential counterparts. The model dynamics are driven by seven structural shocks. Monetary policy shocks follow an AR(1) process and two additional inefficient markup shocks in wage and price setting follow an ARMA(1,1) process. Four efficient shocks (total factor productivity, risk premium, investment-specific technology, and government spending shocks) follow AR(1) processes.
+
+\paragraph{Data}
+For estimation, we will consider data that comprises quarterly time series of the log difference of real GDP $d\log(GDP_t)$, log difference of real consumption $d\log(CONS_t)$, log difference of real investment $d\log(INV_t)$, log difference of real wage $d\log(WAGE_t)$, log hours worked $\log(HOURS_t)$, log difference of GDP deflator $d\log(GDPDEFLATOR_t)$ and the federal funds rate $FEDFUNDS_t$ for the US economy from 1966:Q1 to 2004:Q4. The endogenous variables relate to the vector of observables through the relation
+	\begin{align}
+		\begin{bmatrix} d\log(GDP_t)\\ d\log(CONS_t)\\ d\log(INV_t)\\ d\log(WAGE_t)\\ \log(HOURS_t)\\ d\log(GDPDEFLATOR_t)\\ FEDFUNDS_t\end{bmatrix}
+		= \begin{bmatrix} \bar{\gamma}\\ \bar{\gamma}\\ \bar{\gamma}\\ \bar{\gamma}\\ \bar{l}\\ \bar{\pi}\\ \bar{r} \end{bmatrix}
+		+ \begin{bmatrix} y_t - y_{t-1}\\c_t - c_{t-1}\\i_t - i_{t-1}\\w_t - w_{t-1}\\l_t\\\pi_t\\r_t\end{bmatrix} \label{eq:SW2007_measurement_equations}
+	\end{align}
+where $d\log$ refers to the log difference of a variable. $\bar{\gamma}$ is the quarterly trend growth rate of real GDP, consumption, investment and wages,  $\bar{l}$ is the quarterly steady-state number of hours worked, $\bar{\pi}$ is the quarterly steady-state inflation rate and $\bar{r}$ is the steady-state nominal interest rate. Note that we do not assume that the observed variables are measured with errors.
+
+\paragraph{Parameters}
+Of the 41 underlying parameters in the model, 5 are held fixed. Our interest, hence, centers around the 36 dimensional posterior distribution resulting from the sampling density and prior distribution of the parameters. 
+
+\paragraph{Codes}
+The model equations are given in the (incomplete) file \texttt{sw2007\_preprocessing.m}, the steady-state is computed in the (incomplete) file \texttt{sw2007\_steadystate.m}, information on parameter calibration and priors is provided in \texttt{sw2007\_params.m} and \texttt{sw2007\_data.mat} contains the dataset. The Random-Walk-Metropolis-Hastings estimation routines are given in the folder \texttt{RWMHRoutines} and some additional optimizers as well as routines for plotting in the folders \texttt{OptimRoutines} and \texttt{DynareRoutines}. \texttt{XRunRWMH\_sw2007.m} is a basic, but incomplete run script you might want to use.
+
+\newpage
+\paragraph{Exercises}
+	\begin{enumerate}
+	\item Add the measurement equations \eqref{ex:SW2007RWMH} to the preprocessing file \texttt{sw2007\_preprocessing.m}. Make sure that the steady-state is correctly computed in \texttt{sw2007\_steadystate.m} for these variables. Note that the underlying model variables are all expressed in log deviations from their corresponding steady-state, e.g. $x_t = \log(X_t) - X$ where $X$ is the steady-state of $X_t$; hence the steady-state of $x_t$ is zero.
+	\item Briefly outline the Random-Walk-Metropolis-Hastings algorithm. What is the intuition behind this algorithm?
+	\item What are common choices to initialize the proposal distribution of the Random-Walk-Metropolis-Hastings algorithm? Which one is preferred and why?
+	\item Estimate the model parameters with the Random-Walk-Metropolis-Hastings algorithm:
+	\begin{itemize}
+		\item Initialize the proposal distribution with the vector of parameters and covariance matrix provided in \texttt{sw2007\_mhinit.mat}.
+		\item Draw 10000 draws using the RW-MH algorithm and keep 50\% of the last draws to conduct inference.\\\textbf{Note that depending on your machine this could take up to 20 minutes.}
+		\item Tune the algorithm such that the acceptance rate is between 0.25 and 0.35.
+	\end{itemize}	
+	\item Compare the estimated marginal posterior with the marginal prior distribution. For which parameters is there learning from data, which parameters are mostly driven by their prior?
+	\item What does it mean that \emph{a chain has converged} and why is this important? Comment on whether or not you think this is the case given your estimation results by looking at the figure with the recursive averages.
+	
+\end{enumerate}
+
+\newpage
+\appendix
+\printbibliography
+
+\end{document}

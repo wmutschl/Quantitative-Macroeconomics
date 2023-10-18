@@ -1,0 +1,246 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% !TEX root = endterm_exam_WS2223.tex
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[a4paper,top=2cm]{geometry}
+\usepackage{amssymb,amsmath,amsfonts}
+\usepackage[english]{babel}
+\usepackage[a4paper]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage[numbered,framed]{matlab-prettifier}
+\usepackage{url}
+%\parindent0mm
+%\parskip1.5ex plus0.5ex minus0.5ex
+\usepackage[backend=biber,style=authoryear]{biblatex}
+\addbibresource{../literature/biblio.bib}
+\begin{document}
+	
+\title{Quantitative Macroeconomics}
+\author{Endterm Exam}
+\date{Winter 2022/2023}
+\maketitle
+
+\section*{General information}
+\begin{itemize}
+	\item Answer \textbf{all} of the following \textbf{three} exercises in English.
+	\item All assignments will be given the same weight in the final grade.
+	\item Hand in your solutions before February, 23 2023 at 3pm.
+	\item The solution files should contain your executable (and commented) script files
+		as well as all additional documentation as \texttt{pdf}, not \texttt{txt}, \texttt{md}, \texttt{tex}, \texttt{doc} or \texttt{docx}.
+	Your \texttt{pdf} files may also include scans or pictures of handwritten notes.
+	\item Please e-mail ALL the solution files to \url{willi.mutschler@uni-tuebingen.de}.
+	I will confirm the receipt of your work also by email (typically within the hour). If not, please resend it to me.
+	\item All students must work on their own, please also give your student ID number and the name of the module you want to earn credits for.
+	\item It is advised to regularly check Ilias and your emails in case of urgent updates.
+	\item If there are any questions, do not hesitate to contact Willi Mutschler.
+\end{itemize}
+
+\newpage
+
+
+\section{RBC model with leisure and non-Ricardian agents}
+Consider the basic Real Business Cycle (RBC) model with leisure and non-Ricardian agents. Assume that there is a continuum of consumers given on the interval $[0,1]$. A proportion of the population, $\omega$, are Ricardian agents who have access to financial markets and are indexed by $i \in [0,\omega)$. The other part of the population, $1-\omega$, is composed of non-Ricardian agents who do not have access to financial markets and are indexed by $j \in (\omega,1]$.
+
+A Ricardian household maximizes present as well as expected future utility
+\begin{align*}
+\underset{\{C_{i,t},I_{i,t},L_{i,t},K_{i,t}\}}{\max} E_t \sum_{s=0}^{\infty} \beta^{s} U_{i,t+s}
+\end{align*}
+with $\beta <1$ denoting the discount factor and $E_t$ is expectation given information at time $t$. The contemporaneous utility function 
+\begin{align*}
+U_{i,t} = \gamma \ln C_{i,t} + (1-\gamma) \ln{(1-L_{i,t})}
+\end{align*}
+has two arguments: consumption $C_{i,t}$ and labor $L_{i,t}$. The marginal utility of consumption is positive, whereas more labor reduces utility. Accordingly, $\gamma$ is the elasticity of substitution between consumption and labor. In each period the household takes the real wage $W_t$ as given and supplies perfectly elastic labor service to the representative firm. In return, she receives real labor income in the amount of $W_t L_{i,t}$ and, additionally, profits $\Pi_{i,t}$ from the firm as well as revenue from lending capital in the previous period $K_{i,t-1}$ at interest rate $R_t$ to the firms, as it is assumed that the firm and capital stock are owned by the Ricardian households. Income and wealth are used to finance consumption $C_{i,t}$ and investment $I_{i,t}$. In total, this defines the (real) budget constraint of the Ricardian agent:
+\begin{align*}
+C_{i,t} + I_{i,t} = W_t L_{i,t} + R_t K_{i,t-1} + \Pi_{i,t}
+\end{align*}
+
+The law of motion for capital $K_{i,t}$ at the end of period $t$ is given by
+\begin{align*}
+K_{i,t} = (1-\delta)K_{i,t-1} + I_{i,t}
+\end{align*}
+where $\delta$ is the depreciation rate. Assume that the transversality condition is full-filled.
+
+A non-Ricardian household maximizes present as well as expected future utility
+\begin{align*}
+\underset{\{C_{j,t},L_{j,t}\}}{\max} E_t \sum_{s=0}^{\infty} \beta^{s} U_{j,t+s}
+\end{align*}
+The contemporaneous utility function is the same as for non-Ricardian households, i.e.
+\begin{align*}
+U_{j,t} = \gamma \ln C_{j,t} + (1-\gamma) \ln{(1-L_{j,t})}
+\end{align*}
+As non-Ricardian agents do not have access to the credit market, their (real) budget constraint is given by:
+\begin{align*}
+C_{j,t} = W_t L_{j,t}
+\end{align*}
+
+It is assumed that all agents, independently the group they belong to, are identical. Therefore, aggregate values (in per capita terms) are given by:
+\begin{align*}
+	C_t = \omega C_{i,t} + (1-\omega)C_{j,t}, && 		L_t = \omega L_{i,t} + (1-\omega)L_{j,t}, && K_t = \omega K_{i,t} &&	I_t = \omega I_{i,t}
+\end{align*}
+where the right two expressions are due to the fact that only Ricardian agents invest in physical capital.
+
+Productivity $A_t$ is the driving force of the economy and evolves according to
+\begin{align*}
+\ln{A_{t}} &= \rho_A \ln{A_{t-1}}  + \varepsilon_t^A
+\end{align*}
+where $\rho_A$ denotes the persistence parameter and $\varepsilon_t^A$ is assumed to be normally distributed with mean zero and variance $\sigma_A^2$.
+
+Real profits $\Pi_t = \omega \Pi_{i,t}$ of the representative firm are revenues from selling output $Y_t$ minus costs from labor $W_t L_t$ and renting capital $R_t K_{t-1}$:
+\begin{align*}
+\Pi_t = Y_{t} - W_{t} L_{t} - R_{t} K_{t-1}
+\end{align*}	
+The representative firm maximizes expected profits
+\begin{align*}
+\underset{\{L_{t},K_{t-1}\}}{\max} E_t \sum_{j=0}^{\infty} \beta^j Q_{t+j}\Pi_{t+j}
+\end{align*}
+subject to a Cobb-Douglas production function
+\begin{align*}
+Y_t = A_t K_{t-1}^\alpha L_t^{1-\alpha}
+\end{align*}
+The discount factor takes into account that firms are owned by the Ricardian households, i.e. $\beta^s Q_{t+s}$ is the present value of a unit of consumption in period $t+s$ or, respectively, the marginal utility of an additional unit of profit; therefore $Q_{t+s}=\frac{\partial U_{i,t+s}/\partial C_{i,t+s}}{\partial U_{i,t}/\partial C_{i,t}}$.
+
+Finally, we have the non-negativity constraints	$K_{i,t} \geq0$, $C_{i,t} \geq 0$, $C_{j,t} \geq 0$, $0\leq L_{i,t} \leq 1$ and $0\leq L_{j,t} \leq 1$. Furthermore, clearing of the labor as well as goods market in equilibrium implies
+\begin{align*}
+Y_t = C_t + I_t
+\end{align*}
+
+\begin{enumerate}
+	\item Briefly provide intuition behind the introduction of non-Ricardian households.
+	\item Show that the first-order conditions of the agents are given by
+		\begin{align*}
+		E_t\left[\frac{C_{i,t+1}}{C_{i,t}}\right] = \beta E_t\left[1-\delta + R_{t+1}\right],&&		
+		W_t = \frac{1-\gamma}{\gamma} \frac{C_{i,t}}{1-L_{i,t}},\\
+		C_{j,t} = W_t L_{j,t}, &&
+		W_t = \frac{1-\gamma}{\gamma} \frac{C_{j,t}}{1-L_{j,t}}.
+		\end{align*}
+	Interpret these equations in economic terms.
+	
+	\item Show that the first-order conditions of the representative firm are given by
+	\begin{align*}
+	W_t = (1-\alpha) A_t \left(\frac{K_{t-1}}{L_t}\right)^\alpha, &&	R_t = \alpha A_t \left(\frac{L_t}{K_{t-1}}\right)^{1-\alpha}
+	\end{align*}
+	Interpret these equations in economic terms.
+	\item Discuss how to calibrate the parameters of the model.
+	\item Write a DYNARE mod file for this model with a feasible calibration and compute the steady-state of the model either analytically or numerically.
+	\item Compare the steady-state values of an economy with a high proportion of Ricardian agents versus one with a very low proportion.
+	Try to interpret your results economically.
+\end{enumerate} 
+
+\newpage 
+
+\section[Maximum likelihood estimation of Ireland (2004)]{Maximum likelihood estimation of Ireland (2004)\label{ex:Ireland2004ML}}
+\paragraph{Description}
+Consider a version of the model of \textcite{Ireland_2004_TechnologyShocksNew} who assesses which shocks are the major drivers of aggregate fluctuations.
+To this end, he augments a basic small-scale New-Keynesian model with preference, cost-push, monetary and technology shocks.
+
+\paragraph{Data}
+For the estimation, we will use quarterly U.S. data from 1948:Q1 to 2003:Q1. Specifically:
+\begin{itemize}
+	\item Quarterly changes in seasonally adjusted real GDP figures, converted to per capita values by dividing by the civilian noninstitutional population aged 16 and over, are used to measure \textbf{output growth}.
+	\item Quarterly changes in the seasonally adjusted GDP deflator provide the measure of \textbf{inflation}.
+	\item Quarterly averages of daily values of the three-month U.S. Treasury bill rate provide the measure of the \textbf{nominal interest rate}.
+\end{itemize}
+
+\paragraph{Parameters}
+Of the 14 underlying parameters in the model, two are held fix, $\beta=0.99$ and $\psi=0.1$, and are not estimated.
+Hence, our interest centers around the other 12 parameters which we will estimate by maximizing the log-likelihood function.
+
+\paragraph{Codes}
+The model equations are given in the file \texttt{ireland\_2004\_preprocessing.m}, the steady-state is computed in the file \texttt{ireland\_2004\_steadystate.m},
+  some incomplete information on parameters is provided in \texttt{ireland\_2004\_params.m}, and \texttt{ireland\_2004\_data.mat} contains the dataset.
+The Maximum Likelihood estimation routines are given in the folder \texttt{MLRoutines} and some additional optimizers in the folder \texttt{OptimRoutines}.
+A basic (incomplete) run script is provided in \texttt{XRunML\_ireland\_2004.m}.
+
+
+\paragraph{Exercises}
+\begin{enumerate}
+	\item What is the \emph{dilemma of absurd parameters} when doing a Maximum Likelihood estimation of DSGE models?
+	\item Add feasible starting values, lower and upper bounds to the file \texttt{ireland\_2004\_params.m}.
+	\item Fix $\alpha_\pi$ to a very small number, e.g. 0.0001.
+	Estimate the remaining 11 model parameters with maximum likelihood.
+	Comment on the estimation results in terms of point estimates and standard errors.
+	\item Now also include $\alpha_\pi$ to the set of estimated parameters.
+	How does this affect the estimation results in terms of point estimates and standard errors?
+	Try to explain this and point towards possible solutions.
+\end{enumerate}
+
+\newpage 
+
+\section[Bayesian estimation of Smets and Wouters (2007)]{Bayesian estimation of Smets and Wouters (2007)\label{ex:SW2007RWMH}}
+\paragraph{Description}
+Consider the benchmark DSGE model of \textcite{Smets.Wouters_2007_ShocksFrictionsUS} which is fit to US macroeconomic data for the period 1966:1-2004:4.
+This model constitutes one of the cornerstones that drive the development of medium-scale and large-scale DSGE models.
+The model features monopolistic competition in the goods and labor markets and nominal frictions in the form of sticky prices and wages.
+However, it allows both non-optimizing firms and households to index prices and wages, respectively, to a composite of steady-state and lagged inflation.
+Households can also save in physical capital, with a one-period time to build before new investments turns into productive capital.
+Moreover, the model features several real rigidities in the form of habit formation in consumption, investment adjustment costs, variable capital utilization, and fixed costs in production.
+The linearized model consists of two blocks, one for the sticky prices and wages economy that determines the actual allocations
+  and another one for the hypothetical allocation under flexible prices and wages in order to determine the potential allocation.
+Both blocks are linked as monetary policy follows a Taylor rule with feedback not only to inflation deviations,
+  but also to deviations from output and output-growth from its potential counterparts.
+The model dynamics are driven by seven structural shocks.
+Monetary policy shocks follow an AR(1) process and two additional inefficient markup shocks in wage and price setting follow an ARMA(1,1) process.
+Four efficient shocks (total factor productivity, risk premium, investment-specific technology, and government spending shocks) follow AR(1) processes.
+
+\paragraph{Data}
+For estimation, we will consider data that comprises quarterly time series of the log difference of real GDP $d\log(GDP_t)$,
+  log difference of real consumption $d\log(CONS_t)$, log difference of real investment $d\log(INV_t)$, log difference of real wage $d\log(WAGE_t)$,
+  log hours worked $\log(HOURS_t)$, log difference of GDP deflator $d\log(GDPDEFLATOR_t)$ and the federal funds rate $FEDFUNDS_t$ for the US economy from 1966:Q1 to 2004:Q4.
+The endogenous variables relate to the vector of observables through the relation
+\begin{align}
+	\begin{bmatrix} d\log(GDP_t)\\ d\log(CONS_t)\\ d\log(INV_t)\\ d\log(WAGE_t)\\ \log(HOURS_t)\\ d\log(GDPDEFLATOR_t)\\ FEDFUNDS_t\end{bmatrix}
+	= \begin{bmatrix} \bar{\gamma}\\ \bar{\gamma}\\ \bar{\gamma}\\ \bar{\gamma}\\ \bar{l}\\ \bar{\pi}\\ \bar{r} \end{bmatrix}
+	+ \begin{bmatrix} y_t - y_{t-1}\\c_t - c_{t-1}\\i_t - i_{t-1}\\w_t - w_{t-1}\\l_t\\\pi_t\\r_t\end{bmatrix} \label{eq:SW2007_measurement_equations}
+\end{align}
+where $d\log$ refers to the log difference of a variable.
+$\bar{\gamma}$ is the quarterly trend growth rate of real GDP, consumption, investment and wages, 
+  $\bar{l}$ is the quarterly steady-state number of hours worked,
+  $\bar{\pi}$ is the quarterly steady-state inflation rate and 
+  $\bar{r}$ is the steady-state nominal interest rate.
+Note that we do not assume that the observed variables are measured with errors.
+
+\paragraph{Parameters}
+Of the 41 underlying parameters in the model, 5 are held fixed.
+Our interest, hence, centers around the 36 dimensional posterior distribution resulting from the sampling density and prior distribution of the parameters. 
+
+\paragraph{Codes}
+An Dynare mod file is given in the (incomplete) file \texttt{sw2007\_.mod}
+and \texttt{sw2007\_data\_v2.mat} contains the dataset.
+
+
+\newpage
+\paragraph{Exercises}
+	\begin{enumerate}
+	\item Add the measurement equations \eqref{eq:SW2007_measurement_equations} to your mod file.
+	Make sure that the steady-state is correctly computed for these variables.
+	Note that the underlying model variables are all expressed in log deviations from their corresponding steady-state,
+	  e.g. $x_t = \log(X_t) - X$ where $X$ is the steady-state of $X_t$; hence the steady-state of $x_t$ is zero.
+	\item Briefly outline the Random-Walk-Metropolis-Hastings algorithm.
+	What is the intuition behind this algorithm?
+	\item What are common choices to initialize the proposal distribution of the Random-Walk-Metropolis-Hastings algorithm?
+	Which one is preferred and why?
+	\item Pick three parameters of your choice and comment why the chosen prior distribution is a good or a bad one.
+	\item Estimate the model parameters with the Random-Walk-Metropolis-Hastings algorithm:
+	\begin{itemize}
+		\item Initialize the proposal distribution at the posterior mode and use the inverse hessian for the jumping covariance matrix.
+		\item Draw 250000 draws (or 100000 depending on your machine) using the RW-MH algorithm and keep 50\% of the last draws to conduct inference.\footnote{
+		\textbf{Note that this could take up to 20 minutes. If it takes too much time, please decrease the number of draws to 100000.}}
+		\item Tune the algorithm such that the acceptance rate is between 0.30 and 0.40.		
+	\end{itemize}
+	\item Compare the estimated marginal posterior with the marginal prior distribution.
+	For which parameters is there learning from data, which parameters are mostly driven by their prior?
+	\item What does it mean that \emph{a chain has converged} and why is this important?
+	Comment on whether or not you think this is the case given your estimation results.	
+\end{enumerate}
+
+\newpage
+
+\appendix
+
+\printbibliography
+
+\end{document}
