@@ -8,6 +8,8 @@
 *.gz
 *.toc
 
+.aux/
+.vscode/
 class/
 exam/winter-2022
 exam/winter-2023
