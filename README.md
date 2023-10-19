@@ -52,8 +52,8 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 ### To Do
 
 * [ ] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_1.pdf) and write down all your questions
-* [ ] read Bjørnland and Thorsrud (2015, Ch.1 and Ch.2) and Lütkepohl (2004). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
-* [ ] prepare exercise sheet 2
+* [ ] read Bjørnland and Thorsrud (2015, Ch.1 and Ch.2) and Lütkepohl (2004, Sec. 2.1, 2.2, 2.3). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
+* [ ] do exercises 1 and 2, write down all your questions and problems. We'll do exercise 3 in class.
 * [ ] participate in the Q&A sessions with all your questions and concerns
 * [ ] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
 * [ ] (optionally) checkout the short [Beginner Git Video Tutorials from GitKraken](https://www.gitkraken.com/learn/git/tutorials#beginner)
