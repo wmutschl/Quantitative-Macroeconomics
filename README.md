@@ -25,7 +25,8 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 * [ ] have a look at the [exercises for week 1](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_1.pdf); we will do them together in class
 * [ ] prepare your computer
   * [ ] install MATLAB R2023b following [this guide](https://uni-tuebingen.de/einrichtungen/zentrum-fuer-datenverarbeitung/dienstleistungen/clientdienste/software/matlab-einzelplatzlizenz/) if you are a student of the University of Tübingen
-  * [ ] create an account on [GitHub.com](https://github.com/signup)
+  * [ ] watch [Introduction to MATLAB](https://youtu.be/_CbLr11aeQ4)
+  * [ ] (optionally) create an account on [GitHub.com](https://github.com/signup)
   * [ ] (optionally) sign up for the [GitHub Students Developer Pack](https://education.github.com/pack) to get a free Pro license for GitKraken (among other things)
   * [ ] (optionally) install the [GitKraken Client](https://gitkraken.com/download)  
 * [ ] write down all your questions
