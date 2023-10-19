@@ -67,12 +67,16 @@ We cover modern theoretical macroeconomics (the study of aggregated variables su
 As Quantitative Macroeconomics is highly computational, the course is interactive and *hands-on*, so there is no formal separation between the lecture and the exercise class. Each topic begins with a theoretical input and presentation of methods. These concepts are practiced directly thereafter by means of exercises and implemented on the computer in MATLAB and Dynare.
 
 ## Topics
+
+#### Time Series Analysis
 - Fundamentals of macroeconomic time series data
 - Autoregressive processes and dependent series
 - Estimation methods for autoregressive processes (Ordinary Least Squares & Maximum Likelihood)
 - Evaluation tools: Information criteria, specification tests, and bootstrap
-- Multivariate time series data and Vector Autoregressive (VAR) models
+- Multivariate time series and Vector Autoregressive (VAR) models
 - VAR model estimation (Ordinary Least Squares & Maximum Likelihood)
+
+#### Structural Vector Autoregressive (SVAR) Models
 - Identification problem in Structural Vector Autoregressive (SVAR) models
 - Recursive identification, short-rund and long-run restrictions in SVAR models
 - Asymptotic and Bootstrap Inference in SVARs Identified By Exclusion Restrictions
@@ -80,9 +84,16 @@ As Quantitative Macroeconomics is highly computational, the course is interactiv
 - Bayesian estimation of (S)VAR models and the Minnesota prior
 - Narrative identification in SVAR models
 - Local Projections
-- Algebra of New Keynesian Models
+
+#### Dynamic Stochastic General Equilibrium (DSGE) Models
+- Algebra of RBC and New Keynesian Models
 - First-order perturbation of DSGE models
-- Estimation of linearized DSGE models with Generalized/Simulated Method of Moments, Maximum Likelihood, and Bayesian Markov Chain Monte-Carlo techniques
+- Generalized/Simulated Method of Moments
+- Kalman Filter and Smoother
+- Maximum Likelihood
+- Bayesian Markov Chain Monte-Carlo (MCMC) techniques
+  - Random-Walk Metropolis Hastings
+  - Slice Sampling
 
 ## Case Studies and Replications (TBA)
 
