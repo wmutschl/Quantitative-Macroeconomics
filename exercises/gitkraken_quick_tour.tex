@@ -37,17 +37,17 @@ I also don't get git and find this really cumbersome! Dropbox, iCloud, Nextcloud
 	Visit the website https://github.com/[username]/Quant-Macro to see what happened.
 	\item What are \emph{git branches}? Create a branch called \emph{latex-exam-template} and checkout the branch.
 	\item While on your \emph{latex-exam-template} branch, use your favorite text editor
-	  to create the three files \texttt{template\_exam\_solution.tex}, \texttt{template\_exam\_biblio.bib}, and \texttt{template\_matlab\_example.m}
+	  to create the three files \texttt{templateExamSolution.tex}, \texttt{templateExamBiblio.bib}, and \texttt{templateMatlabExample.m}
 	  given in the Appendix.
 	  Typically, when copy and pasting from a pdf you will run into characters (like minus signs and empty space) not correctly pasted into your text editor,
 		so you will need to check everything manually.
       Once you are happy, commit only three files using the message \enquote{Created latex template for exam solutions}.
 	\item Compile the Latex files using your favorite Latex GUI or via the command line:
 \begin{lstlisting}[language=tex,frame=single,basicstyle=\scriptsize\mlttfamily]
-pdflatex template_exam_solution
-biber template_exam_solution
-pdflatex template_exam_solution
-pdflatex template_exam_solution
+pdflatex templateExamSolution
+biber templateExamSolution
+pdflatex templateExamSolution
+pdflatex templateExamSolution
 \end{lstlisting}
 Open the pdf to make sure the file compiled correctly.
 	\item Like in the previous exercise we often have some auxiliary files created by a program which we do not care about.
