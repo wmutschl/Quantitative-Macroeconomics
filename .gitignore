@@ -9,6 +9,7 @@
 *.toc
 
 .aux/
+.not_yet/
 .vscode/
 class/
 exam/winter-2022
