@@ -21,20 +21,20 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 
 ### To Do
 
-* [ ] read the general course information
-* [ ] have a look at the [exercises for week 1](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_1.pdf); we will do them together in class
-* [ ] prepare your computer
-  * [ ] install MATLAB R2023b following [this guide](https://uni-tuebingen.de/einrichtungen/zentrum-fuer-datenverarbeitung/dienstleistungen/clientdienste/software/matlab-einzelplatzlizenz/) if you are a student of the University of Tübingen
-  * [ ] watch [Introduction to MATLAB](https://youtu.be/_CbLr11aeQ4)
-  * [ ] (optionally) create an account on [GitHub.com](https://github.com/signup)
-  * [ ] (optionally) sign up for the [GitHub Students Developer Pack](https://education.github.com/pack) to get a free Pro license for GitKraken (among other things)
-  * [ ] (optionally) install the [GitKraken Client](https://gitkraken.com/download)  
-* [ ] write down all your questions
-* [ ] [schedule an online meeting](https://schedule.mutschler.eu) with me
-  * [ ] put *"I am interested in this course"* under *"What is the meeting about?"*
-  * [ ] check your emails and cancel the meeting again using the link in the email
-  * [ ] now you know how easy it is to schedule a meeting with me :-)
-* [ ] participate in the Q&A sessions
+* [x] read the general course information
+* [x] have a look at the [exercises for week 1](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_1.pdf); we will do them together in class
+* [x] prepare your computer
+  * [x] install MATLAB R2023b following [this guide](https://uni-tuebingen.de/einrichtungen/zentrum-fuer-datenverarbeitung/dienstleistungen/clientdienste/software/matlab-einzelplatzlizenz/) if you are a student of the University of Tübingen
+  * [x] watch [Introduction to MATLAB](https://youtu.be/_CbLr11aeQ4)
+  * [x] (optionally) create an account on [GitHub.com](https://github.com/signup)
+  * [x] (optionally) sign up for the [GitHub Students Developer Pack](https://education.github.com/pack) to get a free Pro license for GitKraken (among other things)
+  * [x] (optionally) install the [GitKraken Client](https://gitkraken.com/download)  
+* [x] write down all your questions
+* [x] [schedule an online meeting](https://schedule.mutschler.eu) with me
+  * [x] put *"I am interested in this course"* under *"What is the meeting about?"*
+  * [x] check your emails and cancel the meeting again using the link in the email
+  * [x] now you know how easy it is to schedule a meeting with me :-)
+* [x] participate in the Q&A sessions
 
 </details>
 
