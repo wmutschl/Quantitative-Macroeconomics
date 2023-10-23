@@ -61,6 +61,27 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 
 </details>
 
+<details>
+  <summary>Week 3: Dependent time series data and the autoregressive process</summary>
+
+### Goals
+
+* understand the concept of an AR(1) and AR(p) process
+* get intuition about the law of large numbers and the central limit theorem
+* visualize the law of large numbers and the central limit theorem for dependent data using Monte Carlo simulations
+
+### To Do
+
+* [ ] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_2.pdf) and write down all your questions
+* [ ] Read Lütkepohl (2004, Sec. 2.2, 2.3, 2.5.2), Lütkepohl (2005, Appendix C) and Bjørnland and Thorsrud (2015, Ch.1 and Ch.2). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
+* [ ] prepare exercise sheet 3: do exercises 1 and 3 at home, we'll do exercises 2 and 4 in class.
+* [ ] participate in the Q&A sessions with all your questions and concerns
+* [ ] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
+* [ ] (optionally) checkout the short [Intermediate Git Video Tutorials from GitKraken](https://www.gitkraken.com/learn/git/tutorials#intermediate)
+
+</details>
+
+
 ## Content
 
 We cover modern theoretical macroeconomics (the study of aggregated variables such as economic growth, unemployment and inflation by means of structural macroeconomic models) and combine it with econometric methods (the application of formal statistical methods in empirical economics). We focus on the quantitative aspects and methods for solving and estimating the most prominent model classes in macroeconomics: Structural Vector Autoregressive (SVAR) and Dynamic Stochastic General Equilibrium (DSGE) models. Using these two model strands, the theoretical and methodological foundations of quantitative macroeconomics is taught. The students are thus enabled to understand the analyses and forecasts of public (universities, central banks, economic research institutes) as well as private (business banks, political consultations) research departments, but also to derive and empirically evaluate their own structural macroeconomic models.
