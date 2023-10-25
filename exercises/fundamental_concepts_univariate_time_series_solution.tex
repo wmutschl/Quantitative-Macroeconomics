@@ -1,0 +1,62 @@
+\begin{enumerate}
+\item A white noise has mean zero, a constant variance and all other second-order moments (i.e. autocovariances/autocorrelations) are zero:
+\begin{align*}
+    E[\varepsilon_t]&=0\\
+    Var[\varepsilon_t]&=E[\varepsilon_t^2] - E[\varepsilon_t]E[\varepsilon_t] = \sigma_\varepsilon^2\\
+    Cov(\varepsilon_{t},\varepsilon_s) &= E[\varepsilon_t \varepsilon_s] - E[\varepsilon_t]E[\varepsilon_s] = 0 \text{ for $s \neq t$}
+\end{align*}	
+\item \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily]{progs/matlab/whiteNoisePlots.m}
+Every simulation is different, model can thus generate an infinite set of realizations over the period $t=1,...,200$.
+The processes do differ in their persistence.
+(i) is the white noise process, which is not persistent.
+(ii) is a 5-point-moving-average, which is a linear combination of white noise processes.
+It is smoother and more persistent and very different from just noise.
+Linear combinations of white noise processes build the basis of many models in time series analysis.
+\item A process is said to be \textbf{$N$-order weakly stationary} if all its joint moments up to order $N$ exist and are time invariant.
+We are particularly interested in $N=2$, i.e. \textbf{covariance stationarity}:
+\begin{align*}
+E[Y_t]&=\mu \text{ (constant for all t)}
+\\
+Var[Y_t]&=E[(Y_t - \mu)(Y_t-\mu)]=\gamma_0 \text{ (constant for all t)}
+\\
+Cov[Y_{t_1},Y_{t_1-k}] &= E[(Y_{t_1}-\mu)(Y_{t_1-k}-\mu)] = Cov[Y_{t_2},Y_{t_2-k}] = \gamma_k  \text{ (only dependent on $k$)}
+\end{align*}
+That is the first two moments are not dependent on $t$.
+Particularly, the autocovariance is only dependent on the time difference $k$, but not on the actual point in time $t$.
+\\
+\textbf{Strict stationarity}: for all $k$ and $h$: $$f(Y_t,Y_{t-1},...,Y_{t-k})=f(Y_{t-h},Y_{t-h-1},...,Y_{t-h-k})$$
+That is, not only the first two moments but the whole distribution is not dependent on the point in time $t$,
+  but on the time difference $k$.
+\item Autocovariance function for a covariance-stationary process:
+$$\gamma_k = E[(Y_t - \mu)(Y_{t-k}-\mu)]$$
+where $\gamma_0$ is the variance. Autocorrelation function: $$\rho_k = \gamma_k/\gamma_0$$
+\\	
+We can estimate this by using:
+\begin{align*}
+    \hat{\gamma}_k = c_k &= \frac{1}{T} \sum_{t=k+1}^T(y_t -\bar{y})(y_{t-k}-\bar{y})\\
+    \hat{\rho}_k = r_k & = c_k/c_0
+    \end{align*}
+Note: In most applications we don't correct the degrees of freedom for numerical reasons
+  (e.g. to avoid singularity of autocovariance matrices in the multivariate case),
+  i.e. the sums are not divided by $T-k-1$ but simply by $T$.
+For $T>100$ this does not really matter as the expressions are very close to each other.
+
+\item \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily]{progs/matlab/arPlots.m}
+Remarks: If $|\phi|<1$ the series returns to the mean, i.e. it is stable and stationary.
+If $|\phi>1|$ then it explodes, i.e. it is unstable and not stationary.
+$\phi=1$ is a so-called random walk,
+  it is the key model when working with non-stationary models.
+Note that the random walk incorporates many different shapes, in macroeconomic forecasts we often want to \textbf{beat} the random walk model.
+\item It is a special LINEAR operator, similar to the expectation operator, and very useful when working with time series.
+The operator transforms one time series into another by shifting the observation from period $t$ to period $t-1$:
+$Ly_t = y_{t-1}$ or $L^{-1} y_t =y_{t+1}$.
+More general: $L^k y_t = L^{k-1} L y_t = L^{k-1} y_{t-1} = ... = y_{t-k}$.
+Convenient use:
+$$(1-L)y_t = y_t - y_{t-1}= \Delta y_t$$
+We can also work with lag-polynomials:
+$$ \phi(L) = (1-\phi_1 L-\phi_2 L^2 -... - \phi_p L^p)$$
+where we call p the lag order. So:
+$$ \phi(L) y_t = (1-\phi_1 L-\phi_2 L^2 -... - \phi_p L^p)y_t = y_t - \phi_1 y_{t-1} -\phi_2 y_{t-2} - ... - \phi_p y_{t-p}$$
+To check whether an AR(p) model is covariance stationarity, we need to check whether the roots of the lag-polynomial lie outside the unit circle.
+That is, we treat $L$ as a complex number $z\in \mathbb{C}$ and compute the roots of $(1-\phi_1 z-\phi_2 z^2 -... - \phi_p z^p)=0$ (using a computer in most cases).
+\end{enumerate}
