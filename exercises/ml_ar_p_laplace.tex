@@ -1,0 +1,35 @@
+\section[Maximum Likelihood Estimation Of Laplace AR(p)]{Maximum Likelihood Estimation Of Laplace AR(p)\label{ex:MaximumLikelihoodEstimationLaPlaceARp}}
+Consider the AR(1) model with constant
+\begin{align*}
+y_t = c + \phi y_{t-1} + u_t
+\end{align*}
+Assume that the error terms \(u_t\) are i.i.d. Laplace distributed with known density
+\begin{align*}
+f_{u_{t}}(u)=\frac{1}{2}\exp \left( -|u|\right)
+\end{align*}
+Note that for the above parametrization of the Laplace distribution
+  we have that \(E(u_t)=0\) and \(Var(u_t)=2\),
+  so we are only interested in estimating \(c\) and \(\phi\)
+  and not the standard deviation of \(u_t\) as it is fixed.
+\begin{enumerate}
+\item Derive the log-likelihood function conditional on the first observation.
+\item Write a function that calculates the conditional log-likelihood of \(c\) and \(\phi\).
+\item Load the dataset given in the CSV file \texttt{LaPlace.csv}.
+Numerically find the maximum likelihood estimates of \(c\) and \(\phi\)
+  by minimizing the negative conditional log-likelihood function.
+\item Compare your results with the maximum likelihood estimate under the assumption of Gaussianity.
+That is, redo the estimation by minimizing the negative Gaussian log-likelihood function.
+\end{enumerate}
+
+\paragraph{Readings}
+\begin{itemize}
+	\item \textcite{Lutkepohl_2004_UnivariateTimeSeries}
+\end{itemize}
+
+
+\begin{solution}\textbf{Solution to \nameref{ex:MaximumLikelihoodEstimationLaPlaceARp}}
+\ifDisplaySolutions
+\input{exercises/ml_ar_p_laplace_solution.tex}
+\fi
+\newpage
+\end{solution}
