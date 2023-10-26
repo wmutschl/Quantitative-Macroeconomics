@@ -14,4 +14,15 @@ jobs:
       - name: Run week 1 scripts
         uses: matlab-actions/run-command@v1
         with:
-          command: cd("progs/matlab"), quickTourMatlab
+          command: |
+            cd("progs/matlab")
+            quickTourMatlab
+      - name: Run week 2 scripts
+        uses: matlab-actions/run-command@v1
+        with:
+          command: |
+            cd("progs/matlab")
+            visualizingTimeSeriesDataNorway
+            definitionFrequenciesTimeSeriesData
+            whiteNoisePlots
+            ARPlots
