@@ -1,14 +1,14 @@
-% =========================================================================
-% definitionFrequenciesTimeSeriesData.m
-% =========================================================================
+% ----------------------------------------------------------------------
+% This script imports and plots various time series for Norway.
+% ----------------------------------------------------------------------
 % Hint:
 % 1. Always look at the Excel/csv file first (outside MATLAB)
 % 2. Use Matlab's "Import Data" tool, select the data you want to include.
 %    Then click on the arrow below "Import Selection" and "Generate Script"
-% =========================================================================
+% ----------------------------------------------------------------------
 % Willi Mutschler (willi@mutschler.eu)
 % Version: October 26, 2022
-% =========================================================================
+% ----------------------------------------------------------------------
 
 %% Housekeeping
 clearvars; clc;close all;

@@ -17,7 +17,7 @@ Derive the unconditional first and second moments.
 \begin{itemize}
 	\item Simulate AR(1) processes for $t=1,...,200$ with $c=2$, $\sigma_\varepsilon^2 = 1^2$ and different values of $\phi=\{-0.8;0.4;0.9;1.01\}$.
 	\item Plot the corresponding autocorrelation functions (ACF) for data vector $y$ and maximum number of lags $p^{max}=8$ using MATLAB's \texttt{autocorr(y,'NumLags',8)} function.
-	\item Write a function \texttt{ACFPlots($y$,$p^{max}$,$\alpha$)} that plots the autocorrelation function (ACF) of the data vector $y$ with maximum number of lags $p^{max}$.
+	\item Write a function \texttt{acfPlots($y$,$p^{max}$,$\alpha$)} that plots the autocorrelation function (ACF) of the data vector $y$ with maximum number of lags $p^{max}$.
 	Your plot should also include an approximate (1-$\alpha$)\% confidence interval around zero.
 	Your plots should look similar to MATLAB's \texttt{autocorr} command.
 \end{itemize}
