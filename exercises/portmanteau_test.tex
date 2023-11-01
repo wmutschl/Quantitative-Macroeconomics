@@ -1,0 +1,47 @@
+\section[Portmanteau Test For Residual Autocorrelation]{Portmanteau Test For Residual Autocorrelation\label{ex:PortmanteauTestResidualAutocorrelation}}
+The portmanteau test checks the null hypothesis
+  that there is no remaining residual autocorrelation at lags \(1\) to \(h\)
+  against the alternative that at least one of the autocorrelations is nonzero.
+In other words, the pair of hypotheses:
+\begin{align*}
+H_0:\rho_u(1)=\rho_u(2)=\cdots =\rho_u(h) = 0
+\end{align*}
+versus:
+\begin{align*}
+H_1: \rho_u(j) \neq 0 \text{~for at least one~} j=1,\ldots ,h
+\end{align*}
+where \(\rho_u(j) = Corr(u_t, u_{t-j})\) denotes an autocorrelation coefficient of the residual series.
+
+Consider the Box-Pierce test statistic \(Q_h\)
+\begin{align*}
+Q_h = T \sum_{j=1}^h \hat{\rho}^2_u(j)
+\end{align*}
+which has an approximate \(\chi^2(h-p)\)-distribution if the null hypothesis holds
+  and \(T\) is the length of the residual series.
+The null hypothesis of no residual autocorrelation is rejected for large values of the test statistic.
+
+\begin{itemize}
+ 	\item Load quarterly data for the price index of US Gross National Product given in \texttt{gnpdeflator.csv}.
+    This is a chain-type price index with basis year 2005.
+    The data is seasonally adjusted and spans the period from 1954.Q4 to 2007.Q4.
+ 	\item Compute the inflation series.
+    That is, take the first difference of the log of gnpdeflator.
+ 	\item Use the Akaike information criteria to determine the lag length \(\hat{p}\).
+ 	\item Estimate two models with OLS:
+    (i) an \(AR(\hat{p})\) model and
+    (ii) an \(AR(1)\) model.
+ 	\item Set \(h=\hat{p}+10\) and compute \(Q_h\) as well as the corresponding p-value for both models.
+ 	\item Comment, based on your findings, whether the residuals are white noise.
+\end{itemize}
+
+\paragraph{Readings:}
+\begin{itemize}
+	\item \textcite{Lutkepohl_2004_UnivariateTimeSeries}.
+\end{itemize}
+
+\begin{solution}\textbf{Solution to \nameref{ex:PortmanteauTestResidualAutocorrelation}}
+\ifDisplaySolutions
+\input{exercises/portmanteau_test_solution.tex}
+\fi
+\newpage
+\end{solution}

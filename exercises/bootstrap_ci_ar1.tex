@@ -1,0 +1,70 @@
+\section[Bootstrap Confidence Interval For AR(1) Coefficient]{Bootstrap Confidence Interval For AR(1) Coefficient\label{ex:BootstrapConfidenceIntervalARone}}
+Consider the AR(1) model with constant
+\begin{equation*}
+y_{t}=c +\phi y_{t-1}+u_{t}
+\end{equation*}
+for \(t=1,\ldots ,T\) with iid error terms \(u_{t}\) and \(E(u_{t}|y_{t-1})=0\).
+Usually, we construct a \( (1-\alpha)\% \)-confidence interval for \( \phi \) using the normal (or student's t) approximation:
+\begin{equation*}
+\left[ \hat{\phi}-z_{\alpha/2}\cdot SE(\hat{\phi});\ \hat{\phi}+z_{1-\alpha/2}\cdot SE(\hat{\phi})\right]
+\end{equation*}
+  with \(\hat{\phi}\) denoting the OLS estimate,
+  \(SE(\hat{\phi})\) the estimated standard error of \( \phi \)
+  and \(z_{\alpha/2}\) the \(\alpha/2\) quantile of the standard normal distribution (or t-distribution).
+If one does not know the asymptotic distribution of a test statistic
+  (or it has a very complicated form),
+  one often relies on a nonparametric simulation approach.
+To this end, we are going to do a so-called \enquote{\emph{bootstrap}},
+  i.e.\ we recompute the t-statistics a large number of times on artificial data
+  generated from resampled residuals.\\
+\begin{enumerate}
+	\item What is a \enquote{Bootstrap approximation}? Provide insight into the basic idea and possible applications of this statistical technique.
+	\item Write a program for the following:
+	\begin{itemize}
+		\item Simulate \(T=100\) observations with \(c=1\), \(\phi=0.8\)
+          and errors drawn from e.g.\ the exponential distribution such that \(E(u_t)=0\).
+		\item Estimate the model with OLS and calculate the t-statistic
+        \(\tau=\frac{\hat{\phi}}{SE(\hat{\phi})}\). 
+		\item Store the OLS residuals in a vector
+        \(\hat{u} = (\hat{u}_{2},\ldots ,\hat{u}_{T})'\).
+		\item Set \(B=10000\) and initialize the output vector
+        \(\tau^{\ast} = (\tau_1^\ast,\ldots,\tau_B^\ast)\).
+        \item For \( b=1,\ldots,B \):
+		\begin{itemize}
+			\item Draw a sample \textbf{with replacement} from \(\hat{u}\)
+              and save it as \(u^{\ast} = u_{2}^{\ast},\ldots ,u_{T}^{\ast }\).
+			\item Initialize an artificial time series \( y_t^\ast \) with \(T\) observations
+              and set \(y_1^\ast = y_1\).
+			\item For \(t=2,\ldots ,T\) generate
+			\begin{align*}
+			y_{t}^{\ast }=\hat{c}+\hat{\phi}y^\ast_{t-1}+u_{t}^{\ast }
+			\end{align*}
+			\item On this artificial dataset estimate an AR(1) model.
+            Denote the estimated OLS coefficient \(\phi^\ast\)
+              and corresponding estimated standard deviation \(SE(\phi^\ast)\).
+            Store the following t-statistic in your output vector at position \(b\):
+            \begin{align*}
+            \tau^\ast = \frac{\phi^\ast - \hat{\phi}}{SE(\phi^\ast)}
+            \end{align*}
+		\end{itemize}
+		\item Sort the output vector such that \(\tau_{(1)}^\ast \leq \cdots \leq \tau_{(B)}^\ast\).
+		\item  The \enquote{\emph{bootstrap approximate}} confidence interval for \(\phi\) is then given by
+		\begin{align*}
+		\left[ \hat{\phi}-\tau_{((1-\alpha /2)B)}^{\ast }\cdot SE(\hat{\phi});\ \hat{\phi}-\tau_{((\alpha/2)B)}^{\ast }\cdot SE(\hat{\phi})\right] 
+		\end{align*}
+		Set \(\alpha=0.05\) and compare this with the normal approximation.
+		\item Redo the exercise for \(T=30\) and \(T=10000\). Comment on your findings.
+	\end{itemize}
+\end{enumerate}
+
+\paragraph{Readings}
+\begin{itemize}
+	\item \textcite[Ch. 12]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
+\end{itemize}
+
+\begin{solution}\textbf{Solution to \nameref{ex:BootstrapConfidenceIntervalARone}}
+\ifDisplaySolutions
+\input{exercises/bootstrap_ci_ar1_solution.tex}
+\fi
+\newpage
+\end{solution}
