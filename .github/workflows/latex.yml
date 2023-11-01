@@ -1,4 +1,4 @@
-name: Build LaTeX exercises, exams, and slides as PDF
+name: Build LaTeX
 
 on:
   push:

@@ -1,5 +1,5 @@
 [![Build LaTeX](../../actions/workflows/latex.yml/badge.svg)](../../actions/workflows/latex.yml)
-[![Test MATLAB](../../actions/workflows/matlab.yml/badge.svg)](../../actions/workflows/matlab.yml)
+[![Run MATLAB](../../actions/workflows/matlab.yml/badge.svg)](../../actions/workflows/matlab.yml)
 # Quantitative Macroeconomics
 
 These are my course materials for the graduate course on Quantitative Macroeconomics taught at the University of Tübingen.

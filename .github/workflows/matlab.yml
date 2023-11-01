@@ -1,4 +1,4 @@
-name: Run MATLAB scripts
+name: Run MATLAB
 
 on: 
   push:
