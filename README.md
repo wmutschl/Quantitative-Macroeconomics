@@ -139,7 +139,7 @@ As Quantitative Macroeconomics is highly computational, the course is interactiv
 
 #### Structural Vector Autoregressive (SVAR) Models
 - Identification problem in Structural Vector Autoregressive (SVAR) models
-- Recursive identification, short-rund and long-run restrictions in SVAR models
+- Recursive identification, short-run and long-run restrictions in SVAR models
 - Asymptotic and Bootstrap Inference in SVARs Identified By Exclusion Restrictions
 - Introduction to Bayesian estimation and the Gibbs sampler
 - Bayesian estimation of (S)VAR models and the Minnesota prior
