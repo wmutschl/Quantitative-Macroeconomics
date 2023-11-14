@@ -73,12 +73,12 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 
 ### To Do
 
-* [ ] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_2.pdf) and write down all your questions
-* [ ] read Lütkepohl (2004, Sec. 2.2, 2.3, 2.5.2), Lütkepohl (2005, Appendix C) and Bjørnland and Thorsrud (2015, Ch.1 and Ch.2). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
-* [ ] prepare exercise sheet 3: do exercises 1 and 3 at home, we'll do exercises 2 and 4 in class.
-* [ ] participate in the Q&A sessions with all your questions and concerns
-* [ ] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
-* [ ] (optionally) checkout the short [Intermediate Git Video Tutorials from GitKraken](https://www.gitkraken.com/learn/git/tutorials#intermediate)
+* [x] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_2.pdf) and write down all your questions
+* [x] read Lütkepohl (2004, Sec. 2.2, 2.3, 2.5.2), Lütkepohl (2005, Appendix C) and Bjørnland and Thorsrud (2015, Ch.1 and Ch.2). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
+* [x] prepare exercise sheet 3: do exercises 1 and 3 at home, we'll do exercises 2 and 4 in class.
+* [x] participate in the Q&A sessions with all your questions and concerns
+* [x] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
+* [x] (optionally) checkout the short [Intermediate Git Video Tutorials from GitKraken](https://www.gitkraken.com/learn/git/tutorials#intermediate)
 
 </details>
 
@@ -92,12 +92,12 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 
 ### To Do
 
-* [ ] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_3.pdf) and write down all your questions
-* [ ] read Lütkepohl (2004). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
-* [ ] TRY (!!!) to do exercise sheet 4; particularly, create your own ARpOLS.m and ARpML.m functions
-* [ ] participate in the Q&A sessions with all your questions and concerns
-* [ ] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
-* [ ] (optionally) checkout the short [Advanced Git Video Tutorials from GitKraken](https://www.gitkraken.com/learn/git/tutorials#advanced)
+* [x] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_3.pdf) and write down all your questions
+* [x] read Lütkepohl (2004). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
+* [x] TRY (!!!) to do exercise sheet 4; particularly, create your own ARpOLS.m and ARpML.m functions
+* [x] participate in the Q&A sessions with all your questions and concerns
+* [x] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
+* [x] (optionally) checkout the short [Advanced Git Video Tutorials from GitKraken](https://www.gitkraken.com/learn/git/tutorials#advanced)
 
 </details>
 
@@ -117,6 +117,8 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 * [x] participate in the Q&A sessions with all your questions and concerns
 * [x] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
 * [x] (optionally) fork the course repository on GitHub
+
+
 
 </details>
 
