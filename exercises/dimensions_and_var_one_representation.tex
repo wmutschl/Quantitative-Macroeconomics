@@ -1,0 +1,32 @@
+\section[Dimensions and VAR(1) representation]{Dimensions and VAR(1) representation\label{ex:DimensionsAndVAROneRepresentation}}
+Let \(y_t\) be a K-dimensional covariance stationary random vector.
+Consider the VAR(p)-process
+\begin{align*}
+y_t = \nu + \sum_{i=1}^p A_i {y_{t-i}} + u_t
+\end{align*}
+\begin{enumerate}
+\item What are the dimensions of \(\nu, A_i\) and \(u_{t}\)?
+
+\item Assume that \(E(u_t) = 0; E(u_t u_t') = \Sigma_u\) with \(\Sigma_u\) being symmetric and positive definite.
+Which additional assumptions do we need to assure that \(u_t\) is a multivariate white noise process?	
+
+\item Consider a VAR(2) model with \(K=4\) variables and a constant term.
+How many parameters do we need to estimate?
+
+\item Show how to represent a VAR(3) model as a VAR(1) model. Hint: stack \(y_t, y_{t-1}\) and \(y_{t-2}\) into a vector.
+
+\item Write a function to compute the \enquote{companion VAR(1) form} of any VAR(p) model with constant term.
+\end{enumerate}
+
+\paragraph{Readings}
+\begin{itemize}
+	\item \textcite[Ch.~2.2]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
+	\item \textcite[Ch.~2]{Lutkepohl_2005_NewIntroductionMultiple}
+\end{itemize}
+
+\begin{solution}\textbf{Solution to \nameref{ex:DimensionsAndVAROneRepresentation}}
+\ifDisplaySolutions
+\input{exercises/dimensions_and_var_one_representation_solution.tex}
+\fi
+\newpage
+\end{solution}

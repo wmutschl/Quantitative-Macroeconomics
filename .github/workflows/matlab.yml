@@ -54,3 +54,13 @@ jobs:
             AR4LagSelection
             portmanteauTest
             bootstrapCIAR1
+      - name: Run week 6 scripts
+        uses: matlab-actions/run-command@v1
+        with:
+          command: |
+            cd("progs/matlab")
+            matrixAlgebraEigenvalues
+            matrixAlgebraKroneckerFormula
+            matrixAlgebraRotation
+            matrixAlgebraCholesky            
+            matrixAlgebraLyapunovComparison

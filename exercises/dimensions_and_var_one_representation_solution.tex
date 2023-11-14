@@ -1,0 +1,35 @@
+\begin{enumerate}
+\item \(\nu\) snd \(u_t\) are both K-dimensional vectors: \(\nu,u_t \in \mathbb{R}^{K \times 1}\).
+\(A_i\) is a \(K \times K\) matrix.
+
+\item We must have \({\Gamma_u(h)} = Cov(u_t, u_{t-h}) = 0_{K\times K}\) for any \(h\neq0\),
+  that is all autocovariances are zero
+  (except for \(h=0\) which is the covariance matrix).
+Importantly: we do not need a distributional assumption!
+	
+\item General: \(K\) constants + \(K^2\cdot p\) autoregressive coefficients + \(K(K+1)/2\) covariance terms (due to symmetry).
+Here: \(4+4^2\cdot2+4\cdot(4+1)/2=46\).
+That's a lot!
+Therefore we will try to restrict some parameters (e.g.\ set equal to zero or by using Bayesian priors)
+or consider only small VAR systems, e.g. \(K=3\) or \(p=1\), etc.
+
+\item VAR(3): \(y_t = \nu + A_1 y_{t-1} + A_2 y_{t-2} + A_3 y_{t-3} + u_t\).
+Idea: Stack \(y_t, y_{t-1}\) and \(y_{t-2}\) into a vector and note that \(y_{t-1}=y_{t-1}\) and \(y_{t-2}=y_{t-2}\).
+That is
+\begin{align*}
+\underbrace{\begin{bmatrix} y_t\\ y_{t-1} \\ y_{t-2} \end{bmatrix}}_{\widetilde{y}_t}
+= \underbrace{\begin{bmatrix} \nu \\ 0 \\ 0 \end{bmatrix}}_{\widetilde{\nu}_t}
++ \underbrace{\begin{bmatrix} A_1 & A_2 & A_3 \\ I & 0 & 0\\ 0&I&0\end{bmatrix}}_{\widetilde{A}}
+  \underbrace{\begin{bmatrix} y_{t-1}\\ y_{t-2} \\ y_{t-3} \end{bmatrix}}_{\widetilde{y}_{t-1}}
++ \underbrace{\begin{bmatrix} u_t \\ 0 \\ 0\end{bmatrix}}_{\widetilde{u}_t}
+\end{align*}
+where \(I\) is the \(K\)-dimensional identity matrix and \(0\) the \(K\)-dimensional zero matrix.
+Therefore: \(\widetilde{y}_t = \widetilde{A} \widetilde{y}_{t-1} + \widetilde{u}_t\).
+This is called the Companion Form.
+It is particularly useful, when checking the stability and covariance-stationarity properties of VAR(p) processes 
+as we can simply compute the Eigenvalues of \(\widetilde{A}\)
+and check whether all of them are inside the unit circle, i.e.\ between \(-1\) and \(1\).
+No need to find the roots of the general Lag-polynomials.
+
+\item \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/companionForm.m}
+\end{enumerate}
