@@ -46,3 +46,11 @@ jobs:
             AR4OLS
             AR4ML
             AR1MLLaplace
+      - name: Run week 5 scripts
+        uses: matlab-actions/run-command@v1
+        with:
+          command: |
+            cd("progs/matlab")
+            AR4LagSelection
+            portmanteauTest
+            bootstrapCIAR1

@@ -7,7 +7,7 @@
 % -------------------------------------------------------------------------
 
 clearvars; clc; close all;                 % housekeeping
-y = importdata('../../data/Laplace.csv');  % load data
+y = importdata('../../data/LaPlace.csv');  % load data
 y = y.data;                                % focus on numerical values
 p = 1;                                     % set number of lags
 const = 1;                                 % model with constant

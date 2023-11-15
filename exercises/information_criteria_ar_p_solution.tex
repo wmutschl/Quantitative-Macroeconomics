@@ -1,0 +1,26 @@
+\begin{enumerate}
+\item The first term measures the fit of a model with order \(p\) and it is the same for all criteria.
+This term decreases for increasing order because there is no correction for degrees of freedom in the ML variance estimator.
+	
+The second term penalizes large AR orders.
+How this term is effectively chosen distinguishes the different criteria.
+
+The criteria have the following properties:
+\begin{itemize}
+    \item AIC asymptotically overestimates the order with positive probability
+    \item HQC estimates the order consistently (\(plim~ \hat{p}= p\))
+    \item SIC is even strongly consistent (\(\hat{p} \overset{a.s.}{\rightarrow} p\)) under quite general conditions
+    (e.g.\ if the actual DGP is a finite-order AR process and the maximum order is larger than the true order).
+\end{itemize}
+In practice, one often relies on the AIC as having too many lags is not as severe as having too few lags.
+This is especially true in small samples.
+
+It is important to notice, that for correctly computing the information criteria
+  one needs to use the same sample size across models with different orders.
+In other words, the number of pre-sample values set aside for estimation is determined by the maximum order \(p^{\text{max}}\).
+
+	
+\item \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/lagOrderSelectionARp.m}
+
+\item[3./4.] \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/AR4LagSelection.m}
+\end{enumerate}

@@ -35,7 +35,9 @@ T = size(y,1);           % sample size
 
 % Optimization with fminunc which finds the minimum of negative log-likelihood
 f = @(x) -1*logLikeARpNorm(x,y,p,const); % use function handle to hand over additional parameters and multiply by -1 for negative log-likelihood
-x0 = randn(p+const+1,1); % randomize start values
+% start values
+x0 = randn(p+const+1,1); % randomize
+x0(end) = abs(x0(end));  % make sure initial sig_u is positive
 
 [x,fval,exitflag,output,grad,hess] = fminunc(f,x0);
 % alternatively use hessian_numerical.m that does two-sided finite difference computation of hessian
