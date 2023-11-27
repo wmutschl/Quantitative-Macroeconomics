@@ -22,7 +22,7 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 
 ### To Do
 
-* [x] read the general course information
+* [x] read the general course information.
 * [x] have a look at the [exercises for week 1](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_1.pdf); we will do them together in class
 * [x] prepare your computer
   * [x] install MATLAB R2023b following [this guide](https://uni-tuebingen.de/einrichtungen/zentrum-fuer-datenverarbeitung/dienstleistungen/clientdienste/software/matlab-einzelplatzlizenz/) if you are a student of the University of Tübingen
@@ -54,8 +54,8 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 ### To Do
 
 * [x] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_1.pdf) and write down all your questions
-* [x] read Bjørnland and Thorsrud (2015, Ch.1 and Ch.2) and Lütkepohl (2004, Sec. 2.1, 2.2, 2.3). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
-* [x] do exercises 1 and 2, write down all your questions and problems. We'll do exercise 3 in class.
+* [x] read Bjørnland and Thorsrud (2015, Ch.1 and Ch.2) and Lütkepohl (2004, Sec. 2.1, 2.2, 2.3). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
+* [x] do exercises 1 and 2, write down all your questions and problems; we'll do exercise 3 in class
 * [x] participate in the Q&A sessions with all your questions and concerns
 * [x] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
 * [x] (optionally) checkout the short [Beginner Git Video Tutorials from GitKraken](https://www.gitkraken.com/learn/git/tutorials#beginner)
@@ -73,9 +73,9 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 
 ### To Do
 
-* [x] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_2.pdf) and write down all your questions
-* [x] read Lütkepohl (2004, Sec. 2.2, 2.3, 2.5.2), Lütkepohl (2005, Appendix C) and Bjørnland and Thorsrud (2015, Ch.1 and Ch.2). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
-* [x] prepare exercise sheet 3: do exercises 1 and 3 at home, we'll do exercises 2 and 4 in class.
+* [x] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_2.pdf) and write down all your questions.
+* [x] read Lütkepohl (2004, Sec. 2.2, 2.3, 2.5.2), Lütkepohl (2005, Appendix C) and Bjørnland and Thorsrud (2015, Ch.1 and Ch.2); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
+* [x] prepare exercise sheet 3: do exercises 1 and 3 at home, we'll do exercises 2 and 4 in class
 * [x] participate in the Q&A sessions with all your questions and concerns
 * [x] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
 * [x] (optionally) checkout the short [Intermediate Git Video Tutorials from GitKraken](https://www.gitkraken.com/learn/git/tutorials#intermediate)
@@ -93,7 +93,7 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 ### To Do
 
 * [x] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_3.pdf) and write down all your questions
-* [x] read Lütkepohl (2004). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
+* [x] read Lütkepohl (2004); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
 * [x] TRY (!!!) to do exercise sheet 4; particularly, create your own ARpOLS.m and ARpML.m functions
 * [x] participate in the Q&A sessions with all your questions and concerns
 * [x] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
@@ -112,8 +112,8 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 ### To Do
 
 * [x] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_4.pdf) and write down all your questions
-* [x] re-read Lütkepohl (2004) and quickly go through Kilian and Lütkepohl (2007, Ch. 12.2). Make note of all the aspects and concepts that you are still not familiar with or that you find difficult to understand.
-* [x] TRY (!!!) to do exercises 1 and 2 of the problem set for week 5, we will do exercise 3 in class (see this [video](https://youtu.be/Itf-8Cp4xHI)).
+* [x] re-read Lütkepohl (2004) and quickly go through Kilian and Lütkepohl (2007, Ch. 12.2); make note of all the aspects and concepts that you are still not familiar with or that you find difficult to understand
+* [x] TRY (!!!) to do exercises 1 and 2 of the problem set for week 5; we will do exercise 3 in class (see this [video](https://youtu.be/Itf-8Cp4xHI))
 * [x] participate in the Q&A sessions with all your questions and concerns
 * [x] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
 * [x] (optionally) fork the course repository on GitHub
@@ -135,8 +135,8 @@ Familiarize yourself with
 ### To Do
 
 * [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_5.pdf) (except the bootstrap one) and write down all your questions
-* [x] Read Kilian and Lütkepohl (2007, Ch. 2.2) and Lütkepohl (2005, Chapter 2 and Appendix A). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
-* [x] Do exercise sheet 6 (the solutions are already available).
+* [x] Read Kilian and Lütkepohl (2007, Ch. 2.2) and Lütkepohl (2005, Chapter 2 and Appendix A); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
+* [x] Do exercise sheet 6 (the solutions are already available)
 * [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
 
 </details>
@@ -152,8 +152,8 @@ Familiarize yourself with
 ### To Do
 
 * [ ] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_6.pdf) and write down all your questions
-* [ ] Read Kilian and Lütkepohl (2007, Ch. 2.3 and Ch. 2.6). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
-* [ ] Do exercises 1 and 2 of problem set 7. We will do exercise 3 in class.
+* [ ] Read Kilian and Lütkepohl (2007, Ch. 2.3 and Ch. 2.6); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
+* [ ] Do exercises 1 and 2 of problem set 7; we will do exercise 3 in class
 * [ ] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
 
 </details>
