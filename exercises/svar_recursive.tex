@@ -1,0 +1,60 @@
+\section[Recursively Identified Models]{Recursively Identified Models\label{ex:RecursivelyIdentifiedModels}}
+A popular argument in macroeconomics has been that oil price shocks in particular may act as domestic supply shocks for the U.S. economy.
+Thus, the question of how oil price shocks affect U.S. real GDP and inflation has a long tradition in macroeconomics.
+ Postulate a VAR(4) model with intercept for the percent changes in the real WTI price of crude oil (\(\Delta rpoil_t\)),
+  the U.S. GDP deflator inflation rate (\(\Delta p_t\)),
+  and U.S. real GDP growth (\(\Delta gdp_t\)).
+Consider the dataset given in \enquote{USOil.csv}.
+The data are quarterly and the estimation period is 1987q1 to 2013q2.
+
+\begin{enumerate}
+\item How can you identify the oil price shock statistically and economically?
+
+\item Estimate the reduced-form vector autoregressive model by least-squares or maximum-likelihood
+to obtain a consistent estimate of the reduced-form error covariance matrix.
+
+\item Estimate the structural impact multiplier matrix \(B_0^{-1}\)
+based on a lower-triangular Cholesky decomposition of the residual covariance matrix.
+
+\item Estimate the structural impact multiplier matrix \(B_0^{-1}\)
+based on solving the system of nonlinear equations that implicitly defines the elements of \(B_0^{-1}\)
+using a nonlinear equation solver that finds the vector \(x\) such that \(F(x)=0\),
+where \(F(x)\) denotes a system of nonlinear equations in \(x\).
+To this end, vectorize the system of equations \(B_0^{-1} B_{0}^{-1'} - \hat{\Sigma}_u\).
+The objective is to find the unknown elements of \(B_0^{-1}\) such that
+\begin{align*}
+  F_{SR}(B_0^{-1}) = \begin{bmatrix} vech\left(B_0^{-1} B_0^{-1'} - \hat{\Sigma}_u\right),&b_0^{12},&b_0^{13},&b_0^{23}\end{bmatrix}'=0
+\end{align*}
+where the vech operator is used to select the lower triangular elements of \(B_0^{-1}B_0^{-1'} - \hat{\Sigma_u}\).
+
+To this end:
+\begin{itemize}
+\item Write a function \texttt{fSR.m} that computes \(F_{SR}\).
+A MATLAB implementation of the vech operator is given in listing~\ref{vech}.
+\item Set the termination tolerance \texttt{TolX=1e-4}, the termination tolerance on the function value \texttt{TolFun} to \texttt{1e-9},
+the maximum number of function evaluations \texttt{MaxFunEvals} to \texttt{50000},
+the maximum number of iterations \texttt{MaxIter} to \texttt{1000}.
+Save this set of options:\texttt{options = optimset('TolX',TolX,\\'TolFun',TolFun,'MaxFunEvals',MaxFunEvals,'MaxIter',MaxIter)}
+\item Choose an admissible start value for \(B_0^{-1}\)
+and call the optimization routine \texttt{fsolve} to minimize your \texttt{fSR} function:\\
+\texttt{[B0inv,fval,exitflag,output]=fsolve('fSR',B0inv0,options,'additional inputs to fSR')}
+\item Impose the normalization rule that the diagonal elements of \(B_0^{-1}\) are positive.
+\end{itemize}
+Compare this to the Cholesky decomposition. Is there a difference?
+ 	
+\item Plot the impulse response function for \(H=30\) of an oil price shock on the real price of crude oil (in logs),
+the GDP deflator inflation series and on the level of GDP (in logs) using \texttt{irfPlots.m} and interpret it economically.
+\end{enumerate}
+
+\paragraph{Readings}
+\begin{itemize}
+	\item \textcite[Ch.~8-9]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
+\end{itemize}
+
+
+\begin{solution}\textbf{Solution to \nameref{ex:RecursivelyIdentifiedModels}}
+\ifDisplaySolutions
+\input{exercises/svar_recursive_solution.tex}
+\fi
+\newpage
+\end{solution}

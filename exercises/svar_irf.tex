@@ -1,0 +1,70 @@
+\section[Structural Impulse Response Function]{Structural Impulse Response Function\label{ex:StructuralImpulseResponseFunction}}
+Consider the structural VAR(p) model
+\begin{align*}
+B_0y_t = B_1 y_{t-1} + \cdots  + B_{p} y_{t-p} + \varepsilon_{t}
+\end{align*}
+where the dimension of \(B_i\), \(i = 0,\ldots ,p\), is \(K \times K\).
+The \(K \times 1\) vector of structural shocks \(\varepsilon_{t}\) is assumed to be white noise with covariance matrix \(E(\varepsilon_t \varepsilon_t') = I_K\).
+That is, the elements of \(\varepsilon_t\) are mutually uncorrelated and also have a clear interpretation in terms on an underlying economic model.
+The reduced-form VAR(p) model is given by
+\begin{align*}
+    y_t = \underbrace{B_0^{-1}B_1}_{A_1}y_t + \cdots  + \underbrace{B_0^{-1}B_p}_{A_p} y_{t-p} + \underbrace{B_0^{-1}\varepsilon_t}_{u_t}
+\end{align*}
+where the reduced-form error covariance matrix is \(E(u_t u_t')=\Sigma_u = B_0^{-1}B_0^{-1'}\).
+Going back and forth between the structural and the reduced-form representation requires knowledge of the structural impact matrix \(B_0^{-1}\).
+For now, assume that \(B_0^{-1}\) is a known matrix.
+We are interested in the response of each element of \(y_t\) to a one-time impulse in \(\varepsilon_{t}\):
+\begin{align*}
+    \frac{\partial y_{t+h}}{\partial \varepsilon_{t}'} = \Theta_h, \quad h=0,1,2,\ldots ,H
+\end{align*}
+where \(\Theta_h\) is a \(K\times K\) matrix with individual elements \(\theta_{jk,h}=\frac{\partial y_{j,t+h}}{\partial \varepsilon_{k,t}}\).
+
+\begin{enumerate}
+\item Usually the objective is to plot the responses of each variable to each structural shock.
+How many so-called impulse response functions do we need to plot?
+
+\item Consider the VAR(1) representation of the VAR(p) process, i.e.\
+\begin{align*}
+Y_t = A Y_{t-1} + U_t
+\end{align*}
+where
+\begin{footnotesize}
+\begin{align*}
+Y_t = \begin{pmatrix}
+    y_t\\ \vdots\\ y_{t-p+1}
+    \end{pmatrix}, 
+    A = \begin{pmatrix}
+    A_1 & A_2 & \cdots  & A_{p-1} & A_p\\
+    I_k &   0 & \cdots  & 0       & 0\\
+    0   &  I_K& \cdots  & 0       & 0\\
+    \vdots & \vdots & \ddots &\vdots & \vdots\\ 
+    0& 0 & \cdots  &I_k & 0
+    \end{pmatrix},
+    U_t = \begin{pmatrix} u_t\\0\\ \vdots \\0 \end{pmatrix}
+\end{align*}
+\end{footnotesize}
+Show that
+\begin{align*}
+    y_{t+h} = J A^{h+1} Y_{t-1}+ \sum_{j=0}^h J A^j J' u_{t+h-j}
+\end{align*}
+where \(J=[I_K, 0_{K\times K(p-1)}]\).
+
+\item Derive an expression for \(\Theta_h\) in terms of \(J\), \(A\) and \(B_0^{-1}\).
+
+\item How would you infer from the response of the inflation rate, say \(\Delta p_t\), the implied response of the log price level \(p_t\)?
+ 	
+\item Write a function that plots the IRFs given inputs \(A\), \(B_0^{-1}\), number of lags \(p\), maximum horizon \(H\),
+  an indicator vector whether the cumulative sum of the IRFs should be computed, and string arrays for the names of the variables and shocks.
+\end{enumerate}
+
+\paragraph{Readings}
+\begin{itemize}
+	\item \textcite[Ch.~4.1]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
+\end{itemize}
+
+\begin{solution}\textbf{Solution to \nameref{ex:StructuralImpulseResponseFunction}}
+\ifDisplaySolutions
+\input{exercises/svar_irf_solution.tex}
+\fi
+\newpage
+\end{solution}

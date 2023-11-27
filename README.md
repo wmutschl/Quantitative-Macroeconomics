@@ -158,6 +158,25 @@ Familiarize yourself with
 
 </details>
 
+<details>
+  <summary> Week 8: Short-run restrictions in Structural Vector Autoregressive (SVAR) Models</summary>
+
+### Goals
+
+* understand recursive identification, short-run restrictions and the impact matrix
+* implement recursive identification both via Cholesky or numerical optimization
+* implement short-run restrictions using numerical optimization
+
+### To Do
+
+* [ ] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_7.pdf) and write down all your questions
+* [ ] Read Kilian and Lütkepohl (2007, Ch. 4.1, Ch. 7.6, Ch.8, Ch.9); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
+* [ ] Do exercises 1 and 2 from problem set 8; we will do exercise 3 in class
+* [ ] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
+
+</details>
+
+
 
 ## Content
 
