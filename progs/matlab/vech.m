@@ -6,7 +6,7 @@ function B = vech(A)
 % INPUTS
 %   - A: a square matrix
 % -------------------------------------------------------------------------
-[m,n] = size(A,1);
+[m,n] = size(A);
 if m ~= n
     error('The input matrix must be square');
 end
