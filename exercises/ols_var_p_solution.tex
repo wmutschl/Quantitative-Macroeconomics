@@ -1,0 +1,16 @@
+\begin{enumerate}
+\item The dimensions are: \(y_t\) is \(K \times 1\), \(Y\) is \(K \times T\), \(u_t\) is \(K \times 1\),
+\(U\) is \(K \times T\), \(c\) is \(K \times 1\), \(A_1\) is \(K \times K\), \ldots, \(A_p\) is \(K \times K\),
+\(A\) is \(K \times (1+pK)\), \(\alpha\) is \((pK^2+K) \times 1\),
+\(Z_{t-1}\) is \((1+pK) \times 1\), \(Z\) is \((Kp+1) \times T\),
+\(\Sigma_u\) is \(K \times K\) and \(\Sigma_{\hat{\alpha}}\) is \((pK^2+K) \times (pK^2+K)\).
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/VARpDimensionsIllustration.m}
+
+\item A modified version looks like this.
+Note that it also includes OLS estimation of each equation in turn.
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/VARReducedForm.m}	
+
+\item The OLS estimation of the three variables VAR model might look like this:
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/threeVariableVAROLS.m}
+The data for Federal Funds Rate as well as the GNP Deflator Inflation do seem to have some trend in it, but nothing serious.
+\end{enumerate}
