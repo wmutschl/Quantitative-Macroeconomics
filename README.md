@@ -141,6 +141,23 @@ Familiarize yourself with
 
 </details>
 
+<details>
+  <summary> Week 7: Estimating VAR model with OLS and ML; The identification problem in SVAR models</summary>
+
+### Goals
+
+* estimate VAR models with Ordinary Least Squares (OLS) and Maximum Likelihood (ML)
+* understand the identification problem in SVAR models
+
+### To Do
+
+* [ ] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_6.pdf) and write down all your questions
+* [ ] Read Kilian and Lütkepohl (2007, Ch. 2.3 and Ch. 2.6). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
+* [ ] Do exercises 1 and 2 of problem set 7. We will do exercise 3 in class.
+* [ ] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
+
+</details>
+
 
 ## Content
 

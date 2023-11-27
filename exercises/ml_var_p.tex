@@ -1,0 +1,48 @@
+\section[Maximum Likelihood Estimation of VAR(p)]{Maximum Likelihood Estimation of VAR(p)\label{ex:MaximumLikelihoodEstimationVARp}}
+Consider the VAR(p) model with constant written in the more compact form
+\begin{align*}
+y_t = [c, A_1, \ldots, A_p] Z_{t-1} + u_t = A Z_{t-1}+ u_t
+\end{align*}
+where \(Z_{t-1}=(1,y_{t-1}',\ldots ,y_{t-p}')'\).
+In VAR analysis, it is common to postulate that the innovations, \(u_t\), are iid \(\mathcal{N}(0,\Sigma_u)\) random variables.
+This assumption implies that the \(y_t\)'s are also jointly normal
+  and, for given initial values \(y_{-p+1},\ldots ,y_{0}\),
+\begin{align*}
+f_t(y_t|y_{t-1},\ldots ,y_{-p+1})={\left(\frac{1}{2\pi}\right)}^{K/2} {\det(\Sigma_u)}^{-1/2} \exp\left \{ -\frac{1}{2}u_t'\Sigma_u^{-1}u_t \right \}
+\end{align*}
+Conditional on the first \(p\) observations, the conditional log-likelihood becomes:
+\begin{align*}
+\log l = -\frac{KT}{2}\log(2\pi) - \frac{T}{2} \log(\det(\Sigma_u))- \frac{1}{2}\sum_{t=1}^T u_t'\Sigma_u^{-1}u_t
+\end{align*}
+Maximizing this function with respect to the unknown parameters
+  yields the Gaussian ML estimators \(\widetilde{A}\) and \(\widetilde{\Sigma_u}\).
+
+\begin{enumerate}
+\item Compare the Gaussian ML estimator \(\widetilde{A}\) with the OLS estimator \(\widehat{A}\) from the previous exercise.
+Comment on the asymptotic distribution.
+
+\item Provide an expression for the ML estimator \(\widetilde{\Sigma_u}\) of the innovation covariance matrix.
+ 	
+\item Consider data given in \texttt{threeVariableVAR.csv} for \(y_t = (\Delta gnp_t,i_t,\Delta p_t)'\),
+where \(gnp_t\) denotes the log of U.S. real GNP,
+\(p_t\) the corresponding GNP deflator in logs,
+and \(i_t\) the federal funds rate, averaged by quarter.
+The estimation period is restricted to 1954q4 to 2007q4. 
+\begin{itemize}
+  \item Estimate the parameters with Maximum Likelihood.
+  \item Compare your estimation results to an OLS estimation.
+\end{itemize}
+
+\end{enumerate}
+
+\paragraph{Readings}
+\begin{itemize}
+\item \textcite[Ch.~2.3]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
+\end{itemize}
+
+\begin{solution}\textbf{Solution to \nameref{ex:MaximumLikelihoodEstimationVARp}}
+\ifDisplaySolutions
+\input{exercises/ml_var_p_solution.tex}
+\fi
+\newpage
+\end{solution}
