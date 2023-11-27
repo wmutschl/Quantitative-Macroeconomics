@@ -3,7 +3,8 @@
 # Quantitative Macroeconomics
 
 These are my course materials for the graduate course on Quantitative Macroeconomics taught at the University of Tübingen.
-The compiled PDF materials are available under [Releases](https://github.com/wmutschl/Quantitative-Macroeconomics/releases).
+
+The compiled PDF materials are available under [Releases](https://github.com/wmutschl/Quantitative-Macroeconomics/releases) (make sure to click *Show all assets*).
 
 Please feel free to use this for teaching or learning purposes; however, taking into account the [GPL 3.0 license](https://choosealicense.com/licenses/gpl-3.0/).
 
