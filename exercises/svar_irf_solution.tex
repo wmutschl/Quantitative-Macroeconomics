@@ -1,0 +1,33 @@
+\begin{enumerate}
+\item There are \(K\) variables and \(K\) structural shocks; hence, there are \(K^2\) IRFs each of length \(H+1\).
+
+\item Let's derive an expression for \(Y_{t+h}\):
+\begin{align*}
+Y_t &= A Y_{t-1} + U_t
+\\
+Y_{t+1} &= A Y_{t} + U_{t+1} = A^2 Y_{t-1} + A U_t + U_{t+1}
+\\
+Y_{t+2} &= A Y_{t+1} + U_{t+2} = A^3 Y_{t-1} + A^2 U_t + A U_{t+1} + U_{t+2}
+\\
+Y_{t+h} &= A^{h+1} Y_{t-1} + \sum_{j=0}^h A^j U_{t+h-j}
+\end{align*}
+Left-multiply by \(J\) (also note that \(J'J=I\)):
+\begin{align*}
+J Y_{t+h} = y_{t+h} = J A^{h+1} Y_{t-1} + \sum_{j=0}^h J A^j \textcolor{red}{J'J} U_{t+h-j} = J A^{h+1} Y_{t-1} + \sum_{j=0}^h J A^j J' u_{t+h-j}
+\end{align*}
+
+\item From the previous exercise:
+\begin{align*}
+y_{t+h} = J A^{h+1} Y_{t-1} + \sum_{j=0}^h J A^j J' \underbrace{u_{t+h-j}}_{B_0^{-1} \varepsilon_{t+h-j}}
+\end{align*}
+Taking the derivative:
+\begin{align*}
+\frac{\partial y_{t+h}}{\partial \varepsilon_{t}'} = \Theta_h = J A^h J' B_0^{-1}
+\end{align*}
+\item Note the following identity: \(p_{t+h}=p_{t-1}+\Delta p_t +\Delta p_{t+1} + \cdots  +\Delta p_{t+h}\).
+That is we simply need to cumulate (\texttt{cumsum}) the impulse responses of the inflation rate to get the impulse response for the price level.
+	
+\item A possible implementation:
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/irfPlots.m}
+
+\end{enumerate}

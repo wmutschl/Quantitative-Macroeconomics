@@ -1,0 +1,24 @@
+\begin{enumerate}
+\item[1.] The model is identified recursively with the real price of oil ordered first:
+\begin{align*}
+y_t = \begin{pmatrix}\Delta rpoil_t \\ \Delta p_t \\ \Delta gdp_t \end{pmatrix}
+\end{align*}
+such that the real price of oil is \textbf{predetermined} with respect to the U.S. economy.
+In other words, only the structural oil price shock (ordered first) has an immediate effect on the real price of oil,
+the other two structural shocks affect the real price of oil with a delay and not on impact.
+The ordering is thus very important here,
+as our focus is on the effect of an \textbf{unanticipated (exogenous)} increase in the real price of oil.
+Moreover, as we are only interested in one shock,
+the model is only partially identified in that only the oil price shock can be given an economic interpretation.
+
+\item[2./3./4./5.]  \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/USOil.m}
+Here is the helper function for the more general approach:
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/USOil_fSR.m}
+\item[6.] In the period under consideration, crude oil is a commodity that is considered vulnerable to negative supply shocks
+due to the political and social volatility of its (Middle East) source.
+In macroeconomics a negative supply shock is an unexpected event that changes the supply of a product,
+resulting in an increase in prices and a decrease in output.
+From the IRFs we see exactly this pattern:
+an unexpected oil price shock creates inflationary pressure on the GDP deflator and a reduction in real GDP in the US\@.
+In this sense, a positive oil price shock (originating e.g.\ from the oil producing countries) indeed acts like a negative domestic supply shock for the U.S. economy.
+\end{enumerate}

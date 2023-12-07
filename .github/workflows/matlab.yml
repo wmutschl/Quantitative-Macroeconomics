@@ -72,3 +72,10 @@ jobs:
             VARpDimensionsIllustration
             threeVariableVAROLS
             threeVariableVARML
+      - name: Run week 8 scripts
+        uses: matlab-actions/run-command@v1
+        with:
+          command: |
+            cd("progs/matlab")
+            USOil
+            keatingSR
