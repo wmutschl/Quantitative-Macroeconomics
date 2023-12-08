@@ -1,0 +1,46 @@
+\section[Inference In SVARs Identified By Exclusion Restrictions]{Inference In SVARs Identified By Exclusion Restrictions\label{ex:InferenceExclusionRestrictions}}
+Consider an exactly-identified structural VAR model subject to short- and/or long-run restrictions,
+  where the structural impulse response of variable \(j\) to structural shock \(k\) at horizon \(h\) is denoted as \(\theta_{jk,h}\),
+  which we simply denote as \(\theta \).
+We are interested in the distribution of \(\theta \),
+  in particular deriving \((1-\gamma)\% \) point-wise confidence intervals given a consistent estimate \(\hat{\theta}\) of \(\theta \).
+
+\begin{enumerate}	
+\item Consider the asymptotic confidence intervals which are derived using the delta method:
+\begin{align*}
+\hat{\theta} \pm z_{\gamma/2} \widehat{std}(\hat{\theta})
+\end{align*}
+where \(z_{\gamma/2}\) denotes the \(\gamma/2\) percentile of the standard normal distribution
+  and \( \widehat{std}(\hat{\theta})\) a consistent estimate of the standard deviation of \(\theta \).
+Name the assumptions and shortcomings of this approach.
+
+\item Outline the idea and algorithm of the Standard Residual-Based Recursive-Design Bootstrap approach.
+
+\item Name the central idea underlying the Residual-Based Wild Bootstrap.
+
+\item Discuss the choice of significance level \(\gamma \).
+
+\item Discuss how to draw initial conditions for a resampling method.
+
+\item Given a bootstrap approximation to the distribution of the structural impulse-response function,
+  discuss how to construct bootstrap confidence intervals from this distribution.
+Particularly, explain
+    \begin{enumerate}
+    \item intervals based on bootstrap standard errors
+    \item Efron's percentile interval
+    \item equal-tailed percentile-t intervals 		
+    \end{enumerate}
+
+\end{enumerate}
+
+\paragraph{Readings}
+\begin{itemize}
+	\item \textcite[Ch.~12.1-12.5, 12.9]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
+\end{itemize}
+
+\begin{solution}\textbf{Solution to \nameref{ex:InferenceExclusionRestrictions}}
+\ifDisplaySolutions
+\input{exercises/svar_inference_exclusion_restrictions_solution.tex}
+\fi
+\newpage
+\end{solution}

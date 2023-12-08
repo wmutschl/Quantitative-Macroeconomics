@@ -152,10 +152,10 @@ Familiarize yourself with
 
 ### To Do
 
-* [ ] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_6.pdf) and write down all your questions
-* [ ] Read Kilian and Lütkepohl (2007, Ch. 2.3 and Ch. 2.6); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
-* [ ] Do exercises 1 and 2 of problem set 7; we will do exercise 3 in class
-* [ ] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
+* [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_6.pdf) and write down all your questions
+* [x] Read Kilian and Lütkepohl (2007, Ch. 2.3 and Ch. 2.6); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
+* [x] Do exercises 1 and 2 of problem set 7; we will do exercise 3 in class
+* [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
 
 </details>
 
@@ -170,9 +170,29 @@ Familiarize yourself with
 
 ### To Do
 
-* [ ] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_7.pdf) and write down all your questions
-* [ ] Read Kilian and Lütkepohl (2007, Ch. 4.1, Ch. 7.6, Ch.8, Ch.9); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
-* [ ] Do exercises 1 and 2 from problem set 8; we will do exercise 3 in class
+* [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_7.pdf) and write down all your questions
+* [x] Read Kilian and Lütkepohl (2007, Ch. 4.1, Ch. 7.6, Ch.8, Ch.9); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
+* [x] Do exercises 1 and 2 from problem set 8; we will do exercise 3 in class
+* [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
+
+</details>
+
+
+<details>
+  <summary> Week 9: Short-run and Long-run restrictions in Structural Vector Autoregressive (SVAR) Models, Asymptotic and Bootstrap Inference in SVARs Identified By Exclusion Restrictions: Theory</summary>
+
+### Goals
+
+* understand long-run restrictions and the long-run multiplier matrix
+* implement short-run and long-run restrictions using numerical optimization
+* understand pros and cons of asymptotic inference for the impulse-response function of SVAR models
+* understand pros and cons of bootstrap inference for the impulse-response function of SVAR models
+
+### To Do
+
+* [ ] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_8.pdf) and write down all your questions
+* [ ] Read Kilian and Lütkepohl (2007, Ch. 4.1, Ch. 7.6, Ch.8, Ch.9, Ch.10.1, 10.3, 10.4, 10.5, 11.1, 11.2, 11.3). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
+* [ ] Do exercises 1 and 2 of problem set 9
 * [ ] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
 
 </details>
