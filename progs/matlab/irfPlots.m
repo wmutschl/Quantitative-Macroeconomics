@@ -72,6 +72,7 @@ if ~noPlot
             title(shockNames(ishocks), 'FontWeight','bold','FontSize',10);
             ylabel(variableNames(ivars), 'FontWeight','bold','FontSize',10);
             count = count+1;
+            set(gca,'FontSize',16);
         end
     end
 end
