@@ -1,0 +1,14 @@
+\begin{enumerate}
+\item The Federal Reserve Board is assumed to control the interest rate by setting the policy innovation
+  after observing the forecast errors for deflator inflation and real GNP growth.
+The model is fully identified and includes an aggregate demand shock and an aggregate supply shock in addition to the monetary policy shock.
+The monetary policy shock does not affect real GNP either within the current quarter or in the long run.
+The only shock to affect the log-level of real GNP in the long run is the aggregate supply shock.
+
+\item[2/3/4] The code might look like this:
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/RWZSRLR.m}
+Here is the helper function to impose the restrictions:
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/RWZSRLR_f.m}
+An unexpected monetary policy tightening is associated with a persistent decline in real GNP and a rather short-lived response in inflation.
+This is an interesting finding considering the dual mandate of the Federal Reserve.
+\end{enumerate}
