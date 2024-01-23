@@ -1,0 +1,60 @@
+\section[Bayesian Estimation of Quarterly Inflation]{Bayesian Estimation of Quarterly Inflation\label{ex:BayesianEstimationQuarterlyInflation}}
+Perform a Bayesian estimation using the Gibbs sampler of an autoregressive model with two lags of quarterly US inflation
+\begin{align*}
+y_t = c + \phi_1 y_{t-1} + \phi_2 y_{t-2} + u_t = Y_{t-1} \theta + u_t
+\end{align*}
+where \(Y_{t-1}=(1,y_{t-1},y_{t-2})\), \(u_t\sim WN(0,\sigma_u^2)\)
+and \(\theta = (c,\phi_1,\phi_2)'\).
+To this end, assume a Gamma distribution for the marginal prior for the precision \(1/\sigma_u^2\)
+  and a normal distribution for the conditional prior for the coefficients \(\theta \) given \(1/\sigma_u^2\).
+\begin{enumerate}
+\item Load the dataset \texttt{QuarterlyInflation.csv}.
+It contains a series for US quarterly inflation from 1947Q1 to 2012Q3.
+Plot the data.
+\item Create the matrix of regressors and the corresponding vector of endogenous variables for an AR(2) model with a constant.
+\item Set the prior mean for the coefficients to a vector of zeros, \(\theta_0 = 0\),
+and the prior covariance matrix to the identity matrix, \(\Sigma_{0}=I\).
+\item Set the shape parameter for the variance parameter to \(s_0=1\)
+and the scale parameter to \(v_0=0.1\).
+\item Set the total number of Gibbs iterations to \(R=50000\) with a burn-in phase of \(B=40000\).
+\item Initialize output matrices for the remaining \(R-B\) draws of the coefficient estimates and the variance estimate.
+\item Initialize the first draw of \(1/\sigma_u^2\) to its OLS estimate.
+\item For \(j=1,\ldots ,R\) do the following
+\begin{enumerate}	
+	\item Sample \(\phi(j)\) conditional on \(1/\sigma_u^2(j)\) from \(\mathcal{N}(\theta_1,\Sigma_{1})\) where
+	\begin{align*}
+	\Sigma_{1} &= {(\Sigma_{0}^{-1} +\sigma_u^{-2}(j)(X'X))}^{-1}
+    \\
+    \theta_1 &= \Sigma_{1} \cdot (\Sigma_{0}^{-1}\phi_0 + \sigma_u^{-2}(j) X'y)
+	\end{align*}
+	Optionally: check the stability of the draw to avoid an explosive AR processes.
+	\item Sample \(1/\sigma_u^2(j)\) conditional on \(\theta(j)\) from the Gamma distribution \(G(s_1,v_1)\)
+	where
+	\begin{align*}
+	s_1 &= s_0 + T
+	\\
+	v_1 &= v_0 + \sum_{t=3}^T {(y_t-Y_{t-1}\theta(j))}^2
+	\end{align*}
+	\item If you passed the burn-in phase (\(j>B\)),
+	then save the draws of \(\theta(j)\) and \(\sigma^2(j)\) into the output matrices.
+\end{enumerate}
+\item Plot the histograms of the draws in your output matrices.
+\end{enumerate}
+
+\paragraph{Hints}
+\begin{itemize}
+	\item Use \texttt{mvnrnd(theta1,Sigma1)} to draw from a multivariate normal distribution with mean \(\theta_1\) and covariance matrix \(\Sigma_1\).
+	\item Use \texttt{gamrnd(s1,1/v1,1,1)} to draw from a Gamma distribution with shape parameter \(s_1\) and scale parameter \(v_1\).
+\end{itemize}
+\paragraph{Readings}
+\begin{itemize}
+	\item \textcite{Chib.Greenberg_1994_BayesInferenceRegression}
+	\item \textcite[Ch.~10.1]{Greenberg_2008_IntroductionBayesianEconometrics}
+\end{itemize}
+
+\begin{solution}\textbf{Solution to \nameref{ex:BayesianEstimationQuarterlyInflation}}
+\ifDisplaySolutions
+\input{exercises/bayesian_estimation_quarterly_inflation_solution.tex}
+\fi
+\newpage
+\end{solution}

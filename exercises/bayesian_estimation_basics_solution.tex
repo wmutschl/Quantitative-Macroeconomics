@@ -1,0 +1,105 @@
+\begin{enumerate}
+\item In Quantitative Macroeconomics and Econometrics we are concerned with using data to learn about a phenomenon,
+  e.g.\ the relationship between two macroeconomic variables.
+That is: we want to learn about something \emph{unknown} (the parameter \(\mu \)) given something \emph{known} (the data \(y_t\)).
+Let's use the sample mean as our estimating function:
+\(\hat{\mu}=1/T \sum_{t=1}^T y_t\).
+Due to the law of large numbers and the central limit theorem we can derive that
+\(\hat{\mu}\sim N(\mu,\frac{\sigma^2}{T})\)
+and conduct inference such as computing confidence intervals \([\hat{\mu}\pm 1.96 \frac{\sigma}{\sqrt{T}}]\).
+\\
+\textbf{Classical/Frequentist approach:} \(\mu \) is a fixed unknown quantity, that is we think there exists a \emph{true value} that is not random.
+On the other hand, the estimating function, \(\hat{\mu}\), is a random variable
+and is evaluated via repeated sampling.
+In a thought experiment, we would be able to generate a large number of datasets (given the true \(\mu \))
+and our confidence interval will contain the true value in 95\% of cases.
+The estimator \(\hat{\mu}\) is \emph{best} in the sense of having the highest probability of being close to the true \(\mu \).
+\\
+\textbf{Bayesian approach:} \(\mu \) is treated as a \emph{random variable};
+that is, there is NO true unknown value.
+Instead our knowledge about the model parameter \(\mu \) is summarized by a \emph{probability distribution}.
+In more detail, this distribution summarizes two sources of information:
+\begin{enumerate}
+	\item prior information: subjective beliefs about how likely different parameter values are (information BEFORE seeing the data)
+	\item sample information: AFTER seeing the data, we update/revise our prior beliefs
+\end{enumerate}
+In a sense we explicitly make use of (subjective) probabilities to quantify uncertainty about the parameter.
+
+\item The key ingredients are based on the rules of probability, which imply for two events \(A\) and \(B\):
+\(p(A,B)=p(A|B)p(B)\), where \(p(A,B)\) is the joint probability of both events happing simultaneously.
+\(p(A|B)\) is the probability of \(A\) occurring conditional on \(B\) having occurred;
+and \(p(B)\) is the marginal probability of \(B\).
+Alternatively, we can reverse \(A\) and \(B\) to get: \(p(A,B)=p(B|A)p(A)\).
+Equating the two expressions gives you \textbf{Bayes' rule}:
+\begin{align*}
+p(B|A) = \frac{p(A|B)p(B)}{p(A)}
+\end{align*}
+This rule also holds for continuous variables such as parameters \(\theta \) and data \(y\):
+\begin{align*}
+p(\theta|y) = \frac{p(y|\theta)p(\theta)}{p(y)}
+\end{align*}
+That is, the key object of interest is the \textbf{posterior} \(p(\theta|y)\) distribution,
+which is the product of the \textbf{likelihood function} \(p(y|\theta)\) and the \textbf{prior density} \(p(\theta)\),
+divided by the \textbf{marginal data density} \(p(y)\).
+In other words, the prior contains our prior (non-data) information,
+  whereas the likelihood function is the density of the data conditional on the parameters.
+Note that the marginal data density \(p(y)\) can be ignored
+as it does not depend on the parameters
+(it is just a normalization constant as a probability density integrates to one).
+Therefore, we can use the proportional \(\propto \) sign, that is the posterior is proportional to the likelihood times the prior:
+\begin{align*}
+p(\theta|y) \propto p(y|\theta) p(\theta)
+\end{align*}
+The posterior summarizes all we know about \(\theta \) after seeing the data.
+It combines both data and non-data information.
+The equation can be viewed as an updating rule,
+where data allows us to update our prior views about \(\theta \).
+	
+Note that Bayesians are upfront and rigorous about including non-data information!
+The idea is that more information (even if subjective) tends to be better than less.
+
+\item In principle any distribution can be combined with the likelihood to form the posterior.
+Some priors are, however, more convenient than others to make use of analytical results.
+\\
+\textbf{Conjugate priors:} If a prior is conjugate, then the posterior has the same density as the prior.
+This eases analytical derivations.
+\\
+\textbf{Natural conjugate priors:} A conjugate prior is called a natural conjugate prior,
+if the posterior and the prior have the same functional form as the likelihood function.
+That is, the prior can be interpreted as arising from a fictitious dataset from the same data-generating process.
+
+\item The posterior is typically not analytically available and needs to be approximated
+unless for special cases using e.g.\ natural conjugate priors.
+But, typically we are not interested in the exact shape of the posterior,
+but in certain statistics of the posterior distribution such as:
+\begin{align*}
+E[\theta|y] &= \int_{-\infty}^{\infty} \theta p(\theta|y) d\theta
+\\
+V[\theta|y] &= \int_{-\infty}^{\infty} \theta^2 p(\theta|y) d\theta - (E(\theta|y))^2
+\end{align*}
+So we only need to approximate the integrals using numerical methods such as Monte Carlo integration.
+That is, IF we had iid draws from the posterior, we can make use of the law of large numbers
+and could approximate the posterior mean and variance as:
+\begin{align*}
+E[\theta|y] &\approx \frac{1}{S} \sum_{i=1}^S \theta_i
+\\
+V[\theta|y] &\approx \frac{1}{S} \sum_{i=1}^S \theta_i^2 - {\left(\frac{1}{N} \sum_{i=1}^N \theta_i\right)}^2
+\end{align*}
+Or in general for any function:
+\begin{align*}
+E[f(\theta)|y] = \int_{-\infty}^{\infty} f(\theta) p(\theta|y) d\theta \approx \frac{1}{S} \sum_{s=1}^S f(\theta_s)
+\end{align*}
+This is the key idea of Monte Carlo integration,
+i.e.\ replace the integral by a sum over \(S\) draws from the posterior.
+The Central Limit Theorem can then be used to asses the accuracy of this approximation.
+But there are two challenges:
+\begin{enumerate}
+  \item How to draw from the posterior?
+  \item How to make sure that the draws are iid?
+\end{enumerate}
+The first question can be answered by using suitable \emph{posterior sampling algorithms}
+such as direct sampling, importance sampling, Metropolis-Hastings sampling, Gibbs sampling, or 
+Sequential Monte-Carlo sampling.
+The second question is more difficult to answer and requires some knowledge about the sampling algorithm
+and suitable diagnostics.
+\end{enumerate}
