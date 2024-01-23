@@ -208,10 +208,33 @@ Familiarize yourself with
 
 ### To Do
 
-* [ ] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_9.pdf) and write down all your questions
-* [ ] Read Kilian and Lütkepohl (2007, Ch. 12.1-12.5, Ch. 12.9). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
-* [ ] We will do the exercises in class.
-* [ ] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
+* [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_9.pdf) and write down all your questions
+* [x] Read Kilian and Lütkepohl (2007, Ch. 12.1-12.5, Ch. 12.9). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
+* [x] We will do the exercises in class.
+* [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
+
+</details>
+
+
+<details>
+  <summary> Week 11: Introduction to Bayesian estimation and the Gibbs sampler</summary>
+
+### Goals
+
+* understand the difference between Frequentist and Bayesian Bayesian estimation methods
+* get familiar with the terminology and key ingredients of the Bayesian framework
+* understand the Gibbs sampler
+* estimate a multivariate linear regression model and an univariate autoregressive model with Bayesian techniques
+
+### To Do
+
+* [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_10.pdf) and write down all your questions
+* [x] Read Greenberg (2008, Part I, Ch. 7.1, Ch. 10.1), Koop (2003, Ch. 1-3), and Chib and Greenberg (1994). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
+* [x] We will do the problem set in class.
+* [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
+
+
+
 
 </details>
 
