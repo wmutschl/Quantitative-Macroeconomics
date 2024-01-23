@@ -233,8 +233,25 @@ Familiarize yourself with
 * [x] We will do the problem set in class.
 * [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
 
+</details>
 
 
+<details>
+  <summary> Week 12: Bayesian estimation of VAR models and the Minnesota prior</summary>
+
+### Goals
+
+* apply the Bayesian estimation framework and methods from last week to the multivariate case
+* understand the Minnesota prior
+* estimate a multivariate vector autoregressive model with Bayesian techniques and a Minnesota prior that is fine-tuned to include the zero-lower-bound period of nominal interest rates
+
+
+### To Do
+
+* [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_11.pdf) and write down all your questions
+* [x] Read Kilian and Lütkepohl (2017, Ch. 5) and Koop and Korobilis (2010, Ch. 1-2). Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
+* [x] We will do exercise sheet 12 together in class.
+* [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
 
 </details>
 

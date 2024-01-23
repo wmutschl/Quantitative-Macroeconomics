@@ -34,3 +34,6 @@ week_*.log
 week_*.out
 week_*.pdf
 week_*_solution.tex
+progs/matlab/BVARZLB_results_noZLB.log
+
+progs/matlab/BVARZLB_results_withZLB.log
