@@ -1,0 +1,29 @@
+% !TEX root = week_15.tex
+\input{exercises/_common_header.tex}
+\Newassociation{solution}{Solution}{week_15_solution}
+\newif\ifDisplaySolutions\DisplaySolutionstrue
+
+\begin{document}
+\title{Quantitative Macroeconomics\\~\\Winter 2023/24\\~\\Week 15}
+\author{Willi Mutschler\\willi@mutschler.eu}
+\date{Version: 1.0\\Latest version available on: \href{https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_15.pdf}{GitHub}}
+\maketitle\thispagestyle{empty}
+
+\newpage
+\Opensolutionfile{week_15_solution}[week_15_solution]
+\tableofcontents\thispagestyle{empty}\newpage
+
+\setcounter{page}{1}
+\input{exercises/kalman_filter.tex}\newpage
+\input{exercises/metropolis_hastings.tex}\newpage
+\printbibliography
+
+\Closesolutionfile{week_15_solution}
+\ifDisplaySolutions
+\newpage
+\appendix
+
+\section{Solutions}
+\input{week_15_solution}
+\fi
+\end{document}

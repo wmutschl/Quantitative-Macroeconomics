@@ -291,9 +291,26 @@ Familiarize yourself with
 ### To Do
 
 * [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_13.pdf) and write down all your questions
-* [x] Read Fernandez-Villaverde, Rubio-Ramirez, and Schorfheide (2016, Ch.1) and Torres (2013, Ch. 1).
-* [x] Read EITHER Gali (2015, Ch. 3) OR Heijdra (2017, Ch. 9) OR Romer (2019, Ch. 7) OR Woodford (2003, Ch. 3) OR Walsh (2017, Ch. 8)
 * [x] Watch [Solving DSGE models with first-order perturbation: what Dynare does](https://mutschler.eu/dynare/perturbation/first-order-theory/)
+* [x] Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
+* [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
+
+</details>
+
+
+<details>
+  <summary> Week 15: Kalman filter and Metropolis-Hastings</summary>
+
+### Goals
+
+* understand the Kalman filter and its use in DSGE models
+* understand the Metropolis-Hastings algorithm and its use in DSGE models
+
+
+### To Do
+
+* [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_14.pdf) and write down all your questions
+* [x] Follow the lecture, you can find the slides on Ilias.
 * [x] Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
 * [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
 
