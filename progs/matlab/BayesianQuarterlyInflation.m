@@ -72,7 +72,7 @@ for j = 1:R
     end
 end
 
-%% plot histograms
+%% plot priors, histograms and kernel density estimate of marginal posteriors
 x1 = -3:.1:3;
 x2 = 0:.01:1;
 c_prior = normpdf(x1,theta0(1),Sigma0(1,1));
@@ -80,33 +80,51 @@ theta1_prior = normpdf(x1,theta0(2),Sigma0(2,2));
 theta2_prior = normpdf(x1,theta0(3),Sigma0(3,3));
 sigmau2_prior = 1./gampdf(x2,s0,1/v0);
 
-figure('name','Marginal Posterior Distributions');
+figure('name','Marginal Posterior Distributions','units','normalized','outerposition',[0 0.1 1 0.9]);
 
+% Constant (c)
 subplot(2,2,1)
-histogram(out1(1,:),50,'Normalization','pdf');
+histogram(out1(1,:),50,'Normalization','pdf', 'FaceColor', '#AEC7E8');
 hold on;
-plot(x1,c_prior);
+[f, xi] = ksdensity(out1(1,:));
+plot(xi, f, 'LineWidth', 2, 'Color', '#1F77B4'); % Kernel density estimate
+plot(x1, c_prior, 'LineWidth', 2, 'Color', 'r');
 axis tight
-%xlim([-0.1,0.5]);
 title('Constant (c)')
+legend('Posterior Histogram', 'Posterior KDE', 'Prior', 'Location', 'Best')
 
+% AR(1) coefficient (\phi_1)
 subplot(2,2,2)
-histogram(out1(2,:),50,'Normalization','pdf');
+histogram(out1(2,:),50,'Normalization','pdf', 'FaceColor', '#AEC7E8');
 hold on;
-plot(x1,theta1_prior);
+[f, xi] = ksdensity(out1(2,:));
+plot(xi, f, 'LineWidth', 2, 'Color', '#1F77B4'); % Kernel density estimate
+plot(x1, theta1_prior, 'LineWidth', 2, 'Color', 'r');
 axis tight
 title('AR(1) coefficient (\phi_1)')
+legend('Posterior Histogram', 'Posterior KDE', 'Prior', 'Location', 'Best')
 
+% AR(2) coefficient (\phi_2)
 subplot(2,2,3)
-histogram(out1(3,:),50,'Normalization','pdf');
+histogram(out1(3,:),50,'Normalization','pdf', 'FaceColor', '#AEC7E8');
 hold on;
-plot(x1,theta2_prior);
+[f, xi] = ksdensity(out1(3,:));
+plot(xi, f, 'LineWidth', 2, 'Color', '#1F77B4'); % Kernel density estimate
+plot(x1, theta2_prior, 'LineWidth', 2, 'Color', 'r');
 axis tight
 title('AR(2) coefficient (\phi_2)')
+legend('Posterior Histogram', 'Posterior KDE', 'Prior', 'Location', 'Best')
 
+% Error variance (\sigma_u^2)
 subplot(2,2,4)
-histogram(out2(1,:),50,'Normalization','pdf');
+histogram(out2(1,:),50,'Normalization','pdf', 'FaceColor', '#AEC7E8');
 hold on;
-plot(x2,sigmau2_prior);
+[f, xi] = ksdensity(out2(1,:), 'Support', 'positive');
+plot(xi, f, 'LineWidth', 2, 'Color', '#1F77B4'); % Kernel density estimate
+plot(x2, sigmau2_prior, 'LineWidth', 2, 'Color', 'r');
 axis tight
-title('error variance (\sigma_u^2)')
+title('Error variance (\sigma_u^2)')
+legend('Posterior Histogram', 'Posterior KDE', 'Prior', 'Location', 'Best')
+
+% Adjustments for overall figure aesthetics
+set(gcf, 'Color', 'w'); % Set figure background to white
