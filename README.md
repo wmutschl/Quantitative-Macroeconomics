@@ -279,6 +279,27 @@ Familiarize yourself with
 </details>
 
 
+<details>
+  <summary> Week 14: Solving DSGE models</summary>
+
+### Goals
+
+* understand the first-order perturbation solution to DSGE models
+* apply it to the basic New Keynesian model
+
+
+### To Do
+
+* [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_13.pdf) and write down all your questions
+* [x] Read Fernandez-Villaverde, Rubio-Ramirez, and Schorfheide (2016, Ch.1) and Torres (2013, Ch. 1).
+* [x] Read EITHER Gali (2015, Ch. 3) OR Heijdra (2017, Ch. 9) OR Romer (2019, Ch. 7) OR Woodford (2003, Ch. 3) OR Walsh (2017, Ch. 8)
+* [x] Watch [Solving DSGE models with first-order perturbation: what Dynare does](https://mutschler.eu/dynare/perturbation/first-order-theory/)
+* [x] Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
+* [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
+
+</details>
+
+
 ## Content
 
 We cover modern theoretical macroeconomics (the study of aggregated variables such as economic growth, unemployment and inflation by means of structural macroeconomic models) and combine it with econometric methods (the application of formal statistical methods in empirical economics). We focus on the quantitative aspects and methods for solving and estimating the most prominent model classes in macroeconomics: Structural Vector Autoregressive (SVAR) and Dynamic Stochastic General Equilibrium (DSGE) models. Using these two model strands, the theoretical and methodological foundations of quantitative macroeconomics is taught. The students are thus enabled to understand the analyses and forecasts of public (universities, central banks, economic research institutes) as well as private (business banks, political consultations) research departments, but also to derive and empirically evaluate their own structural macroeconomic models.
