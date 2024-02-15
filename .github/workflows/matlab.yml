@@ -86,3 +86,10 @@ jobs:
             cd("progs/matlab")
             BlanchardQuahLR
             RWZSRLR
+      - name: Run week 10 scripts
+        uses: matlab-actions/run-command@v1
+        with:
+          command: |
+            cd("progs/matlab")
+            bootstrappingStdIRFs_RWZSRLR
+            gali1992
