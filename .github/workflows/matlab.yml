@@ -105,3 +105,10 @@ jobs:
           command: |
             cd("progs/matlab")
             BVARZLB_run
+      - name: Run week 13 scripts
+        uses: matlab-actions/run-command@v1
+        with:
+          command: |
+            cd("progs/matlab")
+            rbcLogutilSSTest
+            rbcSSTest

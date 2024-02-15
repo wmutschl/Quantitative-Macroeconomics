@@ -37,3 +37,15 @@ week_*_solution.tex
 progs/matlab/BVARZLB_results_noZLB.log
 
 progs/matlab/BVARZLB_results_withZLB.log
+
+progs/dynare/\+rbcCES/
+
+progs/dynare/\+rbcLogutil/
+
+progs/dynare/rbcCES/
+
+progs/dynare/rbcLogutil/
+
+progs/dynare/rbcCES.log
+
+progs/dynare/rbcLogutil.log
