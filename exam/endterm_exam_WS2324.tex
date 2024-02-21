@@ -18,8 +18,10 @@
 \begin{document}
 	
 \title{Quantitative Macroeconomics}
-\author{Endterm Exam}
+\author{Endterm Exam\\Version 1.1}
 \date{Winter 2023/2024}
+
+
 \maketitle
 
 \section*{General information}
@@ -35,6 +37,15 @@
 	\item All students must work on their own, please also give your student ID number and the name of the module you want to earn credits for.
 	\item It is advised to regularly check Ilias and your emails in case of urgent updates.
 	\item If there are any questions, do not hesitate to contact Willi Mutschler.
+\end{itemize}
+
+\section*{Changelog}
+
+\begin{itemize}
+	\item Version 1.1
+	\begin{itemize}
+		\item Fixed notation in initialization step of Kalman filter to $\hat{y}_{1|0}$ and $\Sigma_{1|0}$ instead of $\hat{y}_{0|-1}$ and $\Sigma_{0|-1}$.
+	\end{itemize}
 \end{itemize}
 
 \newpage
@@ -184,8 +195,8 @@ where \(\hat{y}_t = y_t - \bar{y}\).
 \paragraph{Hints:}
 In the lecture we have derived the necessary steps to implement the Kalman filter.
 \begin{itemize}
-\item Initialize $\hat{y}_{0|-1}=0$ and $\Sigma_{0|-1}$ as the solution to the Lyapunov equation:
-$$\Sigma_{0|-1} = g_y \Sigma_{0|-1} g_y' + g_u \Sigma_u g_u'$$
+\item Initialize $\hat{y}_{1|0}=0$ and $\Sigma_{1|0}$ as the solution to the Lyapunov equation:
+$$\Sigma_{1|0} = g_y \Sigma_{1|0} g_y' + g_u \Sigma_u g_u'$$
 Hint: You might want to use the auxiliary function \texttt{dlyapdoubling(gy,gu*SIGu*gu')} to solve this equation.
 \item For $t=1,...,T$:
 \begin{itemize}
