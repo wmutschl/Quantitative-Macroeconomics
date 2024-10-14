@@ -8,7 +8,7 @@ on:
 
 jobs:
   dynare_6_2_matlab_r2024b_ubuntu:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
