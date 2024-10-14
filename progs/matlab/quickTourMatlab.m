@@ -11,8 +11,8 @@ x = [-1; 0; 1; 4; 9; 2; 1; 4.5; 1.1; -0.9];
 y = [1, 1, 2, 2, 3, 3, 4, 4, 5, nan]';
 
 % 2
-length(x)==length(y)
-size(x,1)==size(y,1)
+length(x) == length(y)
+size(x,1) == size(y,1)
 
 % 3
 x < y
@@ -32,18 +32,18 @@ any(y>0)
 % 7
 x+y
 try
-    x*y
-catch
-    disp(lasterr)
+  x*y
+catch ME
+    disp(ME.message);
 end
-x*y'
-x'*y
-y/x
-x/y
+x * y'
+x' * y
+y / x
+x / y
 
 % 8
-x.*y
-y./x
+x .* y
+y ./ x
 
 % 9
 log(x)

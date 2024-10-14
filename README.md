@@ -1,44 +1,48 @@
-[![Build LaTeX](../../actions/workflows/latex.yml/badge.svg)](../../actions/workflows/latex.yml)
-[![Run MATLAB](../../actions/workflows/matlab.yml/badge.svg)](../../actions/workflows/matlab.yml)
+![Build LaTeX](../../actions/workflows/latex.yml/badge.svg)![Dynare 6.2 MATLAB R2024b Windows](../../actions/workflows/dynare-6.2-matlab-r2024b-windows.yml/badge.svg)![Dynare 6.2 MATLAB R2024b MacOS](../../actions/workflows/dynare-6.2-matlab-r2024b-macos.yml/badge.svg)![Dynare 6.2 MATLAB R2024b Ubuntu](../../actions/workflows/dynare-6.2-matlab-r2024b-ubuntu.yml/badge.svg)
+
 # Quantitative Macroeconomics
 
-These are my course materials for the graduate course on Quantitative Macroeconomics taught at the University of Tübingen.
-
-The compiled PDF materials are available under [Releases](https://github.com/wmutschl/Quantitative-Macroeconomics/releases) (make sure to click *Show all assets*).
+These are my course materials for a graduate course on Quantitative Macroeconomics taught at the University of Tübingen.
+The compiled PDF materials are available under [Releases](https://github.com/wmutschl/Computational-Macroeconomics/releases) (make sure to click *Show all assets*).
 
 Please feel free to use this for teaching or learning purposes; however, taking into account the [GPL 3.0 license](https://choosealicense.com/licenses/gpl-3.0/).
 
 ## Schedule with To-Do Lists
 
 <details>
-  <summary>Week 1: Introductions</summary>
+<summary>Week 1: Introductions</summary>
 
 ### Goals
 
-* understand what Quantitative Macroeconomics is about
+* understand the scope and topics of *Quantitative Macroeconomics*
 * decide whether you want to take the course
-* prepare your computer for the course with MATLAB or Octave
-* do your first steps in MATLAB or Octave
+* prepare your computer for the course with MATLAB (or Octave) and Dynare
+* do your first steps in MATLAB (or Octave)
 * (optionally) install GitKraken and do your first steps with git
 
 ### To Do
 
-* [x] read the general course information.
-* [x] have a look at the [exercises for week 1](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_1.pdf); we will do them together in class
-* [x] prepare your computer
-  * [x] install MATLAB R2023b following [this guide](https://uni-tuebingen.de/einrichtungen/zentrum-fuer-datenverarbeitung/dienstleistungen/clientdienste/software/matlab-einzelplatzlizenz/) if you are a student of the University of Tübingen
-  * [x] watch [Introduction to MATLAB](https://youtu.be/_CbLr11aeQ4)
+* [x] read the general course information on [Ilias](https://ovidius.uni-tuebingen.de)
+* [x] watch the introductory videos (on YouTube)
+  * [x] [Introduction to Quantitative Macroeconomics](https://youtu.be/nT9vkWv1AS8)
+  * [x] [Introduction to MATLAB](https://youtu.be/_CbLr11aeQ4)
+* [x] prepare your computer: MATLAB (or Octave) and Dynare
+  * [x] install MATLAB R2024b following [this guide](https://uni-tuebingen.de/einrichtungen/zentrum-fuer-datenverarbeitung/dienstleistungen/clients/software/matlab-einzelplatzlizenz/) if you are a student of the University of Tübingen. Please also install the following toolboxes: Econometrics Toolbox, Global Optimization Toolbox, Optimization Toolbox, Parallel Computing Toolbox, Statistics and Machine Learning Toolbox, Symbolic Math Toolbox. As an alternative to MATLAB you can also install Octave following [this guide](https://octave.org/download).
+  * [x] install Dynare 6.2 following [this guide](https://www.dynare.org/resources/quick_start/)
   * [x] (optionally) create an account on [GitHub.com](https://github.com/signup)
   * [x] (optionally) sign up for the [GitHub Students Developer Pack](https://education.github.com/pack) to get a free Pro license for GitKraken (among other things)
-  * [x] (optionally) install the [GitKraken Client](https://gitkraken.com/download)  
+  * [x] (optionally) install the [GitKraken Client](https://gitkraken.com/download)
+* [x] do [exercises for week 1](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_1.pdf)
 * [x] write down all your questions
 * [x] [schedule an online meeting](https://schedule.mutschler.eu) with me
   * [x] put *"I am interested in this course"* under *"What is the meeting about?"*
   * [x] check your emails and cancel the meeting again using the link in the email
   * [x] now you know how easy it is to schedule a meeting with me :-)
-* [x] participate in the Q&A sessions
+* [x] participate in the Q&A sessions if you need assistance
 
 </details>
+
+<!---
 
 <details>
   <summary>Week 2: Time series data and fundamental concepts</summary>
@@ -316,12 +320,11 @@ Familiarize yourself with
 
 </details>
 
+\-->
 
 ## Content
 
 We cover modern theoretical macroeconomics (the study of aggregated variables such as economic growth, unemployment and inflation by means of structural macroeconomic models) and combine it with econometric methods (the application of formal statistical methods in empirical economics). We focus on the quantitative aspects and methods for solving and estimating the most prominent model classes in macroeconomics: Structural Vector Autoregressive (SVAR) and Dynamic Stochastic General Equilibrium (DSGE) models. Using these two model strands, the theoretical and methodological foundations of quantitative macroeconomics is taught. The students are thus enabled to understand the analyses and forecasts of public (universities, central banks, economic research institutes) as well as private (business banks, political consultations) research departments, but also to derive and empirically evaluate their own structural macroeconomic models.
-
-As Quantitative Macroeconomics is highly computational, the course is interactive and *hands-on*, so there is no formal separation between the lecture and the exercise class. Each topic begins with a theoretical input and presentation of methods. These concepts are practiced directly thereafter by means of exercises and implemented on the computer in MATLAB and Dynare.
 
 ## Topics
 
@@ -343,7 +346,7 @@ As Quantitative Macroeconomics is highly computational, the course is interactiv
 - Local Projections
 
 #### Dynamic Stochastic General Equilibrium (DSGE) Models
-- Algebra of RBC and New Keynesian Models
+- Algebra of New Keynesian Models
 - First-order perturbation of DSGE models
 - Generalized/Simulated Method of Moments
 - Kalman Filter and Smoother
