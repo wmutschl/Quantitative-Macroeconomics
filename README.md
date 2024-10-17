@@ -32,7 +32,7 @@ Please feel free to use this for teaching or learning purposes; however, taking 
   * [x] (optionally) create an account on [GitHub.com](https://github.com/signup)
   * [x] (optionally) sign up for the [GitHub Students Developer Pack](https://education.github.com/pack) to get a free Pro license for GitKraken (among other things)
   * [x] (optionally) install the [GitKraken Client](https://gitkraken.com/download)
-* [x] do [exercises for week 1](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_1.pdf)
+* [x] do [exercises 1-3 for week 1](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_1.pdf), exercise 4 is optional
 * [x] write down all your questions
 * [x] [schedule an online meeting](https://schedule.mutschler.eu) with me
   * [x] put *"I am interested in this course"* under *"What is the meeting about?"*
