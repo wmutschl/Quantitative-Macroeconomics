@@ -1,9 +1,9 @@
 \begin{enumerate}
-\item A time series is a collection of observations $Y_t$ indexed by the date of each observation $t$.
-For simplicity often one denotes $t=0,1,2,...,T$,
-  then $\{Y_t\}_0^T = \{Y_0,Y_1,Y_2,...,Y_T\}$ is a sequence of random variables ordered in time
-  (each $Y_t$ is a random variable), which we call a stochastic process.
-Sometimes we rely on the concept of an infinite sample and consider $\{Y_t\}_{t=-\infty}^\infty$ or simply $\{Y_t\}$.
+\item A time series is a collection of observations \(Y_t\) indexed by the date of each observation \(t\).
+For simplicity often one denotes \(t=0,1,2,\ldots ,T\),
+  then \( {\{Y_t\}}_0^T = \{Y_0,Y_1,Y_2,\ldots ,Y_T\} \) is a sequence of random variables ordered in time
+  (each \(Y_t\) is a random variable), which we call a stochastic process.
+Sometimes we rely on the concept of an infinite sample and consider \( {\{Y_t\}}_{t=-\infty}^\infty \) or simply \( \{Y_t\} \).
 A stochastic process can have many outcomes, due to its randomness,
   and a single outcome of a stochastic process is called a sample function or realization.
 A time series model assigns a joint probability distribution to the stochastic process.
@@ -56,7 +56,9 @@ So it is not always better to have a larger sample size if is uninformative.
         \item Are house prices in line with their fundamentals? Is there a bubble?
     \end{itemize}
 \item Aggregation of higher frequencies to lower frequencies is straightforward;
-  that is, for stock variables (such as capital or debt) we simply take the value observed, i.e. $k_t^{Q1} = k_t^{m3}$,
-  whereas for flow variables (such as GDP) we can take the mean: $y_t^{Q1} = 1/3 (y_t^{m1}+y_t^{m2}+y_t^{m3})$.
-Disaggregation is much more difficult and we need to use tools like interpolation or spline functions etc. $\rightarrow$ not straightforward!
+  that is, for stock variables (such as capital or debt) we simply take the value observed, i.e.\
+  \(k_t^{Q1} = k_t^{m3}\),
+  whereas for flow variables (such as GDP) we can take the mean: \(y_t^{Q1} = 1/3 (y_t^{m1}+y_t^{m2}+y_t^{m3})\).
+Disaggregation is much more difficult and we need to use tools like interpolation or spline functions etc.\
+  \(\rightarrow \) not straightforward!
 \end{enumerate}

@@ -18,7 +18,7 @@
         \end{itemize}
     \item US-centric sources: 
         \begin{itemize}
-            \item FRED database: User-friendly database of U.S. and \textbf{international} time series data maintained by the Federal Reserve Bank of St. Louis
+            \item FRED database: User-friendly database of U.S. and \textbf{international} time series data maintained by the Federal Reserve Bank of St.\ Louis
             \item Bureau of Labor Statistics (BLS): publishes data on unemployment and consumer prices, as well as a host of data related to the U.S. labor force
             \item Bureau of Economic Analysis (BEA): compiles extensive data on gross domestic product (GDP), personal income, and corporate profits
             \item National Bureau of Economic Research (NBER): hosts data covering the U.S. economy, industry, and international trade
@@ -27,7 +27,7 @@
     \item Worldwide:
         \begin{itemize}
             \item Central or national banks maintain many macroeconomic statistics
-            \item World Bank maintains many large datasets across most countries,
+            \item World Bank maintains many datasets across most countries,
               including the World Development Indicators (WDI) database
               and the Global Financial Development Database (GFDD).
             While they maintain an extensive set of data series with expansive country coverage,
@@ -44,21 +44,21 @@
             \item DB NOMICS
             \item Datastream and EIKON
             \item Macrobond
-        \end{itemize}		
+        \end{itemize}
 	\end{itemize}
 \item It all depends on the analysis you want to conduct,
-  i.e. whether you need country-, sector- or firm-specific data.
+  i.e.\ whether you need country-, sector- or firm-specific data.
 Try to get a name for a category the dataset might belong to.
 Tipp: Go through the list of Providers on DBNomics to see which categories there are.
 Our World in Data also tends to give good ideas where to get data from.
 Always try official sources first,
-  i.e. national statistical offices or central banks,
-  then large international organizations, i.e. World Bank, OECD or BIS.
+  i.e.\ national statistical offices or central banks,
+  then large international organizations, i.e.\ World Bank, {OECD} or {BIS}.
 Also when reading other papers, have a close look which sources have been used.
 \item
-The data was downloaded on October 26, 2022 from FRED and saved into a CSV (comma-seperated values) file \texttt{NorwayGDP.csv}.
+The data was downloaded on October 26, 2022 from FRED and saved into a CSV (comma-separated values) file \texttt{NorwayGDP.csv}.
 The shortcode is \texttt{CLVMNACSCAB1GQNO}: Real Gross Domestic Product for Norway, Millions of Chained 2010 National Currency, Quarterly, Seasonally Adjusted.
-The time period included is 1978-01-01 to 2022-04-01.
+The time period included is {1978--01--01} to {2022--04--01}.
 Use MATLAB's \texttt{Import Data} feature and select the columns and rows of the data.
 Edit the names of the variables and the input format of the dates;
   it is useful to tell MATLAB that the column for dates are actual dates,
@@ -69,24 +69,21 @@ See the following script file:
 \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/visualizingTimeSeriesDataNorway.m}
 Remarks:
 \begin{itemize}
-    \item A growth rate can be approximated using logs $$\frac{Y_t - Y_{t-p}}{Y_{t-p}} \approx log \left(\frac{Y_t}{Y_{t-p}}\right)$$
-      where $p=1$ would correspond to one period lagged. If we want to compute year-on-year rates we would set $p=4$ for quarterly data.
-    \item Normal distribution is not a very good choice, as we have asymmetry and some probability mass in the tails of the distribution.		
+\item A growth rate can be approximated using logs
+\[\frac{Y_t - Y_{t-p}}{Y_{t-p}} \approx \log \left(\frac{Y_t}{Y_{t-p}}\right)\]
+where \(p=1\) would correspond to one period lagged. If we want to compute year-on-year rates we would set \(p=4\) for quarterly data.
+\item Normal distribution is not a very good choice, as we have asymmetry and some probability mass in the tails of the distribution.
 \end{itemize}
 \item See above for the code. The distributions differ significantly depending on the subsample considered.
 The assumption of normality is violated; thus, we are faced with skewed distributions and have to deal with possible outliers.
-This is very typical for macroeconomic time series data, see e.g. \textcite{Ascari.Fagiolo.Roventini_2015_FatTailDistributionsBusinessCycle} or \textcite{Fagiolo.Napoletano.Roventini_2008_AreOutputGrowthrate}.
+This is very typical for macroeconomic time series data, see e.g.\ \textcite{Ascari.Fagiolo.Roventini_2015_FatTailDistributionsBusinessCycle} or \textcite{Fagiolo.Napoletano.Roventini_2008_AreOutputGrowthrate}.
 However, we will see that during the course we will still keep the normality assumption;
   so keep this in mind for later whether this is correct or not.
 \item Optional:
 \begin{itemize}
-    \item Clone the repository.
-    \item Download data for e.g. Germany and put that into \texttt{data/GermanyGDP.csv}
-    \item Create a MATLAB script with your codes under \texttt{progs/matlab/visualizingTimeSeriesDataGermany.m}
-    \item Uncomment the line at the end of \texttt{exercises/visualizing\_time\_series\_data\_solution.inc},
-    so that your script is included in the compiled PDF.    
-    \item Do a pull request on GitHub.
+\item Clone the repository.
+\item Download data for e.g. Germany and put that into \texttt{data/GermanyGDP.csv}
+\item Create a MATLAB script with your codes under\\\texttt{progs/matlab/visualizingTimeSeriesDataGermany.m}
+\item Do a pull request on GitHub.
 \end{itemize}
-%% Uncomment (i.e. remove the %) from the following line for your pull request, change the names accordingly.
-%\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/visualizingTimeSeriesDataGermany.m}
 \end{enumerate}

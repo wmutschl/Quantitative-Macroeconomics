@@ -42,7 +42,6 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 
 </details>
 
-<!---
 
 <details>
   <summary>Week 2: Time series data and fundamental concepts</summary>
@@ -66,6 +65,9 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 * [x] (optionally) checkout the short [Beginner Git Video Tutorials from GitKraken](https://www.gitkraken.com/learn/git/tutorials#beginner)
 
 </details>
+
+<!---
+
 
 <details>
   <summary>Week 3: Dependent time series data and the autoregressive process</summary>

@@ -42,3 +42,14 @@ jobs:
             addpath("Dynare-6.2-arm64/matlab");
             cd("progs/matlab");
             quickTourMatlab;
+
+      - name: Run week 2 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("Dynare-6.2-arm64/matlab");
+            cd("progs/matlab");
+            visualizingTimeSeriesDataNorway;
+            definitionFrequenciesTimeSeriesData;
+            whiteNoisePlots;
+            plotsAR1;
