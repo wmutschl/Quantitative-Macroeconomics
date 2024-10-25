@@ -55,10 +55,14 @@ So it is not always better to have a larger sample size if is uninformative.
         \end{itemize}
         \item Are house prices in line with their fundamentals? Is there a bubble?
     \end{itemize}
-\item Aggregation of higher frequencies to lower frequencies is straightforward;
+\item
+Stock variables represent a quantity at a specific point in time. Examples include capital stock, debt levels, and money supply on a particular date.
+Flow variables, in contrast, are measured over a period and represent the accumulation or change during that time, such as GDP, income, or expenditure.
+Aggregation of higher frequencies to lower frequencies is straightforward;
   that is, for stock variables (such as capital or debt) we simply take the value observed, i.e.\
   \(k_t^{Q1} = k_t^{m3}\),
-  whereas for flow variables (such as GDP) we can take the mean: \(y_t^{Q1} = 1/3 (y_t^{m1}+y_t^{m2}+y_t^{m3})\).
+  whereas for flow variables we either take the sum (such as GDP: \(y_t^{Q1} = 1/3 (y_t^{m1}+y_t^{m2}+y_t^{m3})\))
+  or the average (such as inflation: \(\pi_t^{Q1} = 1/3 (\pi_t^{m1}+\pi_t^{m2}+\pi_t^{m3})\)).
 Disaggregation is much more difficult and we need to use tools like interpolation or spline functions etc.\
   \(\rightarrow \) not straightforward!
 \end{enumerate}
