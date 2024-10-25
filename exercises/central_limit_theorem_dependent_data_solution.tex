@@ -1,5 +1,7 @@
 \begin{enumerate}
-\item We usually consider the \emph{Lindeberg-Levy Central Limit Theorem} for identically and independently (iid) random variables
+
+\item
+We usually consider the \emph{Lindeberg-Levy Central Limit Theorem} for identically and independently (iid) random variables
   with finite mean \( \mu \) and finite variance \(\sigma_Y^2\).
 Then the \emph{Lindeberg-Levy Central Limit Theorem} establishes the distribution of the sample mean \(\overline{Y}_T\) for a growing sample size:
 \begin{align*}
@@ -16,7 +18,7 @@ The central limit theorem is closely related to the LLN,
   i.e.\ the distribution of the sample mean.
 More formally, a sequence \(\bar{Y}_{1},\bar{Y}_{2},\ldots \) of random variables with distribution functions
 \(F_{1},F_{2},\ldots \) converges \textbf{in distribution (weakly; in law)}
-to a variable \(\mu\) with distribution function \(F\), if
+to a variable \(\mu \) with distribution function \(F\), if
 \begin{equation*}
 \lim_{T\rightarrow \infty }F_{T}(x)=F(x)
 \end{equation*}
@@ -24,113 +26,134 @@ for all \(x\in \mathbb{R}\) where \(F(x)\) is continuous.
 Typically, we use the following notation for this:
 \begin{equation*}
 \bar{Y}_{T}\overset{d}{\rightarrow }\mu
-\end{equation*}			
+\end{equation*}
 
 Unfortunately, the \emph{Lindeberg-Levy Central Limit Theorem} does not apply
-  for the AR(1) process as we have dependent and not iid data.
-For stationary AR(1) processes, we can however use similar central limit theorems
+  for the AR{(1)} process as we have dependent and not iid data.
+For stationary AR{(1)} processes, we can however use similar central limit theorems
   either for Martingale-Difference-processes or mixing processes.
-	
-\item First let's derive the expectation and variance of the AR(1) process with \(|\phi|<1\).
+
+\item
+First let's derive the expectation and variance of the AR{(1)} process with \(|\phi|<1\).
 For this, we use recursive substitution techniques given a starting value \(Y_0\):
 \begin{align*}
 Y_t = (1-\phi)(1+\phi+\phi^2+\cdots+\phi^T)\mu + \varepsilon_t + \phi \varepsilon_{t-1} + \phi^2 \varepsilon_{t-2} + \cdots + \phi^T \varepsilon_{t-T} + \phi^{T+1} Y_0
 \end{align*}
 Note that \(\lim_{T\rightarrow \infty} \phi^{T+1} = 0\)
-  and \(\lim_{T\rightarrow \infty} \sum_{j=0}^\infty \phi^j = \frac{1}{1-\phi}\), since $|\phi|<1$.
-The AR(1) process with \(|\phi|<1\) can therefore be equally represented by
+  and \(\lim_{T\rightarrow \infty} \sum_{j=0}^\infty \phi^j = \frac{1}{1-\phi}\), since \(|\phi|<1\).
+The AR{(1)} process with \(|\phi|<1\) can therefore be equally represented by
 \begin{align*}
 Y_t = \mu + \sum_{j=1}^\infty \phi^j \varepsilon_{t-j}
 \end{align*}
 Its expectation and variance are then equal to
 \begin{align*}
-E[Y_t] &= \mu + \sum_{j=1}^\infty \phi^j E[\varepsilon_{t-j}] = \mu\\
-Var[Y_t] &= \sum_{j=1}^\infty (\phi^j)^2 Var[\varepsilon_{t-j}] = \sum_{j=1}^\infty (\phi^2)^j \sigma_\varepsilon^2 = \frac{\sigma_\varepsilon^2}{1-\phi^2}
+E[Y_t] &= \mu + \sum_{j=1}^\infty \phi^j E[\varepsilon_{t-j}] = \mu
+\\
+Var[Y_t] &= \sum_{j=1}^\infty {(\phi^j)}^2 Var[\varepsilon_{t-j}] = \sum_{j=1}^\infty {(\phi^2)}^j \sigma_\varepsilon^2 = \frac{\sigma_\varepsilon^2}{1-\phi^2}
 \end{align*}
 where we use the white noise property of \(\varepsilon_t\).
 
-\item Let's derive the asymptotic distribution of the sample mean:
+\item
+Let's derive the asymptotic distribution of the sample mean:
+
 \begin{enumerate}
-    \item Due to the white noise assumption on \(\varepsilon_t\),
-      we can use the Lindeberg-Levy central limit theorem such that
-    \begin{equation*}
-    \sqrt{T} \left(\frac{1}{T} \sum_{t=1}^T \varepsilon_t \right) = \frac{1}{\sqrt{T}} \sum_{t=1}^T \varepsilon_t  \overset{d}{\rightarrow} U_\varepsilon \sim N(0,\sigma_\varepsilon^2)
-    \end{equation*}
-    \item Let's have a look at \(\frac{1}{\sqrt{T}} \sum_{t=1}^T \varepsilon_t\):
-    \begin{align*}
-    \frac{1}{\sqrt{T}} \sum_{t=1}^T \varepsilon_t
-    &= \frac{1}{\sqrt{T}} \sum_{t=1}^T \left[(Y_t-\mu)-\phi(Y_{t-1}-\mu)\right]\\
-    &= \frac{1}{\sqrt{T}} \left[\sum_{t=1}^T (Y_t-\mu)- \phi\sum_{t=1}^T(Y_{\color{red}{t-1}}-\mu)\right]\\
-    &= \frac{1}{\sqrt{T}} \left[\sum_{t=1}^T (Y_t-\mu)- \phi\left[\sum_{t=1}^T(Y_{\color{red}{t}}-\mu)-\color{red}{(Y_T - Y_0)}\right]\right]\\
-    &= \sqrt{T} \left[\frac{1}{T}\sum_{t=1}^T (Y_t-\mu)- \phi\left[\frac{1}{T}\sum_{t=1}^T(Y_{t}-\mu)-\left(\frac{Y_T - Y_0}{T}\right)\right]\right]\\
-    &= \sqrt{T} \left[\hat{\mu}-\mu- \phi\left[\hat{\mu}-\mu-\left(\frac{Y_T - Y_0}{T}\right)\right]\right]\\
-    &= \sqrt{T}\left[(1-\phi)\left(\hat{\mu}-\mu\right) + \phi\left(\frac{Y_T - Y_0}{T}\right)\right]
-    \end{align*}
-    \item Using the definition of the probability limit, i.e.
-    \begin{align*}
-    \textsl{plim}\left[\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right] = 0
-    \end{align*}
-    is shorthand notation for
-    \begin{align*}
-    \lim_{T\rightarrow \infty} Pr\left(\left|\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right|> \delta\right) = 0
-    \end{align*}
-    We are going to show this by using Tchebychev's Inequality.
-    That is, according to the inequality we have:
-    \begin{align*}
-    Pr\left(\left|\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right|> \delta\right) \leq \frac{1}{\delta^2} var\left[\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right]
-    \end{align*}
-    for any \(\delta>0\).
-    Let's have a look at \(var\left[\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right]\):
-    \begin{align*}
-    var\left[\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right]
-    &= \frac{1}{T}\left(\frac{\phi}{1-\phi}\right)^2 Var[Y_T - Y_0]\\
-    &= \frac{1}{T}\left(\frac{\phi}{1-\phi}\right)^2 \left(Var[Y_T] + Var[Y_0] - 2 Cov[Y_T,Y_0]\right]\\
-    &= \frac{1}{T}\left(\frac{\phi}{1-\phi}\right)^2 \left[\frac{\sigma_\varepsilon^2}{1-\phi^2} + \frac{\sigma_\varepsilon^2}{1-\phi^2} - 2 Corr[Y_T,Y_0]\sqrt{\frac{\sigma_\varepsilon^2}{1-\phi^2}}\sqrt{\frac{\sigma_\varepsilon^2}{1-\phi^2}} \right]\\
-    &\leq \frac{1}{T}\left(\frac{\phi}{1-\phi}\right)^2 4 \left(\frac{\sigma_\varepsilon^2}{1-\phi^2}\right)
-    \end{align*}
-    since \(corr(Y_T,Y_0) \geq -1\).
-				
-    Thus for any \(\delta>0\), we have
-    \begin{align*}
-    Pr\left(\left|\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right|> \delta\right) \leq \frac{1}{\delta^2} \frac{1}{T}\left(\frac{\phi}{1-\phi}\right)^2 4 \left(\frac{\sigma_\varepsilon^2}{1-\phi^2}\right)
-    \end{align*}
-    In the limit for \(T\rightarrow \infty\) the right hand side converges to 0; hence:
-    \begin{align*}
-    \lim_{T\rightarrow \infty} Pr\left(\left|\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right|> \delta\right) = 0.
-    \end{align*}
-    or using our shorthand notation:
-    \begin{align*}
-      \textsl{plim}\left[\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right] = 0
-    \end{align*}
-    \item Now, let's go back to
-    \begin{align*}
-    \frac{1}{\sqrt{T}} \sum_{t=1}^T \varepsilon_t = \sqrt{T}\left[(1-\phi)\left(\hat{\mu}-\mu\right) + \phi\left(\frac{Y_T - Y_0}{T}\right)\right]
-    \end{align*}
-    Let's divide by \((1-\phi)\)
-    \begin{align*}
-    \frac{\frac{1}{\sqrt{T}} \sum_{t=1}^T \varepsilon_t}{1-\phi} & = \sqrt{T}\left(\hat{\mu}-\mu\right) + \frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)
-    \end{align*}
-				
-		For the left-hand-side we have
-		\begin{align*}
-		\frac{\frac{1}{\sqrt{T}} \sum_{t=1}^T \varepsilon_t}{1-\phi} \overset{d}{\rightarrow} \tilde{U_\varepsilon} \sim N\left(0,\frac{\sigma_\varepsilon^2}{(1-\phi)^2}\right)
-		\end{align*}
-			 
-		This is also the distribution of the right-hand side.
-    However, in the limit, the right-hand side actually simplifies
-      as we just derived that \(\textsl{plim}\left[\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right] = 0\).
-    Therefore:
-		\begin{align*}
-		\sqrt{T}\left(\hat{\mu}-\mu\right) \overset{d}{\rightarrow} \tilde{U} \sim N\left(0,\frac{\sigma_\varepsilon^2}{(1-\phi)^2}\right)
-		\end{align*}
-		and we're done.
-    We have just derived the distribution to which the sample mean \(\hat{\mu} = \overline{Y}_T\) of an AR(1) process converges to asymptotically.
-    Note that the required standardization is different than the Lindeberg-Levy central limit theorem would suggest.
-    The correct standardized variable to consider is:
-		\begin{align*}
-		Z_T = \sqrt{T}\frac{\hat{\mu}-\mu}{\sigma_Z} \overset{d}{\rightarrow} U \sim N(0,1)
-		\end{align*}
-    where we need to set \(\sigma_Z^2 = \frac{\sigma_\varepsilon^2}{(1-\phi)^2}\) to get convergence to the standard normal distribution.
-	\end{enumerate}
-\item \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily]{progs/matlab/CentralLimitDependentData.m}
+  \item
+  Due to the white noise assumption on \(\varepsilon_t\),
+    we can use the Lindeberg-Levy central limit theorem such that
+  \begin{equation*}
+  \sqrt{T} \left(\frac{1}{T} \sum_{t=1}^T \varepsilon_t \right) = \frac{1}{\sqrt{T}} \sum_{t=1}^T \varepsilon_t  \overset{d}{\rightarrow} U_\varepsilon \sim N(0,\sigma_\varepsilon^2)
+  \end{equation*}
+  \item
+  Let's have a look at \(\frac{1}{\sqrt{T}} \sum_{t=1}^T \varepsilon_t\):
+  \begin{align*}
+  \frac{1}{\sqrt{T}} \sum_{t=1}^T \varepsilon_t
+  &= \frac{1}{\sqrt{T}} \sum_{t=1}^T \left[(Y_t-\mu)-\phi(Y_{t-1}-\mu)\right]
+  \\
+  &= \frac{1}{\sqrt{T}} \left[\sum_{t=1}^T (Y_t-\mu)- \phi\sum_{t=1}^T(Y_{\color{red}{t-1}}-\mu)\right]
+  \\
+  &= \frac{1}{\sqrt{T}} \left[\sum_{t=1}^T (Y_t-\mu)- \phi\left[\sum_{t=1}^T(Y_{\color{red}{t}}-\mu)-\color{red}{(Y_T - Y_0)}\right]\right]
+  \\
+  &= \sqrt{T} \left[\frac{1}{T}\sum_{t=1}^T (Y_t-\mu)- \phi\left[\frac{1}{T}\sum_{t=1}^T(Y_{t}-\mu)-\left(\frac{Y_T - Y_0}{T}\right)\right]\right]
+  \\
+  &= \sqrt{T} \left[\hat{\mu}-\mu- \phi\left[\hat{\mu}-\mu-\left(\frac{Y_T - Y_0}{T}\right)\right]\right]
+  \\
+  &= \sqrt{T}\left[(1-\phi)\left(\hat{\mu}-\mu\right) + \phi\left(\frac{Y_T - Y_0}{T}\right)\right]
+  \end{align*}
+
+  \item
+  Using the definition of the probability limit, i.e.\
+  \begin{align*}
+  \textsl{plim}\left[\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right] = 0
+  \end{align*}
+  is shorthand notation for
+  \begin{align*}
+  \lim_{T\rightarrow \infty} \Pr\left(\left|\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right|> \delta\right) = 0
+  \end{align*}
+  We are going to show this by using Tchebychev's Inequality.
+  That is, according to the inequality we have:
+  \begin{align*}
+  \Pr\left(\left|\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right|> \delta\right) \leq \frac{1}{\delta^2} var\left[\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right]
+  \end{align*}
+  for any \(\delta>0\).
+  Let's have a look at \(var\left[\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right]\):
+  \begin{multline*}
+  var\left[\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right]
+  = \frac{1}{T}{\left(\frac{\phi}{1-\phi}\right)}^2 Var[Y_T - Y_0]
+  \\
+  = \frac{1}{T}{\left(\frac{\phi}{1-\phi}\right)}^2 \left(Var[Y_T] + Var[Y_0] - 2 Cov[Y_T,Y_0]\right)
+  \\
+  = \frac{1}{T}{\left(\frac{\phi}{1-\phi}\right)}^2 \left[\frac{\sigma_\varepsilon^2}{1-\phi^2} + \frac{\sigma_\varepsilon^2}{1-\phi^2} - 2 Corr[Y_T,Y_0]\sqrt{\frac{\sigma_\varepsilon^2}{1-\phi^2}}\sqrt{\frac{\sigma_\varepsilon^2}{1-\phi^2}} \right]
+  \\
+  \leq \frac{1}{T}{\left(\frac{\phi}{1-\phi}\right)}^2 4 \left(\frac{\sigma_\varepsilon^2}{1-\phi^2}\right)
+  \end{multline*}
+  since \(corr(Y_T,Y_0) \geq -1\).
+
+  Thus for any \(\delta>0\), we have
+  \begin{align*}
+  \Pr\left(\left|\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right|> \delta\right) \leq \frac{1}{\delta^2} \frac{1}{T}{\left(\frac{\phi}{1-\phi}\right)}^2 4 \left(\frac{\sigma_\varepsilon^2}{1-\phi^2}\right)
+  \end{align*}
+  In the limit for \(T\rightarrow \infty \) the right hand side converges to 0; hence:
+  \begin{align*}
+  \lim_{T\rightarrow \infty} \Pr\left(\left|\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right|> \delta\right) = 0.
+  \end{align*}
+  or using our shorthand notation:
+  \begin{align*}
+  \textsl{plim}\left[\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right] = 0
+  \end{align*}
+  
+  \item
+  Now, let's go back to
+  \begin{align*}
+  \frac{1}{\sqrt{T}} \sum_{t=1}^T \varepsilon_t = \sqrt{T}\left[(1-\phi)\left(\hat{\mu}-\mu\right) + \phi\left(\frac{Y_T - Y_0}{T}\right)\right]
+  \end{align*}
+  Let's divide by \((1-\phi)\)
+  \begin{align*}
+  \frac{\frac{1}{\sqrt{T}} \sum_{t=1}^T \varepsilon_t}{1-\phi} & = \sqrt{T}\left(\hat{\mu}-\mu\right) + \frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)
+  \end{align*}
+
+  For the left-hand-side we have
+  \begin{align*}
+  \frac{\frac{1}{\sqrt{T}} \sum_{t=1}^T \varepsilon_t}{1-\phi} \overset{d}{\rightarrow} \tilde{U_\varepsilon} \sim N\left(0,\frac{\sigma_\varepsilon^2}{{(1-\phi)}^2}\right)
+  \end{align*}
+
+  This is also the distribution of the right-hand side.
+  However, in the limit, the right-hand side actually simplifies
+    as we just derived that \(\textsl{plim}\left[\frac{\phi}{1-\phi}\left(\frac{Y_T - Y_0}{\sqrt{T}}\right)\right] = 0\).
+  Therefore:
+  \begin{align*}
+  \sqrt{T}\left(\hat{\mu}-\mu\right) \overset{d}{\rightarrow} \tilde{U} \sim N\left(0,\frac{\sigma_\varepsilon^2}{{(1-\phi)}^2}\right)
+  \end{align*}
+  and we're done.
+  We have just derived the distribution to which the sample mean \(\hat{\mu} = \overline{Y}_T\) of an AR{(1)} process converges to asymptotically.
+  Note that the required standardization is different than the Lindeberg-Levy central limit theorem would suggest.
+  The correct standardized variable to consider is:
+  \begin{align*}
+  Z_T = \sqrt{T}\frac{\hat{\mu}-\mu}{\sigma_Z} \overset{d}{\rightarrow} U \sim N(0,1)
+  \end{align*}
+  where we need to set \(\sigma_Z^2 = \frac{\sigma_\varepsilon^2}{{(1-\phi)}^2}\) to get convergence to the standard normal distribution.
+
+\end{enumerate}
+
+\item A possible script:
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/CentralLimitDependentData.m}
 \end{enumerate}

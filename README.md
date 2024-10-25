@@ -66,8 +66,6 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 
 </details>
 
-<!---
-
 
 <details>
   <summary>Week 3: Dependent time series data and the autoregressive process</summary>
@@ -81,13 +79,15 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 ### To Do
 
 * [x] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_2.pdf) and write down all your questions.
-* [x] read Lütkepohl (2004, Sec. 2.2, 2.3, 2.5.2), Lütkepohl (2005, Appendix C) and Bjørnland and Thorsrud (2015, Ch.1 and Ch.2); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
+* [x] read Lütkepohl (2004, Sec. 2.2, 2.3, 2.5.2) and Bjørnland and Thorsrud (2015, Ch.1 and Ch.2); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
 * [x] prepare exercise sheet 3: do exercises 1 and 3 at home, we'll do exercises 2 and 4 in class
 * [x] participate in the Q&A sessions with all your questions and concerns
 * [x] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
 * [x] (optionally) checkout the short [Intermediate Git Video Tutorials from GitKraken](https://www.gitkraken.com/learn/git/tutorials#intermediate)
 
 </details>
+
+<!---
 
 <details>
   <summary>Week 4: Ordinary Least Squares (OLS) and Maximum Likelihood (ML) estimation of the autoregressive process</summary>

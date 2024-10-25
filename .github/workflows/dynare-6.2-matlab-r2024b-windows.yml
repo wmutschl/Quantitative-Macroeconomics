@@ -44,3 +44,14 @@ jobs:
             definitionFrequenciesTimeSeriesData;
             whiteNoisePlots;
             plotsAR1;
+
+      - name: Run week 3 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("D:\hostedtoolcache\windows\dynare-6.0\matlab");
+            cd("progs/matlab");
+            acfPlots_run;
+            lawOfLargeNumbers;
+            lawOfLargeNumbersAR1;
+            centralLimitDependentData;

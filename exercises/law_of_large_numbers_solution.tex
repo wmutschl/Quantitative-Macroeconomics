@@ -1,5 +1,7 @@
 \begin{enumerate}
-\item In probability theory, the law of large numbers (LLN) is a theorem
+
+\item
+In probability theory, the law of large numbers (LLN) is a theorem
   that describes the result of performing the same experiment a large number of times
   (repetitions, trials, experiments, iterations, sample size).
 According to the LLN, the average of the results obtained from a large number of times
@@ -8,7 +10,7 @@ According to the LLN, the average of the results obtained from a large number of
 There are different laws of large numbers that differ in the underlying assumptions on the stochastic process.
 These laws are the cornerstones of asymptotic theory in statistics and econometrics.
 
-In this exercise, the LLN is about determining what happens to \(\overline{Y}_T\) as \(T\rightarrow\infty\)
+In this exercise, the LLN is about determining what happens to \(\overline{Y}_T\) as \(T\rightarrow\infty \)
   (note that \(\overline{Y}_T\) is a random variable).
 The LLN states that this series converges to the (unknown) expected value \(E[Y_t] = \mu \).
 More precisely, the strong LLN implies that at the limit, we can exactly determine \( \mu \),
@@ -17,55 +19,61 @@ More precisely, the strong LLN implies that at the limit, we can exactly determi
 
 Econometrically speaking:
 \begin{itemize}
-    \item Strong LLN means \textbf{almost-sure convergence}:\\
-    At some point adding more observation does not matter at all for the average,
-      \(\overline{Y}_T\) will be exactly equal to the expected value \(\mu \).
-    That is, the sequence \(\overline{Y}_{1},\overline{Y}_{2},\ldots \) of random variables
-      converges \textbf{almost surely} to the variable \(\mu \), if
-    \begin{align*}
-    \Pr\left( \left \{ \lim_{T\rightarrow \infty }\overline{Y}_{T}=\mu\right \} \right) =1
-    \end{align*}
-      or simply:
-    \begin{align*}
-    \overline{Y}_{T}\overset{a.s.}{\rightarrow }\mu
-    \end{align*}
-    This definition of convergence is not very important in Quantitative Macroeconomics.
-				
-    \item Weak LLN means that the sample mean \(\overline{Y}_T\) converges in probability to the population mean \(\mu \).
-    That is, the sequence \(\overline{Y}_{1},\overline{Y}_{2},\ldots \) of random variables
-      converges \textbf{in probability} to the variable \(\mu \), if
-    \begin{align*}
-    \lim_{T\rightarrow \infty }\Pr\left( |Y_{T}-\mu|<\delta \right) =1
-    \end{align*}
-    As \(T\rightarrow \infty \), the probability is approaching 1 very closely,
-      but typically it will not be exactly equal to 1.
-    In other words, the probability that the average is \enquote{far away}
-      from the expectation \(\mu \) is zero,
-      where we measure closeness by an arbitrary small number \(\delta>0\).
-    More compact notation:
-    \begin{eqnarray*}
-    \overline{Y}_{T} &\overset{p}{\rightarrow }&\mu \\
-    \textsl{plim}~\overline{Y}_{T} &=&\mu
-    \end{eqnarray*}
-    This definition of convergence is very important in Quantitative Macroeconomics.
 
-    In Quantitative Macroeconomics, we are mainly concerned with identically distributed processes
-      that are either independent of each other (like the white noise process)
-      or that are homogenously dependent (like the VAR(1) process).
-    Given assumptions on existence and boundedness of the unconditional moments of these processes,
-      the weak LLN typically applies.
+\item
+Strong LLN means \textbf{almost-sure convergence}:\\
+At some point adding more observation does not matter at all for the average,
+  \(\overline{Y}_T\) will be exactly equal to the expected value \(\mu \).
+That is, the sequence \(\overline{Y}_{1},\overline{Y}_{2},\ldots \) of random variables
+  converges \textbf{almost surely} to the variable \(\mu \), if
+\begin{align*}
+\Pr\left( \left \{ \lim_{T\rightarrow \infty }\overline{Y}_{T}=\mu\right \} \right) =1
+\end{align*}
+or simply:
+\begin{align*}
+\overline{Y}_{T}\overset{a.s.}{\rightarrow }\mu
+\end{align*}
+This definition of convergence is not very important in Quantitative Macroeconomics.
+
+\item
+Weak LLN means that the sample mean \(\overline{Y}_T\) converges in probability to the population mean \(\mu \).
+That is, the sequence \(\overline{Y}_{1},\overline{Y}_{2},\ldots \) of random variables
+  converges \textbf{in probability} to the variable \(\mu \), if
+\begin{align*}
+\lim_{T\rightarrow \infty }\Pr\left( |Y_{T}-\mu|<\delta \right) =1
+\end{align*}
+As \(T\rightarrow \infty \), the probability is approaching 1 very closely,
+  but typically it will not be exactly equal to 1.
+In other words, the probability that the average is \enquote{far away}
+  from the expectation \(\mu \) is zero,
+  where we measure closeness by an arbitrary small number \(\delta>0\).
+More compact notation:
+\begin{eqnarray*}
+\overline{Y}_{T} &\overset{p}{\rightarrow }&\mu
+\\
+\textsl{plim}~\overline{Y}_{T} &=&\mu
+\end{eqnarray*}
+This definition of convergence is very important in Quantitative Macroeconomics.
+
+In Quantitative Macroeconomics, we are mainly concerned with identically distributed processes
+  that are either independent of each other (like the white noise process)
+  or that are homogenously dependent (like the VAR{(1)} process).
+Given assumptions on existence and boundedness of the unconditional moments of these processes,
+  the weak LLN typically applies.
 \end{itemize}
 
-\item Here is an extended illustration for several distributions: 
+\item
+Here is an extended illustration for several distributions: 
 \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/lawOfLargeNumbers.m}
 Note that for the \(t\)-distribution with infinite variance the weak LLN actually does not apply.
 
-\item Here is an extended illustration for different error term distributions: 
+\item
+Here is an extended illustration for different error term distributions: 
 \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/lawOfLargeNumbersAR1.m} 
 Note that we need to make sure that \(E[\varepsilon_t]=0\) when we simulate data.
 We see that the weak law of large numbers holds under weaker conditions than iid.
-For instance, one can show that for the stationary AR(1),
+For instance, one can show that for the stationary AR{(1)},
   necessary and sufficient conditions are:
-  \(Var[y_t]<\infty\) and \(|\gamma(k)| \rightarrow 0\) as \(k \rightarrow \infty \).
+  \(Var[y_t]<\infty \) and \(|\gamma(k)| \rightarrow 0\) as \(k \rightarrow \infty \).
 This does not hold for all considered distributions in the code.
 \end{enumerate}

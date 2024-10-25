@@ -1,6 +1,8 @@
 \begin{enumerate}
 
-\item \textbf{Geometric sequence:} First, note that we can use the geometric sequence with or without the lag operator, i.e.
+\item
+\textbf{Geometric sequence:}
+First, note that we can use the geometric sequence with or without the lag operator, i.e.\
 \begin{align*}
 {(1-\phi)}^{-1} &= \lim\limits_{j\rightarrow \infty}(\phi^0 + \phi^1 + \phi^2 + \cdots + \phi^j) = \sum_{j=0}^\infty \phi^j
 \\
@@ -10,7 +12,7 @@ The proof for this is pretty simple. Denote
 \begin{align*}
 S_{k} =	\sum_{j=0}^{k} \phi^j =	1 + \phi^1 + \phi^2 + \phi^3 + \cdots + \phi^k
 \end{align*}
-then multiply with \(\phi\):
+then multiply with \(\phi \):
 \begin{align*}
 \phi S_k = \phi^1 + \phi^2 + \phi^3 + \cdots + \phi^{k+1}
 \end{align*}
@@ -26,115 +28,132 @@ Looking at the limit of \(S_{k}\) for \(k \to \infty \), we get
 Next let's get a representation of the process \(y_t\) that is useful to compute the moments.
 
 We can do this in different ways:
-    \begin{itemize}
+\begin{itemize}
 
-    \item \textbf{Recursive substitution} (starting at some infinite time \(j\)):
-    \begin{align*}
-    y_t &= c + \phi y_{t-1} + \varepsilon_t\\
-        &= c + \phi \left( c + \phi y_{t-2} + \varepsilon_{t-1}\right) + \varepsilon_t\\ 
-        &= c + \phi c + \varepsilon_t + \phi \varepsilon_{t-1} + \phi^2( c+ \phi y_{t-3} + \varepsilon_{t-2} )\\
-        &\vdots\\
-        & = c + \phi c + \phi^2 c^2 + \cdots + \phi^j c^j 
-        + \varepsilon_t + \phi \varepsilon_{t-1} + \phi^2 \varepsilon_{t-2} + \cdots + \phi^j \varepsilon_{t-j}
-        + \phi^{j+1} y_{t-{j+1}}
-    \end{align*}
-    \(y_t\) is a linear function of an initial value \(\phi^{j+1} y_{t-{j+1}}\),
-      historical values of the white noise process \(\varepsilon_t\), and a sum of polynomials in \(c\).
-    If \(|\phi|<1\) and \(j\) becomes large,
-      then \( \phi^{j+1} y_{t-{j+1}} \rightarrow 0\),
-      thus we get a so-called \(MA(\infty)\) process:
-    \begin{align*}
-    y_t &= \underbrace{c + \phi c + \phi^2 c^2 + \ldots}_{\sum_{j=0}^\infty \phi^j c^j} + \underbrace{\varepsilon_t + \phi \varepsilon_{t-1} + \phi^2 \varepsilon_{t-2} + \ldots}_{\sum_{j=0}^\infty \phi^j \varepsilon_{t-j}}
-    \\
-    &= c\sum_{j=0}^\infty \phi^j + \sum_{j=0}^\infty \phi^j \varepsilon_{t-j}    
-    = \frac{c}{1-\phi} + \sum_{j=0}^\infty \phi^j \varepsilon_{t-j}
-    \end{align*}
-    
-
-    \item \textbf{With Lag Operators}: works only if \(|\phi| < 1\) and \(\{y_t\}\) is bounded (that is, there exists a finite number \(k\) such that \(|y_t| < k\) for all \(t\)).
-    Then
-    \begin{align*}
-    (1-\phi L) y_t = c + \varepsilon_t\\
-    (1-\phi L)^{-1}(1-\phi L) y_t =	y_t = (1-\phi L)^{-1} c + (1-\phi L)^{-1}\varepsilon_t\\
-    \end{align*}
-    Using the geometric series, we get:
-    \begin{align*}
-    y_t &= (1+\phi L + \phi^2 L^2+\cdots+(\phi L)^j) c
-        + (1+\phi L + \phi^2 L^2+\cdots+(\phi L)^j)\varepsilon_t
+\item
+\textbf{Recursive substitution} (starting at some infinite time \(j\)):
+\begin{align*}
+y_t &= c + \phi y_{t-1} + \varepsilon_t
 \\
-        &= \left(c + \phi c + \phi^2 c + \ldots \right) + \left(\varepsilon_t + \phi \varepsilon_{t-1} + \phi^2 \varepsilon_{t-2}+\ldots\right)
-        = c \sum_{j=0}^\infty \phi^j + \sum_{j=0}^\infty \phi^j \varepsilon_{t-j}
-        \\
-        &= \frac{c}{1-\phi} + \sum_{j=0}^\infty \phi^j \varepsilon_{t-j}
-    \end{align*}
-    \end{itemize}
-    If we can express an AR process as a MA process, we call this process invertible.
-    Let's now compute the moments from the MA(\(\infty\)) representation
-      and using the fact that \(\varepsilon_t\) is a white noise process:
-    \begin{itemize}
-      \item \textbf{Unconditional Mean:}
-      \begin{align*}
-      E[y_t] &= E\left[\frac{c}{1-\phi}\right] + E\left[\sum_{j=1}^{\infty} \phi^j \varepsilon_{t-j}\right] = \frac{c}{1-\phi} \sum_{j=1}^{\infty} \phi^j E[\varepsilon_{t-j}]
-      \\
-      &= \underbrace{\frac{c}{1-\phi}}_{:=\mu}
-      \end{align*}
-      As this process is covariance-stationary, the unconditional mean is time invariant.
-      We typically denote this time-independence by using the greek letter $\mu$.
-      \item \textbf{Unconditional variance:}
-      \begin{align*}
-      Var[y_t] &= E\left[(y_t -E[y_t])(y_t - E[y_t])\right] = E\left[\left(\sum_{j=0}^\infty \phi^j \varepsilon_{t-j}\right) \left(\sum_{j=0}^\infty \phi^j \varepsilon_{t-j}\right) \right]
-      \\
-      &= E\left[ \phi^0 \phi^0 \varepsilon_{t} \varepsilon_{t} + \phi^0 \phi^1 \varepsilon_{t} \varepsilon_{t-1} + \phi^0 \phi^2 \varepsilon_{t} \varepsilon_{t-2} + \phi^0 \phi^3 \varepsilon_{t} \varepsilon_{t-3} + \ldots \right.
-      \\
-      & \qquad~\phi^1 \phi^0 \varepsilon_{t-1} \varepsilon_{t} + \phi^1 \phi^1 \varepsilon_{t-1} \varepsilon_{t-1} + \phi^1 \phi^2 \varepsilon_{t-1} \varepsilon_{t-2} + \phi^1 \phi^3 \varepsilon_{t-1} \varepsilon_{t-3} + \ldots
-      \\
-      & \qquad~\phi^2 \phi^0 \varepsilon_{t-2} \varepsilon_{t} + \phi^2 \phi^1 \varepsilon_{t-2} \varepsilon_{t-1} + \phi^2 \phi^2 \varepsilon_{t-2} \varepsilon_{t-2} + \phi^2 \phi^3 \varepsilon_{t-2} \varepsilon_{t-3} + \ldots
-      \\&\left.\qquad~\ldots\right]
-      \\
-      &= \phi^0 \phi^0 E[\varepsilon_{t} \varepsilon_{t}] + \phi^0 \phi^1 E[\varepsilon_{t} \varepsilon_{t-1}] + \phi^0 \phi^2 E[\varepsilon_{t} \varepsilon_{t-2}] + \phi^0 \phi^3 E[\varepsilon_{t} \varepsilon_{t-3}] + \ldots
-      \\
-      & \qquad~\phi^1 \phi^0 E[\varepsilon_{t-1} \varepsilon_{t}] + \phi^1 \phi^1 E[\varepsilon_{t-1} \varepsilon_{t-1}] + \phi^1 \phi^2 E[\varepsilon_{t-1} \varepsilon_{t-2}] + \phi^1 \phi^3 E[\varepsilon_{t-1} \varepsilon_{t-3}] + \ldots
-      \\
-      & \qquad~\phi^2 \phi^0 E[\varepsilon_{t-2} \varepsilon_{t}] + \phi^2 \phi^1 E[\varepsilon_{t-2} \varepsilon_{t-1}] + \phi^2 \phi^2 E[\varepsilon_{t-2} \varepsilon_{t-2}] + \phi^2 \phi^3 E[\varepsilon_{t-2} \varepsilon_{t-3}] + \ldots
-      \\&\qquad~\ldots
-      \end{align*}
-      Note that \(\varepsilon_t\) is a white-noise process with variance \(E[\varepsilon_{t-j} \varepsilon_{t-j}]=\sigma_\varepsilon^2\) for any \(j\),
-      but zero autocovariance, i.e. \(E[\varepsilon_{t-j} \varepsilon_{t-k}]=0\) for any \(j \neq k\).
-      Therefore:
-      \begin{align*}
-      Var[y_t] &= \phi^0 \phi^0 E[\varepsilon_{t} \varepsilon_{t}] + \phi^1 \phi^1 E[\varepsilon_{t-1} \varepsilon_{t-1}] + \phi^2 \phi^2 E[\varepsilon_{t-2} \varepsilon_{t-2}] + \phi^3 \phi^3 E[\varepsilon_{t-3} \varepsilon_{t-3}] + \ldots
-      \\
-      &= \sum_{j=0}^\infty (\phi^{2})^j E[\varepsilon_{t-j} \varepsilon_{t-j}]
-      = \sum_{j=0}^\infty (\phi^{2})^j \sigma_\varepsilon^2
-      = \sigma_\varepsilon^2 \sum_{j=0}^\infty (\phi^{2})^j
-      \\
-      =& \underbrace{\sigma_\varepsilon^2 \frac{1}{1-\phi^2}}_{:= \gamma_0}
-      \end{align*}
-      As the process is covariance-stationary, the unconditional variance is time invariant.
-      We typically denote this time-independence by using the Greek letter \(\gamma_0\).
-      \item \textbf{Unconditional autocovariance:}
-      \begin{align*}
-      Var[y_t,y_{t-k}] &= E\left[(y_t -E[y_t])(y_t - E[y_{t-k}])\right] = E\left[\left(\sum_{j=0}^\infty \phi^j \varepsilon_{t-j}\right) \left(\sum_{j=0}^\infty \phi^j \varepsilon_{t-k-j}\right) \right]
-      \\
-      &= E\left[ \phi^0 \phi^0 \varepsilon_{t} \varepsilon_{t-k} + \phi^0 \phi^1 \varepsilon_{t} \varepsilon_{t-k-1} + \phi^0 \phi^2 \varepsilon_{t} \varepsilon_{t-k-2} + \phi^0 \phi^3 \varepsilon_{t} \varepsilon_{t-k-3} + \ldots \right.
-      \\
-      & \qquad~\phi^1 \phi^0 \varepsilon_{t-1} \varepsilon_{t-k} + \phi^1 \phi^1 \varepsilon_{t-1} \varepsilon_{t-k-1} + \phi^1 \phi^2 \varepsilon_{t-1} \varepsilon_{t-k-2} + \phi^1 \phi^3 \varepsilon_{t-1} \varepsilon_{t-k-3} + \ldots
-      \\
-      & \qquad~\phi^2 \phi^0 \varepsilon_{t-2} \varepsilon_{t-k} + \phi^2 \phi^1 \varepsilon_{t-2} \varepsilon_{t-k-1} + \phi^2 \phi^2 \varepsilon_{t-2} \varepsilon_{t-k-2} + \phi^2 \phi^3 \varepsilon_{t-2} \varepsilon_{t-k-3} + \ldots
-      \\&\left.\qquad~\ldots\right]      
-      \end{align*}
-      This can be simplified due to the white noise property of \(\varepsilon_t\) to:
-      \begin{align*}
-      Var[y_t,y_{t-k}] &= \phi^k (\phi^0 E[\varepsilon_{t-k} \varepsilon_{t-k}] + \phi^2 E[\varepsilon_{t-k-1} \varepsilon_{t-k-1}]+ \phi^4 E[\varepsilon_{t-k-2} \varepsilon_{t-k-2}] + \ldots )
-      \\
-      &= \phi^k \sum_{j=0}^\infty (\phi^{2})^j \sigma_\varepsilon^2 = \phi^k \frac{\sigma_\varepsilon^2}{1-\phi^2}      
-      = \underbrace{\phi^k \gamma_0}_{:=\gamma_k}
-      \end{align*}
-      As the process is covariance-stationary, the unconditional autocovariance is only dependent on the time difference \(k\).
-      We typically denote this by using the Greek letter \(\gamma_k\).
+&= c + \phi \left( c + \phi y_{t-2} + \varepsilon_{t-1}\right) + \varepsilon_t
+\\ 
+&= c + \phi c + \varepsilon_t + \phi \varepsilon_{t-1} + \phi^2( c+ \phi y_{t-3} + \varepsilon_{t-2} )
+\\
+&\vdots
+\\
+& = c + \phi c + \phi^2 c^2 + \cdots + \phi^j c^j 
+  + \varepsilon_t + \phi \varepsilon_{t-1} + \phi^2 \varepsilon_{t-2} + \cdots + \phi^j \varepsilon_{t-j}
+  + \phi^{j+1} y_{t-{j+1}}
+\end{align*}
+\(y_t\) is a linear function of an initial value \(\phi^{j+1} y_{t-{j+1}}\),
+historical values of the white noise process \(\varepsilon_t\), and a sum of polynomials in \(c\).
+If \(|\phi|<1\) and \(j\) becomes large,
+  then \( \phi^{j+1} y_{t-{j+1}} \rightarrow 0\),
+  thus we get a so-called \(MA(\infty)\) process:
+\begin{align*}
+y_t &= \underbrace{c + \phi c + \phi^2 c^2 + \ldots}_{\sum_{j=0}^\infty \phi^j c^j} + \underbrace{\varepsilon_t + \phi \varepsilon_{t-1} + \phi^2 \varepsilon_{t-2} + \ldots}_{\sum_{j=0}^\infty \phi^j \varepsilon_{t-j}}
+\\
+&= c\sum_{j=0}^\infty \phi^j + \sum_{j=0}^\infty \phi^j \varepsilon_{t-j}
+= \frac{c}{1-\phi} + \sum_{j=0}^\infty \phi^j \varepsilon_{t-j}
+\end{align*}
+
+\item
+\textbf{With Lag Operators}:
+works only if \(|\phi| < 1\) and \( \{y_t\} \) is bounded;
+that is, there exists a finite number \(k\) such that \(|y_t| < k\) for all \(t\).
+Then
+\begin{align*}
+(1-\phi L) y_t = c + \varepsilon_t
+\\
+{(1-\phi L)}^{-1}{(1-\phi L)} y_t =	y_t = {(1-\phi L)}^{-1} c + {(1-\phi L)}^{-1}\varepsilon_t
+\\
+\end{align*}
+Using the geometric series, we get:
+\begin{align*}
+y_t &= (1+\phi L + \phi^2 L^2+\cdots+{(\phi L)}^j) c
+  + (1+\phi L + \phi^2 L^2+\cdots+{(\phi L)}^j)\varepsilon_t
+\\
+&= \left(c + \phi c + \phi^2 c + \ldots \right) + \left(\varepsilon_t + \phi \varepsilon_{t-1} + \phi^2 \varepsilon_{t-2}+\ldots\right)
+= c \sum_{j=0}^\infty \phi^j + \sum_{j=0}^\infty \phi^j \varepsilon_{t-j}
+\\
+&= \frac{c}{1-\phi} + \sum_{j=0}^\infty \phi^j \varepsilon_{t-j}
+\end{align*}
 \end{itemize}
-	 	
-\item Here is a possible run-script:
+If we can express an AR process as a MA process, we call this process invertible.
+Let's now compute the moments from the MA{(\(\infty \))} representation
+  and using the fact that \(\varepsilon_t\) is a white noise process:
+\begin{itemize}
+\item
+\textbf{Unconditional Mean:}
+\begin{align*}
+E[y_t] &= E\left[\frac{c}{1-\phi}\right] + E\left[\sum_{j=1}^{\infty} \phi^j \varepsilon_{t-j}\right] = \frac{c}{1-\phi} \sum_{j=1}^{\infty} \phi^j E[\varepsilon_{t-j}]
+\\
+&= \underbrace{\frac{c}{1-\phi}}_{:=\mu}
+\end{align*}
+As this process is covariance-stationary, the unconditional mean is time invariant.
+We typically denote this time-independence by using the Greek letter \(\mu \).
+
+\item \textbf{Unconditional variance:}
+\begin{align*}
+Var[y_t] &= E\left[(y_t -E[y_t])(y_t - E[y_t])\right] = E\left[\left(\sum_{j=0}^\infty \phi^j \varepsilon_{t-j}\right) \left(\sum_{j=0}^\infty \phi^j \varepsilon_{t-j}\right) \right]
+\\
+&= E\left[ \phi^0 \phi^0 \varepsilon_{t} \varepsilon_{t} + \phi^0 \phi^1 \varepsilon_{t} \varepsilon_{t-1} + \phi^0 \phi^2 \varepsilon_{t} \varepsilon_{t-2} + \phi^0 \phi^3 \varepsilon_{t} \varepsilon_{t-3} + \ldots \right.
+\\
+& \qquad~\phi^1 \phi^0 \varepsilon_{t-1} \varepsilon_{t} + \phi^1 \phi^1 \varepsilon_{t-1} \varepsilon_{t-1} + \phi^1 \phi^2 \varepsilon_{t-1} \varepsilon_{t-2} + \phi^1 \phi^3 \varepsilon_{t-1} \varepsilon_{t-3} + \ldots
+\\
+& \qquad~\phi^2 \phi^0 \varepsilon_{t-2} \varepsilon_{t} + \phi^2 \phi^1 \varepsilon_{t-2} \varepsilon_{t-1} + \phi^2 \phi^2 \varepsilon_{t-2} \varepsilon_{t-2} + \phi^2 \phi^3 \varepsilon_{t-2} \varepsilon_{t-3} + \ldots
+\\
+&\left.\qquad~\ldots\right]
+\\
+&= \phi^0 \phi^0 E[\varepsilon_{t} \varepsilon_{t}] + \phi^0 \phi^1 E[\varepsilon_{t} \varepsilon_{t-1}] + \phi^0 \phi^2 E[\varepsilon_{t} \varepsilon_{t-2}] + \phi^0 \phi^3 E[\varepsilon_{t} \varepsilon_{t-3}] + \ldots
+\\
+& \qquad~\phi^1 \phi^0 E[\varepsilon_{t-1} \varepsilon_{t}] + \phi^1 \phi^1 E[\varepsilon_{t-1} \varepsilon_{t-1}] + \phi^1 \phi^2 E[\varepsilon_{t-1} \varepsilon_{t-2}] + \phi^1 \phi^3 E[\varepsilon_{t-1} \varepsilon_{t-3}] + \ldots
+\\
+& \qquad~\phi^2 \phi^0 E[\varepsilon_{t-2} \varepsilon_{t}] + \phi^2 \phi^1 E[\varepsilon_{t-2} \varepsilon_{t-1}] + \phi^2 \phi^2 E[\varepsilon_{t-2} \varepsilon_{t-2}] + \phi^2 \phi^3 E[\varepsilon_{t-2} \varepsilon_{t-3}] + \ldots
+\\
+&\qquad~\ldots
+\end{align*}
+Note that \(\varepsilon_t \) is a white-noise process with variance \(E[\varepsilon_{t-j} \varepsilon_{t-j}]=\sigma_\varepsilon^2\) for any \(j\),
+  but zero autocovariance, i.e. \(E[\varepsilon_{t-j} \varepsilon_{t-k}]=0\) for any \(j \neq k\).
+Therefore:
+\begin{align*}
+Var[y_t] &= \phi^0 \phi^0 E[\varepsilon_{t} \varepsilon_{t}] + \phi^1 \phi^1 E[\varepsilon_{t-1} \varepsilon_{t-1}] + \phi^2 \phi^2 E[\varepsilon_{t-2} \varepsilon_{t-2}] + \phi^3 \phi^3 E[\varepsilon_{t-3} \varepsilon_{t-3}] + \ldots
+\\
+&= \sum_{j=0}^\infty {(\phi^{2})}^j E[\varepsilon_{t-j} \varepsilon_{t-j}]
+= \sum_{j=0}^\infty {(\phi^{2})}^j \sigma_\varepsilon^2
+= \sigma_\varepsilon^2 \sum_{j=0}^\infty {(\phi^{2})}^j
+\\
+=& \underbrace{\sigma_\varepsilon^2 \frac{1}{1-\phi^2}}_{:= \gamma_0}
+\end{align*}
+As the process is covariance-stationary, the unconditional variance is time invariant.
+We typically denote this time-independence by using the Greek letter \(\gamma_0\).
+
+\item \textbf{Unconditional autocovariance:}
+\begin{multline*}
+Var[y_t,y_{t-k}] = E\left[(y_t -E[y_t])(y_t - E[y_{t-k}])\right] = E\left[\left(\sum_{j=0}^\infty \phi^j \varepsilon_{t-j}\right) \left(\sum_{j=0}^\infty \phi^j \varepsilon_{t-k-j}\right) \right]
+\\
+= E\left[ \phi^0 \phi^0 \varepsilon_{t} \varepsilon_{t-k} + \phi^0 \phi^1 \varepsilon_{t} \varepsilon_{t-k-1} + \phi^0 \phi^2 \varepsilon_{t} \varepsilon_{t-k-2} + \phi^0 \phi^3 \varepsilon_{t} \varepsilon_{t-k-3} + \ldots \right.
+\\
+\phi^1 \phi^0 \varepsilon_{t-1} \varepsilon_{t-k} + \phi^1 \phi^1 \varepsilon_{t-1} \varepsilon_{t-k-1} + \phi^1 \phi^2 \varepsilon_{t-1} \varepsilon_{t-k-2} + \phi^1 \phi^3 \varepsilon_{t-1} \varepsilon_{t-k-3} + \ldots
+\\
+\phi^2 \phi^0 \varepsilon_{t-2} \varepsilon_{t-k} + \phi^2 \phi^1 \varepsilon_{t-2} \varepsilon_{t-k-1} + \phi^2 \phi^2 \varepsilon_{t-2} \varepsilon_{t-k-2} + \phi^2 \phi^3 \varepsilon_{t-2} \varepsilon_{t-k-3} + \ldots
+\\
+\left.\qquad~\ldots\right]
+\end{multline*}
+This can be simplified due to the white noise property of \(\varepsilon_t\) to:
+\begin{align*}
+Var[y_t,y_{t-k}] &= \phi^k (\phi^0 E[\varepsilon_{t-k} \varepsilon_{t-k}] + \phi^2 E[\varepsilon_{t-k-1} \varepsilon_{t-k-1}]+ \phi^4 E[\varepsilon_{t-k-2} \varepsilon_{t-k-2}] + \ldots )
+\\
+&= \phi^k \sum_{j=0}^\infty {(\phi^{2})}^j \sigma_\varepsilon^2 = \phi^k \frac{\sigma_\varepsilon^2}{1-\phi^2}
+= \underbrace{\phi^k \gamma_0}_{:=\gamma_k}
+\end{align*}
+As the process is covariance-stationary,
+  the unconditional autocovariance is only dependent on the time difference \(k\).
+We typically denote this by using the Greek letter \(\gamma_k\).
+\end{itemize}
+
+\item
+Here is a possible run-script:
 \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/acfPlots_run.m}
 and the corresponding \texttt{acfPlots.m} function:
 \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/acfPlots.m}
