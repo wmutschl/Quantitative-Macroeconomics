@@ -1,18 +1,24 @@
 \begin{enumerate}
-\item A white noise has mean zero, a constant variance and all other second-order moments (i.e.\ autocovariances/autocorrelations) are zero:
+
+\item
+A white noise has mean zero, a constant variance and all other second-order moments (i.e.\ autocovariances/autocorrelations) are zero:
 \begin{align*}
     E[\varepsilon_t]&=0\\
     Var[\varepsilon_t]&=E[\varepsilon_t^2] - E[\varepsilon_t]E[\varepsilon_t] = \sigma_\varepsilon^2\\
     Cov(\varepsilon_{t},\varepsilon_s) &= E[\varepsilon_t \varepsilon_s] - E[\varepsilon_t]E[\varepsilon_s] = 0~\text{for}~s \neq t
 \end{align*}	
-\item \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/whiteNoisePlots.m}
+
+\item
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/whiteNoisePlots.m}
 Every simulation is different, model can thus generate an infinite set of realizations over the period \(t=1,\ldots ,200\).
 The processes do differ in their persistence.
 (i) is the white noise process, which is not persistent.
 (ii) is a 5-point-moving-average, which is a linear combination of white noise processes.
 It is smoother and more persistent and very different from just noise.
 Linear combinations of white noise processes build the basis of many models in time series analysis.
-\item A process is said to be \textbf{\(N\)-order weakly stationary} if all its joint moments up to order \(N\) exist and are time invariant.
+
+\item
+A process is said to be \textbf{\(N\)-order weakly stationary} if all its joint moments up to order \(N\) exist and are time invariant.
 We are particularly interested in \(N=2\), i.e.\ \textbf{covariance stationarity}:
 \begin{align*}
 E[Y_t]&=\mu~\text{(constant for all t)}
@@ -28,7 +34,9 @@ Particularly, the autocovariance is only dependent on the time difference \(k\),
 \[f(Y_t,Y_{t-1},\ldots ,Y_{t-k})=f(Y_{t-h},Y_{t-h-1},\ldots ,Y_{t-h-k})\]
 That is, not only the first two moments but the whole distribution is not dependent on the point in time \(t\),
   but on the time difference \(k\).
-\item Autocovariance function for a covariance-stationary process:
+
+\item
+Autocovariance function for a covariance-stationary process:
 \[\gamma_k = E[(Y_t - \mu)(Y_{t-k}-\mu)]\]
 where \(\gamma_0\) is the variance. Autocorrelation function: \[\rho_k = \gamma_k/\gamma_0\]
 \\
@@ -43,7 +51,8 @@ Note: In most applications we don't correct the degrees of freedom for numerical
   i.e.\ the sums are not divided by \(T-k-1\) but simply by \(T\).
 For \(T>100\) this does not really matter as the expressions are very close to each other.
 
-\item \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/plotsAR1.m}
+\item
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/plotsAR1.m}
 Remarks: If \(|\phi|<1\) the series returns to the mean, i.e.\ it is stable and stationary.
 If \(|\phi>1|\) then it explodes, i.e.\ it is unstable and not stationary.
 \(\phi=1\) is a so-called random walk,
@@ -61,4 +70,23 @@ where we call p the lag order. So:
 \[ \phi(L) y_t = (1-\phi_1 L-\phi_2 L^2 -\cdots  - \phi_p L^p)y_t = y_t - \phi_1 y_{t-1} -\phi_2 y_{t-2} - \cdots  - \phi_p y_{t-p}\]
 To check whether an {AR{(p)}} model is covariance stationarity, we need to check whether the roots of the lag-polynomial lie outside the unit circle.
 That is, we treat \(L\) as a complex number \(z\in \mathbb{C}\) and compute the roots of \((1-\phi_1 z-\phi_2 z^2 -\cdots  - \phi_p z^p)=0\) (using a computer in most cases).
+
+\paragraph*{Example}
+Consider the AR{(2)} process
+\begin{align*}
+y_{t} &= 0.65 y_{t-1} - 0.1 y_{t-2} + \varepsilon_{t}
+\\
+\left(1 - 0.65L + 0.1 L^2\right) y_{t} &= \varepsilon_{t}
+\end{align*}
+Replacing \(L\) with the complex number \(z\), we can compute the roots:
+\begin{gather*}
+1-0.65 z + 0.1 z^2 = 0
+\\
+z^2 - 6.5z + 10 = 0
+\\
+(z-4)(z-2.5)=0
+\end{gather*}
+Since \(z=4\) and \(z=2.5\) are both outside the unit circle (\(|z|>1\)),
+  the process is stationary.
+In MATLAB you can use the \texttt{roots} function to compute the roots of polynomials.
 \end{enumerate}
