@@ -1,73 +1,88 @@
 \begin{enumerate}
-\item Let's first consider the AR(1) model
-	\begin{enumerate}
-		\item The first observation \(y_1\) is a random variable with mean and variance equal to:
-		\begin{align*}
-		E[y_1] = \mu = \frac{c}{1-\theta} \text{ and } Var[y_1] = \frac{\sigma_u^2}{1-\theta^2}
-		\end{align*}
-		Since the errors are Gaussian, $y_1$ is also Gaussian, i.e. $y_1 \sim N\left(\frac{c}{1-\theta},\frac{\sigma_u^2}{1-\theta^2}\right)$.
-		The pdf is thus:
-		\begin{align*}
-        f_1(y_1|\theta,\sigma_u^2) = \frac{1}{\sqrt{2\pi}\sqrt{\sigma_u^2/(1-\theta^2)}}\exp\left\{-\frac{1}{2}\frac{[y_1-(c/(1-\theta))]^2}{\sigma_u^2/(1-\theta^2)}\right\}
-        \end{align*}	
-		
-	    The second observation $y_2$ conditional on $y_1$ is given by $y_2 = c + \theta y_1 + u_2$.
-        Conditional on $y_1$, $y_2$ is thus the sum of a deterministic term ($c+\theta y_1$) and the $N(0,\sigma_u^2)$ variable $u_2$.
-        Hence:
-        \begin{align*}
-        y_2|y_1 \sim N(c+\theta y_1,\sigma_u^2)
-        \end{align*}
-	    and the pdf is given by:
-        \begin{align*}
-        f_2(y_2|y_1,\theta,\sigma_u^2) = \frac{1}{\sqrt{2\pi\sigma_u^2}}\exp\left\{-\frac{1}{2}\frac{[y_2-c-\theta y_1]^2}{\sigma_u^2}\right\}
-        \end{align*}	    
-	    The joint density of observations 1 and 2 is then just:
-        \begin{align*}
-        f(y_2,y_1|\theta,\sigma_u^2) = f_2(y_2|y_1,\theta,\sigma_u^2) \cdot f_1(y_1|\theta,\sigma_u^2)
-        \end{align*}	
-	    In general the value of $y_1,y_2,...,y_{t-1}$ matter for $y_t$ only through the value $y_{t-1}$
-          and the density of observation $t$ conditional on the preceding $t-1$ observations is given by
-        \begin{align*}
-        f_t(y_t|y_{t-1},\theta,\sigma_u^2) = \frac{1}{\sqrt{2\pi\sigma_u^2}}\exp\left\{-\frac{1}{2}\frac{[y_t-c-\theta y_{t-1}]^2}{\sigma_u^2}\right\}
-        \end{align*}	
-	    The likelihood of the complete sample can thus be calculated as:
-        \begin{align*}
-	    f(y_T,y_{T-1},...,y_1|\theta,\sigma_u^2)=f_1(y_1|\theta,\sigma_u^2)\cdot \prod_{t=2}^{T}f_t(y_t|y_{t-1},\theta,\sigma_u^2)        
-        \end{align*}
-	    The log-likelihood is therefore
-	    \begin{align*}
-	    \log l(\theta,\sigma_u^2)&= \log f_1(y_1|\theta,\sigma_u^2)+  \sum_{t=2}^{T}\log f_t(y_t|y_{t-1},\theta,\sigma_u^2)
-        \\
-	    &= -\frac{1}{2}\log(2\pi) -\frac{1}{2}\log(\sigma_u^2/(1-\theta^2))-\frac{(y_1-(c/(1-\theta))^2)}{2\sigma_u^2/(1-\theta^2)}
-        \\
-	    &-((T-1)/2)\log(2\pi)-((T-1)/2)\log(\sigma_u^2)-\sum_{t=2}^{T}\frac{(y_t-c-\theta y_{t-1})^2}{2\sigma_u^2}
-	    \end{align*}
-      \item Theoretically it does not matter whether we consider the log-likelihood or the actual likelihood function,
-      as the value that maximizes the likelihood also maximize the log-likelihood,
-      because the log is a monotone transformation.
-      However, it is usually easier to work with sums instead of products theoretically,
-        e.g. the LLN or CT are based on sums.
-      Computationally, working with products is typically impossible as the resulting values very quickly surpass machine precision (they quickly go to $\pm \infty$);
-        working with sums does not have this problem.
-      So from a computational perspective we will exclusively work with the log-likelihood function.
-	    \item Discarding the first observation, the conditional log-likelihood is given by:
-	    \begin{align*}
-	    \log l^c(\theta,\sigma_u^2)&= -((T-1)/2)\log(2\pi)-((T-1)/2)\log(\sigma^2_u)-\sum_{t=2}^{T}\frac{(y_t-c-\theta y_{t-1})^2}{2\sigma_u^2}
-        \\
-	    &= -((T-1)/2)\log(2\pi)-((T-1)/2)\log(\sigma^2_u)-\sum_{t=2}^{T}\frac{u_t^2}{2\sigma_u^2}
-	    \end{align*}
-	    Note that the first two sums do not depend on $\theta$;
-          thus, when maximizing $\log l^c(\theta,\sigma_u^2)$ with respect to $\theta$,
-          we are basically minimizing the squared residuals,
-          which will simply yield the OLS estimator.
-          The estimator for the variance, however, is different,
-            as we are dividing the sum of sqared residuals ($\sum_{t=2}^T u_t^2$)
-            by $T^{eff}=(T-1)$ when doing ML instead of by $T^{eff}-1$ when doing OLS.
-          Obviously, for large $T$ this does not matter.
-    \end{enumerate}
-\item \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/logLikeARpNorm.m}
-\item \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/ARpML.m} 		
-\item \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/AR4ML.m} 
+
+\item
+Let's first consider the AR{(1)} model
+\begin{enumerate}
+  \item
+  The first observation \(y_1\) is a random variable with mean and variance equal to:
+  \begin{align*}
+  E[y_1] = \mu = \frac{c}{1-\theta} \quad\text{and}\quad Var[y_1] = \frac{\sigma_u^2}{1-\theta^2}
+  \end{align*}
+  Since the errors are Gaussian, \(y_1\) is also Gaussian, i.e.\
+  \(y_1 \sim N\left(\frac{c}{1-\theta},\frac{\sigma_u^2}{1-\theta^2}\right)\).
+  The pdf is thus:
+  \begin{align*}
+  f_1(y_1|\theta,\sigma_u^2) = \frac{1}{\sqrt{2\pi}\sqrt{\sigma_u^2/(1-\theta^2)}}\exp\left \{-\frac{1}{2}\frac{{[y_1-(c/(1-\theta))]}^2}{\sigma_u^2/(1-\theta^2)}\right \}
+  \end{align*}
+  The second observation \(y_2\) conditional on \(y_1\) is given by \(y_2 = c + \theta y_1 + u_2\).
+  Conditional on \(y_1\), \(y_2\) is thus the sum of a deterministic term (\(c+\theta y_1\))
+    and the \(N(0,\sigma_u^2)\) variable \(u_2\).
+  Hence:
+  \begin{align*}
+  y_2|y_1 \sim N(c+\theta y_1,\sigma_u^2)
+  \end{align*}
+  and the pdf is given by:
+  \begin{align*}
+  f_2(y_2|y_1,\theta,\sigma_u^2) = \frac{1}{\sqrt{2\pi\sigma_u^2}}\exp\left \{-\frac{1}{2}\frac{[y_2-c-\theta y_1]^2}{\sigma_u^2}\right \}
+  \end{align*}
+  The joint density of observations 1 and 2 is then just:
+  \begin{align*}
+  f(y_2,y_1|\theta,\sigma_u^2) = f_2(y_2|y_1,\theta,\sigma_u^2) \cdot f_1(y_1|\theta,\sigma_u^2)
+  \end{align*}
+  In general the values of \(y_1,y_2,\ldots ,y_{t-1}\) matter for \(y_t\) only through the value \(y_{t-1}\)
+    and the density of observation \(t\) conditional on the preceding \(t-1\) observations is given by
+  \begin{align*}
+  f_t(y_t|y_{t-1},\theta,\sigma_u^2) = \frac{1}{\sqrt{2\pi\sigma_u^2}}\exp\left \{-\frac{1}{2}\frac{[y_t-c-\theta y_{t-1}]^2}{\sigma_u^2}\right \}
+  \end{align*}
+  The likelihood of the complete sample can thus be calculated as:
+  \begin{align*}
+  f(y_T,y_{T-1},\ldots ,y_1|\theta,\sigma_u^2)=f_1(y_1|\theta,\sigma_u^2)\cdot \prod_{t=2}^{T}f_t(y_t|y_{t-1},\theta,\sigma_u^2)
+  \end{align*}
+  The log-likelihood is therefore
+  \begin{align*}
+  \log l(\theta,\sigma_u^2)&= \log f_1(y_1|\theta,\sigma_u^2)+  \sum_{t=2}^{T}\log f_t(y_t|y_{t-1},\theta,\sigma_u^2)
+  \\
+  &= -\frac{1}{2}\log(2\pi) -\frac{1}{2}\log(\sigma_u^2/(1-\theta^2))-\frac{(y_1-{(c/(1-\theta))}^2)}{2\sigma_u^2/(1-\theta^2)}
+  \\
+  &-((T-1)/2)\log(2\pi)-((T-1)/2)\log(\sigma_u^2)-\sum_{t=2}^{T}\frac{{(y_t-c-\theta y_{t-1})}^2}{2\sigma_u^2}
+  \end{align*}
+
+  \item
+  Theoretically it does not matter whether we consider the log-likelihood or the actual likelihood function,
+    as the value that maximizes the likelihood also maximize the log-likelihood,
+    because the log is a monotone transformation.
+  However, it is usually easier to work with sums instead of products theoretically,
+    e.g.\ the LLN or CT are based on sums.
+  Computationally, working with products is typically impossible
+    as the resulting values very quickly surpass machine precision (they quickly go to \(\pm \infty \));
+    working with sums does not have this problem.
+  So from a computational perspective we will exclusively work with the log-likelihood function.
+
+  \item
+  Discarding the first observation, the conditional log-likelihood is given by:
+  \begin{align*}
+  \log l^c(\theta,\sigma_u^2)&= -((T-1)/2)\log(2\pi)-((T-1)/2)\log(\sigma^2_u)-\sum_{t=2}^{T}\frac{{(y_t-c-\theta y_{t-1})}^2}{2\sigma_u^2}
+  \\
+  &= -((T-1)/2)\log(2\pi)-((T-1)/2)\log(\sigma^2_u)-\sum_{t=2}^{T}\frac{u_t^2}{2\sigma_u^2}
+  \end{align*}
+  Note that the first two sums do not depend on \(\theta \);
+    thus, when maximizing \(\log l^c(\theta,\sigma_u^2)\) with respect to \(\theta \),
+    we are basically minimizing the squared residuals,
+    which will simply yield the OLS estimator.
+  The estimator for the variance, however, is different,
+    as we are dividing the sum of squared residuals (\(\sum_{t=2}^T u_t^2\))
+    by \(T^{eff}=(T-1)\) when doing {ML} instead of by \(T^{eff}-1\) when doing {OLS}.
+  Obviously, for large \(T\) this does not matter.
+\end{enumerate}
+
+\item
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/logLikeARpNorm.m}
+
+\item
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/ARpML.m}
+
+\item
+\lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/AR4ML.m}
 The estimates for the coefficients are the same,
   but slightly different for the standard deviation of the error term.
 \end{enumerate}

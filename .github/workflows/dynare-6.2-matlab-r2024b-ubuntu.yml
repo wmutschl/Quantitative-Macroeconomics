@@ -93,3 +93,13 @@ jobs:
             lawOfLargeNumbers;
             lawOfLargeNumbersAR1;
             centralLimitDependentData;
+
+      - name: Run week 4 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("dynare/matlab");
+            cd("progs/matlab");
+            AR4OLS;
+            AR4ML;
+            AR1MLLaplace;

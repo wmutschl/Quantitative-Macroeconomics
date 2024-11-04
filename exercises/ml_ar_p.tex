@@ -1,12 +1,12 @@
-\section[Maximum Likelihood Estimation Of Gaussian AR(p)]{Maximum Likelihood Estimation Of Gaussian AR(p)\label{ex:MaximumLikelihoodEstimationGaussianARp}}
-Consider an AR(p) model with a constant and linear trend:
+\section[Maximum Likelihood Estimation of Gaussian AR{(p)}]{Maximum Likelihood Estimation of Gaussian AR{(p)}\label{ex:MaximumLikelihoodEstimationGaussianARp}}
+Consider an AR{(p)} model with a constant and linear trend:
 \begin{align*}
 y_t = c + d\cdot t + \phi_1 y_{t-1} + \cdots + \phi_p y_{t-p} +u_{t}=Y_{t-1}\theta + u_t
 \end{align*}
   where \(Y_{t-1}=(1,t, y_{t-1},\ldots,y_{t-p})\) is the matrix of regressors,
   \(\theta = (c,d,\phi_1,\ldots,\phi_p)\) the parameter vector
-  and the error terms \(u_t\) are white noise and normally distributed,
-  i.e.\ \( u_t\sim N(0,\sigma_u^2) \) and \(E[u_t u_s]=0\) for \(t\neq s\).
+  and the error terms \(u_t\) are white noise and normally distributed, i.e.\
+  \( u_t\sim N(0,\sigma_u^2) \) and \(E[u_t u_s]=0\) for \(t\neq s\).
 If the sample distribution is known to have probability density function \(f(y_1,\ldots,y_T)\),
   an estimation with Maximum Likelihood (ML) is possible.
 To this end, we decompose the joint distribution by
@@ -27,13 +27,15 @@ Recall that the asymptotic information matrix is the limit of minus the expectat
 \begin{align*}
 I_a(\theta,\sigma_u^2) = \lim\limits_{T\rightarrow \infty}-\frac{1}{T} E
 \begin{pmatrix}
-\frac{\partial^2 \log l}{\partial \theta^2} & \frac{\partial^2 \log l}{\partial \theta  \partial \sigma_u^2}  \\
+\frac{\partial^2 \log l}{\partial \theta^2} & \frac{\partial^2 \log l}{\partial \theta  \partial \sigma_u^2}
+\\
 \frac{\partial^2 \log l}{\partial \sigma_u^2  \partial \theta} & \frac{\partial^2 \log l}{\partial {(\sigma_u^2)}^2}  
 \end{pmatrix}
 \end{align*}
 
 \begin{enumerate}
-\item First consider the case of \(p=1\)
+\item
+First consider the case of \(p=1\)
 \begin{enumerate}
   \item Derive the exact log-likelihood function for the \(AR(1)\) model with \(|\theta|<1\) and \(d=0\):
   \begin{align*}
@@ -42,47 +44,50 @@ I_a(\theta,\sigma_u^2) = \lim\limits_{T\rightarrow \infty}-\frac{1}{T} E
   \item Why do we often look at the log-likelihood function instead of the actual likelihood function?
   \item Regard the value of the first observation as deterministic or, equivalently,
     note that its contribution to the log-likelihood disappears asymptotically.
-    Maximize analytically the conditional log-likelihood to get the ML estimators for \(\theta\) and \(\sigma_u\).
+    Maximize analytically the conditional log-likelihood to get the ML estimators for \(\theta \) and \(\sigma_u\).
     Compare these to the OLS estimators.
 \end{enumerate}
-\item Now consider the general \(AR(p)\) model.
- 	\begin{enumerate}
-    \item Write a function \texttt{logLikeARpNorm(\(x\),\(y\),\(p\),\(const\))}
-    that computes the value of the log-likelihood
-    conditional on the first \(p\) observations of a Gaussian \(AR(p)\) model, i.e.
-    \begin{align*}
-    \log l(\theta,\sigma_u)= -\frac{T-p}{2}\log(2\pi)-\frac{T-p}{2}\log(\sigma_u^2)-\sum_{t=p+1}^{T}\frac{u_t^2}{2\sigma_u^2}
-    \end{align*}
-    where \(x=(\theta',\sigma_u)'\), \(y\) denotes the data vector,
-    \(p\) the number of lags and \(const\) is equal to 1 if there is a constant,
-    and equal to 2 if there is a constant and linear trend in the model.
-    \item Write a \texttt{function ML = ARpML(\(y\),\(p\),\(const\),\( \alpha \))}
+\item
+Now consider the general \(AR(p)\) model.
+\begin{enumerate}
+  \item Write a function \texttt{logLikeARpNorm{(\(x\),\(y\),\(p\),\(const\))}}
+    that computes the log-likelihood value
+    conditional on the first \(p\) observations of a Gaussian \(AR(p)\) model:
+  \begin{align*}
+  \log l(\theta,\sigma_u)= -\frac{T-p}{2}\log(2\pi)-\frac{T-p}{2}\log(\sigma_u^2)-\sum_{t=p+1}^{T}\frac{u_t^2}{2\sigma_u^2}
+  \end{align*}
+  where \(x=(\theta',\sigma_u)'\), \(y\) denotes the data vector,
+  \(p\) the number of lags and \(const\) is equal to 1 if there is a constant,
+  and equal to 2 if there are both a constant and linear trend in the model.
+  \item Write a \texttt{function ML = ARpML{(\(y\),\(p\),\(const\),\( \alpha \))}}
     that takes as inputs a data vector \(y\), number of lags \(p\)
     and \(const=1\) if the model has a constant term
-    or \(const=2\) if the model has a constant term and linear trend.
-    \(\alpha\) denotes the significance level.
-    The function computes 
-    \begin{itemize}
-      \item the maximum likelihood estimates of an AR(p) model by numerically minimizing the negative conditional log-likelihood function using e.g. \texttt{fminunc}
-      \item the standard errors by means of the asymptotic covariance matrix, i.e.\ the inverse of the hessian of the negative log-likelihood function
+    or \(const=2\) if the model has both a constant term and linear trend.
+  \(\alpha \) denotes the significance level.
+  The function computes 
+  \begin{itemize}
+    \item the maximum likelihood estimates of an AR{(p)} model
+      by numerically minimizing the negative conditional log-likelihood function using e.g.\ \texttt{fminunc}
+    \item the standard errors by means of the asymptotic covariance matrix, i.e.\
+      the inverse of the hessian of the negative log-likelihood function
       (hint: gradient-based optimizers also output the hessian)
-    \end{itemize}
-    Save all results into a structure \enquote{ML} containing the estimates of \(\theta\),
+  \end{itemize}
+  Save all results into a structure \enquote{ML} containing the estimates of \(\theta \),
     its standard errors, t-statistics and p-values as well as the ML estimate of \(\sigma_u\).
     
-    \item Load simulated data given in the CSV file \texttt{AR4.csv} and estimate an AR(4) model with constant term.
-    Compare your results with the OLS estimators from the previous exercise.
- 	\end{enumerate}
+  \item Load simulated data given in the CSV file \texttt{AR4.csv} and estimate an AR{(4)} model with constant term.
+  Compare your results with the OLS estimators from the previous exercise.
+\end{enumerate}
 \end{enumerate}
 
 \paragraph{Readings}
 \begin{itemize}
-	\item \textcite{Lutkepohl_2004_UnivariateTimeSeries}.
+\item \textcite{Lutkepohl_2004_UnivariateTimeSeries}
 \end{itemize}
 
 
 \begin{solution}\textbf{Solution to \nameref{ex:MaximumLikelihoodEstimationGaussianARp}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/ml_ar_p_solution.tex}
 \fi
 \newpage
