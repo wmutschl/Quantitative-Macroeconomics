@@ -86,7 +86,8 @@ Let's now compute the moments from the MA{(\(\infty \))} representation
 \item
 \textbf{Unconditional Mean:}
 \begin{align*}
-E[y_t] &= E\left[\frac{c}{1-\phi}\right] + E\left[\sum_{j=1}^{\infty} \phi^j \varepsilon_{t-j}\right] = \frac{c}{1-\phi} \sum_{j=1}^{\infty} \phi^j E[\varepsilon_{t-j}]
+E[y_t] &= E\left[\frac{c}{1-\phi}\right] + E\left[\sum_{j=1}^{\infty} \phi^j \varepsilon_{t-j}\right]
+= \frac{c}{1-\phi} + \sum_{j=1}^{\infty} \phi^j E[\varepsilon_{t-j}]
 \\
 &= \underbrace{\frac{c}{1-\phi}}_{:=\mu}
 \end{align*}
