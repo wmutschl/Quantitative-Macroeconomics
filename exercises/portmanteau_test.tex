@@ -21,26 +21,38 @@ which has an approximate \(\chi^2(h-p)\)-distribution if the null hypothesis hol
 The null hypothesis of no residual autocorrelation is rejected for large values of the test statistic.
 
 \begin{itemize}
- 	\item Load quarterly data for the price index of US Gross National Product given in \texttt{gnpdeflator.csv}.
-    This is a chain-type price index with basis year 2005.
-    The data is seasonally adjusted and spans the period from 1954.Q4 to 2007.Q4.
- 	\item Compute the inflation series.
-    That is, take the first difference of the log of gnpdeflator.
- 	\item Use the Akaike information criteria to determine the lag length \(\hat{p}\).
- 	\item Estimate two models with OLS:
-    (i) an \(AR(\hat{p})\) model and
-    (ii) an \(AR(1)\) model.
- 	\item Set \(h=\hat{p}+10\) and compute \(Q_h\) as well as the corresponding p-value for both models.
- 	\item Comment, based on your findings, whether the residuals are white noise.
+
+\item
+Load quarterly data for the price index of US Gross National Product given in \texttt{gnpdeflator.csv}.
+This is a chain-type price index with basis year 2005.
+The data is seasonally adjusted and spans the period from 1954.Q4 to 2007.Q4.
+
+\item
+Compute the inflation series.
+That is, take the first difference of the log of gnpdeflator.
+
+\item
+Use the Akaike information criteria to determine the lag length \(\hat{p}\).
+
+\item
+Estimate two models with {OLS}:
+  (i) an \(AR(\hat{p})\) model and
+  (ii) an \(AR(1)\) model.
+
+\item
+Set \(h=\hat{p}+10\) and compute \(Q_h\) as well as the corresponding p-value for both models.
+
+\item
+Comment, based on your findings, whether the residuals are white noise.
 \end{itemize}
 
 \paragraph{Readings:}
 \begin{itemize}
-	\item \textcite{Lutkepohl_2004_UnivariateTimeSeries}.
+\item \textcite{Lutkepohl_2004_UnivariateTimeSeries}
 \end{itemize}
 
 \begin{solution}\textbf{Solution to \nameref{ex:PortmanteauTestResidualAutocorrelation}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/portmanteau_test_solution.tex}
 \fi
 \newpage

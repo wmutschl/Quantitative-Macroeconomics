@@ -109,8 +109,6 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 </details>
 
 
-<!---
-
 <details>
   <summary>Week 5: Information Criteria, Specification Tests, and Bootstrap</summary>
 
@@ -123,13 +121,15 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 
 * [x] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_4.pdf) and write down all your questions
 * [x] re-read Lütkepohl (2004) and quickly go through Kilian and Lütkepohl (2007, Ch. 12.2); make note of all the aspects and concepts that you are still not familiar with or that you find difficult to understand
-* [x] TRY (!!!) to do exercises 1 and 2 of the problem set for week 5; we will do exercise 3 in class (see this [video](https://youtu.be/Itf-8Cp4xHI))
+* [x] Do exercise 1 of the problem set for week 5; we will do exercises 2 and 3 in class
 * [x] participate in the Q&A sessions with all your questions and concerns
 * [x] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
 * [x] (optionally) fork the course repository on GitHub
 
 </details>
 
+
+<!---
 <details>
   <summary> Week 6: Multivariate Time Series Concepts</summary>
 
