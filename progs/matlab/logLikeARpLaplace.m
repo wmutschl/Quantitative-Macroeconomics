@@ -2,7 +2,7 @@ function loglik=logLikeARpLaplace(x,y,p,const)
 % loglik=logLikeARpLaplace(x,y,p,const)
 % -------------------------------------------------------------------------
 % Computes the conditional log likelihood function of Laplace AR(p) model:
-% y_t = c + d*t + theta_1*y_{t-1} + ... + theta_p*y_{t-p} + u_t
+% y_t = c + d*t + phi_1*y_{t-1} + ... + phi_p*y_{t-p} + u_t
 % with u_t ~ Laplace distributed with E(u_t)=0, Var(u_t)=2 (known variance)
 % -------------------------------------------------------------------------
 % INPUT
@@ -36,7 +36,7 @@ y = y(p+1:end);         % get rid of initial observations
 uhat = y - Y*theta;     % ML residuals
 
 % compute the conditional log likelihood
-loglik = -log(2)*(T-p) -sum(abs(uhat));
+loglik = -log(2)*(T-p) - sum(abs(uhat));
 
 if isnan(loglik) || isinf(loglik) || ~isreal(loglik)
     loglik = -1e10;     % if anything goes wrong set value very small, can also use -Inf

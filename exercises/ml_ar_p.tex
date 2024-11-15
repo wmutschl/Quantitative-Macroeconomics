@@ -37,7 +37,7 @@ I_a(\theta,\sigma_u^2) = \lim\limits_{T\rightarrow \infty}-\frac{1}{T} E
 \item
 First consider the case of \(p=1\)
 \begin{enumerate}
-  \item Derive the exact log-likelihood function for the \(AR(1)\) model with \(|\theta|<1\) and \(d=0\):
+  \item Derive the exact log-likelihood function for the AR{(1)} model with \(|\theta|<1\) and \(d=0\):
   \begin{align*}
   y_t = c + \theta y_{t-1} + u_t
   \end{align*}
@@ -48,11 +48,11 @@ First consider the case of \(p=1\)
     Compare these to the OLS estimators.
 \end{enumerate}
 \item
-Now consider the general \(AR(p)\) model.
+Now consider the general AR{(p)} model.
 \begin{enumerate}
   \item Write a function \texttt{logLikeARpNorm{(\(x\),\(y\),\(p\),\(const\))}}
     that computes the log-likelihood value
-    conditional on the first \(p\) observations of a Gaussian \(AR(p)\) model:
+    conditional on the first \(p\) observations of a Gaussian AR{(p)} model:
   \begin{align*}
   \log l(\theta,\sigma_u)= -\frac{T-p}{2}\log(2\pi)-\frac{T-p}{2}\log(\sigma_u^2)-\sum_{t=p+1}^{T}\frac{u_t^2}{2\sigma_u^2}
   \end{align*}

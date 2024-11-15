@@ -44,7 +44,7 @@
 	
 \section[Theoretical and Simulated Moments]{Theoretical and Simulated Moments\label{ex:TheoreticalAndSimulatedMoments}}
 \begin{enumerate}
- 	\item Derive the unconditional first two moments (i.e.\ theoretical mean, covariance and autocovariance matrix) of the covariance stationary VAR(1) model: \(y_t = \nu + A y_{t-1} + u_t\)
+ 	\item Derive the unconditional first two moments (i.e.\ theoretical mean, covariance and autocovariance matrix) of the covariance stationary VAR{(1)} model: \(y_t = \nu + A y_{t-1} + u_t\)
  	\item Simulate \(R=100\) datasets each with \(T=100\) observations for
  	\begin{align*}
  	y_t = \begin{pmatrix}0.2 &0.3 \\-0.6 & 1.1 \end{pmatrix} y_{t-1}  + u_t
@@ -60,7 +60,7 @@
 
 
 \section{Properties Of Lag-Order Selection Criteria}
-Assume that the true Data-Generating-Process (DGP) follows the following VAR(4) model
+Assume that the true Data-Generating-Process (DGP) follows the following VAR{(4)} model
 \begin{align*}
 y_t = \begin{pmatrix}
 2.4 & 1.0\\
@@ -146,7 +146,7 @@ where \(*\) denotes an unrestricted value.
 \item Write a script that estimates the structural impulse response function via sign restrictions.
 To this end:
 	\begin{itemize}
-	\item Estimate a VAR(4) model with constant by using ordinary least-squares.
+	\item Estimate a VAR{(4)} model with constant by using ordinary least-squares.
 	Compute the lower Cholesky decomposition of your estimated residual covariance matrix, i.e.\ \( P = chol(\hat{\Sigma}_u) \).
 	\item Set the IRF horizon \(H=20\) and the number of required sign-identified draws to \(N=1000\).
 	\item Initialize an array \texttt{IRFvals} of dimension
@@ -184,7 +184,7 @@ in driving the behavior of the endogenous variables in a specific time period in
 It allows to track at each point in time the role of structural shocks
 in driving the VAR's endogenous variables away from their steady state.
 
-Given the notation used in the lecture, the historical decomposition for a VAR(1)
+Given the notation used in the lecture, the historical decomposition for a VAR{(1)}
 is based on the following recursive Wold representation:
 \begin{align*}
 y_t = A^t y_0 + \sum_{j=0}^{t-1} A^j B_0^{-1} \varepsilon_{t-j}

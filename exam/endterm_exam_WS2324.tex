@@ -215,7 +215,7 @@ Hint: You might want to use the auxiliary function \texttt{dlyapdoubling(gy,gu*S
 \newpage
 
 
-\section{Random-Walk-Metropolis-Hastings algorithm for AR(1)}
+\section{Random-Walk-Metropolis-Hastings algorithm for AR{(1)}}
 Re-consider the univariate first-order autoregressive process:
 \begin{align*}
 	y_t = \rho y_{t-1} + u_t
@@ -236,7 +236,7 @@ Simulated data for this process is given in the file \texttt{AR1Simulated.csv}.
 			\item \(\sigma \) is Uniform on the interval \([0,2]\): \texttt{unifpdf(x,0,2)}.
 		\end{itemize}
 		Plot the prior distribution for both parameters and comment whether this is a good choice.
-		\item Write a function \texttt{logposterior} that computes the log-posterior of the AR(1) process for any \(x=(\rho,\sigma)\) given the data.
+		\item Write a function \texttt{logposterior} that computes the log-posterior of the AR{(1)} process for any \(x=(\rho,\sigma)\) given the data.
 		Hints:
 		\begin{itemize}
 			\item We have already derived the log-likelihood function in the lecture:\\\texttt{logLikeARpNorm(x,data,1,0)}.

@@ -41,8 +41,8 @@
 	\newpage
 
 	
-\section[VAR(1) With Time Trend]{VAR(1) With Time Trend\label{ex:VAR1timetrend}}
-Consider the VAR(1) model with a constant and time trend
+\section[VAR{(1)} With Time Trend]{VAR{(1)} With Time Trend\label{ex:VAR1timetrend}}
+Consider the VAR{(1)} model with a constant and time trend
 $$ y_t = c + d\cdot t + A_1 y_{t-1} + u_t$$
 where $y_t$, $c$, $d$ and $u_t$ are $K$-dimensional vectors. Moreover, the Eigenvalues of the $K \times K$ dimensional matrix $A_1$ are inside the unit circle and $u_t$ is white noise with covariance matrix $\Sigma_u$.
 \begin{enumerate}
@@ -52,8 +52,8 @@ where $y_t$, $c$, $d$ and $u_t$ are $K$-dimensional vectors. Moreover, the Eigen
 
 \newpage
 
-\section[Maximum Likelihood Estimation Of Laplace AR(1)]{Maximum Likelihood Estimation Of Laplace AR(1)\label{ex:MaximumLikelihoodEstimationLaPlaceARp}}
-Consider the AR(1) model with constant
+\section[Maximum Likelihood Estimation Of Laplace AR{(1)}]{Maximum Likelihood Estimation Of Laplace AR{(1)}\label{ex:MaximumLikelihoodEstimationLaPlaceARp}}
+Consider the AR{(1)} model with constant
 $$ y_t = c + \phi y_{t-1} + u_t$$
 Assume that the error terms $u_t$ are i.i.d. Laplace distributed with known density
 \begin{align*}
@@ -71,7 +71,7 @@ Note that the parametrization of the above density is such that $E(u_t)=0$ and $
 \newpage
 
 \section{Properties Of Lag-Order Selection Criteria}
-Assume that the true Data-Generating-Process (DGP) follows the following VAR(4) model
+Assume that the true Data-Generating-Process (DGP) follows the following VAR{(4)} model
 $$y_t = \begin{pmatrix}
 2.4 & 1.0\\
 0 & 1.1
@@ -124,8 +124,8 @@ Given your results, do you agree with the following (general) findings?
 \end{enumerate}
 
 \newpage
-\section[Bayesian Estimation of VAR(2) and Zero-Lower-Bound]{Bayesian Estimation Of VAR(2) and Zero-Lower-Bound\label{ex:BayesianEstimationVARTwoZLB}}
-Re-consider the exercise on Bayesian Estimation of a VAR(2) model for the US economy which includes (in this ordering) the federal funds rate, government bond yield, unemployment and inflation. The sample period consists of 2007m1 to 2010m12. Data is given in the excel sheet \enquote{USZLB} in the file \texttt{data.xlsx}.
+\section[Bayesian Estimation of VAR{(2)} and Zero-Lower-Bound]{Bayesian Estimation Of VAR{(2)} and Zero-Lower-Bound\label{ex:BayesianEstimationVARTwoZLB}}
+Re-consider the exercise on Bayesian Estimation of a VAR{(2)} model for the US economy which includes (in this ordering) the federal funds rate, government bond yield, unemployment and inflation. The sample period consists of 2007m1 to 2010m12. Data is given in the excel sheet \enquote{USZLB} in the file \texttt{data.xlsx}.
 
 As the sample period includes the financial crisis, re-estimate the model with Bayesian methods and a Minnesota prior, but now use a small prior variance to reflect the view that monetary policy is at the zero-lower-bound and hence unlikely to respond to changes in the other variables. Compare both the mean as well as the 16th and 84th percentiles of the posterior distribution of the regression coefficient matrix $A$ and the reduced-form covariance matrix $\Sigma_u$ with the estimates you get if you do not explicitly adjust the prior for the lower-zero-bound.
 
@@ -156,7 +156,7 @@ where $b_{ij}$ denotes the $ij$th element of $B_0$. Consider the following ident
 Solve the following exercises:
 \begin{enumerate}
 	\item Derive the implied exclusion restrictions on the matrices $B_0$, $B_0^{-1}$ and $\Theta(1)$.
-	\item Consider the data given in the excel file \texttt{gali1992.xlsx}. Estimate a VAR(4) model with constant term.
+	\item Consider the data given in the excel file \texttt{gali1992.xlsx}. Estimate a VAR{(4)} model with constant term.
 	\item Estimate the structural impact matrix using a nonlinear equation solver, i.e. the objective is to find the unknown elements of $B_0^{-1}$ and the diagonal elements of $\Sigma_\varepsilon$ such that
 	$$\begin{bmatrix}
 	vech(B_0^{-1} \Sigma_\varepsilon B_0^{-1'}-\hat{\Sigma}_u)\\
@@ -173,7 +173,7 @@ Solve the following exercises:
 Consider data for $y_t = (\Delta gnp_t,\Delta p_t,i_t)'$, where $gnp_t$ denotes the log of U.S. real GNP, $p_t$ the consumer price index in logs, and $i_t$ the federal funds rate. The sample period consists of 1970Q1 to 2011Q1.  Data is given in the Excel sheet \enquote{MonPolData} in the file \texttt{data.xlsx}.
 
 \begin{enumerate}
-	\item Estimate the parameters of a VAR(4) model with constant by using Bayesian methods, i.e. a Gibbs sampling method. To this end:
+	\item Estimate the parameters of a VAR{(4)} model with constant by using Bayesian methods, i.e. a Gibbs sampling method. To this end:
 	\begin{itemize}
 		\item Assume a Minnesota prior for the VAR coefficients, where the prior mean should reflect the view that the VAR follows a random walk. Set the hyperparameters for the prior covariance matrix $V_0$ such that the tightness parameter on lags of own and of other variables are both equal to 0.5, and the tightness parameter on the constant term is equal to 100. 
 		\item Assume an inverse Wishart prior for the covariance matrix with degrees of freedoms equal to the number of variables and the identity matrix as prior scale matrix.

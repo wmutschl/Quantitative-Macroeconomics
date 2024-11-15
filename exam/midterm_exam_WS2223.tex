@@ -44,7 +44,7 @@
 	
 \section[Theoretical and Simulated Moments]{Theoretical and Simulated Moments\label{ex:TheoreticalAndSimulatedMoments}}
 \begin{enumerate}
- 	\item Derive the unconditional first two moments (i.e. theoretical mean, covariance and autocovariance matrix) of the covariance stationary VAR(1) model: $y_t = \nu + A y_{t-1} + u_t$
+ 	\item Derive the unconditional first two moments (i.e. theoretical mean, covariance and autocovariance matrix) of the covariance stationary VAR{(1)} model: $y_t = \nu + A y_{t-1} + u_t$
  	\item Simulate $R=100$ datasets each with $T=100$ observations for
  	\begin{align*}
  	y_t = \begin{pmatrix}0.2 &0.3 \\-0.6 & 1.1 \end{pmatrix} y_{t-1}  + u_t
@@ -60,7 +60,7 @@
 
 
 \section{Properties Of Lag-Order Selection Criteria}
-Assume that the true Data-Generating-Process (DGP) follows the following VAR(4) model
+Assume that the true Data-Generating-Process (DGP) follows the following VAR{(4)} model
 $$y_t = \begin{pmatrix}
 2.4 & 1.0\\
 0 & 1.1
@@ -147,7 +147,7 @@ Solve the following exercises:
 \begin{enumerate}
 	\item Derive the implied exclusion restrictions on the matrices $B_0$, $B_0^{-1}$ and $\Theta(1)$.
 	\item Consider the data given in the csv file \texttt{gali1992.csv}.
-	Estimate a VAR(4) model with constant term.
+	Estimate a VAR{(4)} model with constant term.
 	\item Estimate the structural impact matrix using a nonlinear equation solver,
 	  i.e. the objective is to find the unknown elements of $B_0^{-1}$ and the diagonal elements of $\Sigma_\varepsilon$ such that
 	$$\begin{bmatrix}
@@ -186,7 +186,7 @@ where $*$ denotes an unrestricted value.
 \item Write a script that estimates the structural impulse response function via sign restrictions.
 To this end:
 	\begin{itemize}
-	\item Estimate a VAR(4) model with constant by using ordinary least-squares.
+	\item Estimate a VAR{(4)} model with constant by using ordinary least-squares.
 	Compute the lower Cholesky decomposition of your estimated residual covariance matrix, i.e. $P=chol(\hat{\Sigma}_u)$.
 	\item Set the IRF horizon $H=20$ and the number of required sign-identified draws to $N=1000$.
 	\item Initialize an array \texttt{IRFvals} of dimension
