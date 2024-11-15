@@ -31,8 +31,6 @@ function ML = ARpML(y,p,const,alph)
 % willi@mutschler.eu
 % -------------------------------------------------------------------------
 
-T = size(y,1);           % sample size
-
 % Optimization with fminunc which finds the minimum of negative log-likelihood
 f = @(x) -1*logLikeARpNorm(x,y,p,const); % use function handle to hand over additional parameters and multiply by -1 for negative log-likelihood
 % start values
@@ -50,7 +48,7 @@ V = inv(hess);                      % estimated covariance matrix of coefficient
 sd = sqrt(diag(V));                 % estimated standard error vector
 sd_thetatilde = sd(1:p+const);      % estimated standard errors of coefficients
 sd_sigutilde = sd(end);             % estimated standard error of standard deviation of error term
-T_eff = T-p;                        % effective sample size used in estimation
+T_eff = size(y,1)-p;                % effective sample size used in estimation
 logl  = -fval;                      % value of maximized log likelihood
 tstat = thetatilde./sd_thetatilde;  % t-statistic
 tcrit = -tinv(alph/2,T_eff-p);      % critical value from t-distribution
@@ -65,7 +63,7 @@ ML.logl           = logl;
 ML.thetatilde     = thetatilde;
 ML.sigutilde      = sigutilde;
 ML.sd_thetatilde  = sd_thetatilde;
-ML.sd_sigutilde   = sd_thetatilde;
+ML.sd_sigutilde   = sd_sigutilde;
 ML.tstat          = tstat;
 ML.pvalues        = pvalues;
 ML.theta_ci       = theta_ci;
