@@ -113,3 +113,15 @@ jobs:
             AR4LagSelection;
             portmanteauTest;
             bootstrapCIAR1;
+
+      - name: Run week 6 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("dynare/matlab");
+            cd("progs/matlab");
+            matrixAlgebraEigenvalues;
+            matrixAlgebraKroneckerFormula;
+            matrixAlgebraRotation;
+            matrixAlgebraCholesky;
+            matrixAlgebraLyapunovComparison;

@@ -1,10 +1,19 @@
 \section[Understanding multivariate time series concepts]{Understanding multivariate time series concepts\label{ex:UnderstandingMultivariateTimeSeriesConcepts}}
 Let \(y_t\) be a K-dimensional time series and \(u_t\) a K-dimensional white noise process.
+
 \begin{enumerate}
+
 \item Why are we concerned with multivariate time series?
-For example, why do we model the VAR(1) process
+For example, why do we model the VAR{(1)} process
 \begin{align*}
-\begin{pmatrix}y_{1,t}\\ y_{2,t}\end{pmatrix} = \begin{pmatrix} c_1 \\ c_2\end{pmatrix} + \begin{pmatrix}a_{11} & a_{12}\\ a_{21} & a_{22} \end{pmatrix} \begin{pmatrix}y_{1,{t-1}}\\ y_{2,{t-1}}\end{pmatrix} + \begin{pmatrix}u_{1,t}\\ u_{2,t}\end{pmatrix}
+\begin{pmatrix} y_{1,t} \\ y_{2,t} \end{pmatrix}
+=
+\begin{pmatrix} c_1 \\ c_2 \end{pmatrix}
++
+\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}
+\begin{pmatrix} y_{1,{t-1}} \\ y_{2,{t-1}} \end{pmatrix}
++
+\begin{pmatrix} u_{1,t} \\ u_{2,t}\end{pmatrix}
 \end{align*}
 simultaneously instead of two models for each variable separately?
 
@@ -12,16 +21,21 @@ simultaneously instead of two models for each variable separately?
 
 \item How does the definition of covariance stationary change in the multivariate case?
 
-\item Consider the following VAR(1) process \(y_t = c + A y_{t-1} + u_t\)
+\item Consider the following VAR{(1)} process \(y_t = c + A y_{t-1} + u_t\)
 \begin{align*}
-\begin{pmatrix}y_{1,t} \\ y_{2,t}\\y_{3,t} \end{pmatrix} &= \begin{pmatrix}0\\0\\0 \end{pmatrix} + \begin{pmatrix}0.5 &0 &0 \\0.1&0.1&0.3\\0&0.2&0.3 \end{pmatrix} \begin{pmatrix}y_{1,{t-1}} \\ y_{2,{t-1}}\\y_{3,{t-1}} \end{pmatrix} + \begin{pmatrix}u_{1,t} \\ u_{2,t}\\ u_{3,t} \end{pmatrix}
+\begin{pmatrix} y_{1,t} \\ y_{2,t} \\ y_{3,t} \end{pmatrix}
+&= \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
++ \begin{pmatrix} 0.5 & 0 & 0 \\ 0.1 & 0.1 & 0.3 \\ 0 & 0.2 & 0.3 \end{pmatrix}
+\begin{pmatrix} y_{1,{t-1}} \\ y_{2,{t-1}} \\ y_{3,{t-1}} \end{pmatrix}
++ \begin{pmatrix} u_{1,t} \\ u_{2,t} \\ u_{3,t} \end{pmatrix}
 \end{align*}
 provided that \(u_t \sim WN(0,\Sigma_u)\) and
 \begin{align*}
-	\Sigma_u = \begin{pmatrix}2.25 & 0 & 0\\ 0 & 1 & 0.5\\ 0 & 0.5 & 0.74 \end{pmatrix}
+\Sigma_u = \begin{pmatrix} 2.25 & 0 & 0 \\ 0 & 1 & 0.5 \\ 0 & 0.5 & 0.74 \end{pmatrix}
 \end{align*}
-Compute the coefficients \(\Phi_0, \Phi_1, \dots \in \mathbb{R}^{3\times 3}\) of the lag polynomial \(\Phi(L) := \sum_{i=0}^\infty \Phi_i L^i\),
-and a \(\nu \in \mathbb{R}^3\) such that we get the following \(MA(\infty)\) process:
+Compute the coefficients \(\Phi_0, \Phi_1, \dots \in \mathbb{R}^{3\times 3}\)
+  of the lag polynomial \(\Phi(L) := \sum_{i=0}^\infty \Phi_i L^i\),
+  and a \(\nu \in \mathbb{R}^3\) such that we get the following \(MA(\infty)\) process:
 \begin{align*}
 y_t = \nu + \Phi(L) u_t
 \end{align*}
@@ -30,11 +44,11 @@ y_t = \nu + \Phi(L) u_t
 
 \paragraph{Readings}
 \begin{itemize}
-	\item \textcite[Ch.~2]{Lutkepohl_2005_NewIntroductionMultiple}
+\item \textcite[Ch.~2]{Lutkepohl_2005_NewIntroductionMultiple}
 \end{itemize}
 
 \begin{solution}\textbf{Solution to \nameref{ex:UnderstandingMultivariateTimeSeriesConcepts}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/understanding_multivariate_concepts_solution.tex}
 \fi
 \newpage
