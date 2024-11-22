@@ -1,19 +1,22 @@
 \begin{enumerate}
-\item From the univariate case (and undergraduate econometrics),
-we know that both estimators are identical;
-hence, the asymptotic normal distribution holds as well.
+\item
+From the univariate case (and undergraduate econometrics),
+  we know that both estimators are identical;
+  hence, the asymptotic normal distribution holds as well.
 
-\item Taking the derivative of the conditional log-likelihood function with respect to \(\Sigma_u\) yields:
+\item
+Taking the derivative of the conditional log-likelihood function with respect to \(\Sigma_u\) yields:
 \begin{align*}
 \widetilde{\Sigma}_u = \frac{\hat{U}\hat{U}'}{T}
 \end{align*}
 where \(\hat{U}\) are both the ML and OLS residuals (as \(\widetilde{A}=\widehat{A}\)).
 Note that from previous exercises in the univariate case
-we have already seen that the only difference to the OLS estimator of \(\Sigma_u\)
-is given in the fact that for ML we don't correct the degrees of freedom,
-but simply divide by the \textbf{effective} sample size used in the estimation \(T\).
+  we have already seen that the only difference to the OLS estimator of \(\Sigma_u\)
+  is given in the fact that for ML we don't correct the degrees of freedom,
+  but simply divide by the \textbf{effective} sample size used in the estimation \(T\).
 
-\item See the previous exercise, as the \texttt{VARReducedForm} function also outputs the ML estimate of \(\Sigma_u\):
+\item
+See the previous exercise, as the \texttt{VARReducedForm} function also outputs the ML estimate of \(\Sigma_u\):
 \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/threeVariableVARML.m}
 
 \end{enumerate}

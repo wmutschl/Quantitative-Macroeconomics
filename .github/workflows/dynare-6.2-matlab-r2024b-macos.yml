@@ -96,3 +96,6 @@ jobs:
             matrixAlgebraRotation;
             matrixAlgebraCholesky;
             matrixAlgebraLyapunovComparison;
+            VARpDimensionsIllustration;
+            threeVariableVAROLS;
+            threeVariableVARML;

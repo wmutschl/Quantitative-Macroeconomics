@@ -130,7 +130,7 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 
 
 <details>
-  <summary> Week 6: Multivariate Time Series Concepts</summary>
+  <summary> Week 6: Multivariate Time Series Concepts, Estimating VAR with OLS and ML</summary>
 
 ### Goals
 
@@ -140,11 +140,12 @@ Familiarize yourself with
 * multivariate notation and dimensions of vectors and matrices for VAR(p) models
 * autocovariances, stability and covariance-stationarity in multivariate VAR(p) models
 * the companion form of a VAR(p) model
+* estimate VAR models with Ordinary Least Squares (OLS) and Maximum Likelihood (ML)
 
 ### To Do
 
 * [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_5.pdf) and write down all your questions
-* [x] Read Kilian and Lütkepohl (2007, Ch. 2.2) and Lütkepohl (2005, Chapter 2 and Appendix A); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
+* [x] Read Kilian and Lütkepohl (2007, Ch. 2.2, 2.3) and Lütkepohl (2005, Chapter 2 and Appendix A); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
 * [x] Do exercise 1 of week 6
 * [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
 
@@ -154,11 +155,10 @@ Familiarize yourself with
 <!---
 
 <details>
-  <summary> Week 7: Estimating VAR model with OLS and ML; The identification problem in SVAR models</summary>
+  <summary> Week 7: The identification problem in SVAR models</summary>
 
 ### Goals
 
-* estimate VAR models with Ordinary Least Squares (OLS) and Maximum Likelihood (ML)
 * understand the identification problem in SVAR models
 
 ### To Do

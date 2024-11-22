@@ -1,10 +1,10 @@
 \begin{enumerate}
 \item \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/matrixAlgebraEigenvalues.m}
-In the univariate AR{(1)} model we would check whether the autocorrelation coefficient is between -1 and 1,
-  i.e.\ whether \(|\phi| = |A|<1\) such that \(\sum_{j=0}^\infty {(AL)}^j=1/(1-AL)\)
+In the univariate AR{(1)} model we would check whether the autocorrelation coefficient is between -1 and 1, i.e.\
+  whether \(|\phi| = |A|<1\) such that \(\sum_{j=0}^\infty {(AL)}^j=1/(1-AL)\)
   where \(L\) is the lag operator.
-In the multivariate case, we want to check the same thing,
-  i.e.| \(\sum_{j=0}^\infty {(AL)}^j={(1-AL)}^{-1}\).
+In the multivariate case, we want to check the same thing, i.e.\
+  \(\sum_{j=0}^\infty {(AL)}^j={(1-AL)}^{-1}\).
 Note that \(A\) is a square matrix and taking the power of a matrix is not a trivial task.
 One convenient way to do so, is to consider an eigenvalue decomposition (if it exists):
 \[A= Q \Lambda Q^{-1}\]

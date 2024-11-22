@@ -1,5 +1,5 @@
-\section[Ordinary Least Squares Estimation of VAR(p)]{Ordinary Least Squares Estimation of VAR(p)\label{ex:OrdinaryLeastSquaresEstimationVARp}}
-Consider the VAR(p) model with a constant written in the compact form
+\section[Ordinary Least Squares Estimation of VAR{(p)}]{Ordinary Least Squares Estimation of VAR{(p)}\label{ex:OrdinaryLeastSquaresEstimationVARp}}
+Consider the VAR{(p)} model with a constant written in the compact form
 \begin{align*}
 y_t = [c, A_1, \ldots, A_p] Z_{t-1} + u_t = A Z_{t-1}+ u_t
 \end{align*}
@@ -9,7 +9,7 @@ Given a sample of size \(T\), \(y_1, \ldots, y_T\), and \(p\) presample vectors,
   ordinary least squares for each equation separately results in efficient estimators.
 The OLS estimator is
 \begin{align*}
-\hat{A} = \left[ \hat{c}, \hat{A_1}, \ldots ,\hat{A_p}\right] = \left(\sum_{t=1}^{T}y_t Z_{t-1}'\right)\left(\sum_{t=1}^{T}Z_{t-1}Z_{t-1}'\right)^{-1} = Y Z'{(ZZ')}^{-1}
+\hat{A} = \left[ \hat{c}, \hat{A_1}, \ldots ,\hat{A_p}\right] = \left(\sum_{t=1}^{T}y_t Z_{t-1}'\right){\left(\sum_{t=1}^{T}Z_{t-1}Z_{t-1}'\right)}^{-1} = Y Z'{(ZZ')}^{-1}
 \end{align*}
 where \(Y=[y_1, \ldots, y_T]\) and \(Z=[Z_0, \ldots, Z_{T-1}]\).
 More precisely, stacking the columns of \(A = [c, A_1,\ldots ,A_p]\) in the vector \(\alpha = vec(A)\),
@@ -19,7 +19,7 @@ More precisely, stacking the columns of \(A = [c, A_1,\ldots ,A_p]\) in the vect
 where \(\Sigma_{\hat{\alpha}} = plim(\frac{1}{T}ZZ')^{-1}\otimes \Sigma_u\), if the process is stable.
 Under fairly general assumptions this estimator has an asymptotic normal distribution.
 A sufficient condition for the consistency and asymptotic normality of \(\hat{A}\) would be
-  that \(u_t\) is a continuous iid random variable with four finite moments.
+  that \(u_t\) is a continuous white noise random variable with four finite moments.
 A consistent estimator of the innovation covariance matrix \(\Sigma_u\) is, for example,
 \begin{align*}
 \hat{\Sigma}_u = \frac{\hat{U}\hat{U}'}{T-Kp-1}
@@ -33,8 +33,8 @@ where \(\overset{a}{\sim}\) denotes the approximate large-sample distribution.
 In other words, asymptotically the usual t-statistics can be used for testing restrictions on individual coefficients
   and for setting up confidence intervals.
 \begin{enumerate}
-\item What are the dimensions of \(y_t\), \(Y\), \(u_t\), \(U\), \(c\), \(A_1\), \ldots, \(A_p\), \(A\), \(\alpha\), \(Z_{t-1}\), \(Z\), \(\Sigma_u\) and \(\Sigma_{\hat{\alpha}}\).
-\item Modify your \texttt{ARpOLS} function such that it is able to estimate VAR(p) models.
+\item What are the dimensions of \(y_t\), \(Y\), \(u_t\), \(U\), \(c\), \(A_1\), \ldots, \(A_p\), \(A\), \(\alpha \), \(Z_{t-1}\), \(Z\), \(\Sigma_u\) and \(\Sigma_{\hat{\alpha}}\).
+\item Modify your \texttt{ARpOLS} function such that it is able to estimate VAR{(p)} models.
   Save the modified function as \texttt{VARReducedForm}.
 \item Consider data given in \texttt{threeVariableVAR.csv} for \(y_t = (\Delta gnp_t,i_t,\Delta p_t)'\),
   where \(gnp_t\) denotes the log of U.S. real GNP,
@@ -43,7 +43,7 @@ In other words, asymptotically the usual t-statistics can be used for testing re
 The estimation period is restricted to 1954q4 to 2007q4. 
 \begin{itemize}
 	\item Load the data and visualize it. Comment whether you think the data looks stationary.
-	\item Estimate a VAR(4) model using the \texttt{VARReducedForm} function.
+	\item Estimate a VAR{(4)} model using the \texttt{VARReducedForm} function.
 	Examine the stability of the estimated process
 	  and the significance of the estimated parameters at a \(95\% \) level.
 \end{itemize}
