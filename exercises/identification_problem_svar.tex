@@ -1,29 +1,39 @@
 \section[Identification Problem in Structural Vector Autoregressive Models]{Identification Problem in Structural Vector Autoregressive Models\label{ex:IdentificationProblemSVAR}}
 Consider a simple 2-variable model:
 \begin{align*}
-i_t &=  \beta \pi_t + \gamma_1 i_{t-1} + \gamma_2 \pi_{t-1} + \varepsilon_t^{MP} \\
+i_t &=  \beta \pi_t + \gamma_1 i_{t-1} + \gamma_2 \pi_{t-1} + \varepsilon_t^{MP}
+\\
 \pi_t &=  \delta i_t + \gamma_3 i_{t-1} + \gamma_4 \pi_{t-1} + \varepsilon_t^{\pi}
 \end{align*}
 where \(i_t\) denotes the interest rate set by the central bank and \(\pi_t\) the inflation rate.
 Assume for the \textbf{structural shocks}:
 \(\varepsilon_{t}=(\varepsilon_t^{MP}, \varepsilon_t^{\pi})' \sim N(0,\Sigma_\varepsilon)\).
+
 \begin{enumerate}
-\item Rewrite the model in a compact matrix form \(B_0 y_t = B_1 y_{t-1} + \varepsilon_{t}\).
-Note that this is a structural VAR(1) model.
-\item Since the structural VAR model is not directly observable, derive the reduced-form representation:
+
+\item
+Rewrite the model in a compact matrix form \(B_0 y_t = B_1 y_{t-1} + \varepsilon_{t}\).
+Note that this is a structural VAR{(1)} model.
+
+\item
+Since the structural VAR model is not directly observable, derive the reduced-form representation:
 \(y_t = A_1 y_{t-1} + u_t\).
 What is the relationship between structural shocks \(\varepsilon_t\) and reduced-form residuals \(u_t\)?
-\item In your own words, explain the identification problem in SVAR models.
+
+\item
+In your own words, explain the identification problem in SVAR models.
 Provide intuition behind the popular identification assumptions of short-run, long-run and sign restrictions.
+
 \end{enumerate}
 
 \paragraph{Readings}
 \begin{itemize}
 \item \textcite[Ch.~7.6]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
+\item \textcite{Wolf_2022_WhatCanWe}
 \end{itemize}
 
 \begin{solution}\textbf{Solution to \nameref{ex:IdentificationProblemSVAR}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/identification_problem_svar_solution.tex}
 \fi
 \newpage

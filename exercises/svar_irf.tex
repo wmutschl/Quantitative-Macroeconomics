@@ -1,12 +1,12 @@
 \section[Structural Impulse Response Function]{Structural Impulse Response Function\label{ex:StructuralImpulseResponseFunction}}
-Consider the structural VAR(p) model
+Consider the structural VAR{(p)} model
 \begin{align*}
 B_0y_t = B_1 y_{t-1} + \cdots  + B_{p} y_{t-p} + \varepsilon_{t}
 \end{align*}
 where the dimension of \(B_i\), \(i = 0,\ldots ,p\), is \(K \times K\).
 The \(K \times 1\) vector of structural shocks \(\varepsilon_{t}\) is assumed to be white noise with covariance matrix \(E(\varepsilon_t \varepsilon_t') = I_K\).
 That is, the elements of \(\varepsilon_t\) are mutually uncorrelated and also have a clear interpretation in terms on an underlying economic model.
-The reduced-form VAR(p) model is given by
+The reduced-form VAR{(p)} model is given by
 \begin{align*}
     y_t = \underbrace{B_0^{-1}B_1}_{A_1}y_t + \cdots  + \underbrace{B_0^{-1}B_p}_{A_p} y_{t-p} + \underbrace{B_0^{-1}\varepsilon_t}_{u_t}
 \end{align*}
@@ -23,7 +23,7 @@ where \(\Theta_h\) is a \(K\times K\) matrix with individual elements \(\theta_{
 \item Usually the objective is to plot the responses of each variable to each structural shock.
 How many so-called impulse response functions do we need to plot?
 
-\item Consider the VAR(1) representation of the VAR(p) process, i.e.\
+\item Consider the VAR{(1)} representation of the VAR{(p)} process, i.e.\
 \begin{align*}
 Y_t = A Y_{t-1} + U_t
 \end{align*}

@@ -1,16 +1,25 @@
 \begin{enumerate}
 
-\item Rewrite the equations:
+\item
+Rewrite the equations:
 \begin{align*}
-i_t - \beta \pi_t  &=  \gamma_1 i_{t-1} + \gamma_2 \pi_{t-1} + \varepsilon_t^{MP}\\
+i_t - \beta \pi_t  &=  \gamma_1 i_{t-1} + \gamma_2 \pi_{t-1} + \varepsilon_t^{MP}
+\\
 \pi_t - \delta i_t &=  \gamma_3 i_{t-1} + \gamma_4 \pi_{t-1} + \varepsilon_t^{\pi}
 \end{align*}
 or in matrix notation:
 \begin{align*}
-\underbrace{\begin{pmatrix}	1 & -\beta \\ -\delta & 1 \end{pmatrix}}_{B_0} \underbrace{\begin{pmatrix} i_t \\ \pi_t \end{pmatrix}}_{y_t} = \underbrace{\begin{pmatrix} \gamma_1 & \gamma_2 \\ \gamma_3 & \gamma_4 \end{pmatrix}}_{B_1} \underbrace{\begin{pmatrix} i_{t-1} \\ \pi_{t-1} \end{pmatrix}}_{y_{t-1}} + \underbrace{\begin{pmatrix} \varepsilon_t^{MP} \\ \varepsilon_t^{\pi} \end{pmatrix}}_{\varepsilon_t}
+\underbrace{\begin{pmatrix} 1 & -\beta \\ -\delta & 1 \end{pmatrix}}_{B_0}
+\underbrace{\begin{pmatrix} i_t \\ \pi_t \end{pmatrix}}_{y_t}
+=
+\underbrace{\begin{pmatrix} \gamma_1 & \gamma_2 \\ \gamma_3 & \gamma_4 \end{pmatrix}}_{B_1}
+\underbrace{\begin{pmatrix} i_{t-1} \\ \pi_{t-1} \end{pmatrix}}_{y_{t-1}}
++
+\underbrace{\begin{pmatrix} \varepsilon_t^{MP} \\ \varepsilon_t^{\pi} \end{pmatrix}}_{\varepsilon_t}
 \end{align*}
 
-\item Pre-multiply both sides by \(B_0^{-1}\):
+\item
+Pre-multiply both sides by \(B_0^{-1}\):
 \begin{align*}
 y_t = \underbrace{B_0^{-1} B_1}_{A_1} y_{t-1} + \underbrace{B_0^{-1} \varepsilon_t}_{u_t}
 \end{align*}
@@ -36,40 +45,57 @@ u_t^{i} = a \varepsilon_t^{MP} + b \varepsilon_t^{\pi}
 u_t^{\pi} = c \varepsilon_t^{MP} + d \varepsilon_t^{\pi}
 \end{align*}
 Each reduced-form shock is a \textbf{weighted average} of structural shocks,
-where \(a,b,c,d\) represents the amounts by which a particular structural shock contributes to the variation in each residual.
+  where \(a,b,c,d\) represents the amounts by which a particular structural shock contributes to the variation in each residual.
 
-\item There is not enough information to solve this system of equations, because in \(B_0\) we have 4 unknowns,
-but due to symmetry from \(\Sigma_u = B_0^{-1} B_0^{-1'}\) we only have 3 elements in \(\Sigma_u\): two variances and one covariance.
+\item
+There is not enough information to solve this system of equations, because in \(B_0\) we have 4 unknowns,
+  but due to symmetry from \(\Sigma_u = B_0^{-1} B_0^{-1'}\) we only have 3 elements in \(\Sigma_u\): two variances and one covariance.
 More generally, the covariance structure leaves \(K(K-1)/2\) degrees of freedom in specifying \(B_0^{-1}\)
-and hence further restrictions are needed to achieve identification.
+  and hence further restrictions are needed to achieve identification.
 
 Some popular strategies:
+
 \begin{enumerate}
-\item Recursive ordering of variables (aka orthogonalization):
+
+\item
+Recursive ordering of variables (aka orthogonalization):
 In the above example, we would set \(b=0\) to get a lower triangular \(B_0^{-1}\).
-The \emph{economics} behind this choice is based on \emph{delay} assumptions,
-i.e.\ how long it takes for a variable to react to a certain shock.
+The \emph{economics} behind this choice is based on \emph{delay} assumptions, i.e.\
+  how long it takes for a variable to react to a certain shock.
 We can think of the structural shock in terms of the effect it exerts \textbf{contemporaneously} on the variable of interest:
-\(\partial y_t = u_t = B_0^{-1} \varepsilon_t\), so we could write:
+\(\frac{\partial y_{t}}{\partial \varepsilon_{t}} = u_{t} = B_0^{-1}\), so we could write:
 \begin{align*}
-\begin{pmatrix} i_t \\ \pi_t \end{pmatrix} = \begin{pmatrix} a & 0 \\ c & d \end{pmatrix} \begin{pmatrix} \varepsilon_t^{MP} \\ \varepsilon_t^{\pi} \end{pmatrix}
+\begin{pmatrix} \partial i_t \\ \partial \pi_t \end{pmatrix}
+=
+\begin{pmatrix} a & 0 \\ c & d \end{pmatrix}
+\begin{pmatrix} \partial \varepsilon_t^{MP} \\ \partial \varepsilon_t^{\pi} \end{pmatrix}
 \end{align*}
-This lower triangular structure can be obtained by e.g.\ a Cholesky decomposition of \(\Sigma_u\) and yields \textbf{exact identification}.
+This lower triangular structure can be obtained by e.g.\
+  a Cholesky decomposition of \(\Sigma_u\) and yields \textbf{exact identification}.
 The order of variables, however, matters!
-\item Short-run restrictions: Exclusion restrictions on the impact matrix \(B_0^{-1}\), more flexible than orthogonalization.
-\item Separating transitory from permanent components by assuming long-run structural relationships,
-i.e.\ on the long-run multiplier matrix \({(I-A(L))}^{-1} B_0^{-1}\).
-\item Combination of short-run and long-run relationships.
-\item Sign restrictions: Take the Cholesky decomposition which yields exact identification \(\Sigma_u = B_0^{-1}B_0^{-1'} = P P'\).
+
+\item
+Short-run restrictions: Exclusion restrictions on the impact matrix \(B_0^{-1}\), more flexible than orthogonalization.
+
+\item
+Separating transitory from permanent components by assuming long-run structural relationships,
+  i.e.\ on the long-run multiplier matrix \({(I-A(L))}^{-1} B_0^{-1}\).
+
+\item
+Combination of short-run and long-run relationships.
+
+\item
+Sign restrictions: Take the Cholesky decomposition which yields exact identification \(\Sigma_u = B_0^{-1}B_0^{-1'} = P P'\).
 In this special case: \({B_0}^{-1}=P\), but this is just \textbf{ONE} possible solution.
 It is also possible to decompose \(\Sigma_u = \tilde{P}\tilde{P}'\), where \(\tilde{P} = PQ'\) and \(Q\) is an orthogonal rotation matrix: \(Q'Q = QQ'=I\);
-that is, \(\tilde{P}\) and \(P\) are \textbf{observationally equivalent}, because they both reproduce \(\Sigma_u\).
+  that is, \(\tilde{P}\) and \(P\) are \textbf{observationally equivalent}, because they both reproduce \(\Sigma_u\).
 \(Q\) is called a rotation matrix because it allows us to \emph{rotate} the initial Cholesky (recursive) matrix while maintaining the property that shocks are uncorrelated.
 Put differently, it helps us generate new weights!
 This is the basic idea of sign restrictions:
 Examine a large number of candidate impact matrices by repeatedly drawing at random from the set of orthogonal matrices \(Q\).
 For each \(B_0^{-1}\) check whether the candidate impact matrix is compatible with the sign restrictions that characterize a certain structural shock.
-Then we construct the set of admissable models based on accepted draws.
+Then we construct the set of admissible models based on accepted draws.
+
 \end{enumerate}
 
 \end{enumerate}

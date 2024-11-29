@@ -128,3 +128,11 @@ jobs:
             VARpDimensionsIllustration;
             threeVariableVAROLS;
             threeVariableVARML;
+
+      - name: Run week 7 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("dynare/matlab");
+            cd("progs/matlab");
+            USOil;

@@ -90,3 +90,11 @@ jobs:
             VARpDimensionsIllustration;
             threeVariableVAROLS;
             threeVariableVARML;
+
+      - name: Run week 7 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("D:\hostedtoolcache\windows\dynare-6.0\matlab");
+            cd("progs/matlab");
+            USOil;
