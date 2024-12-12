@@ -98,3 +98,12 @@ jobs:
             addpath("D:\hostedtoolcache\windows\dynare-6.0\matlab");
             cd("progs/matlab");
             USOil;
+
+      - name: Run week 9 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("D:\hostedtoolcache\windows\dynare-6.0\matlab");
+            cd("progs/matlab");
+            keatingSR;
+            BlanchardQuahLR;

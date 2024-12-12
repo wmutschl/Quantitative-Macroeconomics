@@ -107,3 +107,12 @@ jobs:
             addpath("Dynare-6.2-arm64/matlab");
             cd("progs/matlab");
             USOil;
+
+      - name: Run week 9 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("Dynare-6.2-arm64/matlab");
+            cd("progs/matlab");
+            keatingSR;
+            BlanchardQuahLR;

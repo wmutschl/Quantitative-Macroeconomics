@@ -1,14 +1,14 @@
 \section[Non-recursively Identified Models By Short-Run Restrictions]{Non-recursively Identified Models By Short-Run Restrictions\label{ex:NonRecursivelyIdentifiedModelsShortRun}}
 Consider a quarterly model of US monetary policy.
 Let \(y_t=(\Delta p_t, \Delta gnp_t, i_t, \Delta m_t)'\),
-where \(p_t\) refers to the log of the GNP deflator,
-\(gnp_t\) to the log of real GNP,
-\(i_t\) to the federal funds rate, averaged by quarter,
-and \(m_t\) to the log of money aggregate M1. 
+  where \(p_t\) refers to the log of the GNP deflator,
+  \(gnp_t\) to the log of real GNP,
+  \(i_t\) to the federal funds rate, averaged by quarter,
+  and \(m_t\) to the log of money aggregate M1.
 The data is given in \texttt{Keating1992.csv}.
 
 The structural shock vector \(\varepsilon_t = (\varepsilon_t^{AS},\varepsilon_t^{IS},\varepsilon_t^{MS},\varepsilon_t^{MD})\)
-includes an aggregate supply shock, an IS shock, a money supply shock, and a money demand shock.
+  includes an aggregate supply shock, an IS shock, a money supply shock, and a money demand shock.
 The structural model can be written as:
 \begin{align*}
 \begin{pmatrix}
@@ -19,27 +19,27 @@ u_t^p\\u_t^{gnp}\\u_t^{i}\\u_t^m
 -b_{21,0}u_t^p - b_{23,0} u_t^i- b_{24,0}u_t^m +\varepsilon_{t}^{IS}\\
 -b_{34,0}u_t^m + \varepsilon_{t}^{MS}\\
 -b_{41,0}(u_t^{gnp}+u_t^p)-b_{43,0}u_t^i +\varepsilon_{t}^{MD}
-\end{pmatrix}        
+\end{pmatrix}
 \end{align*}
-Furthermore, it is assumed that \(E(\varepsilon_t \varepsilon_t')=\Sigma_\varepsilon\) is NOT the identity matrix;
-hence, we will use the normalization rule that the diagonal elements of \(B_0\) equal unity.
+Furthermore, it is assumed that \(E(\varepsilon_t \varepsilon_t')=\Sigma_{\varepsilon}\) is NOT the identity matrix;
+  hence, we will use the normalization rule that the diagonal elements of \(B_{0}\) equal unity.
 
 \begin{enumerate}
 \item Estimate the reduced-form covariance matrix of a VAR model with four lags and an intercept with ordinary least squares.
 
-\item Provide intuition behind the structural model and derive the \(B_0\) matrix.
-Note that we are imposing restrictions on both \(B_0\) and \(\Sigma_\varepsilon \), but not on \(B_0^{-1}\).
+\item Provide intuition behind the structural model and derive the \(B_{0}\) matrix.
+Note that we are imposing restrictions on both \(B_{0}\) and \(\Sigma_{\varepsilon} \), but not on \(B_{0}^{-1}\).
 
-\item Estimate \(B_0\) and \(\Sigma_\varepsilon \) using the nonlinear equation solver \texttt{fsolve}.
+\item Estimate \(B_{0}\) and \(\Sigma_{\varepsilon}\) using the nonlinear equation solver \texttt{fsolve}.
 To this end, first set up a function that computes
 \begin{align*}
-F_{SR}([B_0, diag(\Sigma_\varepsilon)]) = \begin{bmatrix} vech\left(B_0^{-1} \Sigma_\varepsilon B_0^{-1'} - \hat{\Sigma}_u\right)\\\text{restrictions on }B_0\end{bmatrix}=0
+F_{SR}([B_{0}, diag(\Sigma_{\varepsilon})]) = \begin{bmatrix} vech\left(B_{0}^{-1} \Sigma_{\varepsilon} B_{0}^{-1'} - \hat{\Sigma}_u\right)\\\text{restrictions on }B_{0}\end{bmatrix}=0
 \end{align*}
-where \(diag(\Sigma_\varepsilon)\) denotes only the diagonal elements of \(\Sigma_\varepsilon \).
-Note that these diagonal elements as well as \(B_0\) are stacked into a matrix or vector which is then used as the input for the numerical optimizer.
+where \(diag(\Sigma_{\varepsilon})\) denotes only the diagonal elements of \(\Sigma_{\varepsilon}\).
+Note that these diagonal elements as well as \(B_{0}\) are stacked into a matrix or vector which is then used as the input for the numerical optimizer.
 Use feasible options for the optimizer (e.g.\ as in the previous exercises).
 
-\item Use the estimated structural impact matrix \(B_0^{-1}\Sigma_\varepsilon^{1/2}\) to plot the structural impulse response functions using \texttt{irfPlots.m}.
+\item Use the estimated structural impact matrix \(B_{0}^{-1}\Sigma_{\varepsilon}^{1/2}\) to plot the structural impulse response functions using \texttt{irfPlots.m}.
 Interpret the effects of an aggregate supply shock on prices, real GNP, the Federal Funds rate and M1.
 \end{enumerate}
 
@@ -49,7 +49,7 @@ Interpret the effects of an aggregate supply shock on prices, real GNP, the Fede
 \end{itemize}
 
 \begin{solution}\textbf{Solution to \nameref{ex:NonRecursivelyIdentifiedModelsShortRun}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/svar_shortrun_solution.tex}
 \fi
 \newpage

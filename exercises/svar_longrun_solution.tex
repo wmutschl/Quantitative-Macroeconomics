@@ -12,102 +12,110 @@ On the other hand, most economists would agree that the effect of demand shocks
 This suggests an alternative approach, i.e\ use theoretically-inspired long-run restrictions to identify shocks and impulse responses
   not only for the long-run behavior but also for the short-run behavior of all variables.
 
-\item We have already shown that in a VAR(1) model we get the following structural impulse response function for horizons \(h=0,1,2,\cdots \)
+\item We have already shown that in a VAR{(1)} model we get the following structural impulse response function for horizons \(h=0,1,2,\cdots \)
 \begin{align*}
-    \frac{\partial y_t}{\partial \varepsilon_t'} = B_0^{-1}
-    ,\qquad
-    \frac{\partial y_{t+1}}{\partial \varepsilon_t'} = A_1 B_0^{-1}
-    ,\qquad
-    \frac{\partial y_{t+2}}{\partial \varepsilon_t'} = A^2_1 B_0^{-1}
-    ,\qquad
-    \frac{\partial y_{t+h}}{\partial \varepsilon_t'} = A^h_1 B_0^{-1}
+\frac{\partial y_{t}}{\partial \varepsilon_{t}'} = B_{0}^{-1}
+,\qquad
+\frac{\partial y_{t+1}}{\partial \varepsilon_{t}'} = A_{1} B_{0}^{-1}
+,\qquad
+\frac{\partial y_{t+2}}{\partial \varepsilon_{t}'} = A^{2}_{1} B_{0}^{-1}
+,\qquad
+\frac{\partial y_{t+h}}{\partial \varepsilon_{t}'} = A^{h}_{1} B_{0}^{-1}
 \end{align*}
-The effects of \(\Delta gdp_t\) are given by the first row and the second row contains the effects on \(ur_t\).
-So the effect of the structural shocks on the covariance stationary variables \(ur_t\) and \(\Delta gdp_t\) is given by
+The effects of \(\Delta {gdp}_{t}\) are given by the first row and the second row contains the effects on \({ur}_{t}\).
+So the effect of the structural shocks on the covariance stationary variables \({ur}_{t}\) and \(\Delta {gdp}_{t}\) is given by
 \begin{itemize}
-    \item \(B_0^{-1}\) on impact
-    \item \(A_1 B_0^{-1}\) after one period
-    \item \(A_1^2 B_0^{-1}\) after two periods
-    \item \(A_1^h B_0^{-1}\) after \(h\) periods
+\item \(B_{0}^{-1}\) on impact
+\item \(A_{1} B_{0}^{-1}\) after one period
+\item \(A_{1}^{2} B_{0}^{-1}\) after two periods
+\item \(A_{1}^{h} B_{0}^{-1}\) after \(h\) periods
 \end{itemize}
-Now, because \(ur_t\) and \(\Delta gdp_t\) are covariance stationary,
-  the Eigenvalues of \(A_1\) are inside the unit circle.
-So, in the long-run, \(h\rightarrow \infty \), we have that \(A^h\rightarrow 0\).
-That is, the effect of the structural shocks on the covariance-stationary variables \(ur_t\) and \(\Delta gdp_t\) vanishes over time
-  and they return to their expected mean value.
-On the other hand, given the IRFs of \(\frac{\partial \Delta gdp_{t+h}}{\partial \varepsilon_t'}\)
-  we can derive the IRF of \(gdp_{t+h}\) by the cumulative sum
+Now, because \({ur}_{t}\) and \(\Delta {gdp}_{t}\) are covariance stationary,
+  the Eigenvalues of \(A_{1}\) are inside the unit circle.
+So, in the long-run, \(h\rightarrow \infty \), we have that \(A^{h}\rightarrow 0\).
+That is, the effect of the structural shocks on the covariance-stationary variables \({ur}_{t}\) and \(\Delta {gdp}_{t}\)
+  vanishes over time and they return to their expected mean value.
+On the other hand, given the IRFs of \(\frac{\partial \Delta {gdp}_{t+h}}{\partial \varepsilon_{t}'}\)
+  we can derive the IRF of \({gdp}_{t+h}\) by the cumulative sum
 \begin{align*}
-\frac{\partial gdp_{t+h}}{\partial \varepsilon_t'} = \frac{\partial \Delta gdp_t}{\partial \varepsilon_t'} + \frac{\partial \Delta gdp_{t+1}}{\partial \varepsilon_t'} + \cdots  + \frac{\partial \Delta gdp_{t+h}}{\partial \varepsilon_t'}
+\frac{\partial {gdp}_{t+h}}{\partial \varepsilon_{t}'}
+=
+\frac{\partial \Delta {gdp}_{t}}{\partial \varepsilon_{t}'}
++ \frac{\partial \Delta {gdp}_{t+1}}{\partial \varepsilon_{t}'}
++ \cdots
++ \frac{\partial \Delta {gdp}_{t+h}}{\partial \varepsilon_{t}'}
 \end{align*}
 That is, the effect on the level of GDP to an increase in the structural shocks is equal to the \textbf{first row} in
 \begin{itemize}
-    \item \((I)B_0^{-1}\) on impact
-    \item \((I+A_1) B_0^{-1}\) after one period
-    \item \((I+A_1+A_1^2) B_0^{-1}\) after two periods
-    \item \((I+A_1+A_1^2+A_1^3) B_0^{-1}\) after three periods
-    \item \((I+A_1+A_1^2+\cdots +A_1^h) B_0^{-1}\) after $h$ periods
+\item \((I)B_{0}^{-1}\) on impact
+\item \((I+A_{1}) B_{0}^{-1}\) after one period
+\item \((I+A_{1}+A_{1}^{2}) B_{0}^{-1}\) after two periods
+\item \((I+A_{1}+A_{1}^{2}+A_{1}^{3}) B_{0}^{-1}\) after three periods
+\item \((I+A_{1}+A_{1}^{2}+\cdots +A_{1}^{h}) B_{0}^{-1}\) after \(h\) periods
 \end{itemize}
-In the long-run, \(h\rightarrow\infty \), the effect of the structural shocks on the level of \(gdp_t\) is given by the \textbf{first row} of
+In the long-run, \(h\rightarrow\infty \), the effect of the structural shocks on the level of \({gdp}_{t}\) is given by the \textbf{first row} of
 \begin{align*}
-    (I+A_1+A_1^2+A_1^3+\cdots ) B_0^{-1} = {(I-A)}^{-1} B_0^{-1}
+(I+A_{1}+A_{1}^{2}+A_{1}^{3}+\cdots ) B_{0}^{-1} = {(I-A)}^{-1} B_{0}^{-1}
 \end{align*}
-Again, we make use of the fact that \(ur_t\) and \(\Delta gdp_t\) are covariance-stationary,
-  which implies that the Eigenvalues of \(A_1\) are inside the unit circle and we can make use of the formula for the geometric sum.
+Again, we make use of the fact that \({ur}_{t}\) and \(\Delta {gdp}_{t}\) are covariance-stationary,
+  which implies that the Eigenvalues of \(A_{1}\) are inside the unit circle and we can make use of the formula for the geometric sum.
 
-More generally, for VAR(p) models with variables in first-differences, we get the long-run effect matrix for the corresponding level variables
+More generally, for VAR{(p)} models with variables in first-differences, we get the long-run effect matrix for the corresponding level variables
 \begin{align*}
-    \Theta(1) = {A(1)}^{-1} B_0^{-1}
+\Theta(1) = {A(1)}^{-1} B_{0}^{-1}
 \end{align*}
-where \(A(1)= (I - A_1 - \cdots  - A_p)\) is the lag polynomial evaluated at \(L=1\).
+where \(A(1)= (I - A_{1} - \cdots  - A_{p})\) is the lag polynomial evaluated at \(L=1\).
 
 \item Re-consider the long-run multiplier matrix:
 \begin{align*}
-\Theta(1) = {A(1)}^{-1} B_0^{-1} \equiv \begin{pmatrix} a & \textcolor{red}{c}\\ b & d \end{pmatrix}
+\Theta(1) = {A(1)}^{-1} B_{0}^{-1} \equiv \begin{pmatrix} a & \textcolor{red}{c}\\ b & d \end{pmatrix}
 \end{align*}
-where \(a\) and \(c\) are the long-run effects of \(\varepsilon_t^{AS}\) and \(\varepsilon_t^{AD}\) on the level of \(gdp_t\).
-Economic theory tells us that in the long-run \(gdp_t\) is not affected by an aggregate demand shock and it returns to its initial value.
+where \(a\) and \(c\) are the long-run effects of \(\varepsilon_{t}^{AS}\) and \(\varepsilon_{t}^{AD}\) on the level of \({gdp}_{t}\).
+Economic theory tells us that in the long-run \({gdp}_{t}\) is not affected by an aggregate demand shock and it returns to its initial value.
 In other words, economic theory requires that \(c=0\):
 \begin{align*}
-\Theta(1) = {A(1)}^{-1} B_0^{-1} \equiv \begin{pmatrix} a & \textcolor{red}{0}\\ b & d \end{pmatrix}
+\Theta(1) = {A(1)}^{-1} B_{0}^{-1} \equiv \begin{pmatrix} a & \textcolor{red}{0}\\ b & d \end{pmatrix}
 \end{align*}
-Note that we don't have anything to say about $a$ (the effect of an AS shock on the level of GDP) and leave it unrestricted.
-Similarly, as \(ur_t\) is covariance-stationary and does not enter \(y_t\) as first difference,
+Note that we don't have anything to say about \(a\) (the effect of an AS shock on the level of GDP) and leave it unrestricted.
+Similarly, as \({ur}_{t}\) is covariance-stationary and does not enter \(y_{t}\) as first difference,
   we can't really identify or economically interpret \(b\) and \(d\) and leave it unrestricted as well.
 
-\item There are two ways to infer \(B_0^{-1}\) from the restricted \(\Theta(1) = {A(1)}^{-1} B_0^{-1} \equiv \begin{pmatrix} a & \textcolor{red}{0}\\ b & d \end{pmatrix}\) matrix:
+\item There are two ways to infer \(B_{0}^{-1}\) from the restricted
+\(\Theta(1) = {A(1)}^{-1} B_{0}^{-1} \equiv \begin{pmatrix} a & \textcolor{red}{0}\\ b & d \end{pmatrix}\) matrix:
 \\
 \textbf{1. Method: Cholesky decomposition}
 \\
 Note that \(\Theta(1)\) is lower triangular and looks like a Cholesky factor. Indeed:
 \begin{align*}
-    \Theta(1) \Theta(1)' = {A(1)}^{-1} B_0^{-1} B_0^{-1'} {A(1)}^{-1'} = {A(1)}^{-1} \Sigma_u {A(1)}^{-1'}
+\Theta(1) \Theta(1)' = {A(1)}^{-1} B_{0}^{-1} B_{0}^{-1'} {A(1)}^{-1'} = {A(1)}^{-1} \Sigma_{u} {A(1)}^{-1'}
 \end{align*}
-This right-hand side can be readily computed as both \(A(1)\) as well as \(\Sigma_u\) are given by the reduced-form estimation.
-That is computing the lower triangular Cholesky factor of \({A(1)}^{-1} \Sigma_u {A(1)}^{-1'}\) provides \(\Theta(1)\).
-From \(\Theta(1)\) we can compute \(B_0^{-1}\):
+This right-hand side can be readily computed as both \(A(1)\) as well as \(\Sigma_{u}\) are given by the reduced-form estimation.
+That is computing the lower triangular Cholesky factor of \({A(1)}^{-1} \Sigma_{u} {A(1)}^{-1'}\) provides \(\Theta(1)\).
+From \(\Theta(1)\) we can compute \(B_{0}^{-1}\):
 \begin{align*}
-B_0^{-1} = A(1)\Theta(1)
+B_{0}^{-1} = A(1)\Theta(1)
 \end{align*}
-Once we have \(B_0^{-1}\) we can proceed as usual and compute the impulse response function.
+Once we have \(B_{0}^{-1}\) we can proceed as usual and compute the impulse response function.
 
 \textbf{2. Method: Numerical optimization}
 \\
-Use a numerical optimizer to find a \(B_0^{-1}\) matrix that fulfills the following restrictions:
+Use a numerical optimizer to find a \(B_{0}^{-1}\) matrix subject to the following restrictions:
 \begin{itemize}
-    \item covariance restrictions: \(vech(B_0^{-1} B_0^{-1'}) = vech(\Sigma_u)\)
-    \item long-run restriction: \(\Theta(1)_{1,2} = 0\)
+\item covariance restrictions: \(vech(B_{0}^{-1} B_{0}^{-1'}) = vech(\Sigma_{u})\)
+\item long-run restriction: \(\Theta{(1)}_{1,2} = 0\)
 \end{itemize}
-where \(\Theta(1) = {A(1)}^{-1} B_0^{-1}\).
-Note that both \(\Sigma_u\) as well as \({A(1)}^{-1}\) are fixed parameters and given by the reduced-form estimation.
+where \(\Theta(1) = {A(1)}^{-1} B_{0}^{-1}\).
+Note that both \(\Sigma_{u}\) as well as \({A(1)}^{-1}\) are fixed parameters and given by the reduced-form estimation.
 
 \item The code might look like this:
 \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/BlanchardQuahLR.m}
 Here is the helper function to impose the restrictions:
 \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/BlanchardQuahLR_f.m}
-The supply shock has on impact a positive effect on the log-level of GDP, it then drops for one quarter, but increases again afterwards.
+The supply shock has on impact a positive effect on the log-level of GDP,
+  it then drops for one quarter, but increases again afterwards.
 The long-run effect of a supply shock on the log-level of GDP is positive.
 On the other hand, the demand shock obviously has no long-run effect on the log-level of GDP (due to our identifying restriction),
   whereas in the short-run the effect is negative.
-The effects on the unemployment rate are basically flipped with the exception that in the long-run the effects vanish as \(ur_t\) is covariance-stationary.
+The effects on the unemployment rate are basically flipped
+  with the exception that in the long-run the effects vanish as \({ur}_{t}\) is covariance-stationary.
 \end{enumerate}

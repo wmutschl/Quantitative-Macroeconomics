@@ -136,3 +136,12 @@ jobs:
             addpath("dynare/matlab");
             cd("progs/matlab");
             USOil;
+
+      - name: Run week 9 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("dynare/matlab");
+            cd("progs/matlab");
+            keatingSR;
+            BlanchardQuahLR;

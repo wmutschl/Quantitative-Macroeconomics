@@ -120,7 +120,7 @@ Please feel free to use this for teaching or learning purposes; however, taking 
 ### To Do
 
 * [x] review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_4.pdf) and write down all your questions
-* [x] re-read Lütkepohl (2004) and quickly go through Kilian and Lütkepohl (2007, Ch. 12.2); make note of all the aspects and concepts that you are still not familiar with or that you find difficult to understand
+* [x] re-read Lütkepohl (2004) and briefly go through Kilian and Lütkepohl (2007, Ch. 2.6, 2.7, 12.2); make note of all the aspects and concepts that you are still not familiar with or that you find difficult to understand
 * [x] Do exercise 1 of the problem set for week 5; we will do exercises 2 and 3 in class
 * [x] participate in the Q&A sessions with all your questions and concerns
 * [x] for immediate help: [schedule a meeting](https://schedule.mutschler.eu)
@@ -152,50 +152,57 @@ Familiarize yourself with
 </details>
 
 
-<!---
-
 <details>
   <summary> Week 7: The identification problem in SVAR models</summary>
 
 ### Goals
 
 * understand the identification problem in SVAR models
+* understand recursive identification, short-run restrictions and the impact matrix
+* implement recursive identification via Cholesky or numerical optimization
+
 
 ### To Do
 
 * [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_6.pdf) and write down all your questions
-* [x] Read Kilian and Lütkepohl (2007, Ch. 2.3 and Ch. 2.6); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
-* [x] Do exercises 1 and 2 of problem set 7; we will do exercise 3 in class
+* [x] Read Kilian and Lütkepohl (2007, Ch. 4.1, 7.6, 8, 9); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
+* [x] We will do the exercises in class
 * [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
 
 </details>
 
+
 <details>
-  <summary> Week 8: Short-run restrictions in Structural Vector Autoregressive (SVAR) Models</summary>
+  <summary> Week 8: MIDTERM EXAM</summary>
+</details>
+
+
+<details>
+  <summary> Week 9: Short-run and Long-run restrictions in Structural Vector Autoregressive (SVAR) Models</summary>
 
 ### Goals
 
-* understand recursive identification, short-run restrictions and the impact matrix
-* implement recursive identification both via Cholesky or numerical optimization
 * implement short-run restrictions using numerical optimization
+* understand long-run restrictions and the long-run multiplier matrix
+* implement long-run restrictions using Cholesky or numerical optimization
 
 ### To Do
 
 * [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_7.pdf) and write down all your questions
-* [x] Read Kilian and Lütkepohl (2007, Ch. 4.1, Ch. 7.6, Ch.8, Ch.9); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
-* [x] Do exercises 1 and 2 from problem set 8; we will do exercise 3 in class
+* [x] Read Kilian and Lütkepohl (2007, Ch. 4.1, Ch. 7.6, Ch.8, Ch.9) and Blanchard and Quah (1989); make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand
+* [x] We will do the exercises in class
 * [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
 
 </details>
 
+<!---
 
 <details>
-  <summary> Week 9: Short-run and Long-run restrictions in Structural Vector Autoregressive (SVAR) Models, Asymptotic and Bootstrap Inference in SVARs Identified By Exclusion Restrictions: Theory</summary>
+  <summary> Week 10: Asymptotic and Bootstrap Inference in SVARs Identified By Exclusion Restrictions: Theory</summary>
 
 ### Goals
 
-* understand long-run restrictions and the long-run multiplier matrix
-* implement short-run and long-run restrictions using numerical optimization
+* implement both short-run and long-run restrictions using numerical optimization
 * understand pros and cons of asymptotic inference for the impulse-response function of SVAR models
 * understand pros and cons of bootstrap inference for the impulse-response function of SVAR models
 

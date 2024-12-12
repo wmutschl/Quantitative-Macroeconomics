@@ -1,43 +1,71 @@
 \begin{enumerate}
-\item The OLS estimate of the reduced-form covariance matrix \(\Sigma_u\) is
+\item The OLS estimate of the reduced-form covariance matrix \(\Sigma_{u}\) is
 \begin{align*}
-    \widehat{\Sigma}_u = \begin{pmatrix}
-         0.061054  &  -0.015282  &   0.042398  &  0.0037836 \\
-        -0.015282  &    0.52305  &    0.07967  &   0.030602 \\
-         0.042398  &    0.07967  &    0.71689  &    -0.2451 \\
-        0.0037836  &   0.030602  &    -0.2451  &     1.1093 \\
-    \end{pmatrix} 
+\widehat{\Sigma}_u =
+\begin{pmatrix}
+ 0.061054  & -0.015282 &  0.042398 &  0.0037836 \\
+-0.015282  &  0.52305  &  0.07967  &  0.030602 \\
+ 0.042398  &  0.07967  &  0.71689  & -0.2451 \\
+ 0.0037836 &  0.030602 & -0.2451   &  1.1093 \\
+\end{pmatrix} 
 \end{align*}
 
-\item In order to identify the structural shocks from \(\Sigma_u = B_0^{-1} \Sigma_\varepsilon B_0^{-1'}\),
-  we require at least \(4(4-1)/2=6\) additional restrictions on \(B_0\) or \(B_0^{-1}\).
-In this exercise, we'll do this on \(B_0\) and not its inverse; that is, we can rewrite the equations in matrix notation:
+\item In order to identify the structural shocks from \(\Sigma_{u} = B_{0}^{-1} \Sigma_{\varepsilon} B_{0}^{-1'}\),
+  we require at least \(4(4-1)/2=6\) additional restrictions on \(B_{0}\) or \(B_{0}^{-1}\).
+In this exercise, we'll do this on \(B_{0}\) and not its inverse; that is, we can rewrite the equations in matrix notation:
 \begin{align*}
-    \underbrace{\begin{pmatrix} 1 & 0 & 0 & 0 \\ b_{21,0} & 1 & b_{23,0} & b_{24,0} \\ 0 & 0 & 1 & b_{34,0} \\ b_{41,0} & b_{41,0} & b_{43,0} & 1\end{pmatrix}}_{B_0}
-    \underbrace{\begin{pmatrix}u_t^p\\u_t^{gnp}\\u_t^{i}\\u_t^{m} \end{pmatrix}}_{u_t}
-    =
-    \underbrace{\begin{pmatrix}\varepsilon_t^{AS}\\\varepsilon_t^{IS}\\\varepsilon_t^{MS}\\\varepsilon_t^{MD} \end{pmatrix}}_{\varepsilon_t}
+\underbrace{%
+  \begin{pmatrix}
+  1 & 0 & 0 & 0 \\
+  b_{21,0} & 1 & b_{23,0} & b_{24,0} \\
+  0 & 0 & 1 & b_{34,0} \\
+  b_{41,0} & b_{41,0} & b_{43,0} & 1
+  \end{pmatrix}
+}_{B_{0}}
+\underbrace{%
+  \begin{pmatrix}
+  u_t^p \\
+  u_t^{gnp} \\
+  u_t^{i} \\
+  u_t^{m}
+  \end{pmatrix}
+}_{u_t}
+=
+\underbrace{%
+  \begin{pmatrix}
+  \varepsilon_t^{AS} \\
+  \varepsilon_t^{IS} \\
+  \varepsilon_t^{MS} \\
+  \varepsilon_t^{MD}
+  \end{pmatrix}
+}_{\varepsilon_t}
 \end{align*}
-Note that as the diagonal elements of \(B_0\) equal unity, we don't assume that \(E(\varepsilon_t \varepsilon_t')=\Sigma_\varepsilon \) is the identity matrix.
+Note that as the diagonal elements of \(B_{0}\) equal unity, we don't assume that \(E(\varepsilon_t \varepsilon_t')=\Sigma_{\varepsilon} \) is the identity matrix.
 So this is a different normalization rule as before.
 
 Economically, the above restrictions embody to some extent a baseline IS-LM model:
+
 \begin{enumerate}
+
 \item The first equation provides three restrictions by assuming that the price level is predetermined
 except that producers can respond immediately to aggregate supply shocks (e.g.\ an unexpected increase in oil or gas prices).
 This is basically a horizontal aggregate supply (AS) curve; that is why we label the shock with AS\@.
+
 \item The second equation provides no restrictions as it is assumed that real output responds to all other model variables contemporaneously.
 This equation can be interpreted as an aggregate demand curve, or an IS curve, that is why we label the shock IS\@.
+
 \item The third equation provides two restrictions by assuming that the interest rate does not react contemporaneously to aggregate measures of output and prices.
 This represents a simple money supply function, according to which the central bank adjusts the rate of interest in relation to the money stock
 and does not immediately observe aggregate output and aggregate prices.
 Of course, this is in contrast to modern monetary policy theory (and practice).
+
 \item The fourth equation provides one additional restriction by assuming that the first two entries in the last row are identical.
 The underlying idea is that this equation represents a money demand function in which short-run money holdings rise in proportion to NOMINAL GNP\@.
 Moreover, money holdings are allowed to be dependent on the interest rate.
+
 \end{enumerate}
 In sum, we have \(3+0+2+1=6\) restrictions, that is we have an exactly identified SVAR model,
-identified by short-run exclusion restrictions on \(B_0\).
+identified by short-run exclusion restrictions on \(B_{0}\).
 As the structure is not recursive, a Cholesky decomposition is not valid and hence we need to rely on a numerical optimizer (or an algorithm for short-run exclusion restrictions).
 
 \item The code might look like this:
@@ -47,11 +75,11 @@ Here is the helper function to impose the restrictions:
 
 \item An unexpected upward shift of the aggregate supply curve
 \begin{itemize}
-    \item raises the price deflator
-    \item lowers real GNP
-    \item raises the federal funds rate
-    \item lowers the money supply at first, but ultimately raises M1
+\item raises the price deflator
+\item lowers real GNP
+\item raises the federal funds rate
+\item lowers the money supply at first, but ultimately raises M1
 \end{itemize}
 This response is not really appropriate for the U.S. economy during the considered sample period,
-making the identifying restrictions rather questionable.
+  making the identifying restrictions rather questionable.
 \end{enumerate}

@@ -1,0 +1,34 @@
+% !TEX root = week_9.tex
+\input{exercises/_common_header.tex}
+\Newassociation{solution}{Solution}{week_9_solution}
+\newif\ifDisplaySolutions\DisplaySolutionstrue
+
+\begin{document}
+\title{Quantitative Macroeconomics\\~\\Winter 2023/24\\~\\Week 9}
+\author{Willi Mutschler\\willi@mutschler.eu}
+\date{Version: 1.0\\Latest version available on: \href{https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_9.pdf}{GitHub}}
+\maketitle\thispagestyle{empty}
+
+\newpage
+\Opensolutionfile{week_9_solution}[week_9_solution]
+\tableofcontents\thispagestyle{empty}\newpage
+
+\setcounter{page}{1}
+\input{exercises/svar_shortrun.tex}\newpage
+\input{exercises/svar_longrun.tex}\newpage
+\newpage
+
+\printbibliography
+\appendix
+\section{vech.m}
+\lstinputlisting[label=vech,,title=\lstname,style=Matlab-editor,basicstyle=\mlttfamily,title=\lstname]{progs/matlab/vech.m}
+
+
+\Closesolutionfile{week_9_solution}
+\ifDisplaySolutions%
+\newpage
+\appendix
+\section{Solutions}
+\input{week_9_solution}
+\fi
+\end{document}

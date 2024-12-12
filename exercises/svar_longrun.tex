@@ -5,43 +5,49 @@ There is some evidence that \(ur_t\) is covariance stationary,
   whereas \(gdp_t\) exhibits a unit root;
   that is, GDP growth, \(\Delta gdp_t = gdp_{t} - gdp_{t-1}\), is covariance-stationary.
 \textcite{Blanchard.Quah_1989_DynamicEffectsAggregate} set up a SVAR model for \(y_t = (\Delta gdp_t, ur_t)'\)
-  and analyze the effects of two structural shocks, an aggregate supply shock \(\varepsilon_t^{AS}\) and an aggregate demand shock \(\varepsilon_t^{AD}\).
+  and analyze the effects of two structural shocks,
+  an aggregate supply shock \(\varepsilon_t^{AS}\)
+  and an aggregate demand shock \(\varepsilon_t^{AD}\).
 
 \begin{enumerate}
 \item Why are short-run restrictions sometimes (or even often) \emph{problematic}?
 What about long-run restrictions?
 
-\item Assume for simplicity a VAR(1) model for \(y_t\).
-Derive the effect of the structural shocks on the behavior of \(ur_{t+h}\), \(\Delta gdp_{t+h}\) and \(gdp_{t+h}\) for \(h=0,1,2\cdots \).
+\item Assume for simplicity a VAR{(1)} model for \(y_t\).
+Derive the effect of the structural shocks on the behavior of
+  \(ur_{t+h}\), \(\Delta gdp_{t+h}\) and \(gdp_{t+h}\) for \(h=0,1,2\cdots \).
 What happens in the long-run, i.e.\ for \(h\rightarrow \infty \)?
 
-\item Discuss the implications on the structural impulse responses of requiring \(gdp_t\) to return to its initial level in the long-run in response to an aggregate demand shock.
+\item Discuss the implications on the structural impulse responses of requiring \(gdp_t\)
+  to return to its initial level in the long-run in response to an aggregate demand shock.
 
 \item Given knowledge of the reduced-form VAR model parameters,
-  show how to recover the short-run impact matrix \(B_0^{-1}\) from the long-run structural impulse response matrix
+  show how to recover the short-run impact matrix \(B_{0}^{-1}\) from the long-run structural impulse response matrix
   \begin{align*}
-  \Theta(1)={(I-A_1-\cdots -A_p)}^{-1}B_0^{-1} = {A(1)}^{-1}B_0^{-1}
+  \Theta(1)={(I-A_{1}-\cdots -A_{p})}^{-1}B_{0}^{-1} = {A(1)}^{-1}B_{0}^{-1}
   \end{align*} 
   where \(A(1)\) denotes the lag polynomial evaluated at \(L=1\).
 
 \item Consider the data given in \texttt{BlanchardQuah1989.csv}.
-Estimate a SVAR(8) model with a constant term.
+Estimate a SVAR{(8)} model with a constant term.
 The structural shocks are identified by imposing that \(\varepsilon_t^{AD}\) has no long-run effect on the level of real GDP\@.
-Estimate the impact matrix \(B_0^{-1}\) using 
+Estimate the impact matrix \(B_{0}^{-1}\) using 
 \begin{enumerate}
-\item the Cholesky decomposition on \({\hat{A}(1)}^{-1} \hat{\Sigma}_u {\hat{A}(1)}^{-1'}= \Theta(1) \Theta(1)'\)
+\item the Cholesky decomposition on \({\hat{A}(1)}^{-1} \hat{\Sigma}_{u} {\hat{A}(1)}^{-1'}= \Theta(1) \Theta(1)'\)
 
 \item a nonlinear equation solver that minimizes
 \begin{align*}
-F(B_0^{-1}) = \begin{bmatrix}
-vech(B_0^{-1}B_0^{-1'}-\hat{\Sigma}_u)\\
+F(B_{0}^{-1}) =
+\begin{bmatrix}
+vech(B_{0}^{-1}B_{0}^{-1'}-\hat{\Sigma}_u)
+\\
 \text{restrictions on } \Theta(1)
 \end{bmatrix}
 \end{align*}
 
 \end{enumerate}
-where \(\Theta(1)={(I-A_1-\cdots -A_p)}^{-1}B_0^{-1} = {A(1)}^{-1}B_0^{-1}\).
-Assume that \(E(\varepsilon_t\varepsilon_t')=I_2\) and the diagonal elements of \(B_0^{-1}\) are positive.
+where \(\Theta(1)={(I-A_{1}-\cdots-A_{p})}^{-1}B_{0}^{-1} = {A(1)}^{-1}B_{0}^{-1}\).
+Assume that \(E(\varepsilon_{t}\varepsilon_{t}')=I_{2}\) and the diagonal elements of \(B_{0}^{-1}\) are positive.
 
 \item Plot the structural impulse response functions using \texttt{irfPlots.m} for the level of GDP and the unemployment rate.
 Interpret your results in economic terms.
@@ -49,11 +55,11 @@ Interpret your results in economic terms.
 
 \paragraph{Readings}
 \begin{itemize}
-	\item \textcite[Ch.~10.1, 10.3, 11.1, 11.2]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
+\item \textcite[Ch.~10.1, 10.3, 11.1, 11.2]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
 \end{itemize}
 
 \begin{solution}\textbf{Solution to \nameref{ex:BlanchardQuahLongRunRestrictions}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/svar_longrun_solution.tex}
 \fi
 \newpage
