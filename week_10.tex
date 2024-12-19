@@ -1,0 +1,32 @@
+% !TEX root = week_10.tex
+\input{exercises/_common_header.tex}
+\Newassociation{solution}{Solution}{week_10_solution}
+\newif\ifDisplaySolutions\DisplaySolutionstrue%
+
+\begin{document}
+\title{Quantitative Macroeconomics\\~\\Winter 2024/25\\~\\Week 10}
+\author{Willi Mutschler\\willi@mutschler.eu}
+\date{Version: 1.0\\Latest version available on: \href{https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_10.pdf}{GitHub}}
+\maketitle\thispagestyle{empty}
+
+\newpage
+\Opensolutionfile{week_10_solution}[week_10_solution]
+\tableofcontents\thispagestyle{empty}\newpage
+
+\setcounter{page}{1}
+\input{exercises/svar_sr_and_lr.tex}\newpage
+\input{exercises/svar_inference_exclusion_restrictions.tex}\newpage
+\input{exercises/svar_bootstrap_std_irf.tex}\newpage
+\input{exercises/svar_IS_LM.tex}\newpage
+
+\printbibliography%
+\newpage
+
+\Closesolutionfile{week_10_solution}
+\ifDisplaySolutions%
+\newpage
+\appendix
+\section{Solutions}
+\input{week_10_solution}
+\fi
+\end{document}

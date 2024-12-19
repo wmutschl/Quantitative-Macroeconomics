@@ -8,7 +8,7 @@
 b_{21} & 1 & b_{23} & b_{24}\\
 b_{31} & b_{32} & 1 & b_{34}\\
 b_{41} & b_{42} & b_{43} & 1
-\end{bmatrix}}_{B_0}
+\end{bmatrix}}_{B_{0}}
 \begin{bmatrix}
 \Delta gnp_t\\
 \Delta i_t\\
@@ -49,7 +49,7 @@ The long-run multiplier matrix is given by:
 \Theta(1) = {A(1)}^{-1} B^{-1}_0
 \end{align*}
 
-Now let's derive the restrictions on the impact matrix \(B_0^{-1}\):
+Now let's derive the restrictions on the impact matrix \(B_{0}^{-1}\):
 \begin{itemize}
 \item Money supply shocks do not have contemporaneous effects on output growth, i.e.\
 \begin{align*}
@@ -63,7 +63,7 @@ Now let's derive the restrictions on the impact matrix \(B_0^{-1}\):
 \end{itemize}
 Summarizing this yields two restrictions:
 \begin{align*}
-B_0^{-1} =
+B_{0}^{-1} =
 \begin{pmatrix}
 * & 0 & 0 & *\\
 * & * & * & *\\
@@ -72,7 +72,7 @@ B_0^{-1} =
 \end{pmatrix}
 \end{align*}
 
-Next, let's derive the restrictions on the structural matrix \(B_0\):
+Next, let's derive the restrictions on the structural matrix \(B_{0}\):
 \begin{itemize}
 \item Monetary authority does not react contemporaneously to changes in the price level.
 This can be computed directly from equation~\eqref{eq:MS}:
@@ -82,7 +82,7 @@ This can be computed directly from equation~\eqref{eq:MS}:
 \end{itemize}
 Summarizing this yields one restriction:
 \begin{align*}
-B_0 =
+B_{0} =
 \begin{pmatrix}
 1 & * & * & *\\
 * & 1 & -b_{24} & b_{24}\\
@@ -110,7 +110,7 @@ In total we have \(2+1+3=6\) restrictions, which is equal to the required number
 
 Lastly, we need to keep in mind that the variance of the structural shocks is not normalized:
 \begin{align*}
-\Sigma_\varepsilon =
+\Sigma_{\varepsilon} =
 \begin{pmatrix}
 \sigma_{11} & 0 & 0 & 0\\
 0 & \sigma_{22} & 0 & 0\\

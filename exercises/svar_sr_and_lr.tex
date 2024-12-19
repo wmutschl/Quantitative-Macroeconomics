@@ -1,5 +1,5 @@
 \section[Combining Short-Run And Long-Run Restrictions]{Combining Short-Run And Long-Run Restrictions\label{ex:CombiningShortRunAndLongRunRestrictions}}
-Consider a stylized VAR(4) model of U.S. monetary policy with only three quarterly variables.
+Consider a stylized VAR{(4)} model of U.S. monetary policy with only three quarterly variables.
 Let \(y_t = (\Delta gnp_t, i_t, \Delta p_t)'\) be stationary variables,
   where \(gnp_t\) denotes the log of U.S.\ real GNP,
   \(p_t\) the corresponding GNP deflator in logs,
@@ -8,16 +8,18 @@ The estimation period is restricted to 1954q4-2007q4 in order to exclude the per
 Defining \(\varepsilon_t = (\varepsilon_t^{policy}, \varepsilon_t^{AD}, \varepsilon_t^{AS})'\),
   the identifying restrictions can be summarized as
 \begin{align*}
-B_0^{-1}  = \begin{bmatrix}
-    0 & * & *\\
-    * & * & *\\
-    * & * & *\\
-    \end{bmatrix} \text{~and~}
-    \Theta(1) = A(1)^{-1} B_0^{-1} =  \begin{bmatrix}
-    0 & 0 & *\\
-    * & * & *\\
-    * & * & *\\
-    \end{bmatrix}
+B_{0}^{-1}  =
+\begin{bmatrix}
+0 & * & *\\
+* & * & *\\
+* & * & *\\
+\end{bmatrix} \text{~and~}
+\Theta(1) = A(1)^{-1} B_{0}^{-1} =
+\begin{bmatrix}
+0 & 0 & *\\
+* & * & *\\
+* & * & *\\
+\end{bmatrix}
 \end{align*}
 The long-run restrictions are imposed on the cumulated impulse responses.
 
@@ -25,23 +27,23 @@ The long-run restrictions are imposed on the cumulated impulse responses.
 \item Provide intuition given the above identifying restrictions.
 
 \item Consider the data given in \texttt{RWZ2010.csv}.
-Estimate a VAR(4) model with a constant term.
+Estimate a VAR{(4)} model with a constant term.
 
 \item Estimate the structural impact matrix using a nonlinear equation solver,
-  i.e.\ the objective is to find the unknown elements of \(B_0^{-1}\) such that
+  i.e.\ the objective is to find the unknown elements of \(B_{0}^{-1}\) such that
 \begin{align*}
 \begin{bmatrix}
-vech(B_0^{-1}B_0^{-1'}-\hat{\Sigma}_u)\\
-\text{short-run restrictions on }B_0^{-1}\\
+vech(B_{0}^{-1}B_{0}^{-1'}-\hat{\Sigma}_u)\\
+\text{short-run restrictions on }B_{0}^{-1}\\
 \text{long-run restrictions on }\Theta(1)\\
 \end{bmatrix}
 \end{align*}
-is minimized where the normalization \(\Sigma_\varepsilon=I_3\) is imposed.
-Furthermore, use the following insight to normalize the signs of the columns of \(B_0^{-1}\):
+is minimized where the normalization \(\Sigma_{\varepsilon}=I_3\) is imposed.
+Furthermore, use the following insight to normalize the signs of the columns of \(B_{0}^{-1}\):
 \begin{itemize}
-    \item a monetary policy shock (first column) raises the interest rate (second row) (monetary tightening)
-    \item a positive aggregate demand shock (second column) does not lower real GNP (first row) and inflation (third row)
-    \item a positive aggregate supply shock (3rd column) does not lower real GNP (first row) and does not raise inflation (third row)
+\item a monetary policy shock (first column) raises the interest rate (second row) (monetary tightening)
+\item a positive aggregate demand shock (second column) does not lower real GNP (first row) and inflation (third row)
+\item a positive aggregate supply shock (3rd column) does not lower real GNP (first row) and does not raise inflation (third row)
 \end{itemize}
 
 \item Use the implied estimate of the structural impact matrix to plot the structural impulse response functions
@@ -51,11 +53,11 @@ Interpret your results economically.
 
 \paragraph{Readings}
 \begin{itemize}
-	\item \textcite[Ch.~10.4, 10.5, 11.3]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
+\item \textcite[Ch.~10.4, 10.5, 11.3]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
 \end{itemize}
 
 \begin{solution}\textbf{Solution to \nameref{ex:CombiningShortRunAndLongRunRestrictions}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/svar_sr_and_lr_solution.tex}
 \fi
 \newpage

@@ -4,67 +4,74 @@ Consider a quarterly model for \(y_t = (\Delta gnp_t, \Delta i_t, i_t-\Delta p_t
   \(\Delta m_t\) the growth in M1 and \(\Delta p_t\) the inflation rate in the CPI\@.
 There are four shocks in the system: an aggregate supply (AS), a money supply (MS), a money demand (MD) and an aggregate demand (IS) shock.
 Ignoring the lagged dependent variables for \textbf{expository} purposes (\(B_1=\cdots =B_p=0\)),
-  the unrestricted structural VAR model can be simply written as \(B_0 y_t = \varepsilon_t\). That is:
+  the unrestricted structural VAR model can be simply written as \(B_{0} y_t = \varepsilon_t\).
+That is:
 \begin{align}
 \Delta gnp_t &= -b_{12}\Delta i_t -b_{13}(i_t-\Delta p_t) -b_{14}(\Delta m_t-\Delta p_t) + \varepsilon_t^{AS} \label{eq:AS}\\
 \Delta i_t &= -b_{21}\Delta gnp_t -b_{23}(i_t-\Delta p_t) -b_{24}(\Delta m_t-\Delta p_t) + \varepsilon_t^{MS} \label{eq:MS}\\
 i_t - \Delta p_t &= -b_{31}\Delta gnp_t -b_{32}\Delta i_t -b_{34}(\Delta m_t-\Delta p_t) + \varepsilon_t^{MD} \label{eq:MD}\\
 \Delta m_t - \Delta p_t &= -b_{41}\Delta gnp_t -b_{42}\Delta i_t - b_{43} (i_t-\Delta p_t) + \varepsilon_t^{IS} \label{eq:IS}
 \end{align}
-where \(b_{ij}\) denotes the \(ij\)th element of \(B_0\).
+where \(b_{ij}\) denotes the \(ij\)th element of \(B_{0}\).
 Consider the following identification restrictions:
+
 \begin{itemize}
-	\item Money supply shocks do not have contemporaneous effects on output growth, i.e.\
-	\begin{align*}
-	\frac{\partial \Delta gnp_t}{\partial \varepsilon_t^{MS}}=0
-	\end{align*}
-	
-	\item Money demand shocks do not have contemporaneous effects on output growth, i.e.\
-	\begin{align*}
-		\frac{\partial \Delta gnp_t}{\partial \varepsilon_t^{MD}}=0	
-	\end{align*}
-	
-	\item Monetary authority does not react contemporaneously to changes in the price level.\\Hint: compute from equation~\eqref{eq:MS}:
-	\begin{align*}
-		\frac{\partial \Delta i_t}{\partial \Delta p_t}=0	
-	\end{align*}
-	
-	\item Money supply shocks, money demand shocks and aggregate demand shocks do not have long-run effects on the log of real GNP:
-	\begin{align*}
-		\frac{\partial gnp_t}{\partial \varepsilon_t^{MS}}=0,\qquad \frac{\partial gnp_t}{\partial \varepsilon_t^{MD}}=0,\qquad \frac{\partial gnp_t}{\partial \varepsilon_t^{IS}}=0	
-	\end{align*}
-	
-	\item The structural shocks are uncorrelated with covariance matrix \(E(\varepsilon_t \varepsilon_t')=\Sigma_\varepsilon \).
-	In other words, the variances are \textbf{not} normalized.
+\item Money supply shocks do not have contemporaneous effects on output growth, i.e.\
+\begin{align*}
+\frac{\partial \Delta gnp_t}{\partial \varepsilon_t^{MS}}=0
+\end{align*}
+
+\item Money demand shocks do not have contemporaneous effects on output growth, i.e.\
+\begin{align*}
+\frac{\partial \Delta gnp_t}{\partial \varepsilon_t^{MD}}=0
+\end{align*}
+
+\item Monetary authority does not react contemporaneously to changes in the price level.\\Hint: compute from equation~\eqref{eq:MS}:
+\begin{align*}
+\frac{\partial \Delta i_t}{\partial \Delta p_t}=0
+\end{align*}
+
+\item Money supply shocks, money demand shocks and aggregate demand shocks do not have long-run effects on the log of real {GNP}:
+\begin{align*}
+\frac{\partial gnp_t}{\partial \varepsilon_t^{MS}}=0,\qquad \frac{\partial gnp_t}{\partial \varepsilon_t^{MD}}=0,\qquad \frac{\partial gnp_t}{\partial \varepsilon_t^{IS}}=0
+\end{align*}
+
+\item The structural shocks are uncorrelated with covariance matrix \(E(\varepsilon_t \varepsilon_t')=\Sigma_{\varepsilon} \).
+In other words, the variances are \textbf{not} normalized.
 \end{itemize}
 Solve the following exercises:
+
 \begin{enumerate}
-	\item Derive the implied exclusion restrictions on the matrices \(B_0\), \(B_0^{-1}\) and \(\Theta(1)\).
-	\item Consider data given in the csv file \texttt{gali1992.csv}.
-	Estimate a VAR(4) model with a constant.
-	\item Estimate the structural impact matrix using a nonlinear equation solver,
-	  i.e.\ the objective is to find the unknown elements of \(B_0^{-1}\) and the diagonal elements of \(\Sigma_\varepsilon \) such that
-	\begin{align*}
-		\begin{bmatrix}
-		vech(B_0^{-1} \Sigma_\varepsilon B_0^{-1'}-\hat{\Sigma}_u)\\
-		\text{short-run restrictions on~}B_0 \text{~and~} B_0^{-1} \\
-		\text{long-run restrictions on~}\Theta(1)\\
-	\end{bmatrix}
-	\end{align*}
-	is minimized.
-	Normalize the shocks such that the diagonal elements of \(B_0^{-1}\) are positive.
-	\item Use the implied estimates of \(B_0^{-1}\) and \(\Sigma_\varepsilon\) to plot the structural impulse responses functions
-	for (i) real GNP, (ii) the yield on Treasury Bills, (iii) the real interest rate and (iv) real money growth.
-    Add 68\% and 95\% confidence intervals using a bootstrap approach.
+
+\item Derive the implied exclusion restrictions on the matrices \(B_{0}\), \(B_{0}^{-1}\) and \(\Theta(1)\).
+
+\item Consider data given in the csv file \texttt{gali1992.csv}.
+Estimate a VAR{(4)} model with a constant.
+
+\item Estimate the structural impact matrix using a nonlinear equation solver,
+  i.e.\ the objective is to find the unknown elements of \(B_{0}^{-1}\) and the diagonal elements of \(\Sigma_{\varepsilon} \) such that
+\begin{align*}
+\begin{bmatrix}
+vech(B_{0}^{-1} \Sigma_{\varepsilon} B_{0}^{-1'}-\hat{\Sigma}_u)\\
+\text{short-run restrictions on~}B_{0} \text{~and~} B_{0}^{-1} \\
+\text{long-run restrictions on~}\Theta(1)\\
+\end{bmatrix}
+\end{align*}
+is minimized.
+Normalize the shocks such that the diagonal elements of \(B_{0}^{-1}\) are positive.
+
+\item Use the implied estimates of \(B_{0}^{-1}\) and \(\Sigma_{\varepsilon}\) to plot the structural impulse responses functions
+  for (i) real GNP, (ii) the yield on Treasury Bills, (iii) the real interest rate and (iv) real money growth.
+Add 68\% and 95\% confidence intervals using a bootstrap approach.
 \end{enumerate}
 
 \paragraph{Readings}
 \begin{itemize}
-	\item \textcite{Gali_1992_HowWellDoes}
+\item \textcite{Gali_1992_HowWellDoes}
 \end{itemize}
 
 \begin{solution}\textbf{Solution to \nameref{ex:svarISLM}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/svar_IS_LM_solution.tex}
 \fi
 \newpage

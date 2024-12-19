@@ -3,47 +3,56 @@ Consider an exactly-identified structural VAR model subject to short- and/or lon
   where the structural impulse response of variable \(i\) to shock \(j\) at horizon \(h\) are simply denoted as \(\theta \equiv \Theta_{ij,h}\).
 As an exact closed-form solution for the asymptotic standard errors of \(\theta \) are only available under restrictive assumptions,
   we will rely on a numerical approximation using a bootstrap approach.
+
 \begin{enumerate}
+
 \item Reconsider an exercise (of your choice) from the lecture on SVAR models identified with exclusion restrictions
 and re-estimate the structural impulse response function.
 
-\item Compute \(\widehat{std}(\hat{\theta}^\ast)\) via a bootstrap approximation by following these steps:
+\item Compute \(\widehat{std}(\hat{\theta}^{\ast})\) via a bootstrap approximation by following these steps:
+
 \begin{itemize}
-    \item Write a function \texttt{bootstrapDGP(VAR,opt)} which implements a standard residual-based bootstrap approach
-      using sampling with replacement techniques on the residuals.
-    Furthermore, the initial values should be drawn randomly in blocks.
-    Hint: Use the companion form to do the simulations.
-    \item Set bootstrap repetitions \(B\) equal to 1000 (or higher)
-      and initialize a \(K \times K \times H \times B\) array \texttt{THETAstar},
-      where the first dimension corresponds to variable \(i=1,\ldots,K\),
-      the second dimension to shock \(j=1,/ldots,K\),
-      the third dimension to the horizon of the IRFs \(h=0,\ldots,H\)
-      and the fourth dimension to the bootstrap repetition \(b=1.,\ldots,B\).
-    \item For \(b=1,\ldots,B\) do the following (you may also try \texttt{parfor} instead of \texttt{for}
-      in order to make use of Matlab's parallel computing toolbox -- if installed):
-    \begin{itemize}
-        \item Compute a bootstrap DGP \(y_t^{b}\) using the function \texttt{bootstrapDGP(VAR,opt)}.
-        \item Estimate the reduced-form and structural impulse response function on this artificial dataset
-          with the same methodology, settings and identification restrictions as in the estimation of the original dataset.
-        \item Store the structural IRFs in \texttt{THETAstar} at position \texttt{(:,:,:,b)}.
-    \end{itemize}
-	\item Compute the standard deviation of the bootstrap structural IRFs using \texttt{std(THETAstar,0,4)}.
+
+\item Write a function \texttt{bootstrapDGP(VAR,opt)} which implements a standard residual-based bootstrap approach
+  using sampling with replacement techniques on the residuals.
+Furthermore, the initial values should be drawn randomly in blocks.
+Hint: Use the companion form to do the simulations.
+
+\item Set bootstrap repetitions \(B\) equal to 1000 (or higher)
+  and initialize a \(K \times K \times H \times B\) array \texttt{THETAstar},
+  where the first dimension corresponds to variable \(i=1,\ldots,K\),
+  the second dimension to shock \(j=1,/ldots,K\),
+  the third dimension to the horizon of the IRFs \(h=0,\ldots,H\)
+  and the fourth dimension to the bootstrap repetition \(b=1.,\ldots,B\).
+
+\item For \(b=1,\ldots,B\) do the following (you may also try \texttt{parfor} instead of \texttt{for}
+  in order to make use of Matlab's parallel computing toolbox---if installed):
+  \begin{itemize}
+  \item Compute a bootstrap DGP \(y_t^{b}\) using the function \texttt{bootstrapDGP(VAR,opt)}.
+  \item Estimate the reduced-form and structural impulse response function on this artificial dataset
+    with the same methodology, settings and identification restrictions as in the estimation of the original dataset.
+  \item Store the structural IRFs in \texttt{THETAstar} at position \texttt{(:,:,:,b)}.
+  \end{itemize}
+
+\item Compute \texttt{std(THETAstar,0,4)}, i.e.\ the standard deviation of the bootstrapped structural IRFs.
+
 \end{itemize}
 
 \item Plot approximate 68\% and 95\% confidence intervals for the structural impulse response functions according to the Delta method:
 \begin{align*}
-    \hat{\theta} \pm z_{\gamma/2} \widehat{std}(\hat{\theta}^\ast)
+\hat{\theta} \pm z_{\gamma/2} \widehat{std}(\hat{\theta}^{\ast})
 \end{align*}
-where \(z_{\gamma/2}\) is the \(\gamma/2\) quantile of the standard normal distribution.
+  where \(z_{\gamma/2}\) is the \(\gamma/2\) quantile of the standard normal distribution.
+
 \end{enumerate}
 
 \paragraph{Readings}
 \begin{itemize}
-	\item \textcite[Ch.~12.1-12.5, 12.9]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
+\item \textcite[Ch.~12.1-12.5, 12.9]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
 \end{itemize}
 
 \begin{solution}\textbf{Solution to \nameref{ex:BootstrapStandardDeviationStructuralIRFs}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/svar_bootstrap_std_irf_solution.tex}
 \fi
 \newpage

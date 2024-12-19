@@ -1,10 +1,10 @@
 First, some notation.
 The underlying VAR model is given by:
 \begin{align*}
-y_t = \nu + A_1 y_{t-1} + \cdots  + A_p y_{t-p} + u_t
+y_t = \nu + A_1 y_{t-1} + \cdots  + A_p y_{t-p} + u_{t}
 \end{align*}
-where the structural shocks are related to the residuals by the impact matrix, \(u_t=B_0^{-1} \varepsilon_t\),
-  such that \(\Sigma_u = B_0^{-1} {B_0^{-1}}'\).
+where the structural shocks are related to the residuals by the impact matrix, \(u_{t}=B_{0}^{-1} \varepsilon_t\),
+  such that \(\Sigma_u = B_{0}^{-1} {B_{0}^{-1}}'\).
 Now let's collect the reduced-form coefficients in a vector \(\alpha \):
 \begin{align*}
   \alpha = vec\left(\begin{bmatrix} \nu & A_1 & \cdots  & A_p  \end{bmatrix} \right)
@@ -19,19 +19,23 @@ Key insight: the impulse response function for variable \(j\) with respect to sh
 \end{align*}
 
 \begin{enumerate}
-\item Under some suitable conditions (\(u_t\) is Gaussian iid or \(u_t\) is iid with finite 4 moments),
-  one can use a central limit theorem to derive the asymptotic distribution of \(\alpha\) and \(\sigma\)
+\item Under some suitable conditions (\(u_{t}\) is Gaussian iid or \(u_{t}\) is iid with finite 4 moments),
+  one can use a central limit theorem to derive the asymptotic distribution of \(\alpha \) and \(\sigma \)
   given OLS (or ML) estimates \(\hat{\alpha}\) and \(\hat{\sigma}\):
 \begin{align*}
-  \sqrt{T} \begin{pmatrix} \hat{\alpha}\\ \hat{\sigma}\end{pmatrix} \overset{d}{\longrightarrow} N\left( \begin{pmatrix} \alpha \\ \sigma \end{pmatrix}, \begin{pmatrix} \Sigma_{\hat{\alpha}} & 0 \\ 0 & \Sigma_{\hat{\sigma}}\end{pmatrix} \right)
+\sqrt{T} \begin{pmatrix} \hat{\alpha}\\ \hat{\sigma}\end{pmatrix}
+\overset{d}{\longrightarrow} N \left(
+  \begin{pmatrix} \alpha \\ \sigma \end{pmatrix},
+  \begin{pmatrix} \Sigma_{\hat{\alpha}} & 0 \\ 0 & \Sigma_{\hat{\sigma}}\end{pmatrix}
+\right)
 \end{align*}
   where the block diagonal structure of the covariance matrix is without loss of generality
   to simplify the exposition and also since it appears under Gaussianity.
-Particularly, assuming Gaussian \(u_t\) consistent estimates can be derived:
+Particularly, assuming Gaussian \(u_{t}\) consistent estimates can be derived:
 \begin{align*}
-  \hat{\Sigma}_{\hat{\alpha}} &= \left(\frac{1}{T} Z Z'\right)^{-1} \otimes \hat{\Sigma}_u
-  \\
-  \hat{\Sigma}_{\hat{\sigma}} &= 2 D_K^{+} \left(\hat{\Sigma}_u \otimes \hat{\Sigma}_u \right) {D_K^{+}}'
+\hat{\Sigma}_{\hat{\alpha}} &= \left(\frac{1}{T} Z Z'\right)^{-1} \otimes \hat{\Sigma}_u
+\\
+\hat{\Sigma}_{\hat{\sigma}} &= 2 D_K^{+} \left(\hat{\Sigma}_u \otimes \hat{\Sigma}_u \right) {D_K^{+}}'
 \end{align*}
 where \(D_K\) is a duplication matrix such that \(D_K vech(\Sigma_u) = vec(\Sigma_u)\) and \(D_K^{+} = {(D_K' D_K)}^{-1} D_K'\) its Moore-Penrose inverse.
 In other words, both \(D_K\) or \(D_K^{+}\) are sparse matrices with some entries being equal to either 1/2, 1 or 2,
@@ -43,11 +47,11 @@ The delta method is an analytical way to derive the asymptotic distribution of a
 More precisely, if asymptotically \(X \sim N(\mu_X,\Sigma_X)\)
   we are able to derive the asymptotic distribution of a continuous function \(\theta = g(X)\) based on a first-order Taylor expansion of \(g\) at \(x = \mu_X\):
 \begin{align*}
-  \theta = g(X) \approx g(\mu_X) + \frac{\partial g(\mu_X)}{\partial X'} (X - \mu_X)
+\theta = g(X) \approx g(\mu_X) + \frac{\partial g(\mu_X)}{\partial X'} (X - \mu_X)
 \end{align*}
 Making use of the Gaussian distribution we can easily compute the expectation and variance to derive the asymptotic distribution of \(\theta \):
 \begin{align*}
-  \theta = g(X) \sim N\left(g(\mu_X),\frac{\partial g(\mu_X)}{\partial X'} \Sigma_X \frac{\partial g(\mu_X)}{\partial X}\right)
+\theta = g(X) \sim N\left(g(\mu_X),\frac{\partial g(\mu_X)}{\partial X'} \Sigma_X \frac{\partial g(\mu_X)}{\partial X}\right)
 \end{align*}
 The delta method requires consistent estimates and is an important tool to derive asymptotic distributions.\footnote{%
   For example, the delta method is often used to derive the asymptotic distribution of standard errors when estimated with Maximum Likelihood methods.
@@ -60,16 +64,16 @@ The delta method requires consistent estimates and is an important tool to deriv
   one uses the delta method to report the point estimate for \(\hat{\sigma}_X = e^{0.5 \hat{\theta}}\)
   and corresponding standard error \(\hat{std}(\hat{\sigma_X}) = \sqrt{0.5 e^{0.5\hat{\theta}} \hat{V}(\hat{\theta}) 0.5 e^{0.5\hat{\theta}}}\).
 }
-For us, if \(u_t\) is a normally distributed white noise process,
+For us, if \(u_{t}\) is a normally distributed white noise process,
   we know the asymptotic distributions of \(\alpha\) and \(\sigma_u\),
   and hence, we may rely on asymptotics based on the normal distribution
   to get the stated confidence interval
-  \begin{align*}
-  \hat{\theta} \pm z_{\gamma/2} \widehat{std}(\hat{\theta})
-  \end{align*}
+\begin{align*}
+\hat{\theta} \pm z_{\gamma/2} \widehat{std}(\hat{\theta})
+\end{align*}
 However, this works only under very restrictive assumptions.
 A more general approach is to rely on simulation-based methods (sampling techniques),
-  i.e.\ to bootstrap the distribution of \(\theta\) based on sample analogues.
+  i.e.\ to bootstrap the distribution of \(\theta \) based on sample analogues.
 There are many different bootstrap approaches,
   we will cover only the main ones (and not the most recent ones),
   to understand the intuition and general approach.
@@ -77,58 +81,58 @@ There are many different bootstrap approaches,
 One more thing to consider, even when using this asymptotic confidence interval, is that we rely on a consistent estimate for \(\widehat{std}(\hat{\theta})\),
   for which we either may use closed-form expressions (valid under Gaussianity) or, better, which we can alternatively base on a bootstrap approximation.
 
-\item \(u_t\) is iid white noise with distribution \(F\), \(u_t \overset{iid}{\sim} F\).
-Idea: approximate the unknown stationary VAR(p) data generating process (DGP) of known order p:
+\item \(u_{t}\) is iid white noise with distribution \(F\), \(u_{t} \overset{iid}{\sim} F\).
+Idea: approximate the unknown stationary VAR{(p)} data generating process (DGP) of known order p:
 \begin{align*}
-y_t = v + A_1 y_{t-1} + \cdots  + A_p y_{t-p} + u_t
+y_t = v + A_1 y_{t-1} + \cdots  + A_p y_{t-p} + u_{t}
 \end{align*}
 by the bootstrap DGP
 \begin{align*}
-y_t^\ast = \hat{\nu} + \hat{A}_1 y_{t-1}^\ast + \cdots  + \hat{A}_p y_{t-p}^\ast + u_t^\ast
+y_t^{\ast} = \hat{\nu} + \hat{A}_1 y_{t-1}^{\ast} + \cdots  + \hat{A}_p y_{t-p}^{\ast} + u_{t}^{\ast}
 \end{align*}
-where \(u_t^\ast \overset{iid}{\sim} \hat{F}_T\) and \(\hat{F}_T\) is the implied estimate of the error distribution \(F\).
+where \(u_{t}^{\ast} \overset{iid}{\sim} \hat{F}_T\) and \(\hat{F}_T\) is the implied estimate of the error distribution \(F\).
 \(\ast \) marks values corresponding to the bootstrap DGP\@.
 Usually we use a nonparametric approach,
-  i.e.\ we draw \(u_t^\ast \) with replacement from the set of residuals \( {\{\hat{u}\}}_{t=1}^T\) of the consistent reduced-form estimation.
-The key insight is that \(u_t^\ast \) has the same distribution as \(u_t\). 
+  i.e.\ we draw \(u_{t}^{\ast} \) with replacement from the set of residuals \( {\{\hat{u}\}}_{t=1}^T\) of the consistent reduced-form estimation.
+The key insight is that \(u_{t}^{\ast} \) has the same distribution as \(u_{t}\). 
 \\
-Side note: it is advisable to use a nonparametric approach instead of a wrong parametric one (e.g.\ normal distribution for \(u_t^\ast \))!
+Side note: it is advisable to use a nonparametric approach instead of a wrong parametric one (e.g.\ normal distribution for \(u_{t}^{\ast} \))!
 \\
 Algorithm:
 \\
-Given random draws for \(u_t^{\ast r}, t=1,\ldots ,T\) and initial conditions \([y_{-p+1}^{\ast r}, \ldots  ,y_0^{\ast r}]\)
+Given random draws for \(u_{t}^{\ast r}, t=1,\ldots ,T\) and initial conditions \([y_{-p+1}^{\ast r}, \ldots  ,y_0^{\ast r}]\)
   recursively generate for each bootstrap replication \(r=1,\ldots ,R\) a sequence of bootstrap realizations \( {\{y_t^{\ast r}\}}_{t=-p+1}^T\) as
 \begin{align*}
-    y_1^{\ast r} &= \hat{v} + \hat{A}_1 y_0^{\ast r} + \cdots  + \hat{A}_p y_{-p+1}^{\ast r} + u_1^{\ast r}\\
-    y_2^{\ast r} &= \hat{v} + \hat{A}_1 y_1^{\ast r} + \cdots  + \hat{A}_p y_{-p+2}^{\ast r} + u_2^{\ast r}\\
-    \vdots &\\
-    y_T^{\ast r} &= \hat{v} + \hat{A}_1 y_{T-1}^{\ast r} + \cdots  + \hat{A}_p y_{-p+T}^{\ast r} + u_T^{\ast r}
+y_1^{\ast r} &= \hat{v} + \hat{A}_1 y_0^{\ast r} + \cdots  + \hat{A}_p y_{-p+1}^{\ast r} + u_1^{\ast r}\\
+y_2^{\ast r} &= \hat{v} + \hat{A}_1 y_1^{\ast r} + \cdots  + \hat{A}_p y_{-p+2}^{\ast r} + u_2^{\ast r}\\
+\vdots &\\
+y_T^{\ast r} &= \hat{v} + \hat{A}_1 y_{T-1}^{\ast r} + \cdots  + \hat{A}_p y_{-p+T}^{\ast r} + u_T^{\ast r}
 \end{align*}
 Then proceed as usual: estimate reduced-form (if you estimated the lag length you should estimate lag length again as well),
   use identification restrictions to compute bootstrapped impulse response function in each replication r.
 Given this approach we get a bootstrap approximation to the distribution of the IRFs, which we can use for inference.
 
 \item The Standard Residual-Based Bootstrap approach requires iid regression errors, this is a quite strong and restrictive assumption.
-An alternative is to use the so-called \emph{Wild Bootstrap}, i.e.\ instead of drawing \(u_t^{\ast r}\) with replacement,
+An alternative is to use the so-called \emph{Wild Bootstrap}, i.e.\ instead of drawing \(u_{t}^{\ast r}\) with replacement,
   we multiply each element of the residual vector by a scalar draw \(\eta_t\) from an auxiliary distribution
 that has mean zero and unit variance:
 \begin{align*}
-u_t^{\ast r} = \hat{u}_t \eta_t, \eta_t \overset{iid}{\sim}(0,1)
+u_{t}^{\ast r} = \hat{u}_t \eta_t, \eta_t \overset{iid}{\sim}(0,1)
 \end{align*}
 Possible distributions are usually
 \begin{enumerate}
-  \item standard normal distribution
-  \item \(\eta_t =1\) with probability 0.5 and \(\eta_t=-1\) with probability 0.5
-  \item \(\eta_t = -(\sqrt{5}-1)/2\) with probability $p$ and \(\eta_t = (\sqrt{5}+1)/2\) with probability \(1-p\),
+\item standard normal distribution
+\item \(\eta_t =1\) with probability 0.5 and \(\eta_t=-1\) with probability 0.5
+\item \(\eta_t = -(\sqrt{5}-1)/2\) with probability $p$ and \(\eta_t = (\sqrt{5}+1)/2\) with probability \(1-p\),
   where \(p=(\sqrt{5}+1)/(2 \sqrt{5})\).
 \end{enumerate}
 Note 1: Usually there is not much difference which distribution is chosen.
 \\
-Note 2: Any t-statistic based on the wild bootstrap will have to be computed based on heteroskedasticity-robust standard errors.
+Note 2: Because of heteroskedasticity one has to use robust standard errors when computing t-statistics based on the wild bootstrap.
 
 \item We are trained to rely on 5\%, i.e.\ use 5\% for the p-value or compute \(100\%-5\%=95\% \) confidence intervals.
 However, there is no statistical foundation for this, but it is simply common practice!\footnote{%
-  Actually, in the last 5 years there has been an increased debate in statistics
+  Actually, in the last 10 years there has been an increased debate in statistics
   and many social sciences about NOT relying solely on p-values for assessing statistical significance!}
 Nevertheless, due to the case that typically in SVARs we have rather short samples,
   applied researcher prefer to use \(\pm 1\) standard error bands, i.e.\ 68\% confidence intervals,
@@ -143,42 +147,46 @@ Or simulate a burnin-phase, e.g.\ of 1000 observations, and discard these.
 
 \item Note that there is much development and ongoing research within this field to overcome the shortcomings of the following traditional approaches.
 Nevertheless, these approaches are still most widely used in applied work, and it is important to know them:
-\begin{enumerate}
-    \item Intervals based on bootstrap standard errors:
-    Take the asymptotic CI but estimate the standard deviation of the bootstrap draws of \(\hat{\theta}^\ast\) numerically, i.e.\
-    \begin{align*}
-        \hat{\theta} \pm z_{\gamma/2} \widehat{std}(\hat{\theta}^\ast)
-    \end{align*}		
-    This allows us to relax the assumption of Gaussian iid innovations underlying the conventional interval computed with the delta method.
-    
-    \item Efron's percentile interval:
-    Let \(\hat{\theta}^\ast_{\gamma/2}\) and \(\hat{\theta}^\ast_{1-\gamma/2}\) be the critical points
-      defined by the \(\gamma/2\) and \(1-\gamma/2\) quantiles of the distribution of \(\hat{\theta}^\ast \).
-    Then Efron's percentile interval is:
-    \begin{align*}
-        [\hat{\theta}^\ast_{\gamma/2},\hat{\theta}^\ast_{1-\gamma/2}]
-    \end{align*}	
-    However, this approach is based on the assumption of an unbiased estimator of \(\theta\);
-      in SVAR models we typically need to correct for the inherent small-sample bias.
 
-    \item equal-tailed percentile-t intervals is based on the idea that instead of using the critical points based on the standard normal distribution,
-      we create our own table with t-statistics by a bootstrap approximation.
-    That is, we approximate the distribution of the asymptotically pivotal (i.e.\ independent of other parameters) t-statistic
-    \begin{align*}
-        \hat{t}=\frac{\hat{\theta}-\theta}{\widehat{std}(\hat{\theta})}
-    \end{align*}
-    by 
-    \begin{align*}
-        \hat{t}^\ast = \frac{\hat{\theta}^\ast-\hat{\theta}}{\widehat{std}(\hat{\theta}^\ast)},
-    \end{align*}
-    where \(\hat{\theta}\) is treated as a fixed parameter in the bootstrap DGP\@.
-    Let \(\hat{t}^\ast_{\gamma/2}\) and \(\hat{t}^\ast_{1-\gamma/2}\) be the critical points
-      defined by the \(\gamma/2\) and \(1-\gamma/2\) quantiles of the distribution of \(\hat{t}^\ast \),
-      then the CI is given by
-    \begin{align*}
-        [\hat{\theta}-\hat{t}^\ast_{1-\gamma/2} \widehat{std}(\hat{\theta}); \hat{\theta}-\hat{t}^\ast_{\gamma/2} \widehat{std}(\hat{\theta})]
-    \end{align*}	
-    The bootstrapped t-values allow for possible asymmetry in the distribution and implicitly correct for bias.
-    Note that again we need an estimate (either analytically or via bootstrap) for \(\widehat{std}(\hat{\theta})\).
-	\end{enumerate}
+\begin{enumerate}
+
+\item Intervals based on bootstrap standard errors:
+Take the asymptotic CI but estimate the standard deviation of the bootstrap draws of \(\hat{\theta}^{\ast}\) numerically, i.e.\
+\begin{align*}
+\hat{\theta} \pm z_{\gamma/2} \widehat{std}(\hat{\theta}^{\ast})
+\end{align*}
+This allows us to relax the assumption of Gaussian iid innovations underlying the conventional interval computed with the delta method.
+
+\item Efron's percentile interval:
+Let \(\hat{\theta}^{\ast}_{\gamma/2}\) and \(\hat{\theta}^{\ast}_{1-\gamma/2}\) be the critical points
+  defined by the \(\gamma/2\) and \(1-\gamma/2\) quantiles of the distribution of \(\hat{\theta}^{\ast} \).
+Then Efron's percentile interval is:
+\begin{align*}
+  [\hat{\theta}^{\ast}_{\gamma/2},\hat{\theta}^{\ast}_{1-\gamma/2}]
+\end{align*}
+However, this approach is based on the assumption of an unbiased estimator of \(\theta \);
+  in SVAR models we typically need to correct for the inherent small-sample bias.
+
+\item equal-tailed percentile-t intervals is based on the idea that instead of using the critical points based on the standard normal distribution,
+  we create our own table with t-statistics by a bootstrap approximation.
+That is, we approximate the distribution of the asymptotically pivotal (i.e.\ independent of other parameters) t-statistic
+\begin{align*}
+\hat{t}=\frac{\hat{\theta}-\theta}{\widehat{std}(\hat{\theta})}
+\end{align*}
+by 
+\begin{align*}
+\hat{t}^{\ast} = \frac{\hat{\theta}^{\ast}-\hat{\theta}}{\widehat{std}(\hat{\theta}^{\ast})},
+\end{align*}
+  where \(\hat{\theta}\) is treated as a fixed parameter in the bootstrap DGP\@.
+Let \(\hat{t}^{\ast}_{\gamma/2}\) and \(\hat{t}^{\ast}_{1-\gamma/2}\) be the critical points
+  defined by the \(\gamma/2\) and \(1-\gamma/2\) quantiles of the distribution of \(\hat{t}^{\ast} \),
+  then the CI is given by
+\begin{align*}
+  [\hat{\theta}-\hat{t}^{\ast}_{1-\gamma/2} \widehat{std}(\hat{\theta}); \hat{\theta}-\hat{t}^{\ast}_{\gamma/2} \widehat{std}(\hat{\theta})]
+\end{align*}
+The bootstrapped t-values allow for possible asymmetry in the distribution and implicitly correct for bias.
+Note that again we need an estimate (either analytically or via bootstrap) for \(\widehat{std}(\hat{\theta})\).
+
+\end{enumerate}
+
 \end{enumerate}

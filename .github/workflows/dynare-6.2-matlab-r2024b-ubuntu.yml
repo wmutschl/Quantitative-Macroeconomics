@@ -145,3 +145,12 @@ jobs:
             cd("progs/matlab");
             keatingSR;
             BlanchardQuahLR;
+
+      - name: Run week 10 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("dynare/matlab");
+            cd("progs/matlab");
+            RWZSRLR;
+            bootstrappingStdIRFs_RWZSRLR;
