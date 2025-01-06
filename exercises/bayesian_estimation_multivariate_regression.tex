@@ -12,27 +12,27 @@ with \(u \sim \mathcal{N}(0, \sigma^2 I)\).
 \item Provide an expression for the likelihood function \(p(Y|\beta,\sigma^2)\).
 
 \item Assume that \(\sigma^2\) is known and the prior distribution for \(\beta \)
-is Gaussian with mean \(\beta_0\) and covariance matrix \(\Sigma_{0}\).
+  is Gaussian with mean \(\beta_0\) and covariance matrix \(\Sigma_{0}\).
 Derive an expression for the \textbf{conditional posterior distribution} \(p(\beta|\sigma^2,Y)\).
 
-\item Assume that \(\beta \) is known and the prior distribution for the precision \(1/\sigma^2\) is Gamma
-with shape parameter \(s_0\) and scale parameter \(v_0\).
-Derive an expression for the \textbf{conditional posterior distribution} \(p(1/\sigma^2|\beta,Y)\).
+\item Assume that \(\beta \) is known and the prior distribution for the precision \(\frac{1}{\sigma^2}\) is Gamma
+  with shape parameter \(s_0\) and scale parameter \(v_0\).
+Derive an expression for the \textbf{conditional posterior distribution} \(p(\frac{1}{\sigma^2}|\beta,Y)\).
 
 \item Now assume that both \(\beta \) and \(\sigma^2\) are unknown.
 Since we are able to draw directly from the \textbf{conditional posterior distributions} (direct sampling),
-  we can use the Gibbs sampling algorithm to get draws from the \textbf{joint posterior distribution} \(p(\beta,\sigma^2|Y)\).
+  we can use the Gibbs sampling algorithm to get draws from the \textbf{joint posterior distribution} \(p(\beta,\frac{1}{\sigma^2}|Y)\).
 Provide an overview of the basic steps and algorithm of the Gibbs sampling algorithm.
 \end{enumerate}
 
 \paragraph{Readings}
 \begin{itemize}
-	\item \textcite[Ch. 7.1]{Greenberg_2008_IntroductionBayesianEconometrics}
-	\item \textcite[Ch. 3]{Koop_2003_BayesianEconometrics} 
+\item \textcite[Ch. 7.1]{Greenberg_2008_IntroductionBayesianEconometrics}
+\item \textcite[Ch. 3]{Koop_2003_BayesianEconometrics} 
 \end{itemize}
 
 \begin{solution}\textbf{Solution to \nameref{ex:BayesianEstimationMultivariateLinearRegressionModel}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/bayesian_estimation_multivariate_regression_solution.tex}
 \fi
 \newpage

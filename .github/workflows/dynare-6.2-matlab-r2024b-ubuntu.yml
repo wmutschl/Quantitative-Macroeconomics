@@ -154,3 +154,11 @@ jobs:
             cd("progs/matlab");
             RWZSRLR;
             bootstrappingStdIRFs_RWZSRLR;
+
+      - name: Run week 11 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("dynare/matlab");
+            cd("progs/matlab");
+            BayesianQuarterlyInflation;

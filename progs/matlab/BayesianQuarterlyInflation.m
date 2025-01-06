@@ -61,13 +61,13 @@ for j = 1:R
     u = y-X*theta_j; % residuals conditional on theta(j)
     s1 = s0 + T;     % conditional posterior shape parameter
     v1 = v0 + u'*u;  % conditional posterior scale matrix
-    sigma2inv_j = gamrnd(s1,1/v1,1,1); % take a draw from gamma distribution
-    sigmau2_j = 1/sigma2inv_j; % we'll store the variance instead of the precision
+    sigmau2inv_j = gamrnd(s1,1/v1,1,1); % take a draw from gamma distribution
+    sigmau2_j = 1/sigmau2inv_j; % we'll store the variance instead of the precision
 
     % save draws for inference if burn-in phase is passed
     if j > B
         out1(:,count) = theta_j;
-        out2(:,count)= sigmau2_j;
+        out2(:,count) = sigmau2_j;
         count = count+1;
     end
 end

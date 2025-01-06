@@ -215,7 +215,6 @@ Familiarize yourself with
 
 </details>
 
-<!---
 
 <details>
   <summary> Week 11: Introduction to Bayesian estimation and the Gibbs sampler</summary>
@@ -236,6 +235,7 @@ Familiarize yourself with
 
 </details>
 
+<!---
 
 <details>
   <summary> Week 12: Bayesian estimation of VAR models and the Minnesota prior</summary>
