@@ -1,21 +1,21 @@
 \begin{enumerate}
 \item In Quantitative Macroeconomics and Econometrics we are concerned with using data to learn about a phenomenon,
   e.g.\ the relationship between two macroeconomic variables.
-That is: we want to learn about something \emph{unknown} (the parameter \(\mu \)) given something \emph{known} (the data \(y_t\)).
+That is: we want to learn about something \emph{unknown} (the parameter \(\theta \)) given something \emph{known} (the data \(y_t\)).
 Let's use the sample mean as our estimating function:
-\(\hat{\mu}=1/T \sum_{t=1}^T y_t\).
+\(\hat{\theta}=1/T \sum_{t=1}^T y_t\).
 Due to the law of large numbers and the central limit theorem we can derive that
-\(\hat{\mu}\sim N(\mu,\frac{\sigma^2}{T})\)
-and conduct inference such as computing confidence intervals \([\hat{\mu}\pm 1.96 \frac{\sigma}{\sqrt{T}}]\).
+\(\hat{\theta}\sim N(\theta,\frac{\sigma^2}{T})\)
+and conduct inference such as computing confidence intervals \([\hat{\theta}\pm 1.96 \frac{\sigma}{\sqrt{T}}]\).
 \\
-\textbf{Classical/Frequentist approach:} \(\mu \) is a fixed unknown quantity, that is we think there exists a \emph{true value} that is not random.
-On the other hand, the estimating function, \(\hat{\mu}\), is a random variable and is evaluated via repeated sampling.
-In a thought experiment, we would be able to generate a large number of datasets (given the true \(\mu \))
+\textbf{Classical/Frequentist approach:} \(\theta \) is a fixed unknown quantity, that is we think there exists a \emph{true value} that is not random.
+On the other hand, the estimating function, \(\hat{\theta}\), is a random variable and is evaluated via repeated sampling.
+In a thought experiment, we would be able to generate a large number of datasets (given the true \(\theta \))
   and our confidence interval will contain the true value in 95\% of cases.
-The estimator \(\hat{\mu}\) is \emph{best} in the sense of having the highest probability of being close to the true \(\mu \).
+The estimator \(\hat{\theta}\) is \emph{best} in the sense of having the highest probability of being close to the true \(\theta \).
 \\
-\textbf{Bayesian approach:} \(\mu \) is treated as a \emph{random variable}; that is, there is NO true unknown value.
-Instead our knowledge about the model parameter \(\mu \) is summarized by a \emph{probability distribution}.
+\textbf{Bayesian approach:} \(\theta \) is treated as a \emph{random variable}; that is, there is NO true unknown value.
+Instead our knowledge about the model parameter \(\theta \) is summarized by a \emph{probability distribution}.
 In more detail, this distribution summarizes two sources of information:
 \begin{enumerate}
 \item prior information: subjective beliefs about how likely different parameter values are (information BEFORE seeing the data)
@@ -118,7 +118,7 @@ V[\theta|y] &\approx \frac{1}{S} \sum_{i=1}^S \theta_i^2 - {\left(\frac{1}{S} \s
 \end{align*}
 Or in general for any function:
 \begin{align*}
-E[f(\theta)|y] = \int_{-\infty}^{\infty} f(\theta) p(\theta|y) d\theta \approx \frac{1}{S} \sum_{s=1}^S f(\theta_s)
+E[f(\theta)|y] = \int_{-\infty}^{\infty} f(\theta) p(\theta|y) d\theta \approx \frac{1}{S} \sum_{i=1}^S f(\theta_i)
 \end{align*}
 This is the key idea of Monte Carlo integration,
   i.e.\ replace the integral by a sum over \(S\) draws from the posterior.

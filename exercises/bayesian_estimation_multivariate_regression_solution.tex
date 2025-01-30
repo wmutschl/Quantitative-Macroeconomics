@@ -1,13 +1,13 @@
 \begin{enumerate}
 
-\item The parameter vector \([\beta,\sigma^2]'\) is a random variable with a probability distribution.
+\item The parameter vector \(\theta = [\beta,\sigma^2]'\) is a random variable with a probability distribution.
 A Bayesian estimation of this distribution combines prior beliefs and information from the data:
 \begin{enumerate}
 \item Prior distribution \(p(\beta,\sigma^2)\)
 \item Likelihood \(p(Y|\beta,\sigma^2)\)
-\item Bayes' rule gives the joint posterior distribution
+\item Bayes' rule gives the joint posterior distribution \(p(\beta,\sigma^2|Y)\)
 \end{enumerate}
-Some useful relationships:
+Some terminology and useful relationships:
 \begin{itemize}
 \item joint posterior distribution of \(\beta \) and \(\sigma^2\):
 \begin{align*}
@@ -21,6 +21,7 @@ p(\beta|Y) &= \int_0^\infty p(\beta,\sigma^2|Y) d\sigma^2
 p(\sigma^2|Y) &= \int_{-\infty}^{\infty} p(\beta,\sigma^2|Y) d\beta
 \propto \int_{-\infty}^{\infty} p(Y|\beta,\sigma^2) p(\beta,\sigma^2) d\beta
 \end{align*}
+Note that the first integral starts at zero because \(\sigma^2\) is non-negative.
 \item conditional posterior distribution of \(\beta \) given \(\sigma^2\):
 \begin{align*}
 p(\beta|\sigma^2,Y) = \frac{p(\beta,\sigma^2|Y)}{p(\sigma^2|Y)}
@@ -41,7 +42,7 @@ p(Y|\beta,\sigma^2) = \frac{1}{{(2\pi \sigma^2)}^{T/2}} e^{-\frac{1}{2\sigma^2} 
 \item First, assuming that \(\sigma^2\) is known and the prior for \(\beta \) is Gaussian,
   we have \(p(\beta) \sim N(\beta_0,\Sigma_0)\); that is, the prior density is given by:
 \begin{align*} 
-p(\beta) &= {(2\pi)}^{-K/2} |\Sigma_0|^{-1/2} e^{-\frac{1}{2} (\beta - \beta_0) \Sigma_0^{-1} (\beta - \beta_0)}
+p(\beta) &= {(2\pi)}^{-K/2} |\Sigma_0|^{-1/2} e^{-\frac{1}{2} (\beta - \beta_0)' \Sigma_0^{-1} (\beta - \beta_0)}
 \end{align*}
 Note that the prior for \(\beta \) is independent of \(\sigma^2\), so we can also write:
 \begin{align*}
@@ -51,11 +52,11 @@ Second, conditional on \(\sigma^2\) the likelihood is proportional to:
 \begin{align*}
 p(Y|\beta,\sigma^2) \propto e^{-\frac{1}{2\sigma^2} (Y-X\beta)'(Y-X\beta)}
 \end{align*}
-Third, combining prior and likelihood yields:
+Third, combining conditional prior and likelihood yields the conditional posterior:
 \begin{align*}
 p(\beta|\sigma^2,Y) \propto e^{-\frac{1}{2} (\beta-\beta_0)' \Sigma_0^{-1} (\beta-\beta_0) - \frac{1}{2\sigma^2} (Y-X\beta)'(Y-X\beta)}
 \end{align*}
-One can show (see the references for the somewhat tedious algebra), that this is a Gaussian distribution
+One can show (see the references for the somewhat tedious algebra) that this is a Gaussian distribution
 \begin{align*}
 p(\beta|\sigma^2,Y) \sim N(\beta_1,\Sigma_1)
 \end{align*}
@@ -65,9 +66,14 @@ with
 \\
 \Sigma_1 &= {\left( \Sigma_0^{-1} + \sigma^{-2} (X'X) \right)}^{-1}
 \end{align*}
+Note that this is a closed-form expression for the conditional posterior of \(\beta \) given \(\sigma^2\).
+Additionally, it is easy to sample from this conditional posterior,
+  because it is a multivariate Gaussian distribution (e.g.\ using \texttt{mvnrnd} in MATLAB).
 
-\item Assuming that \(\beta \) is known and the prior for \(\frac{1}{\sigma^2}\) is Gamma,
-  we have \(p\left(\frac{1}{\sigma^2}\right) = p\left(\frac{1}{\sigma^2}|\beta\right) \sim \Gamma(s_0,v_0)\); that is, the prior density is given by:
+\item Assuming that \(\beta \) is known and the prior for the precision \(\frac{1}{\sigma^2}\) is Gamma,
+  we have that \(p\left(\frac{1}{\sigma^2}\right) = p\left(\frac{1}{\sigma^2}|\beta\right) \sim \Gamma(s_0,v_0)\).\footnote{%
+  Alternatively, one can assume an inverse Gamma distribution for \(\sigma \) or \(\sigma^2 \).}
+That is, the prior density is proportional to:
 \begin{align*}
 p\left(\frac{1}{\sigma^2}|\beta\right) & \propto {\left(\frac{1}{\sigma^2} \right)}^{s_0-1} e^{-\frac{1}{v_0\sigma^2}}
 \end{align*}
@@ -85,14 +91,17 @@ s_1 &= s_0 + T
 \\
 v_1 &= v_0 + (Y-X\beta)'(Y-X\beta)
 \end{align*}
+Note that this is a closed-form expression for the conditional posterior of \(\frac{1}{\sigma^2}\) given \(\beta \).
+Additionally, it is easy to sample from this conditional posterior,
+  because it is a Gamma distribution (e.g.\ using \texttt{gamrnd} in MATLAB).
 
 \item In the previous exercises we have derived the conditional posteriors in closed-form.
 When both \(\beta \) and \(\sigma^2\) are unknown,
   we can specify the \textbf{joint prior} distribution for these parameters assuming a Gamma distribution for the marginal prior for \(\frac{1}{\sigma^2}\)
   and a normal distribution for the conditional prior for \(\beta|\frac{1}{\sigma^2}\),
-  such that the joint prior is Normal-Gamma:
+  such that the \textbf{joint prior} is called \emph{Normal-Gamma}:
 \begin{align*}
-p\left(\beta, \frac{1}{\sigma^2}\right) \propto \underbrace{p(\beta|1/\sigma^2)}_{\text{Normal}} \underbrace{p\left(1/\sigma^2\right)}_{\text{Gamma}}
+p\left(\beta, \frac{1}{\sigma^2}\right) = \underbrace{p(\beta|1/\sigma^2)}_{\text{Normal}} \underbrace{p\left(1/\sigma^2\right)}_{\text{Gamma}}
 \end{align*}
 The \textbf{joint posterior} density is given by the factorization of the conditional posteriors:
 \begin{align*}
@@ -102,7 +111,7 @@ To make inference on \(\beta \), however, we need to know the marginal posterior
 \begin{align*}
 p(\beta|Y) = \int_0^\infty p(\beta,1/\sigma^2|Y) d(1/\sigma^2)
 \end{align*}
-This integration is very hard, but we can make use of a numerical Monte Carlo integration approach:
+This integration is very hard, but we can make use of a numerical Monte Carlo integration approach.
 
 \paragraph{Gibbs sampling}
 The idea of Gibbs sampling is to repeatedly sample from the conditional posterior distributions (derived in {3.} and {4.})
