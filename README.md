@@ -235,14 +235,13 @@ Familiarize yourself with
 
 </details>
 
-<!---
 
 <details>
   <summary> Week 12: Bayesian estimation of VAR models and the Minnesota prior</summary>
 
 ### Goals
 
-* apply the Bayesian estimation framework and methods from last week to the multivariate case
+* apply the Bayesian estimation framework and methods from the univariate to the multivariate case
 * understand the Minnesota prior
 * estimate a multivariate vector autoregressive model with Bayesian techniques and a Minnesota prior that is fine-tuned to include the zero-lower-bound period of nominal interest rates
 
@@ -256,6 +255,7 @@ Familiarize yourself with
 
 </details>
 
+<!---
 
 <details>
   <summary> Week 13: Introduction to DSGE models</summary>

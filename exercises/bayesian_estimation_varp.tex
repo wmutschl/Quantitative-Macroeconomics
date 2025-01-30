@@ -1,37 +1,49 @@
-\section[Bayesian Estimation of VAR(p)]{Bayesian Estimation of VAR(p)\label{ex:BayesianEstimationVARp}}
-Consider the following K-variable VAR(p) model:
+\section[Bayesian Estimation of VAR{(p)}]{Bayesian Estimation of VAR{(p)}\label{ex:BayesianEstimationVARp}}
+Consider the following K-variable VAR{(p)} model:
 \begin{align*}
 y_t = c + A_1 y_{t-1} + \cdots + A_p y_{t-p} + u_t= AZ_{t-1} + u_t
 \end{align*}
 where \(E(u_t)=0\), \(E(u_t u_t')=\Sigma_{u}\) and \(E(u_t u_s')=0\) for \(t\neq s\).
 Define \(\alpha = vec(A)\) and assume that \(u_t|y_{t-1},\ldots ,y_1\sim N(0,\Sigma)\).
+
 \begin{enumerate}
-\item Explain why Bayesian methods are especially attractive when estimating a VAR(p) model.
-\item Assume that the prior for \(\alpha \) is normal with mean \(\alpha_0\) and covariance matrix \(V_0\).
+
+\item
+Explain why Bayesian methods are especially attractive when estimating a VAR{(p)} model.
+
+\item
+Assume that the prior for \(\alpha \) is normal with mean \(\alpha_0\) and covariance matrix \(V_0\).
 Provide an expression for the posterior conditional on \(\Sigma_u\).
-\item Assume that the prior for the VAR covariance matrix \(\Sigma_u\) is Inverse Wishart
-with degrees of freedom \(v_0\) and scale matrix \(S_0\).
-Provide an expression for the posterior conditional on \(\alpha \). 
-\item Briefly outline the basic steps of the Gibbs sampling algorithm given the conditional posteriors.
-\item Provide intuition behind the \enquote{Minnesota prior}
-and have a look at a possible implementation of it given the file \texttt{BVARMinnesotaPrior.m} in the appendix.
+
+\item
+Assume that the prior for the VAR covariance matrix \(\Sigma_u\) is Inverse Wishart
+  with degrees of freedom \(v_0\) and scale matrix \(S_0\).
+Provide an expression for the posterior conditional on \(\alpha \).
+
+\item
+Briefly outline the basic steps of the Gibbs sampling algorithm given the conditional posteriors.
+
+\item
+Provide intuition behind the \enquote{Minnesota prior}
+  and have a look at a possible implementation of i
+  given the file \texttt{BVARMinnesotaPrior.m} in the appendix.
 \end{enumerate}
 
 \paragraph{Hints}
 \begin{itemize}
-	\item Use \texttt{mvnrnd(alpha1,V1)} to draw from a multivariate normal distribution with mean \(\alpha_1\) and covariance matrix \(V_1\).
-	Make sure your covariance matrix is symmetric: \(V_1 = \frac{1}{2}(V_1+V_1')\).
-	\item Use \texttt{inv(wishrnd(inv(S1),v1))} to draw from an Inverse Wishart distribution with degrees of freedom \(v_1\) and scale matrix \(S_1\).
+\item Use \texttt{mvnrnd(alpha1,V1)} to draw from a multivariate normal distribution with mean \(\alpha_1\) and covariance matrix \(V_1\).
+Make sure your covariance matrix is symmetric: \(V_1 = \frac{1}{2}(V_1+V_1')\).
+\item Use \texttt{inv(wishrnd(inv(S1),v1))} to draw from an Inverse Wishart distribution with degrees of freedom \(v_1\) and scale matrix \(S_1\).
 \end{itemize}
 
 \paragraph{Readings}
 \begin{itemize}
-	\item \textcite[Ch.~5]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
-	\item \textcite[Ch.~1-2]{Koop.Korobilis_2010_BayesianMultivariateTime}
+\item \textcite[Ch.~5]{Kilian.Lutkepohl_2017_StructuralVectorAutoregressive}
+\item \textcite[Ch.~1-2]{Koop.Korobilis_2010_BayesianMultivariateTime}
 \end{itemize}
 
 \begin{solution}\textbf{Solution to \nameref{ex:BayesianEstimationVARp}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/bayesian_estimation_varp_solution.tex}
 \fi
 \newpage

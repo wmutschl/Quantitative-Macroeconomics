@@ -1,0 +1,34 @@
+% !TEX root = week_12.tex
+\input{exercises/_common_header.tex}
+\Newassociation{solution}{Solution}{week_12_solution}
+\newif\ifDisplaySolutions\DisplaySolutionstrue%
+
+\begin{document}
+\title{Quantitative Macroeconomics\\~\\Winter 2024/25\\~\\Week 12}
+\author{Willi Mutschler\\willi@mutschler.eu}
+\date{Version: 1.0\\Latest version available on: \href{https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_12.pdf}{GitHub}}
+\maketitle\thispagestyle{empty}
+
+\newpage
+\Opensolutionfile{week_12_solution}[week_12_solution]
+\tableofcontents\thispagestyle{empty}\newpage
+
+\setcounter{page}{1}
+\input{exercises/bayesian_estimation_varp.tex}\newpage
+\input{exercises/bayesian_estimation_var_zlb.tex}\newpage
+
+\printbibliography%
+\newpage
+
+\appendix
+\section{BVARMinnesotaPrior.m}
+\lstinputlisting[label=BVARMinnesotaPrior,,title=\lstname,style=Matlab-editor,basicstyle=\mlttfamily]{progs/matlab/BVARMinnesotaPrior.m}
+
+\Closesolutionfile{week_12_solution}
+\ifDisplaySolutions%
+\newpage
+
+\section{Solutions}
+\input{week_12_solution}
+\fi
+\end{document}

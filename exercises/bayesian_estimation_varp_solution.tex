@@ -1,26 +1,30 @@
 \begin{enumerate}
 
-\item Given the large number of parameters in VARs,
-estimates of objects of interest (e.g.\ impulse responses or forecasts)
-can become imprecise in large models.
+\item
+Given the large number of parameters in VARs,
+  estimates of objects of interest (e.g.\ impulse responses or forecasts)
+  can become imprecise in large models.
 The Bayesian paradigm enables one to incorporate prior information
-and generally this makes the estimates become more precise.
+  and generally this makes the estimates become more precise.
 Moreover, Bayesian methods provide an easy way to characterize estimation uncertainty
-by looking at the posterior distribution.
+  by looking at the posterior distribution.
 
-\item Conditional on \(\Sigma_u\) and assuming a normal prior for \(\alpha \),
-the conditional posterior is given by (see the readings for the algebra)
+\item
+Conditional on \(\Sigma_u\) and assuming a normal prior for \(\alpha \),
+  the conditional posterior is given by (see the readings for the algebra)
 \begin{align*}
 p(\alpha|\Sigma_u,Y) \sim N(\alpha_1,V_1)
 \end{align*}
 where
 \begin{align*}
-V_1 &= {(V_0^{-1}+ZZ' \otimes \Sigma^{-1})}^{-1}\\
+V_1 &= {(V_0^{-1}+ZZ' \otimes \Sigma^{-1})}^{-1}
+\\
 \alpha_1 &= V_1 (V_0^{-1} \alpha_0 + (Z \otimes \Sigma^{-1})vec(Y))
 \end{align*}
 
-\item Conditional on \(\alpha \) and assuming an Inverse Wishart prior distribution for \(\Sigma_u\),
-the conditional posterior is given by (see the readings for the algebra):
+\item
+Conditional on \(\alpha \) and assuming an Inverse Wishart prior distribution for \(\Sigma_u\),
+  the conditional posterior is given by (see the readings for the algebra):
 \begin{align*}
 p(\Sigma_u|\alpha,Y) \sim IW(v_1, S_1)
 \end{align*}
@@ -31,26 +35,28 @@ v_1 &= T + v_0
 S_1 &= S_0 + (Y - AZ)(Y - AZ)'
 \end{align*}
 
-\item Gibbs sampling consists of the following steps:
+\item
+Gibbs sampling consists of the following steps:
 \begin{enumerate}
-    \item Set priors for the VAR coefficients and the covariance matrix.
-    Set a starting value for \(\Sigma_u\), e.g.\ to OLS values.
-    \item Compute the moments of the conditional posterior distribution for the VAR coefficients,
-    \(\alpha_1\) and \(V_1\), and take a draw \(\alpha(j)\) from \(N(\alpha_1,V_1)\).
-    \item Draw \(\Sigma_u(j)\) from its conditional posterior distribution \(IW(v_1,S_1)\).
-    \item Repeat steps (b) and (c) a large number \(M\) of times to generate sequences
-    \( \{ \alpha(1),\ldots,\alpha(M) \} \) and \( \{\Sigma_u(1),\ldots,\Sigma_u(M)\} \)
-    and use the last \(L\) draws for inference.
+\item Set priors for the VAR coefficients and the covariance matrix.
+Set a starting value for \(\Sigma_u\), e.g.\ to OLS values.
+\item Compute the moments of the conditional posterior distribution for the VAR coefficients,
+  \(\alpha_1\) and \(V_1\), and take a draw \(\alpha(j)\) from \(N(\alpha_1,V_1)\).
+\item Draw \(\Sigma_u(j)\) from its conditional posterior distribution \(IW(v_1,S_1)\).
+\item Repeat steps (b) and (c) a large number \(M\) of times to generate sequences
+  \( \{ \alpha(1),\ldots,\alpha(M) \} \) and \( \{\Sigma_u(1),\ldots,\Sigma_u(M)\} \)
+  and use the last \(L\) draws for inference.
 \end{enumerate}
 
-\item A variety of priors can be used with VAR models, but 3 issues arise:
+\item
+A variety of priors can be used with VAR models, but 3 issues arise:
 \begin{enumerate}
-    \item VAR models are not parsimonious: they have many coefficients to estimate.
-    Ideally our prior should provide information to improve the precisions of estimates by focusing on the most important coefficients
-    or using prior information to \textbf{shrink} the parameter space.
-    \item Some priors (conjugate) are more useful in terms of analytical expressions and closed-form results.
-    This can hugely reduce the computational burden on sampling algorithms.
-    \item Prior distributions should be flexible, meaning that specific information or uncertainty can be easily added.
+\item VAR models are not parsimonious: they have many coefficients to estimate.
+Ideally our prior should provide information to improve the precisions of estimates by focusing on the most important coefficients
+  or using prior information to \textbf{shrink} the parameter space.
+\item Some priors (conjugate) are more useful in terms of analytical expressions and closed-form results.
+This can hugely reduce the computational burden on sampling algorithms.
+\item Prior distributions should be flexible, meaning that specific information or uncertainty can be easily added.
 \end{enumerate}
 With this in mind, there is a literature trying to come up with \textbf{structured prior distributions} that are able to
 (a) shrink the parameter space,
@@ -58,60 +64,66 @@ With this in mind, there is a literature trying to come up with \textbf{structur
 (c) are flexible enough to easily adjust your prior when you change the specification or variables in the model.
 
 To this end, researchers from the University of Minnesota and the Federal Reserve Bank of Minneapolis have proposed a prior
-which is now known as the \textbf{Minnesota Prior} and has become the default for many applications.
+  which is now known as the \textbf{Minnesota Prior} and has become the default for many applications.
 The idea is to put forward an automatic way to structure the prior for \(\alpha \)
-which is based on just a few hyper-parameters that have the same meaning across any model size or specification.
+  which is based on just a few hyper-parameters that have the same meaning across any model size or specification.
 
 Consider the following example:
 \begin{align*}
-    \begin{pmatrix} y_t^1\\y_t^2 \end{pmatrix} = 
-    \begin{pmatrix} c_1\\c_2 \end{pmatrix} 
-    + \begin{pmatrix} A_{11}^1 & A_{12}^1\\A_{21}^1 & A_{22}^1 \end{pmatrix} 
-    \begin{pmatrix} y_{t-1}^1\\y_{t-1}^2 \end{pmatrix} 
-    + \begin{pmatrix} A_{11}^2 & A_{12}^2\\A_{21}^2 & A_{22}^2 \end{pmatrix} 
-    \begin{pmatrix} y_{t-2}^1\\y_{t-2}^2 \end{pmatrix} 
-    + \begin{pmatrix} u_t^1\\u_t^2 \end{pmatrix}
+\begin{pmatrix} y_t^1\\y_t^2 \end{pmatrix}
+=
+\begin{pmatrix} c_1\\c_2 \end{pmatrix}
++
+\begin{pmatrix} A_{11}^1 & A_{12}^1\\A_{21}^1 & A_{22}^1 \end{pmatrix}
+\begin{pmatrix} y_{t-1}^1\\y_{t-1}^2 \end{pmatrix}
++
+\begin{pmatrix} A_{11}^2 & A_{12}^2\\A_{21}^2 & A_{22}^2 \end{pmatrix}
+\begin{pmatrix} y_{t-2}^1\\y_{t-2}^2 \end{pmatrix}
++
+\begin{pmatrix} u_t^1\\u_t^2 \end{pmatrix}
 \end{align*}
 Now the Minnesota prior imposes three things:
 \begin{enumerate}
-    \item The individual variables \(y_t^1\) and \(y_t^2\) follow a Random Walk.
-    We implement this by setting the prior mean \(\alpha_0\) to zero
-    except for the elements corresponding to \(A_{11}^1\) and \(A_{22}^1\).
-    This is the way we implement shrinkage.
-    \\
-    \emph{Side-note:} You might need to manually adjust this.
-    For instance, growth rates typically show little persistence, so we could also set \(A_{11}^1\) and \(A_{22}^1\) to zero.
-    Alternatively, for level variables with high persistence, we could set \(A_{11}^1\) and \(A_{22}^1\) to high values slightly below 1.
-    Nevertheless, the Random Walk is a good candidate
-    and default in most implementations of the Minnesota prior.
-    \item The prior covariance matrix \(V_0\) is set to reflect uncertainty about our Random Walk prior mean.
-    That is, we want to express how \textbf{certain} we are that
-    (1) all coefficients on lags higher than 1 are zero and 
-    (2) coefficients other than on own lags are zero.
-    \\
-    We implement this by a set of hyper-parameters that control the tightness of this prior.
-    Formally, this is implemented by specifying the covariance matrix \(V_0\) as a diagonal matrix,
-    where the diagonal elements are set in a structured way.
-    Let \(V^i_{0}\) denote the block of \(V_0\) associated with coefficients in equation \(i\),
-      then the diagonal elements of \(V^i_{0}\) are set according to:
-    \begin{align*}
-        V^i_{0,jj} = \begin{pmatrix}
-                        \frac{\lambda_{1}}{l^2} & \text{for coefficients on own lag \(l=1,\ldots,p\)}
-                        \\
-                        \frac{\lambda_{2}}{l^2} \frac{\sigma_{ii}}{\sigma_{jj}} & \text{for coefficients on lag \(l=1,\ldots,p\) of variables \(j\neq i\)}
-                        \\
-                        \lambda_3 \sigma_{ii} & \text{for coefficients on exogenous variables}
-                    \end{pmatrix}
-    \end{align*}
-    This specification implies that as the lag \(l=1,\ldots,p\) increases the coefficients are shrunk towards zero.
-    Moreover, by specifying \(\lambda_1<\lambda_2\) we make own lags more likely to be important than lags of other variables.
-    Whereas setting \(\lambda_1\) close to zero puts greater weight towards the Random Walk assumption.
-    Note that the term \(\frac{\sigma_{ii}}{\sigma_{jj}}\) adjusts for differences in the units the variables are measured in. 
-    Typically, we set \(\sigma_{ii}\) to the OLS estimate of the standard error of the reduced-form innovations from univariate AR regressions of equation \(i\).
-    
-    The common practice is then to use the typical natural conjugate priors,
-      i.e.\ the prior for \(\Sigma_u\) follows an Inverse Wishart prior and the prior for the coefficients \(vec(A)\) conditional on \(\Sigma_u\) is normal.
-    Thus, we can make use of the Gibbs sampler by making use of the analytical expressions for the conditional posteriors.
-  \end{enumerate}
+\item The individual variables \(y_t^1\) and \(y_t^2\) follow a Random Walk.
+We implement this by setting the prior mean \(\alpha_0\) to zero
+  except for the elements corresponding to \(A_{11}^1\) and \(A_{22}^1\).
+This is the way we implement shrinkage.
+\\
+\emph{Side-note:} You might need to manually adjust this.
+For instance, growth rates typically show little persistence, so we could also set \(A_{11}^1\) and \(A_{22}^1\) to zero.
+Alternatively, for level variables with high persistence, we could set \(A_{11}^1\) and \(A_{22}^1\) to high values slightly below 1.
+Nevertheless, the Random Walk is a good candidate
+  and default in most implementations of the Minnesota prior.
+\item The prior covariance matrix \(V_0\) is set to reflect uncertainty about our Random Walk prior mean.
+That is, we want to express how \textbf{certain} we are that
+(1) all coefficients on lags higher than 1 are zero and 
+(2) coefficients other than on own lags are zero.
+\\
+We implement this by a set of hyper-parameters that control the tightness of this prior.
+Formally, this is implemented by specifying the covariance matrix \(V_0\) as a diagonal matrix,
+  where the diagonal elements are set in a structured way.
+Let \(V^i_{0}\) denote the block of \(V_0\) associated with coefficients in equation \(i\),
+  then the diagonal elements of \(V^i_{0}\) are set according to:
+\begin{align*}
+V^i_{0,jj}
+=
+\begin{pmatrix}
+\frac{\lambda_{1}}{l^2} & \text{for coefficients on own lag \(l=1,\ldots,p\)}
+\\
+\frac{\lambda_{2}}{l^2} \frac{\sigma_{ii}}{\sigma_{jj}} & \text{for coefficients on lag \(l=1,\ldots,p\) of variables \(j\neq i\)}
+\\
+\lambda_3 \sigma_{ii} & \text{for coefficients on exogenous variables}
+\end{pmatrix}
+\end{align*}
+This specification implies that as the lag \(l=1,\ldots,p\) increases the coefficients are shrunk towards zero.
+Moreover, by specifying \(\lambda_1<\lambda_2\) we make own lags more likely to be important than lags of other variables.
+Whereas setting \(\lambda_1\) close to zero puts greater weight towards the Random Walk assumption.
+Note that the term \(\frac{\sigma_{ii}}{\sigma_{jj}}\) adjusts for differences in the units the variables are measured in. 
+Typically, we set \(\sigma_{ii}\) to the OLS estimate of the standard error of the reduced-form innovations from univariate AR regressions of equation \(i\).
+
+The common practice is then to use the typical natural conjugate priors,
+  i.e.\ the prior for \(\Sigma_u\) follows an Inverse Wishart prior and the prior for the coefficients \(vec(A)\) conditional on \(\Sigma_u\) is normal.
+Thus, we can make use of the Gibbs sampler by making use of the analytical expressions for the conditional posteriors.
+\end{enumerate}
 
 \end{enumerate}
