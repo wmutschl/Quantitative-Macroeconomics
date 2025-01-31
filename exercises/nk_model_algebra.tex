@@ -20,7 +20,7 @@ Note that the exogenous preference shifter \(z_t\) influences only intertemporal
 The consumption index is formed by aggregating a continuum of goods represented on the interval \(h\in [0,1]\)
   into a single consumption good using a \textcite{Dixit.Stiglitz_1977_MonopolisticCompetitionOptimum} aggregation technology:
 \begin{align*}
-	c_t = {\left(\int_0^1 c_t(h)^{\frac{\epsilon-1}{\epsilon}} dh \right)}^{\frac{\epsilon}{\epsilon-1}}
+	c_t = {\left(\int_0^1 {(c_t(h))}^{\frac{\epsilon-1}{\epsilon}} dh \right)}^{\frac{\epsilon}{\epsilon-1}}
 \end{align*}
 That is, \(c_t(h)\) denotes the quantity of good \(h\) consumed by the household in period \(t\).
 \(\epsilon>1\) is an elasticity parameter measuring the \emph{love-of-variety}.
@@ -56,19 +56,22 @@ R_t &= r_t E_t \Pi_{t+1} \label{eq:RealInterestRate}
 \end{align}
 
 \begin{enumerate}
-\item Explain the economic intuition behind equation \eqref{eq:NominalInterestRate} that determines the nominal interest rate
+\item Explain the economic intuition behind equation~\eqref{eq:NominalInterestRate} that determines the nominal interest rate
   and equation~\eqref{eq:RealInterestRate} that determines the real interest rate.
 
 \item Is there debt in this model? In other words, what is the optimal path for \(B_t\) in this model?
 
-\item Explain the difference between the solvency constraint \( \lim_{T \rightarrow \infty} E_t {\left \{ \Lambda_{t,T} \frac{B_T}{P_T} \right \}} \geq 0 \)
+\item Explain the difference between the solvency constraint
+\begin{equation*}
+\lim_{T \rightarrow \infty} E_t{\left \{ \Lambda_{t,T} \frac{B_T}{P_T} \right \}} \geq 0
+\end{equation*}
 and the transversality condition \(\lim_{T \rightarrow \infty} E_t \left \{ \Lambda_{t,T} \frac{B_T}{P_T} \right \} = 0\) which holds in the optimum allocation.
 
 \item Show that cost minimization of consumption expenditures implies
 \begin{align*}
 c_t(h) &= {\left(\frac{P_t(h)}{P_t}\right)}^{-\epsilon} c_t
 \\
-P_t &= {\left(\int_0^1 P_t(h)^{1-\epsilon}dh\right)}^{\frac{1}{1-\epsilon}}
+P_t &= {\left(\int_0^1 {(P_t(h))}^{1-\epsilon}dh\right)}^{\frac{1}{1-\epsilon}}
 \end{align*}
 Interpret these equations. What does this imply for the budget constraint?
 
@@ -93,7 +96,7 @@ where \(\epsilon>1\) is the substitution elasticity between inputs, the so-calle
 \begin{align*}
 y_t(f) &= {\left(\frac{P_t(f)}{P_t}\right)}^{-\epsilon} y_t
 \\
-P_t &= {\left[\int_{0}^{1} P_t(f)^{1-\epsilon}df\right]}^{\frac{1}{1-\epsilon}}
+P_t &= {\left[\int_{0}^{1} {(P_t(f))}^{1-\epsilon}df\right]}^{\frac{1}{1-\epsilon}}
 \end{align*}
 Interpret these equations. What does this imply for profits in the final goods sector?
 \end{enumerate}
@@ -224,7 +227,7 @@ The preference shock \(\varepsilon_{z,t}\), the productivity shock \(\varepsilon
 \end{itemize}
 
 \begin{solution}\textbf{Solution to \nameref{ex:AlgebraNewKeynesianModels}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/nk_model_algebra_solution.tex}
 \fi
 \newpage

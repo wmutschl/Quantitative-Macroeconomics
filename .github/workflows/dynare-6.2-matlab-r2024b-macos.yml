@@ -141,3 +141,15 @@ jobs:
             addpath("Dynare-6.2-arm64/matlab");
             cd("progs/matlab");
             BVARZLB_run;
+
+      - name: Run week 13 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("Dynare-6.2-arm64/matlab");
+            cd("progs/matlab");
+            rbcLogutilSSTest;
+            rbcSSTest;
+            cd("../dynare");
+            dynare rbcLogutil
+            dynare rbcCES

@@ -255,7 +255,6 @@ Familiarize yourself with
 
 </details>
 
-<!---
 
 <details>
   <summary> Week 13: Introduction to DSGE models</summary>
@@ -265,6 +264,7 @@ Familiarize yourself with
 * understand the DSGE model framework, its basic structure and key challenges
 * understand the algebra of a basic RBC model and of a basic New Keynesian model
 * compute the steady-state of the RBC model with either MATLAB or Dynare
+* understand the first-order perturbation solution to DSGE models
 
 
 ### To Do
@@ -272,27 +272,9 @@ Familiarize yourself with
 * [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_12.pdf) and write down all your questions
 * [x] Read Fernandez-Villaverde, Rubio-Ramirez, and Schorfheide (2016, Ch.1) and Torres (2013, Ch. 1).
 * [x] Read EITHER Gali (2015, Ch. 3) OR Heijdra (2017, Ch. 9) OR Romer (2019, Ch. 7) OR Woodford (2003, Ch. 3) OR Walsh (2017, Ch. 8)
-* [x] Watch [Algebra of New Keynesian models](https://mutschler.eu/dynare/models/nk/)
-* [x] Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
-* [x] Do exercise sheet 13
-* [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
-
-</details>
-
-
-<details>
-  <summary> Week 14: Solving DSGE models</summary>
-
-### Goals
-
-* understand the first-order perturbation solution to DSGE models
-* apply it to the basic New Keynesian model
-
-
-### To Do
-
-* [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_13.pdf) and write down all your questions
-* [x] Watch [Solving DSGE models with first-order perturbation: what Dynare does](https://mutschler.eu/dynare/perturbation/first-order-theory/)
+* Optionally:
+  * [x] watch [Algebra of New Keynesian models](https://mutschler.eu/dynare/models/nk/)
+  * [x] Watch [Solving DSGE models with first-order perturbation: what Dynare does](https://mutschler.eu/dynare/perturbation/first-order-theory/)
 * [x] Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
 * [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
 
@@ -300,7 +282,7 @@ Familiarize yourself with
 
 
 <details>
-  <summary> Week 15: Kalman filter and Metropolis-Hastings</summary>
+  <summary> Week 14: Kalman filter and Metropolis-Hastings</summary>
 
 ### Goals
 
@@ -311,12 +293,13 @@ Familiarize yourself with
 ### To Do
 
 * [x] Review the solutions of [last week's exercises](https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_14.pdf) and write down all your questions
-* [x] Follow the lecture, you can find the slides on Ilias.
+* [x] Follow the lecture.
 * [x] Make note of all the aspects and concepts that you are not familiar with or that you find difficult to understand.
 * [x] If you have questions, get in touch with me via email or (better) [schedule a meeting](https://schedule.mutschler.eu)
 
 </details>
 
+<!---
 \-->
 
 ## Content

@@ -1,0 +1,30 @@
+% !TEX root = week_13.tex
+\input{exercises/_common_header.tex}
+\Newassociation{solution}{Solution}{week_13_solution}
+\newif\ifDisplaySolutions\DisplaySolutionstrue%
+
+\begin{document}
+\title{Quantitative Macroeconomics\\~\\Winter 2024/25\\~\\Week 13}
+\author{Willi Mutschler\\willi@mutschler.eu}
+\date{Version: 1.0\\Latest version available on: \href{https://github.com/wmutschl/Quantitative-Macroeconomics/releases/latest/download/week_13.pdf}{GitHub}}
+\maketitle\thispagestyle{empty}
+
+\newpage
+\Opensolutionfile{week_13_solution}[week_13_solution]
+\tableofcontents\thispagestyle{empty}\newpage
+
+\setcounter{page}{1}
+\input{exercises/dsge_definition_challenges_structure.tex}\newpage
+\input{exercises/rbc_model.tex}\newpage
+\input{exercises/nk_model_algebra.tex}\newpage
+\printbibliography%
+
+\Closesolutionfile{week_13_solution}
+\ifDisplaySolutions%
+\newpage
+\appendix
+
+\section{Solutions}
+\input{week_13_solution}
+\fi
+\end{document}

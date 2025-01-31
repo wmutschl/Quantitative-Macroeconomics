@@ -2,14 +2,14 @@
 Consider the basic Real Business Cycle (RBC) model with leisure.
 The representative household maximizes present as well as expected future utility
 \begin{align*}
-	\max E_t \sum_{j=0}^{\infty} \beta^{j} U_{t+j}
+\max E_t \sum_{j=0}^{\infty} \beta^{j} U_{t+j}
 \end{align*}
 with \(\beta <1\) denoting the discount factor and \(E_t\) is expectation given information at time \(t\).
 The contemporaneous utility function 
 \begin{align*}
-	U_t = \gamma \log(c_t) + \psi \log{(1-l_{t})}
+U_t = \gamma \log(c_t) + \psi \log{(1-l_{t})}
 \end{align*}
-is additively separable and has two arguments: consumption \(c_t\) and normalized labor supply \(l_{t}\).
+  is additively separable and has two arguments: consumption \(c_t\) and normalized labor supply \(l_{t}\).
 The marginal utility of consumption is positive, whereas more labor supply reduces utility.
 Accordingly, \(\gamma \) is the consumption weight in the utility function and \(\psi \) the weight on leisure.
 In each period the household takes the real wage \(w_t\) as given and supplies perfectly elastic labor service to the representative firm.
@@ -26,19 +26,19 @@ The law of motion for capital \(k_t\) at the end of period \(t\) is given by
 k_{t} = (1-\delta) k_{t-1} + i_t
 \end{align*}
 where \(\delta \) is the capital depreciation rate.\footnote{%
-    Note that we use the end-of-period timing convention for capital, i.e.\
+  Note that we use the end-of-period timing convention for capital, i.e.\
     \(k_t\) instead of \(k_{t+1}\),
     because the investment decision is done in period \(t\) and hence capital is also determined in \(t\).
-    In older papers and books you will often find beginning-of-period timing convention for capital,
+  In older papers and books you will often find beginning-of-period timing convention for capital,
     so always think about when a variable is decided and determined.}
 Assume that the transversality condition is full-filled.
-	
+
 Productivity \(a_t\) is the driving force of the economy and evolves according to
 \begin{align*}
 \log{a_{t}} &= \rho_a \log{a_{t-1}}  + \varepsilon_{a,t}
 \end{align*}
 where \(\rho_a\) denotes the persistence parameter and \(\varepsilon_{a,t}\) is assumed to be normally distributed with mean zero and variance \(\sigma_a^2\).
-	
+
 Real profits \({div}_t\) of the representative firm are revenues from selling output \(y_t\) minus costs from labor \(w_t l_{d,t}\) and renting capital \(r_{k,t} k_{d,t-1}\):
 \begin{align*}
 {div}_t = y_{t} - w_{t} l_{d,t} - r_{k,t} k_{d,t-1}
@@ -58,7 +58,6 @@ The stochastic discount factor \({\Lambda}_{t,t+j}\) takes into account that fir
 \begin{align*}
 \Lambda_{t,t+j}=\beta^j \frac{\partial U_{t+j}/\partial c_{t+j}}{\partial U_{t}/\partial c_{t}}
 \end{align*}
-	
 Finally, we have non-negativity constraints	\(k_t \geq 0\), \(c_t \geq 0\) and \(0 \leq l_t \leq 1\).
 
 \begin{enumerate}
@@ -96,29 +95,30 @@ y_t = c_t + i_t
 
 \item Write a DYNARE mod file for this RBC model with a feasible calibration for an OECD country
   and compute the steady-state of the model by using a \texttt{steady\_state\_model} block.
-  Compare this to the steady-state computed above.
+Compare this to the steady-state computed above.
 
 \item Now assume a contemporaneous utility function of the CRRA (constant Relative Risk Aversion) type:\footnote{%
-    Note that due to {L'Hopital}'s rule \(\eta_c=\eta_l=1\) implies the original specification, \(U_t=\gamma \log c_t + \psi \log(1-l_t)\).}
+  Note that due to {L'Hopital}'s rule \(\eta_c=\eta_l=1\) implies the original specification, \(U_t=\gamma \log c_t + \psi \log(1-l_t)\).
+}
 \begin{align*}
-    U_t = \gamma \frac{c_{t}^{1-\eta_c}-1}{1-\eta_c} + \psi \frac{{(1-l_{t})}^{1-\eta_l}-1}{1-\eta_l}
+U_t = \gamma \frac{c_{t}^{1-\eta_c}-1}{1-\eta_c} + \psi \frac{{(1-l_{t})}^{1-\eta_l}-1}{1-\eta_l}
 \end{align*}
 \begin{enumerate}
-    \item Derive the model equations and steady-state analytically.
-    \item Write a script to compute the steady-state for this model.
-    \item Write a DYNARE mod file and compute the steady-state for this model by using a helper function in the \texttt{steady\_state\_model} block.
+\item Derive the model equations and steady-state analytically.
+\item Write a script to compute the steady-state for this model.
+\item Write a DYNARE mod file and compute the steady-state for this model by using a helper function in the \texttt{steady\_state\_model} block.
 \end{enumerate}
 
 \end{enumerate}
 
 \paragraph{Readings}
 \begin{itemize}
-	\item \textcite[Ch.~3, Ch.~6]{McCandless_2008_ABCsRBCsIntroduction}
-	\item \textcite[Ch.~1, Ch.~2]{Torres_2013_IntroductionDynamicMacroeconomic}
+\item \textcite[Ch.~3, Ch.~6]{McCandless_2008_ABCsRBCsIntroduction}
+\item \textcite[Ch.~1, Ch.~2]{Torres_2013_IntroductionDynamicMacroeconomic}
 \end{itemize}
 
 \begin{solution}\textbf{Solution to \nameref{ex:RBCModel}}
-\ifDisplaySolutions
+\ifDisplaySolutions%
 \input{exercises/rbc_model_solution.tex}
 \fi
 \newpage

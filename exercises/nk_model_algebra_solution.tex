@@ -20,7 +20,7 @@ Q_t = \frac{1}{R_t}
 In our example this would imply \(R_t=1.25\).
 As there are no other investment opportunities in this model \(R_t\) is also equal to the nominal interest rate in the economy.
 	
-Equation \eqref{eq:RealInterestRate} is the so-called Fisherian equation
+Equation~\eqref{eq:RealInterestRate} is the so-called Fisherian equation
   which states that the gross real return on a bond \(r_t\) is equivalent to the gross nominal interest rate divided by the expected gross inflation rate.
 Inflation expectations are responsible for the difference between nominal and real interest rates, showing that future expectations matter for the economy.
 
@@ -134,7 +134,7 @@ Note that the preference shifter \(z_t\) has no effect on this intratemporal dec
 \begin{align}
 	\lambda_t Q_t &= \beta E_t \left[\lambda_{t+1} \Pi_{t+1}^{-1} \right]
 \end{align}
-Combined with \eqref{eq:NominalInterestRate} and \eqref{eq:RealInterestRate} this yields the so-called Euler equation,
+Combined with~\eqref{eq:NominalInterestRate} and~\eqref{eq:RealInterestRate} this yields the so-called Euler equation,
   i.e.\ the \textbf{intratemporal} choice between consumption and saving:
 \begin{align}
 	\frac{\partial U(c_t,l_t,z_t)}{\partial c_t} &= \beta E_t \left[\frac{\partial U(c_{t+1},l_{t+1},z_{t+1})}{\partial c_{t+1}} R_t \Pi_{t+1}^{-1} \right]
@@ -162,7 +162,7 @@ The first-order condition w.r.t \(y_t\) is
 
 The first-order condition w.r.t \(y_t(f)\) yields:
 \begin{align}
-	\frac{\partial \pounds^{p} }{\partial y_t(f)} & = -P_t(f) + \Lambda_{t}^p \frac{\epsilon}{\epsilon-1} \left[\int_{0}^1 y_t(f)^{\frac{\epsilon-1}{\epsilon}}df\right]^{\frac{\epsilon}{\epsilon-1}-1} \frac{\epsilon-1}{\epsilon} {(y_t(f))}^{\frac{\epsilon-1}{\epsilon}-1} = 0
+\frac{\partial \pounds^{p} }{\partial y_t(f)} & = -P_t(f) + \Lambda_{t}^p \frac{\epsilon}{\epsilon-1} {\left[\int_{0}^1 {(y_t(f))}^{\frac{\epsilon-1}{\epsilon}}df\right]}^{\frac{\epsilon}{\epsilon-1}-1} \frac{\epsilon-1}{\epsilon} {(y_t(f))}^{\frac{\epsilon-1}{\epsilon}-1} = 0
 \label{eq:Firms_Relative_Demand}
 \end{align}
 Note that \(\left[\int_{0}^1 {(y_t(f))}^{\frac{\epsilon-1}{\epsilon}}df\right] = y_t^{\frac{\epsilon-1}{\epsilon}}\) and \(\Lambda_{t}^p=P_t\).
@@ -229,7 +229,7 @@ This means that aggregate marginal costs are also equal to the ratio between the
 \item The Lagrangian of the intermediate firm is
 \begin{footnotesize}
 \begin{align}
-	\pounds^f &= E_t \sum_{j=0}^{\infty}\Lambda_{t,t+j} P_{t+j} \left[ {\left(\frac{P_{t+j}(f)}{P_{t+j}}\right)}^{1-\epsilon} y_{t+j} - w_{t+j} l_{d,t+j}(f) + mc_{t+j}(f)\left(a_{t+j} l_{d,t+j}(f) - \left(\frac{P_{t+j}(f)}{P_{t+j}}\right)^{-\epsilon} y_{t+j}\right)\right]
+	\pounds^f &= E_t \sum_{j=0}^{\infty}\Lambda_{t,t+j} P_{t+j} \left[ {\left(\frac{P_{t+j}(f)}{P_{t+j}}\right)}^{1-\epsilon} y_{t+j} - w_{t+j} l_{d,t+j}(f) + mc_{t+j}(f)\left(a_{t+j} l_{d,t+j}(f) - {\left(\frac{P_{t+j}(f)}{P_{t+j}}\right)}^{-\epsilon} y_{t+j}\right)\right]
 		\label{eq:Firms.Lagrangian}
 \end{align}
 \end{footnotesize}
@@ -238,18 +238,29 @@ When firms decide how to set their price they need to take into account that due
   they might get stuck at \(\widetilde{P}_t(f)\) for a number of periods \(j=1,2,\ldots \) before they can re-optimize again.
 The probability of such a situation is \(\theta^j\).
 Therefore, when firms are able to change prices in period \(t\), they take this into account and the above Lagrangian of the expected discounted sum of nominal profits becomes:
+
+\begingroup\vspace{-1\baselineskip}\small
 \begin{align}
-	\pounds^{f^c} &= E_t \sum_{j=0}^{\infty}\theta^j \Lambda_{t,t+j} P_{t+j}\left[ \left(\frac{\widetilde{P}_{t}(f)}{P_{t+j}}\right)^{1-\epsilon} y_{t+j} - w_{t+j} l_{d,t+j}(f) + mc_{t+j}\left(a_{t+j} l_{d,t+j}(f) - {\left(\frac{\widetilde{P}_{t}(f)}{P_{t+j}}\right)}^{-\epsilon} y_{t+j}\right)\right]
-	\\
-	&= E_t \sum_{j=0}^{\infty}\theta^j \Lambda_{t,t+j} P_{t+j}^\epsilon y_{t+j} \left[ \widetilde{P}_{t}(f)^{1-\epsilon}  - P_{t+j} \cdot mc_{t+j} \cdot \widetilde{P}_{t}(f)^{-\epsilon} \right] + \ldots
-	\label{eq:Firms.Lagrangian.Calvo}
+\pounds^{f^c} &= E_t \sum_{j=0}^{\infty}\theta^j \Lambda_{t,t+j} P_{t+j}
+\Bigg[
+  {\left(\frac{\widetilde{P}_{t}(f)}{P_{t+j}}\right)}^{1-\epsilon} y_{t+j}
+\nonumber
+\\
+&\qquad\qquad
+- w_{t+j} l_{d,t+j}(f) + mc_{t+j}\left(a_{t+j} l_{d,t+j}(f) - {\left(\frac{\widetilde{P}_{t}(f)}{P_{t+j}}\right)}^{-\epsilon} y_{t+j}\right)
+\Bigg]
+\nonumber
+\\
+&= E_t \sum_{j=0}^{\infty}\theta^j \Lambda_{t,t+j} P_{t+j}^\epsilon y_{t+j} \left[ {(\widetilde{P}_{t}(f))}^{1-\epsilon}  - P_{t+j} \cdot mc_{t+j} \cdot {(\widetilde{P}_{t}(f))}^{-\epsilon} \right] + \ldots
+\label{eq:Firms.Lagrangian.Calvo}
 \end{align}
+\endgroup
 where in the second line we focus only on relevant parts for the optimization wrt to \(\widetilde{P}_t(f)\).
 Moreover, we took into account that \(mc_t(f) = mc_t\).
 		
 The first-order condition of maximizing \(\pounds^{f^c}\) wrt to \(\widetilde{P}_t(f)\) is
 \begin{align}
-	0= E_t \sum_{j=0}^{\infty}\theta^j \Lambda_{t,t+j} P_{t+j}^\epsilon y_{t+j} \left[ (1-\epsilon)\cdot \widetilde{P}_{t}(f)^{-\epsilon}  +\epsilon \cdot P_{t+j} \cdot mc_{t+j} \widetilde{P}_{t}(f)^{-\epsilon-1}\right]
+	0= E_t \sum_{j=0}^{\infty}\theta^j \Lambda_{t,t+j} P_{t+j}^\epsilon y_{t+j} \left[ (1-\epsilon)\cdot {(\widetilde{P}_{t}(f))}^{-\epsilon}  +\epsilon \cdot P_{t+j} \cdot mc_{t+j} {(\widetilde{P}_{t}(f))}^{-\epsilon-1}\right]
 \end{align}
 As \(\widetilde{P}_t(f)>0\) does not depend on \(j\), we multiply by \({\widetilde{P}_t(f)}^{\epsilon+1}\):
 \begin{align}
@@ -261,7 +272,7 @@ Rearranging
 \end{align}
 Dividing both sides by \(P_t^{\epsilon+1}\)
 \begin{align}
-	\underbrace{\frac{\widetilde{P}_t(f)}{P_t}}_{\widetilde{p}_t} \cdot  \underbrace{E_t\sum_{j=0}^{\infty}\theta^j \Lambda_{t,t+j} \left(\frac{P_{t+j}}{P_t}\right)^{\epsilon} y_{t+j}}_{S_{1,t}}  = \frac{\epsilon}{\epsilon-1} \cdot \underbrace{E_t \sum_{j=0}^{\infty}\theta^j \Lambda_{t,t+j} {\left(\frac{P_{t+j}}{P_t}\right)}^{\epsilon+1} y_{t+j} mc_{t+j}}_{S_{2,t}}
+	\underbrace{\frac{\widetilde{P}_t(f)}{P_t}}_{\widetilde{p}_t} \cdot  \underbrace{E_t\sum_{j=0}^{\infty}\theta^j \Lambda_{t,t+j} {(\left(\frac{P_{t+j}}{P_t}\right))}^{\epsilon} y_{t+j}}_{S_{1,t}}  = \frac{\epsilon}{\epsilon-1} \cdot \underbrace{E_t \sum_{j=0}^{\infty}\theta^j \Lambda_{t,t+j} {\left(\frac{P_{t+j}}{P_t}\right)}^{\epsilon+1} y_{t+j} mc_{t+j}}_{S_{2,t}}
 \end{align}
 Note that all firms that reset prices face the same problem and therefore set the same price, \(\widetilde{P}_t(f) =\widetilde{P}_t\).
 This is also evident by looking at the infinite sums, \(S_{1,t}\) and \(S_{2,t}\), because these do not depend on \(f\).
@@ -276,7 +287,7 @@ For this we make use of the relationships for the stochastic discount factor~\eq
 The first recursive sum can be written as:
 \begin{align*}
 	S_{1,t} &= 
-	E_t\sum_{j=0}^{\infty}\theta^j \Lambda_{t,t+j} \left(\frac{P_{t+j}}{P_t}\right)^{\epsilon} y_{t+j}
+	E_t\sum_{j=0}^{\infty}\theta^j \Lambda_{t,t+j} {(\left(\frac{P_{t+j}}{P_t}\right))}^{\epsilon} y_{t+j}
 	\\
 	&= y_t + E_t\sum^{\infty}_{\color{red}{j=1}}\theta^{\color{red}{j}} \Lambda_{t,t+\color{red}{j}} {\left(\frac{P_{t+\color{red}{j}}}{P_t}\right)}^{\epsilon} y_{t+\color{red}{j}}
 	\\
@@ -360,7 +371,7 @@ Using the production function~\eqref{eq:Firms_ProductionFunction} and labor mark
 \begin{align}
 	y_t^{sum} = \int_{0}^1 a_t l_{d,t}(f) df = a_t l_t
 \end{align}
-Furthermore, due to the demand for intermediate good \(y_t(f)\) in \eqref{eq:firms_demand} we get:
+Furthermore, due to the demand for intermediate good \(y_t(f)\) in~\eqref{eq:firms_demand} we get:
 \begin{align}
 	y_t^{sum} = y_t \underbrace{\int_{0}^1 {\left(\frac{P_t(f)}{P_t}\right)}^{-\epsilon} df}_{=p_t^*}
 \end{align}
