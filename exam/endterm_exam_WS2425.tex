@@ -1,0 +1,301 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% !TEX root = endterm_exam_WS2425.tex
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[a4paper,top=2cm]{geometry}
+\usepackage{amssymb,amsmath,amsfonts}
+\usepackage[english]{babel}
+\usepackage[a4paper]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage[numbered,framed]{matlab-prettifier}
+\usepackage{url}
+\usepackage[backend=biber,style=authoryear]{biblatex}
+\addbibresource{../literature/_biblio.bib}
+\begin{document}
+	
+\title{Quantitative Macroeconomics}
+\author{Endterm Exam\\Version 1.0}
+\date{Winter 2024/2025}
+
+\maketitle
+
+\section*{General information}
+\begin{itemize}
+	\item Answer \textbf{three} out of the following \textbf{four} exercises in English.
+	\item All assignments will be given the same weight in the final grade.
+	\item Hand in your solutions before February 23, 2025 at 3pm.
+	\item The solution files should contain your executable (and commented) script files
+		as well as all additional documentation as \texttt{pdf}, not \texttt{txt}, \texttt{md}, \texttt{tex}, \texttt{doc} or \texttt{docx}.
+	Your \texttt{pdf} files may also include scans or pictures of handwritten notes.
+	\item Please e-mail ALL the solution files to \url{willi.mutschler@uni-tuebingen.de}.
+	I will confirm the receipt of your work also by email (typically within the hour). If not, please resend it to me.
+	\item All students must work on their own, please also give your student ID number and the name of the module you want to earn credits for.
+	\item It is advised to regularly check Ilias and your emails in case of urgent updates.
+	\item If there are any questions, do not hesitate to contact Willi Mutschler.
+\end{itemize}
+
+\newpage
+
+\section[Historical Decomposition]{Historical Decomposition}
+Reconsider the SVAR model of \textcite{Rubio-Ramirez.Waggoner.Zha_2010_StructuralVectorAutoregressions}
+  (i.e.\ the exercise called \emph{Combining Short-Run And Long-Run Restrictions}).
+
+A historical decomposition is a tool to quantify how important a structural shock was
+  in driving the behavior of the endogenous variables in a specific time period in the past.
+It allows to track at each point in time the role of structural shocks
+  in driving the VAR's endogenous variables away from their steady state.
+
+Given the notation used in the lecture, the historical decomposition for a VAR{(1)}
+  is based on the following recursive Wold representation:
+\begin{align*}
+y_t = A^t y_0 + \sum_{j=0}^{t-1} A^j B_0^{-1} \varepsilon_{t-j}
+\end{align*}
+Therefore, the historical decomposition of say \(y_{2}\) is given
+  as a function of present and past structural shocks
+  plus the initial condition:
+\begin{align*}
+y_{2} = \underbrace{A^2 y_0}_{\text{initial}} + \underbrace{A B_0^{-1}}_{\Theta_1} \varepsilon_{1} + \underbrace{B_0^{-1}}_{\Theta_0} \varepsilon_{2}
+\end{align*}
+
+\begin{enumerate}
+\item Write an algorithm to compute the historical decomposition of the federal funds rate with respect to the three shocks in the model.
+\item Interpret the results in economic terms.
+\end{enumerate}
+
+Hints:
+\begin{itemize}
+\item Use the companion form.
+\end{itemize} 
+
+\newpage
+
+\section{RBC model with leisure and non-Ricardian agents}
+Consider the basic Real Business Cycle (RBC) model with leisure and non-Ricardian agents.
+Assume that there is a continuum of consumers given on the interval \([0,1]\).
+A proportion of the population, \(\omega \), are Ricardian agents
+  who have access to financial markets and are indexed by \(i \in [0,\omega]\).
+The other part of the population, \(1-\omega \), is composed of non-Ricardian agents
+  who do not have access to financial markets and are indexed by \(j \in [\omega,1]\).
+
+A Ricardian household maximizes present as well as expected future utility
+\begin{align*}
+\underset{\{C_{i,t},I_{i,t},L_{i,t},K_{i,t}\}}{\max} E_t \sum_{s=0}^{\infty} \beta^{s} U_{i,t+s}
+\end{align*}
+with \(\beta <1\) denoting the discount factor and \(E_t\) is expectation given information at time \(t\).
+The contemporaneous utility function is given by
+\begin{align*}
+U_{i,t} = \gamma \ln C_{i,t} + (1-\gamma) \ln{(1-L_{i,t})}
+\end{align*}
+and has two arguments: consumption \(C_{i,t}\) and labor \(L_{i,t}\).
+The marginal utility of consumption is positive, whereas more labor reduces utility.
+Accordingly, \(\gamma \) is the elasticity of substitution between consumption and labor.
+In each period the household takes the real wage \(W_t\) as given
+  and supplies perfectly elastic labor service to the representative firm.
+In return, they receive real labor income in the amount of \(W_t L_{i,t}\)
+  and, additionally, profits \(\Pi_{i,t}\) from the firm
+  as well as revenue from lending capital in the previous period \(K_{i,t-1}\) at interest rate \(R_t\) to the firms,
+  as it is assumed that the firm and capital stock are owned by the Ricardian households.
+Income and wealth are used to finance consumption \(C_{i,t}\) and investment \(I_{i,t}\).
+In total, this defines the (real) budget constraint of the Ricardian agent:
+\begin{align*}
+C_{i,t} + I_{i,t} = W_t L_{i,t} + R_t K_{i,t-1} + \Pi_{i,t}
+\end{align*}
+
+The law of motion for capital \(K_{i,t}\) at the end of period \(t\) is given by
+\begin{align*}
+K_{i,t} = (1-\delta)K_{i,t-1} + I_{i,t}
+\end{align*}
+where \(\delta \) is the depreciation rate.
+Assume that the transversality condition is full-filled.
+
+A non-Ricardian household maximizes present as well as expected future utility
+\begin{align*}
+\underset{\{C_{j,t},L_{j,t}\}}{\max} E_t \sum_{s=0}^{\infty} \beta^{s} U_{j,t+s}
+\end{align*}
+The contemporaneous utility function is the same as for non-Ricardian households, i.e.\
+\begin{align*}
+U_{j,t} = \gamma \ln C_{j,t} + (1-\gamma) \ln{(1-L_{j,t})}
+\end{align*}
+As non-Ricardian agents do not have access to the credit market, their (real) budget constraint is given by:
+\begin{align*}
+C_{j,t} = W_t L_{j,t}
+\end{align*}
+
+It is assumed that all agents, independently the group they belong to, are identical.
+Therefore, aggregate values (in per capita terms) are given by:
+\begin{align*}
+C_t = \omega C_{i,t} + (1-\omega)C_{j,t},
+&& L_t = \omega L_{i,t} + (1-\omega)L_{j,t},
+&& K_t = \omega K_{i,t}
+&& I_t = \omega I_{i,t}
+\end{align*}
+where the right two expressions are due to the fact that only Ricardian agents invest in physical capital.
+
+Productivity \(A_t\) is the driving force of the economy and evolves according to
+\begin{align*}
+\ln{A_{t}} &= \rho_A \ln{A_{t-1}}  + \varepsilon_t^A
+\end{align*}
+where \(\rho_A\) denotes the persistence parameter and \(\varepsilon_t^A\) is assumed to be normally distributed with mean zero and variance \(\sigma_A^2\).
+
+Real profits \(\Pi_t = \omega \Pi_{i,t}\) of the representative firm are revenues from selling output \(Y_t\) minus costs from labor \(W_t L_t\) and renting capital \(R_t K_{t-1}\):
+\begin{align*}
+\Pi_t = Y_{t} - W_{t} L_{t} - R_{t} K_{t-1}
+\end{align*}
+The representative firm maximizes expected profits
+\begin{align*}
+\underset{\{L_{t},K_{t-1}\}}{\max} E_t \sum_{j=0}^{\infty} \beta^j Q_{t+j}\Pi_{t+j}
+\end{align*}
+subject to a Cobb-Douglas production function
+\begin{align*}
+Y_t = A_t K_{t-1}^\alpha L_t^{1-\alpha}
+\end{align*}
+The discount factor takes into account that firms are owned by the Ricardian households,
+  i.e.\ \(\beta^s Q_{t+s}\) is the present value of a unit of consumption in period \(t+s\)
+  or, respectively, the marginal utility of an additional unit of profit;
+  therefore \(Q_{t+s}=\frac{\partial U_{i,t+s}/\partial C_{i,t+s}}{\partial U_{i,t}/\partial C_{i,t}}\).
+
+Finally, we have the non-negativity constraints
+  \(K_{i,t} \geq0\), \(C_{i,t} \geq 0\), \(C_{j,t} \geq 0\), \(0\leq L_{i,t} \leq 1\) and \(0\leq L_{j,t} \leq 1\).
+Furthermore, clearing of the labor as well as goods market in equilibrium implies
+\begin{align*}
+Y_t = C_t + I_t
+\end{align*}
+
+\begin{enumerate}
+
+\item Briefly provide intuition behind the introduction of non-Ricardian households.
+
+\item Show that the first-order conditions of the agents are given by
+\begin{align*}
+E_t\left[\frac{C_{i,t+1}}{C_{i,t}}\right] = \beta E_t\left[1-\delta + R_{t+1}\right],
+&&
+W_t = \frac{1-\gamma}{\gamma} \frac{C_{i,t}}{1-L_{i,t}},
+\\
+C_{j,t} = W_t L_{j,t},
+&&
+W_t = \frac{1-\gamma}{\gamma} \frac{C_{j,t}}{1-L_{j,t}}.
+\end{align*}
+Interpret these equations in economic terms.
+
+\item Show that the first-order conditions of the representative firm are given by
+\begin{align*}
+W_t = (1-\alpha) A_t \left(\frac{K_{t-1}}{L_t}\right)^\alpha, &&	R_t = \alpha A_t \left(\frac{L_t}{K_{t-1}}\right)^{1-\alpha}
+\end{align*}
+Interpret these equations in economic terms.
+
+\item Discuss how to calibrate the parameters of the model.
+
+\item Write a DYNARE mod file for this model with a feasible calibration
+  and compute the steady-state of the model either analytically or numerically.
+
+\item Compare the steady-state values of an economy with a high proportion of Ricardian agents versus one with a very low proportion.
+Try to interpret your results economically.
+\end{enumerate}
+
+\newpage
+
+\section[Maximum likelihood estimation of An and Schorfheide (2007)]{Maximum likelihood estimation of An and Schorfheide (2007)\label{ex:AnSchorfheide2007ML}}
+\paragraph{Description}
+Consider the log-linearized version of the model of \textcite{An.Schorfheide_2007_BayesianAnalysisDSGE}
+  which is a basic small-scale New-Keynesian model.
+
+\paragraph{Data}
+For the estimation, we will use quarterly U.S. data for quarter-to-quarter per capita GDP growth rates (YGR),
+annualized quarter-to-quarter inflation rates (INFL), and annualized nominal interest rates (INT).
+The three series are measured in percentages.
+
+\paragraph{Parameters}
+All of the 10 underlying model parameters as well as standard errors of the three structural shocks are to be estimated by maximizing the log-likelihood function with Dynare.
+
+\paragraph{Codes}
+A Dynare mod file is given in the file \texttt{as2007.mod}
+  and \texttt{AnSchorfheide2007data.csv} contains the dataset.
+
+\paragraph{Exercises}
+
+\begin{enumerate}
+\item What is the \emph{dilemma of absurd parameters} when doing a Maximum Likelihood estimation of DSGE models?
+
+\item Add an \texttt{estimated\_params} block with feasible starting values, lower and upper bounds for all the parameters.
+
+\item Estimate all the parameters with maximum likelihood.
+Comment on the estimation results in terms of point estimates and standard errors.
+
+\item Try to fix any estimation issues that you face
+  by trying out different starting values, optimizers, or fixing some \emph{problematic} parameters.
+
+\item Why is Maximum Likelihood estimation of DSGE models not straightforward?
+What does a Bayesian approach offer to solve problems that arise in Maximum Likelihood estimation?
+
+\end{enumerate}
+
+\printbibliography%
+
+\newpage
+
+\section{Random-Walk-Metropolis-Hastings algorithm for AR{(1)}}
+Re-consider the univariate first-order autoregressive process:
+\begin{align*}
+y_t = \rho y_{t-1} + u_t
+\end{align*}
+where we restrict \(0\leq \rho <1\) and \(u_t \sim \mathcal{N}(0,\sigma^2)\).
+Simulated data for this process is given in the file \texttt{AR1Simulated.csv}.
+
+\begin{enumerate}
+\item Briefly outline the Random-Walk-Metropolis-Hastings algorithm.
+What is the intuition behind this algorithm?
+
+\item What are common choices to initialize the proposal distribution of the Random-Walk-Metropolis-Hastings algorithm?
+Which one is preferred and why?
+
+\item Our goal is to estimate the parameters \(\rho \) and \(\sigma \) using the Random-Walk-Metropolis-Hastings algorithm.
+To this end:
+\begin{itemize}
+\item Assume that the prior distribution for
+  \begin{itemize}
+  \item \(\rho \) is Beta with both shape parameters being equal to 4: \texttt{betapdf(x,4,4)}.
+  \item \(\sigma \) is Uniform on the interval \([0,2]\): \texttt{unifpdf(x,0,2)}.
+  \end{itemize}
+Plot the prior distribution for both parameters and comment whether this is a good choice.
+
+\item Write a function \texttt{logposterior} that computes the log-posterior of the AR{(1)} process for any \(x=(\rho,\sigma)\) given the data.
+Hints:
+  \begin{itemize}
+  \item We have already derived the log-likelihood function in the lecture:\\\texttt{logLikeARpNorm(x,data,1,0)}.
+  \item Don't forget the log on the prior distributions.
+  \item As a cross-check \texttt{logposterior{({[0.5,0.3]})}} \(\approx 42.1050\).
+  \end{itemize}
+
+\item Initialize the proposal distribution at the posterior mode and use the inverse hessian for the jumping covariance matrix.
+Scale the jumping covariance by the factor \(c=2.5\).
+Hints:
+  \begin{itemize}
+  \item You need to run a numerical optimizer on \texttt{-1*logposterior} to find the mode.
+  \item The inverse hessian is given by \texttt{inv(hessian)} where \texttt{hessian} is either the output of the optimizer
+  or you can use the auxiliary function \texttt{hessian\_numerical} to compute the hessian numerically.
+  \end{itemize}
+  If you fail this step, use something else as the jumping covariance matrix.
+
+\item Initialize the chain \texttt{xpost} at the posterior mode and draw 100000 draws using the RW-MH algorithm.
+  \begin{itemize}
+  \item A new draw from the proposal is given by:
+\begin{align*}
+\text{\texttt{xtry = mvnrnd{(xpost{(:,i-1)},c*SigmaMH)}}}
+\end{align*}
+  \item Check whether \(\rho=xtry(1)\) and \(\sigma=xtry(2)\) are within the parameter space; if not penalize the log-posterior by -Inf.
+  \item Do the Metropolis-Hastings accept-reject mechanism and store the accepted draws in \texttt{xpost}.
+  \end{itemize}
+
+\item Remove the first 50\% of the draws.
+Plot the kernel density estimates of the marginal posterior distributions for \(\rho \) and \(\sigma \), e.g.\ \texttt{[frho, xrho] = ksdensity(rhopost);},
+  and compare it to their prior distributions.
+
+\end{itemize}
+
+\end{enumerate}
+
+\end{document}

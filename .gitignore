@@ -23,3 +23,9 @@ week_*_solution.tex
 *.xml
 *.gz
 *.toc
+
+progs/dynare/\+as2007/
+
+progs/dynare/as2007/
+
+progs/dynare/as2007.log
