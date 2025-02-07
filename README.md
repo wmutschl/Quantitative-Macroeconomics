@@ -287,6 +287,7 @@ Familiarize yourself with
 ### Goals
 
 * understand the Kalman filter and its use in DSGE models
+* understand Maximum Likelihood estimation of DSGE models
 * understand the Metropolis-Hastings algorithm and its use in DSGE models
 
 

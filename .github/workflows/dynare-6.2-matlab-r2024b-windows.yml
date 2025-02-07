@@ -144,3 +144,11 @@ jobs:
             cd("../dynare");
             dynare rbcLogutil
             dynare rbcCES
+
+      - name: Run week 14 codes
+        uses: matlab-actions/run-command@v2
+        with:
+          command: |
+            addpath("D:\hostedtoolcache\windows\dynare-6.0\matlab");
+            cd("progs/matlab");
+            dsge_maximum_likelihood_illustration;
