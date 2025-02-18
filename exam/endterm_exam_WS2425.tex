@@ -18,7 +18,7 @@
 \begin{document}
 	
 \title{Quantitative Macroeconomics}
-\author{Endterm Exam\\Version 1.0}
+\author{Endterm Exam\\Version 1.0.1}
 \date{Winter 2024/2025}
 
 \maketitle
@@ -36,6 +36,20 @@
 	\item All students must work on their own, please also give your student ID number and the name of the module you want to earn credits for.
 	\item It is advised to regularly check Ilias and your emails in case of urgent updates.
 	\item If there are any questions, do not hesitate to contact Willi Mutschler.
+\end{itemize}
+
+\section*{Changelog}
+\begin{itemize}
+\item \textbf{Version 1.0.1:} Rearranged first equation in exercise 2.2, because the conditional expectation operator is not correctly applied \emph{mathematically}.
+Old equation:
+\begin{align*}
+E_t\left[ \frac{C_{i,t+1}}{C_{i,t}} \right] = \beta E_t\left[1-\delta + R_{t+1}\right]
+\end{align*}
+Corrected equation:
+\begin{align*}
+1 = \beta E_t\left[ \frac{C_{i,t}}{C_{i,t+1}} \left(1-\delta + R_{t+1}\right)\right]
+\end{align*}
+This has no effect on the underlying codes, as Dynare automatically puts all terms on one side of the equation and then applies the conditional expectation operator.
 \end{itemize}
 
 \newpage
@@ -171,7 +185,7 @@ Y_t = C_t + I_t
 
 \item Show that the first-order conditions of the agents are given by
 \begin{align*}
-E_t\left[\frac{C_{i,t+1}}{C_{i,t}}\right] = \beta E_t\left[1-\delta + R_{t+1}\right],
+1 = \beta E_t\left[ \frac{C_{i,t}}{C_{i,t+1}} \left(1-\delta + R_{t+1}\right)\right],
 &&
 W_t = \frac{1-\gamma}{\gamma} \frac{C_{i,t}}{1-L_{i,t}},
 \\
